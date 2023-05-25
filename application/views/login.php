@@ -9,7 +9,7 @@
   <meta name="description" content="Icewall admin is super flexible, powerful, clean & modern responsive tailwind admin template with unlimited possibilities.">
   <meta name="keywords" content="admin template, Icewall Admin Template, dashboard template, flat admin template, responsive admin template, web app">
   <meta name="author" content="LEFT4CODE">
-  <title><?= $title ?> | Shoppify</title>
+  <title><?= $title ?> | EasyPickTrash</title>
   <!-- BEGIN: CSS Assets-->
   <link rel="stylesheet" href="<?= site_url('asset') ?>/admin/dist/css/app.css" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.33.1/sweetalert2.min.css" rel="stylesheet">

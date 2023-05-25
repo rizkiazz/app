@@ -18,7 +18,7 @@ License: You must have a valid license purchased only from themeforest(the above
     <meta name="description" content="Icewall admin is super flexible, powerful, clean & modern responsive tailwind admin template with unlimited possibilities.">
     <meta name="keywords" content="admin template, Icewall Admin Template, dashboard template, flat admin template, responsive admin template, web app">
     <meta name="author" content="LEFT4CODE">
-    <title><?= $title ?> | Shoppify</title>
+    <title><?= $title ?> | EasyPickTrash</title>
     <!-- BEGIN: CSS Assets-->
     <link rel="stylesheet" href="<?= site_url('asset') ?>/admin/dist/css/app.css" />
     <script type="text/javascript" src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="SB-Mid-client-kmbmTlxtNRFjaL3L"></script>
@@ -32,7 +32,7 @@ License: You must have a valid license purchased only from themeforest(the above
     <div class="mobile-menu md:hidden">
         <div class="mobile-menu-bar">
             <a href="" class="flex mr-auto">
-                <img alt="Midone - HTML Admin Template" class="w-6" src="<?= site_url('asset') ?>/admin/dist/images/logo.svg">
+                <img alt="Midone - HTML Admin Template" class="w-6" src="<?= site_url('asset') ?>/logo.png">
             </a>
             <a href="javascript:;" class="mobile-menu-toggler"> <i data-lucide="bar-chart-2" class="w-8 h-8 text-white transform -rotate-90"></i> </a>
         </div>
@@ -104,9 +104,9 @@ License: You must have a valid license purchased only from themeforest(the above
                     </a>
                     <ul class="">
                         <li>
-                            <a href="side-menu-light-categories.html" class="menu">
+                            <a href="side-menu-light-dashboard_categories.html" class="menu">
                                 <div class="menu__icon"> <i data-lucide="activity"></i> </div>
-                                <div class="menu__title"> Categories </div>
+                                <div class="menu__title"> dashboard_Categories </div>
                             </a>
                         </li>
                         <li>
@@ -674,8 +674,8 @@ License: You must have a valid license purchased only from themeforest(the above
         <div class="h-full flex items-center">
             <!-- BEGIN: Logo -->
             <a href="" class="-intro-x hidden md:flex">
-                <img alt="Midone - HTML Admin Template" class="w-6" src="<?= site_url('asset') ?>/admin/dist/images/logo.svg">
-                <span class="text-white text-lg ml-3"> Shoppify </span>
+                <img alt="Midone - HTML Admin Template" class="w-6" src="<?= site_url('asset') ?>/logo.png">
+                <span class="text-white text-lg ml-3"> EasyPickTrash </span>
             </a>
             <!-- END: Logo -->
             <!-- BEGIN: Breadcrumb -->
@@ -765,6 +765,39 @@ License: You must have a valid license purchased only from themeforest(the above
                             </div>
                         </a>
                     </li>
+                            <li>
+                        <a href="<?= base_url('dashboard_categories/plastik') ?>" class="side-menu side-menu">
+                            <div class="side-menu__icon"> <i data-lucide="home"></i> </div>
+                            <div class="side-menu__title"> Plastik </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="<?= base_url('dashboard_categories/kertas') ?>" class="side-menu">
+                            <div class="side-menu__icon"> <i data-lucide="shopping-bag"></i> </div>
+                            <div class="side-menu__title"> Kertas </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="<?= base_url('dashboard_categories/kaca') ?>" class="side-menu">
+                            <div class="side-menu__icon"> <i data-lucide="file-text"></i> </div>
+                            <div class="side-menu__title"> Kaca </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="<?= base_url('dashboard_categories/elektronik') ?>" class="side-menu">
+                            <div class="side-menu__icon"> <i data-lucide="file-text"></i> </div>
+                            <div class="side-menu__title"> Barang Elektronik </div>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="<?= base_url('dashboard_categories/tekstil') ?>" class="side-menu">
+                            <div class="side-menu__icon"> <i data-lucide="file-text"></i> </div>
+                            <div class="side-menu__title"> Tekstil </div>
+                        </a>
+                    </li>
+                    <li class="side-nav__devider my-6"></li>
+
                     <li>
                         <a href="<?= base_url('order') ?>" class="side-menu">
                             <div class="side-menu__icon"> <i data-lucide="shopping-bag"></i> </div>
@@ -780,14 +813,12 @@ License: You must have a valid license purchased only from themeforest(the above
                             <div class="side-menu__title"> Billing History </div>
                         </a>
                     </li>
-
                     <li>
                         <a href="<?= base_url('pay') ?>" class="side-menu">
                             <div class="side-menu__icon"> <i data-lucide="file-text"></i> </div>
                             <div class="side-menu__title"> Invoice History </div>
                         </a>
                     </li>
-                    <li class="side-nav__devider my-6"></li>
                     <li>
                         <a href="<?= base_url('profile') ?>" class="side-menu">
                             <div class="side-menu__icon"> <i data-lucide="settings"></i> </div>

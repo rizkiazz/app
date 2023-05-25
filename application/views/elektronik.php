@@ -14,7 +14,7 @@
             </div>
         </div>
         <!-- BEGIN: Users Layout -->
-        <?php foreach ($jacket as $row) : ?>
+        <?php foreach ($elektronik as $row) : ?>
             <div class="intro-y col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-3">
                 <div class="box">
                     <div class="p-5">

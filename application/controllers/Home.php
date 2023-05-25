@@ -6,7 +6,7 @@ class Home extends CI_Controller
 
 	public function index()
 	{
-		$data['title'] = 'Shoppify Home';
+		$data['title'] = 'EasyPickTrash | Home';
 		$data['product'] = $this->model_pembayaran->get('product')->result();
 		$this->load->view('layout/home/header', $data);
 		$this->load->view('home', $data);

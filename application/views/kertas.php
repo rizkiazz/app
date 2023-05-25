@@ -14,7 +14,7 @@
             </div>
         </div>
         <!-- BEGIN: Users Layout -->
-        <?php foreach ($shoes as $row) : ?>
+        <?php foreach ($kertas as $row) : ?>
             <div class="intro-y col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-3">
                 <div class="box">
                     <div class="p-5">
@@ -31,7 +31,7 @@
                     </div>
                     <div class="flex justify-center lg:justify-end items-center p-5 border-t border-slate-200/60 dark:border-darkmode-400">
                         <a class="flex items-center btn btn-sm btn-primary mr-3" href="javascript:;" data-tw-toggle="modal" data-tw-target="#delete-confirmation-modal"> <i data-lucide="shopping-cart" class="w-4 h-4 mr-1"></i> Add to Cart </a>
-                      
+                        
                     </div>
                 </div>
             </div>

@@ -24,6 +24,13 @@ class Model_pembayaran extends CI_Model
 	{
 		return $this->db->get($table);
 	}
+	public function list()
+	{
+		$sql = "SELECT DISTINCT kategori FROM product";
+		$result = $this->db->query($sql);
+
+		return $result->row();
+	}
 
 	public function insert($data, $table)
 	{

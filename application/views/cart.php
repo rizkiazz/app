@@ -1,11 +1,11 @@
 <div class="content">
     <div class="intro-y flex flex-col sm:flex-row items-center mt-8">
         <h2 class="text-lg font-medium mr-auto">
-            Cart Details
+            Menu Keranjang
         </h2>
         <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
-            <a href="<?= site_url('dashboard/clear') ?>" class="btn btn-primary shadow-md mr-2">Clear Cart</a>
-            <a href="<?= site_url('dashboard') ?>" class="btn btn-danger shadow-md mr-2">Continue Shopping</a>
+            <a href="<?= site_url('dashboard/clear') ?>" class="btn btn-primary shadow-md mr-2">Hapus Keranjang</a>
+            <a href="<?= site_url('dashboard') ?>" class="btn btn-danger shadow-md mr-2">Lanjut Order</a>
         </div>
     </div>
     <!-- BEGIN: Transaction Details -->
@@ -14,7 +14,7 @@
         <div class="col-span-12 lg:col-span-12 2xl:col-span-8">
             <div class="box p-5 rounded-md">
                 <div class="flex items-center border-b border-slate-200/60 dark:border-darkmode-400 pb-5 mb-5">
-                    <div class="font-medium text-base truncate">Order Details</div>
+                    <div class="font-medium text-base truncate">List Pesanan</div>
                     <a href="<?= site_url('dashboard/checkout') ?>" class="flex items-center ml-auto btn btn-primary shadow-md mr-2"><i data-lucide="activity" class="w-4 h-4 mr-2"></i>&nbsp;CHECKOUT </a>
                 </div>
                 <div class="overflow-auto lg:overflow-visible -mt-3">
@@ -60,3 +60,13 @@
     </div>
     <!-- END: Transaction Details -->
 </div>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.33.1/sweetalert2.min.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.33.1/sweetalert2.min.js"></script>
+
+<?php if (@$_SESSION['sukses']) { ?>
+    <script>
+        swal("Good job!", "<?php echo $_SESSION['sukses']; ?>", "success");
+    </script>
+    <!-- jangan lupa untuk menambahkan unset agar sweet alert tidak muncul lagi saat di refresh -->
+<?php unset($_SESSION['sukses']);
+} ?>

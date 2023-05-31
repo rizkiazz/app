@@ -33,18 +33,46 @@ class Profile extends CI_Controller
         $id             = $this->input->post('id_user');
         $nama_user      = $this->input->post('nama_user');
         $email          = $this->input->post('email');
+        $alamat         = $this->input->post('alamat');
+        $nomor_hp       = $this->input->post('nomor_hp');
+        $gender         = $this->input->post('gender');
+        $tgl_lahir      = $this->input->post('tgl_lahir');
+        $avatar		    = $_FILES['avatar']['name'];
+
+
+        $config['upload_path']          = './uploads/';
+		$config['allowed_types']        = 'png|jpg|gif';
+		$config['max_size']             = 2048;
+		$config['max_width']            = 40000;
+		$config['max_height']           = 40000;
+
+		$this->load->library('upload', $config);
+        if ($avatar = '') {
+		} else {
+			if (!$this->upload->do_upload('avatar')) {
+				echo "File tidak dapat di upload!";
+			} else {
+				$avatar = $this->upload->data('file_name');
+			}
+		}
 
         $data = array(
             'nama_user'         => $nama_user,
-            'email'             => $email
-        );
+            'email'             => $email,
+            'alamat'            => $alamat,
+            'nomor_hp'          => $nomor_hp,
+            'gender'            => $gender,
+            'tgl_lahir'         => $tgl_lahir,
+            'avatar'            => $avatar
+            );                         
 
         $where = array(
             'id_user' => $id
         );
+        // die(var_dump($data)); //giving posted value    
 
         $this->model_pembayaran->update('user', $data, $where);
-        $this->session->sess_destroy();
-        redirect('welcome');
+        $_SESSION["sukses"] = 'Data berhasil di ubah';
+        redirect('profile');
     }
 }

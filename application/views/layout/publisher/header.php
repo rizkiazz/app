@@ -1,13 +1,4 @@
 <!DOCTYPE html>
-<!--
-Template Name: Icewall - HTML Admin Dashboard Template
-Author: Left4code
-Website: http://www.left4code.com/
-Contact: muhammadrizki@left4code.com
-Purchase: https://themeforest.net/user/left4code/portfolio
-Renew Support: https://themeforest.net/user/left4code/portfolio
-License: You must have a valid license purchased only from themeforest(the above link) in order to legally use the theme for your project.
--->
 <html lang="en" class="light">
 <!-- BEGIN: Head -->
 
@@ -29,7 +20,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
 <body class="main">
     <!-- BEGIN: Mobile Menu -->
-    <div class="mobile-menu md:hidden">
+    <!-- <div class="mobile-menu md:hidden">
         <div class="mobile-menu-bar">
             <a href="" class="flex mr-auto">
                 <img alt="Midone - HTML Admin Template" class="w-6" src="<?= site_url('asset') ?>/admin/dist/images/logo.svg">
@@ -667,7 +658,7 @@ License: You must have a valid license purchased only from themeforest(the above
                 </li>
             </ul>
         </div>
-    </div>
+    </div> -->
     <!-- END: Mobile Menu -->
     <!-- BEGIN: Top Bar -->
     <div class="top-bar-boxed h-[70px] z-[51] relative border-b border-white/[0.08] mt-12 md:-mt-5 -mx-3 sm:-mx-8 px-3 sm:px-8 md:pt-0 mb-12">
@@ -675,7 +666,7 @@ License: You must have a valid license purchased only from themeforest(the above
             <!-- BEGIN: Logo -->
             <a href="" class="-intro-x hidden md:flex">
                 <img alt="Midone - HTML Admin Template" class="w-6" src="<?= site_url('asset') ?>/admin/dist/images/logo.svg">
-                <span class="text-white text-lg ml-3"> Shoppify </span>
+                <span class="text-white text-lg ml-3"> EasyPickTrash </span>
             </a>
             <!-- END: Logo -->
             <!-- BEGIN: Breadcrumb -->

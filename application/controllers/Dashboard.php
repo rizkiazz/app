@@ -40,7 +40,7 @@ class Dashboard extends CI_Controller
 
 		$this->cart->insert($data);
 		$_SESSION["sukses"] = 'Pesanan telah disimpan di keranjang';
-		redirect('dashboard');
+		redirect('dashboard_categories/'. $product->kategori);
 	}
 
 	 public function detail_product($id)
@@ -87,7 +87,7 @@ class Dashboard extends CI_Controller
 	{
 		$this->cart->destroy();
 		$_SESSION["sukses"] = 'Pesanan berhasil di hapus';
-		redirect('dashboard');
+		redirect('dashboard/detail_cart');
 	}
 
 	public function delete($rowid)

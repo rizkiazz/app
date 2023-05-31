@@ -16,7 +16,7 @@
                 </div>
                 <div class="ml-5">
                     <div class="w-24 sm:w-40 truncate sm:whitespace-normal font-medium text-lg"><?php echo $this->session->userdata('nama_user') ?></div>
-                    <div class="text-slate-500">Shoppify Customer</div>
+                    <div class="text-slate-500">EasyPickTrash Customer</div>
                 </div>
             </div>
             <div class="mt-6 lg:mt-0 flex-1 px-5 border-l border-r border-slate-200/60 dark:border-darkmode-400 border-t lg:border-t-0 pt-5 lg:pt-0">
@@ -29,17 +29,17 @@
             </div>
         </div>
         <ul class="nav nav-link-tabs flex-col sm:flex-row justify-center lg:justify-start text-center" role="tablist">
-            <li id="dashboard-tab" class="nav-item" role="presentation"> <a href="javascript:;" class="nav-link py-4 active" data-tw-target="#dashboard" aria-controls="dashboard" aria-selected="true" role="tab"> Dashboard </a> </li>
-            <li id="account-and-profile-tab" class="nav-item" role="presentation"> <a href="javascript:;" class="nav-link py-4" data-tw-target="#account-and-profile" aria-selected="false" role="tab"> Update Profile </a> </li>
+            <!-- <li id="dashboard-tab" class="nav-item" role="presentation"> <a href="javascript:;" class="nav-link py-4 active" data-tw-target="#dashboard" aria-controls="dashboard" aria-selected="true" role="tab"> Dashboard </a> </li> -->
+            <li id="account-and-profile-tab" class="nav-item" role="presentation"> <a href="javascript:;" class="nav-link py-4 active" data-tw-target="#account-and-profile" aria-selected="false" role="tab"> Update Profile </a> </li>
         </ul>
     </div>
     <!-- END: Profile Info -->
     <div class="intro-y tab-content mt-5">
-        <div id="dashboard" class="tab-pane active" role="tabpanel" aria-labelledby="dashboard-tab">
-            <div class="grid grid-cols-12 gap-6">
+        <!-- <div id="dashboard" class="tab-pane active" role="tabpanel" aria-labelledby="dashboard-tab">
+            <div class="grid grid-cols-12 gap-6"> -->
 
                 <!-- BEGIN: Work In Progress -->
-                <div class="intro-y box col-span-12 lg:col-span-12">
+                <!-- <div class="intro-y box col-span-12 lg:col-span-12">
                     <div class="flex items-center px-5 py-5 sm:py-0 border-b border-slate-200/60 dark:border-darkmode-400">
                         <h2 class="font-medium text-base mr-auto">
                             Menunggu Pembayaran
@@ -79,13 +79,13 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <!-- END: Work In Progress -->
 
-            </div>
-        </div>
+            <!-- </div>
+        </div> -->
 
-        <div id="account-and-profile" class="tab-pane" role="tabpanel" aria-labelledby="account-and-profile-tab">
+        <div id="account-and-profile" class="tab-pane active" role="tabpanel" aria-labelledby="account-and-profile-tab">
             <div class="grid grid-cols-12 gap-6">
 
                 <!-- BEGIN: Work In Progress -->
@@ -96,35 +96,66 @@
                             <div id="work-in-progress-new" class="tab-pane active" role="tabpanel" aria-labelledby="work-in-progress-new-tab">
                                 <div class="flex flex-col-reverse xl:flex-row flex-col">
                                     <div class="flex-1 mt-6 xl:mt-0">
-                                        <form action="<?= site_url('profile/update') ?>" method="post">
+                                        <form action="<?= site_url('profile/update') ?>" method="post" enctype="multipart/form-data">
                                             <?php foreach ($profile as $row) : ?>
                                                 <div class="grid grid-cols-12 gap-x-5">
                                                     <div class="col-span-12 2xl:col-span-6">
                                                         <div>
-                                                            <label for="update-profile-form-1" class="form-label">Your Name</label>
+                                                            <label for="update-profile-form-1" class="form-label">Nama Anda</label>
                                                             <input type="hidden" name="id_user" value="<?= $row->id_user ?>">
                                                             <input id="update-profile-form-1" type="text" class="form-control" name="nama_user" placeholder="Input text" value="<?= $row->nama_user ?>">
                                                         </div>
                                                         <div class="mt-3">
-                                                            <label for="update-profile-form-2" class="form-label">Your Email</label>
+                                                            <label for="update-profile-form-2" class="form-label">Email</label>
                                                             <input id="update-profile-form-1" type="email" class="form-control" name="email" placeholder="Input text" value="<?= $row->email ?>">
                                                         </div>
+                                                        <div class="mt-3">
+                                                            <label for="update-profile-form-2" class="form-label">Alamat</label>
+                                                            <input id="update-profile-form-1" type="text" class="form-control" name="alamat" placeholder="Input text" value="<?= $row->alamat ?>">
+                                                        </div>
+                                                        <div class="mt-3">
+                                                            <label for="nomor_hp" class="form-label">No Handphone</label>
+                                                            <input id="update-profile-form-1" type="text" class="form-control" name="nomor_hp" placeholder="Input text" value="<?= $row->nomor_hp ?>">
+                                                        </div>
+                                                        <div class="mt-3">
+                                                            <label for="gender" class="form-label">Jenis Kelamin</label>
+                                                            <div class="flex flex-col sm:flex-row mt-2">
+                                                                <div class="form-check mr-2">
+                                                                    <input id="radio-switch-4" class="form-check-input" type="radio" <?= $row->gender === 'laki-laki' ? 'checked' : '' ?> name="gender" value="laki-laki">
+                                                                    <label class="form-check-label" for="radio-switch-4">Laki-laki</label>
+                                                                </div>
+                                                                <div class="form-check mr-2 mt-2 sm:mt-0">
+                                                                    <input id="radio-switch-5" class="form-check-input" type="radio" <?= $row->gender === 'perempuan' ? 'checked' : '' ?>  name="gender" value="perempuan">
+                                                                    <label class="form-check-label" for="radio-switch-5">Perempuan</label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="mt-3">
+                                                            <label for="tgl_lahir" class="form-label">Tanggal Lahir</label>
+                                                            <div class="input-group">
+                                                                <div id="tgl_lahir" class="input-group-text"><i data-lucide="calendar" class="w-4 h-4"></i></div>
+                                                                <input type="text" class="datepicker form-control" data-single-mode="true" name="tgl_lahir" value="<?= $row->tgl_lahir ?>">
+                                                            </div>
+                                                        </div>
+                                                        <div class="mt-3">
+                                                            <div class="w-52 xl:mr-0 xl:ml-0">
+                                                                <div class="border-2 border-dashed shadow-sm border-slate-200/60 dark:border-darkmode-400 rounded-md p-5">
+                                                                    <div class="h-40 relative image-fit cursor-pointer zoom-in mx-auto">
+                                                                        <img class="rounded-md" src="<?= base_url() . '/uploads/' . $row->avatar ?>">
+                                                                        <div class="tooltip w-5 h-5 flex items-center justify-center absolute rounded-full text-white bg-primary right-0 top-0 -mr-2 -mt-2"> <i data-lucide="alert-circle" class="w-4 h-4"></i> </div>
+                                                                    </div>
+                                                                    <div class="mx-auto cursor-pointer relative mt-5">
+                                                                        <button type="button" class="btn btn-primary w-full">Ubah Foto</button>
+                                                                        <input name="avatar" id="avatar" type="file" class="w-full h-full top-0 left-0 absolute opacity-0" accept="image/png, image/jpeg, image/jpg, image/gif">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div> 
                                                     </div>
                                                 </div>
+                                                <button type="submit" class="btn btn-primary w-20 mt-3">Simpan</button>
                                             <?php endforeach; ?>
-                                            <button type="submit" class="btn btn-primary w-20 mt-3">Save</button>
                                         </form>
-                                    </div>
-                                    <div class="w-52 mx-auto xl:mr-0 xl:ml-6">
-                                        <div class="border-2 border-dashed shadow-sm border-slate-200/60 dark:border-darkmode-400 rounded-md p-5">
-                                            <div class="h-40 relative image-fit cursor-pointer zoom-in mx-auto">
-                                                <img class="rounded-md" src="<?= base_url('asset') ?>/user.png">
-                                                <div class="tooltip w-5 h-5 flex items-center justify-center absolute rounded-full text-white bg-primary right-0 top-0 -mr-2 -mt-2"> <i data-lucide="alert-circle" class="w-4 h-4"></i> </div>
-                                            </div>
-                                            <div class="mx-auto cursor-pointer relative mt-5">
-                                                <button type="button" class="btn btn-primary w-full">Profile Anda</button>
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -137,3 +168,14 @@
         </div>
     </div>
 </div>
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.33.1/sweetalert2.min.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.33.1/sweetalert2.min.js"></script>
+
+<?php if (@$_SESSION['sukses']) { ?>
+    <script>
+        swal("Good job!", "<?php echo $_SESSION['sukses']; ?>", "success");
+    </script>
+    <!-- jangan lupa untuk menambahkan unset agar sweet alert tidak muncul lagi saat di refresh -->
+<?php unset($_SESSION['sukses']);
+} ?>

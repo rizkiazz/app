@@ -16,9 +16,9 @@
                 </div>
                 <div class="p-5">
                     <div class="flex flex-col-reverse xl:flex-row flex-col">
-                        <?php foreach ($product as $row) : ?>
                             <div class="flex-1 mt-6 xl:mt-0">
-                                <form action="<?= site_url('admin/product/insert_update') ?>" method="post">
+                                <form action="<?= site_url('admin/product/insert_update') ?>" method="post" enctype="multipart/form-data">
+                                <?php foreach ($product as $row) : ?>
                                     <div class="grid grid-cols-12 gap-x-5">
                                         <div class="col-span-12 2xl:col-span-6">
                                             <div>
@@ -57,7 +57,6 @@
                                         </div>
                                     </div>
                                     <button type="submit" class="btn btn-primary w-20 mt-3">Save</button>
-                                </form>
                             </div>
                             <div class="w-52 mx-auto xl:mr-0 xl:ml-6">
                                 <div class="border-2 border-dashed shadow-sm border-slate-200/60 dark:border-darkmode-400 rounded-md p-5">
@@ -67,10 +66,12 @@
                                     </div>
                                     <div class="mx-auto cursor-pointer relative mt-5">
                                         <button type="button" class="btn btn-primary w-full">Product Image</button>
+                                        <input name="gambar" id="gambar" type="file" class="w-full h-full top-0 left-0 absolute opacity-0" accept="image/png, image/jpeg, image/jpg, image/gif">
                                     </div>
                                 </div>
                             </div>
                         <?php endforeach; ?>
+                        </form>
                     </div>
                 </div>
             </div>

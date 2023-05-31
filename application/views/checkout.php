@@ -17,17 +17,17 @@
             <div class="post intro-y overflow-hidden box mt-5">
                 <ul class="post__tabs nav nav-tabs flex-col sm:flex-row bg-slate-200 dark:bg-darkmode-800" role="tablist">
                     <li class="nav-item">
-                        <button title="Fill in the article content" data-tw-toggle="tab" data-tw-target="#content" class="nav-link tooltip w-full sm:w-200 py-4 active" id="content-tab" role="tab" aria-controls="content" aria-selected="true"> <i data-lucide="file-text" class="w-4 h-4 mr-2"></i> Shipping Details </button>
+                        <button title="Fill in the article content" data-tw-toggle="tab" data-tw-target="#content" class="nav-link tooltip w-full sm:w-200 py-4 active" id="content-tab" role="tab" aria-controls="content" aria-selected="true"> <i data-lucide="file-text" class="w-4 h-4 mr-2"></i> Detail Pengiriman </button>
                     </li>
                 </ul>
                 <div class="post__content tab-content">
                     <form id="payment-form" action="<?= site_url('dashboard/checkout_proccess') ?>" method="post">
                         <div id="content" class="tab-pane p-5 active" role="tabpanel" aria-labelledby="content-tab">
                             <div class="border border-slate-200/60 dark:border-darkmode-400 rounded-md p-5">
-                                <div class="font-medium flex items-center border-b border-slate-200/60 dark:border-darkmode-400 pb-5"> <i data-lucide="chevron-down" class="w-4 h-4 mr-2"></i> Customer Information </div>
+                                <div class="font-medium flex items-center border-b border-slate-200/60 dark:border-darkmode-400 pb-5"> <i data-lucide="chevron-down" class="w-4 h-4 mr-2"></i> Info Pelanggan </div>
                                 <div class="mt-5">
                                     <div class="mb-5">
-                                        <label for="post-form-7" class="form-label">Customer Name <small class="text-danger">*</small></label>
+                                        <label for="post-form-7" class="form-label"> Nama <small class="text-danger">*</small></label>
                                         <input type="hidden" id="order_id" name="order_id" value="INV-<?= mt_rand(000000000, 111111111) ?>" maxlength="8" autocomplete="off" required>
                                         <input type="hidden" id="tracking_id" name="tracking_id" value="<?= mt_rand(0000000000000, 1111111111111) ?>" maxlength="12" autocomplete="off" required>
                                         <input type="hidden" name="payment_method" value="Direct Bank Transfer">
@@ -37,48 +37,100 @@
                                     </div>
 
                                     <div class="mb-5">
-                                        <label for="post-form-7" class="form-label">Email Address <small class="text-danger">*</small></label>
+                                        <label for="post-form-7" class="form-label"> Email <small class="text-danger">*</small></label>
                                         <input type="email" id="email" name="email" class="form-control" value="<?php echo $this->session->userdata('email') ?>" autocomplete="off" readonly>
                                     </div>
 
                                     <div class="mb-5">
-                                        <label for="post-form-7" class="form-label">Mobile Number <small class="text-danger">*</small></label>
-                                        <input type="text" id="mobile_phone" name="mobile_phone" class="form-control" placeholder="Your mobile phone" autocomplete="off" required>
+                                        <label for="post-form-7" class="form-label">Nomor HP <small class="text-danger">*</small></label>
+                                        <input type="text" id="nomor_hp" name="nomor_hp" value="<?php echo $this->session->userdata('nomor_hp') ?>" class="form-control" autocomplete="off" readonly>
                                     </div>
                                 </div>
                             </div>
                             <div class="border border-slate-200/60 dark:border-darkmode-400 rounded-md p-5 mt-5">
-                                <div class="font-medium flex items-center border-b border-slate-200/60 dark:border-darkmode-400 pb-5"> <i data-lucide="chevron-down" class="w-4 h-4 mr-2"></i> Address Information </div>
+                                <div class="font-medium flex items-center border-b border-slate-200/60 dark:border-darkmode-400 pb-5">
+                                    <i data-lucide="chevron-down" class="w-4 h-4 mr-2"></i> Caption & Images
+                                </div>
+                                <div class="mt-5">
+                                    <div>
+                                    <label for="post-form-7" class="form-label">Caption</label>
+                                    <select data-placeholder="Select Caption" class="tom-select w-full" multiple>
+                                        <option value="Plastik">Plastik</option>
+                                        <option value="Kertas">Kertas</option>
+                                        <option value="Kaca">Kaca</option>
+                                        <option value="Elektronik">Barang Elektronik</option>
+                                        <option value="Tekstil">Tekstil</option>
+                                    </select>
+                                    </div>
+                                    <div class="mt-3">
+                                        <label class="form-label">Upload Image</label>
+                                        <div class="border-2 border-dashed dark:border-darkmode-400 rounded-md pt-4">
+                                            <div class="flex flex-wrap px-4">
+                                                <div class="w-24 h-24 relative image-fit mb-5 mr-5 cursor-pointer zoom-in">
+                                                    <img class="rounded-md" alt="Midone - HTML Admin Template" src="http://icewall.left4code.com/dist/images/preview-5.jpg">
+                                                    <div title="Remove this image?" class="tooltip w-5 h-5 flex items-center justify-center absolute rounded-full text-white bg-danger right-0 top-0 -mr-2 -mt-2">
+                                                        <i data-lucide="x" class="w-4 h-4"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="w-24 h-24 relative image-fit mb-5 mr-5 cursor-pointer zoom-in">
+                                                    <img class="rounded-md" alt="Midone - HTML Admin Template" src="http://icewall.left4code.com/dist/images/preview-5.jpg">
+                                                    <div title="Remove this image?" class="tooltip w-5 h-5 flex items-center justify-center absolute rounded-full text-white bg-danger right-0 top-0 -mr-2 -mt-2">
+                                                        <i data-lucide="x" class="w-4 h-4"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="w-24 h-24 relative image-fit mb-5 mr-5 cursor-pointer zoom-in">
+                                                    <img class="rounded-md" alt="Midone - HTML Admin Template" src="http://icewall.left4code.com/dist/images/preview-12.jpg">
+                                                    <div title="Remove this image?" class="tooltip w-5 h-5 flex items-center justify-center absolute rounded-full text-white bg-danger right-0 top-0 -mr-2 -mt-2">
+                                                        <i data-lucide="x" class="w-4 h-4"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="w-24 h-24 relative image-fit mb-5 mr-5 cursor-pointer zoom-in">
+                                                    <img class="rounded-md" alt="Midone - HTML Admin Template" src="http://icewall.left4code.com/dist/images/preview-3.jpg">
+                                                    <div title="Remove this image?" class="tooltip w-5 h-5 flex items-center justify-center absolute rounded-full text-white bg-danger right-0 top-0 -mr-2 -mt-2">
+                                                        <i data-lucide="x" class="w-4 h-4"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="px-4 pb-4 flex items-center cursor-pointer relative">
+                                                <i data-lucide="image" class="w-4 h-4 mr-2"></i> <span class="text-primary mr-1">Upload a file</span> or drag and drop
+                                                <input type="file" class="w-full h-full top-0 left-0 absolute opacity-0">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="border border-slate-200/60 dark:border-darkmode-400 rounded-md p-5 mt-5">
+                                <div class="font-medium flex items-center border-b border-slate-200/60 dark:border-darkmode-400 pb-5"> <i data-lucide="chevron-down" class="w-4 h-4 mr-2"></i> Info Alamat </div>
                                 <div class="mt-5">
                                     <div class="mb-5">
-                                        <label for="post-form-7" class="form-label">Your Address <small class="text-danger">*</small></label>
+                                        <label for="post-form-7" class="form-label"> Alamat <small class="text-danger">*</small></label>
                                         <input type="text" id="alamat" name="alamat" class="form-control" placeholder="Your mobile phone" autocomplete="off" required>
                                     </div>
 
                                     <div class="mb-5">
-                                        <label for="post-form-7" class="form-label">Provincy <small class="text-danger">*</small></label>
+                                        <label for="post-form-7" class="form-label"> Provinsi <small class="text-danger">*</small></label>
                                         <select name="provinsi" id="provinsi" class="form-control"></select>
                                     </div>
 
                                     <div class="mb-5">
-                                        <label for="post-form-7" class="form-label">City <small class="text-danger">*</small></label>
+                                        <label for="post-form-7" class="form-label"> Kota <small class="text-danger">*</small></label>
                                         <select name="kota" id="kota" class="form-control"></select>
                                     </div>
 
                                     <div class="mb-5">
-                                        <label for="post-form-7" class="form-label">Postal Code <small class="text-danger">*</small></label>
+                                        <label for="post-form-7" class="form-label"> Kode Pos <small class="text-danger">*</small></label>
                                         <input type="text" class="form-control" id="kode_pos" name="kode_pos" placeholder="Your mobile phone" autocomplete="off" required>
                                     </div>
 
                                     <div class="mb-5">
-                                        <label for="post-form-7" class="form-label">Delivery Service <small class="text-danger">*</small></label>
+                                        <label for="post-form-7" class="form-label">Layanan Antar <small class="text-danger">*</small></label>
                                         <select name="ekspedisi" id="ekspedisi" class="form-control"></select>
                                     </div>
                                 </div>
                             </div>
                             <div class="flex mt-5">
                                 <a href="<?= site_url('dashboard/detail_cart') ?>" class="btn w-32 border-slate-300 dark:border-darkmode-400 text-slate-500">My Cart</a>
-                                <button type="submit" class="btn btn-primary w-32 shadow-md ml-auto">Pay Order</button>
+                                <button type="submit" class="btn btn-primary w-32 shadow-md ml-auto">Check Out</button>
                             </div>
                         </div>
                     </form>
@@ -89,10 +141,10 @@
         <!-- BEGIN: Post Info -->
         <div class="col-span-12 lg:col-span-4">
             <div class="intro-y pr-1">
-                <div class="alert alert-primary show mb-2" role="alert">Payment Information</div>
+                <div class="alert alert-primary show mb-2" role="alert"> Informasi Pembayaran </div>
             </div>
             <div id="ticket" class="tab-pane active" role="tabpanel" aria-labelledby="ticket-tab">
-                <div class="box p-2 mt-5">
+                <!-- <div class="box p-2 mt-5">
                     <a href="javascript:;" data-tw-toggle="modal" data-tw-target="#add-item-modal" class="flex items-center p-3 cursor-pointer transition duration-300 ease-in-out bg-white dark:bg-darkmode-600 hover:bg-slate-100 dark:hover:bg-darkmode-400 rounded-md">
                         <div class="max-w-[50%] truncate mr-1">
                             <img class="mt-2" src="<?= site_url('asset') ?>/bca.png" width="60">
@@ -128,7 +180,7 @@
                         <div class="text-slate-500"></div>
                         <div class="ml-auto font-medium">6750527090 / Shoppify Commerce</div>
                     </a>
-                </div>
+                </div> -->
 
                 <div class="box p-5 mt-5">
                     <div class="flex">
@@ -136,15 +188,15 @@
                         <div class="font-medium">Rp. <?= number_format($this->cart->total(), 0, ',', '.') ?></div>
                     </div>
                     <div class="flex mt-4">
-                        <div class="mr-auto">Discount</div>
+                        <div class="mr-auto">Diskon</div>
                         <div class="font-medium text-danger">Rp. 0</div>
                     </div>
                     <div class="flex mt-4">
-                        <div class="mr-auto">Tax</div>
+                        <div class="mr-auto">Pajak</div>
                         <div class="font-medium">Rp. 0</div>
                     </div>
                     <div class="flex mt-4 pt-4 border-t border-slate-200/60 dark:border-darkmode-400">
-                        <div class="mr-auto font-medium text-base">Total Charge</div>
+                        <div class="mr-auto font-medium text-base">Total Biaya</div>
                         <div class="font-medium text-base"><strong>Rp. <?= number_format($this->cart->total(), 0, ',', '.') ?>,-</strong></div>
                     </div>
                 </div>

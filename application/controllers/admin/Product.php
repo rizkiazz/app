@@ -83,18 +83,40 @@ class Product extends CI_Controller
 		$kategori 		= $this->input->post('kategori');
 		$harga 			= $this->input->post('harga');
 		$stok 			= $this->input->post('stok');
+        $gambar		    = $_FILES['gambar']['name'];
+
+
+        $config['upload_path']          = './uploads/';
+		$config['allowed_types']        = 'png|jpg|gif';
+		$config['max_size']             = 2048;
+		$config['max_width']            = 40000;
+		$config['max_height']           = 40000;
+
+		$this->load->library('upload', $config);
+        if ($gambar = '') {
+		} else {
+			if (!$this->upload->do_upload('gambar')) {
+				echo "File tidak dapat di upload!";
+			} else {
+				$gambar = $this->upload->data('file_name');
+			}
+		}
 
 		$data = array(
 			'nama_brg' 		=> $nama_brg,
 			'keterangan' 	=> $keterangan,
 			'kategori' 		=> $kategori,
 			'harga' 		=> $harga,
-			'stok' 			=> $stok
+			'stok' 			=> $stok,
+			'gambar' 		=> $gambar
+
 		);
 
 		$where = array(
 			'id_brg' => $id
 		);
+		// die(var_dump($data)); //giving posted value    
+
 
 		$this->model_pembayaran->update('product', $data, $where);
 		redirect('admin/product');

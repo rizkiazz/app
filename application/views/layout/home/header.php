@@ -33,25 +33,37 @@
                 <li>
                     <a href="<?= base_url('home') ?>" class="menu">
                         <div class="menu__icon"> <i data-lucide="home"></i> </div>
-                        <div class="menu__title"> Home </div>
+                        <div class="menu__title"> Dashboard </div>
                     </a>
                 </li>
                 <li>
                     <a href="<?= base_url('home') ?>" class="menu">
                         <div class="menu__icon"> <i data-lucide="home"></i> </div>
-                        <div class="menu__title"> All Produk </div>
+                        <div class="menu__title"> Plastik </div>
                     </a>
                 </li>
                 <li>
                     <a href="<?= base_url('home') ?>" class="menu">
                         <div class="menu__icon"> <i data-lucide="home"></i> </div>
-                        <div class="menu__title"> Home </div>
+                        <div class="menu__title"> Kertas </div>
                     </a>
                 </li>
                 <li>
                     <a href="<?= base_url('home') ?>" class="menu">
                         <div class="menu__icon"> <i data-lucide="home"></i> </div>
-                        <div class="menu__title"> All Produk </div>
+                        <div class="menu__title"> Kaca </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="<?= base_url('home') ?>" class="menu">
+                        <div class="menu__icon"> <i data-lucide="home"></i> </div>
+                        <div class="menu__title"> Barang Elektronik </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="<?= base_url('home') ?>" class="menu">
+                        <div class="menu__icon"> <i data-lucide="home"></i> </div>
+                        <div class="menu__title"> Tekstil </div>
                     </a>
                 </li>
             </ul>

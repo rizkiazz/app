@@ -5,7 +5,7 @@
                 <!-- BEGIN: Notification -->
                 <div class="col-span-12 mt-6 -mb-6 intro-y">
                     <div class="alert alert-dismissible show box bg-primary text-white flex items-center mb-6" role="alert">
-                        <span>Do you want to enter the Dashboard page ? <a href="#" class="underline ml-1">Please Activate the Account First</a>.</span>
+                        <span>Apakah Anda ingin masuk ke halaman Dashboard ? <a href="#" class="underline ml-1">Silahkan Aktivasi Akun Terlebih Dahulu.</a>.</span>
                         <button type="button" class="btn-close text-white" data-tw-dismiss="alert" aria-label="Close"> <i data-lucide="x" class="w-4 h-4"></i> </button>
                     </div>
                 </div>

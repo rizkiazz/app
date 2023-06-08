@@ -4,7 +4,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class Rajaongkir extends CI_Controller
 {
 
-    private $api_key = 'ad6f75cae274cc79ae3d0cd18aba96e5';
+    private $api_key = '8208fcc79dd5d0ba4e748390f254d295';
+    // private $api_key = '510731e7635c49bcdbc4f15659944450';
 
     public function provinsi()
     {
@@ -32,7 +33,7 @@ class Rajaongkir extends CI_Controller
         if ($err) {
             echo "cURL Error #:" . $err;
         } else {
-            // echo $response;
+            echo $response;
             $array_response = json_decode($response, true);
             echo "<option hidden>Pilih Provinsi</option>";
             $data_provinsi = $array_response['rajaongkir']['results'];

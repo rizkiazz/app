@@ -16,7 +16,9 @@ class Dashboard extends CI_Controller
 	public function index()
 	{
 		$data['title'] = 'Dashboard User';
-		$data['product'] = $this->model_pembayaran->get('product')->result();
+		// $data['product'] = $this->model_pembayaran->get('product')->result();
+		$data['product_category'] = $this->db->query("SELECT DISTINCT kategori, gambar FROM product LIMIT 5;")->result();
+
 		$this->load->view('layout/user/header', $data);
 		$this->load->view('dashboard', $data);
 		$this->load->view('layout/user/footer');
@@ -60,6 +62,37 @@ class Dashboard extends CI_Controller
 		$this->load->view('cart', $data);
 		$this->load->view('layout/user/footer');
 	}
+	public function update_cart()
+	{
+		$no = 1;
+		foreach ($this->cart->contents() as $items){
+			$data = array(
+			'rowid' => $items['rowid'],
+			'qty' => $this->input->post('quantity' . $no++)
+			);
+			// die(var_dump($data));
+			$this->cart->update($data);
+		}
+		$_SESSION["sukses"] = 'Pesanan berhasil di ubah';
+		redirect('dashboard/detail_cart');
+
+
+	}
+
+	public function drop_off()
+    {
+        $data['title'] = 'Drop Off';
+		$this->load->view('layout/user/header', $data);
+		$this->load->view('drop_off', $data);
+		$this->load->view('layout/user/footer');
+    }
+	public function pick_up()
+    {
+        $data['title'] = 'Pick Up';
+		$this->load->view('layout/user/header', $data);
+		$this->load->view('pick_up', $data);
+		$this->load->view('layout/user/footer');
+    }
 
 	public function checkout()
 	{
@@ -69,10 +102,38 @@ class Dashboard extends CI_Controller
 		$this->load->view('layout/user/footer');
 	}
 
-	public function checkout_proccess()
+	// public function checkout_proccess()
+	// {
+	// 	$data['title'] = 'Payment Notification';
+	// 	$is_processed = $this->model_invoice->index();
+	// 	if ($is_processed) {
+	// 		$this->cart->destroy();
+	// 		$this->load->view('layout/user/header', $data);
+	// 		$this->load->view('success_pay', $data);
+	// 		$this->load->view('layout/user/footer');
+	// 	} else {
+	// 		echo "Maaf, Pesanan Anda Gagal Di Proses!";
+	// 	}
+	// }
+
+	public function pick_up_proccess()
 	{
 		$data['title'] = 'Payment Notification';
-		$is_processed = $this->model_invoice->index();
+		$is_processed = $this->model_invoice->pick_up();
+		if ($is_processed) {
+			$this->cart->destroy();
+			$this->load->view('layout/user/header', $data);
+			$this->load->view('success_pay', $data);
+			$this->load->view('layout/user/footer');
+		} else {
+			echo "Maaf, Pesanan Anda Gagal Di Proses!";
+		}
+	}
+
+	public function drop_off_proccess()
+	{
+		$data['title'] = 'Payment Notification';
+		$is_processed = $this->model_invoice->drop_off();
 		if ($is_processed) {
 			$this->cart->destroy();
 			$this->load->view('layout/user/header', $data);

@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <link href="<?= site_url('asset') ?>/admin/dist/images/logo.svg" rel="shortcut icon">
+    <link href="<?= site_url('asset') ?>/logo.png" rel="shortcut icon">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Icewall admin is super flexible, powerful, clean & modern responsive tailwind admin template with unlimited possibilities.">
     <meta name="keywords" content="admin template, Icewall Admin Template, dashboard template, flat admin template, responsive admin template, web app">
@@ -75,7 +75,7 @@
         <div class="h-full flex items-center">
             <!-- BEGIN: Logo -->
             <a href="" class="-intro-x hidden md:flex">
-                <img alt="Midone - HTML Admin Template" class="w-6" src="<?= site_url('asset') ?>/admin/dist/images/logo.svg">
+                <img alt="Midone - HTML Admin Template" class="w-6" src="<?= site_url('asset') ?>/logo.png">
                 <span class="text-white text-lg ml-3"> EasyPickTrash </span>
             </a>
             <!-- END: Logo -->

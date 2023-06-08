@@ -1,6 +1,6 @@
 <div class="content">
     <h2 class="intro-y text-lg font-medium mt-10">
-        Orders List
+        List Pesanan Terbayar
     </h2>
     <div class="grid grid-cols-12 gap-6 mt-5">
         <div class="intro-y col-span-12 flex flex-wrap xl:flex-nowrap items-center mt-2">
@@ -12,7 +12,7 @@
                 <select class="form-select box ml-2">
                     <option hidden>Status</option>
                     <option>Pending</option>
-                    <option>Paid</option>
+                    <option>Dibayar</option>
                 </select>
                 <button class="btn btn-sm btn-primary ml-2">Search</button>
             </div>
@@ -23,40 +23,34 @@
             <table class="table table-report -mt-2">
                 <thead>
                     <tr>
-                        <th class="whitespace-nowrap">
-                            <input class="form-check-input" type="checkbox">
-                        </th>
-                        <th class="whitespace-nowrap">ORDER ID</th>
-                        <th class="whitespace-nowrap">TRACKING NUMBER</th>
-                        <th class="whitespace-nowrap">PAYMENT METHOD</th>
-                        <th class="whitespace-nowrap">TRANSACTION TIME</th>
-                        <th class="whitespace-nowrap">TRANSACTION END</th>
-                        <th class="whitespace-nowrap">STATUS</th>
-                        <th class="whitespace-nowrap">ACTION</th>
+                        <th class="whitespace-nowrap">Order ID</th>
+                        <th class="whitespace-nowrap">Nomor Pelacakan</th>
+                        <th class="whitespace-nowrap">Metode Pemabayaran</th>
+                        <th class="whitespace-nowrap">Waktu Transaksi</th>
+                        <!-- <th class="whitespace-nowrap">TRANSACTION END</th> -->
+                        <th class="whitespace-nowrap">Status</th>
+                        <th class="whitespace-nowrap">Keterangan</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php foreach ($bill as $row) : ?>
                         <tr class="intro-x">
-                            <td class="w-10">
-                                <input class="form-check-input" type="checkbox">
-                            </td>
                             <td class="w-40 !py-4"> <a href="<?= site_url('bill/detail/' . $row->order_id) ?>" class="underline decoration-dotted whitespace-nowrap">#<?= $row->order_id ?></a> </td>
                             <td class="w-40 !py-4"> <a class="underline decoration-dotted whitespace-nowrap"><?= $row->tracking_id ?></a> </td>
                             <td class="w-40">
                                 <a href="" class="font-medium text-primary whitespace-nowrap"><?= $row->payment_method ?></a>
                             </td>
                             <td class="w-40">
-                                <a href="" class="font-medium whitespace-nowrap"><?= $row->transaction_time ?></a>
+                                <a href="" class="font-medium whitespace-nowrap"><?= date('d-M-Y H:i', strtotime($row->transaction_time)) ?></a>
                             </td>
-                            <td class="w-40">
+                            <!-- <td class="w-40">
                                 <a href="" class="font-medium whitespace-nowrap"><?= $row->payment_limit ?></a>
+                            </td> -->
+                            <td>
+                                <div class="flex items-center whitespace-nowrap text-success"> Dibayar </div>
                             </td>
                             <td>
-                                <div class="flex items-center whitespace-nowrap text-success"> Paid </div>
-                            </td>
-                            <td>
-                                <a class="btn btn-sm btn-rounded-success text-white">Verified</a>
+                                <a class="btn btn-sm btn-rounded-success text-white">Verified <i data-lucide="pocket" class="w-4 h-4 mr-2"></i></a>
                             </td>
                         </tr>
                     <?php endforeach; ?>
@@ -64,6 +58,7 @@
             </table>
         </div>
         <!-- END: Data List -->
+
         <!-- BEGIN: Pagination -->
         <!--  <div class="intro-y col-span-12 flex flex-wrap sm:flex-row sm:flex-nowrap items-center">
                             <nav class="w-full sm:w-auto sm:mr-auto">

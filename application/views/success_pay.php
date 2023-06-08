@@ -1,7 +1,7 @@
 <div class="content">
     <div class="intro-y flex items-center mt-8">
         <h2 class="text-lg font-medium mr-auto">
-            Payment Notification
+            Notifikasi pembayaran
         </h2>
     </div>
     <!-- BEGIN: Profile Info -->
@@ -12,7 +12,7 @@
                     <img alt="Midone - HTML Admin Template" class="rounded-full" src="<?= base_url('asset') ?>/pay.gif">
                 </div>
                 <div class="ml-8">
-                    <div class="text-slate-500 font-medium text-lg text-dark">Congratulations, Payment Successfully!</div>
+                    <div class="text-slate-500 font-medium text-lg text-dark">Selamat, Pembayaran Berhasil!</div>
                     <a class="btn btn-sm btn-primary mt-4" href="<?= site_url('bill') ?>">Review Invoice</a>
                 </div>
             </div>

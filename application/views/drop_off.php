@@ -21,7 +21,7 @@
                     </li>
                 </ul>
                 <div class="post__content tab-content">
-                    <form id="payment-form" action="<?= site_url('dashboard/checkout_proccess') ?>" method="post">
+                    <form id="payment-form" action="<?= site_url('dashboard/drop_off_proccess') ?>" method="post" enctype="multipart/form-data">
                         <div id="content" class="tab-pane p-5 active" role="tabpanel" aria-labelledby="content-tab">
                             <div class="border border-slate-200/60 dark:border-darkmode-400 rounded-md p-5">
                                 <div class="font-medium flex items-center border-b border-slate-200/60 dark:border-darkmode-400 pb-5"> <i data-lucide="chevron-down" class="w-4 h-4 mr-2"></i> Info Pelanggan </div>
@@ -33,6 +33,7 @@
                                         <input type="hidden" name="payment_method" value="Direct Bank Transfer">
                                         <input type="hidden" name="id_user" id="id_user" value="<?php echo $this->session->userdata('id_user') ?>">
                                         <input type="hidden" name="status" id="status" value="0">
+                                        <input type="hidden" name="layanan_pesanan" id="layanan_pesanan" value="Drop Off">
                                         <input type="text" class="form-control" id="name" name="name" value="<?php echo $this->session->userdata('nama_user') ?>" autocomplete="off" readonly>
                                     </div>
 
@@ -64,36 +65,10 @@
                                     </div>
                                     <div class="mt-3">
                                         <label class="form-label">Upload Image</label>
-                                        <div class="border-2 border-dashed dark:border-darkmode-400 rounded-md pt-4">
-                                            <div class="flex flex-wrap px-4">
-                                                <div class="w-24 h-24 relative image-fit mb-5 mr-5 cursor-pointer zoom-in">
-                                                    <img class="rounded-md" alt="Midone - HTML Admin Template" src="http://icewall.left4code.com/dist/images/preview-5.jpg">
-                                                    <div title="Remove this image?" class="tooltip w-5 h-5 flex items-center justify-center absolute rounded-full text-white bg-danger right-0 top-0 -mr-2 -mt-2">
-                                                        <i data-lucide="x" class="w-4 h-4"></i>
-                                                    </div>
-                                                </div>
-                                                <div class="w-24 h-24 relative image-fit mb-5 mr-5 cursor-pointer zoom-in">
-                                                    <img class="rounded-md" alt="Midone - HTML Admin Template" src="http://icewall.left4code.com/dist/images/preview-5.jpg">
-                                                    <div title="Remove this image?" class="tooltip w-5 h-5 flex items-center justify-center absolute rounded-full text-white bg-danger right-0 top-0 -mr-2 -mt-2">
-                                                        <i data-lucide="x" class="w-4 h-4"></i>
-                                                    </div>
-                                                </div>
-                                                <div class="w-24 h-24 relative image-fit mb-5 mr-5 cursor-pointer zoom-in">
-                                                    <img class="rounded-md" alt="Midone - HTML Admin Template" src="http://icewall.left4code.com/dist/images/preview-12.jpg">
-                                                    <div title="Remove this image?" class="tooltip w-5 h-5 flex items-center justify-center absolute rounded-full text-white bg-danger right-0 top-0 -mr-2 -mt-2">
-                                                        <i data-lucide="x" class="w-4 h-4"></i>
-                                                    </div>
-                                                </div>
-                                                <div class="w-24 h-24 relative image-fit mb-5 mr-5 cursor-pointer zoom-in">
-                                                    <img class="rounded-md" alt="Midone - HTML Admin Template" src="http://icewall.left4code.com/dist/images/preview-3.jpg">
-                                                    <div title="Remove this image?" class="tooltip w-5 h-5 flex items-center justify-center absolute rounded-full text-white bg-danger right-0 top-0 -mr-2 -mt-2">
-                                                        <i data-lucide="x" class="w-4 h-4"></i>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                        <div class="border-2 border-dashed dark:border-darkmode-600 rounded-md pt-4">
                                             <div class="px-4 pb-4 flex items-center cursor-pointer relative">
-                                                <i data-lucide="image" class="w-4 h-4 mr-2"></i> <span class="text-primary mr-1">Upload a file</span> or drag and drop
-                                                <input type="file" class="w-full h-full top-0 left-0 absolute opacity-0">
+                                                <i data-lucide="image" class="w-4 h-4 mr-2"></i> <span class="text-primary mr-1">Upload gambar</span> atau tarik dan taruh disini
+                                                <input name="file_gambar" id="file_gambar" type="file" class="w-full h-full top-0 left-0 absolute opacity-0" accept="image/png, image/jpeg, image/jpg">
                                             </div>
                                         </div>
                                     </div>
@@ -104,7 +79,7 @@
                                 <div class="mt-5">
                                     <div class="mb-5">
                                         <label for="post-form-7" class="form-label"> Alamat <small class="text-danger">*</small></label>
-                                        <input type="text" id="alamat" name="alamat" class="form-control" placeholder="Masukan Alamat Anda" autocomplete="off" required>
+                                        <input type="text" id="alamat" name="alamat" class="form-control" placeholder="Alamat anda" autocomplete="off" required>
                                     </div>
 
                                     <div class="mb-5">
@@ -119,13 +94,8 @@
 
                                     <div class="mb-5">
                                         <label for="post-form-7" class="form-label"> Kode Pos <small class="text-danger">*</small></label>
-                                        <input type="text" class="form-control" id="kode_pos" name="kode_pos" placeholder="Masukan Kode Pos" autocomplete="off" required>
+                                        <input type="text" class="form-control" id="kode_pos" name="kode_pos" placeholder="Your mobile phone" autocomplete="off" required>
                                     </div>
-
-                                    <!-- <div class="mb-5">
-                                        <label for="post-form-7" class="form-label">Layanan Antar <small class="text-danger">*</small></label>
-                                        <select name="ekspedisi" id="ekspedisi" class="form-control"></select>
-                                    </div> -->
                                 </div>
                             </div>
                             <div class="flex mt-5">
@@ -144,43 +114,6 @@
                 <div class="alert alert-primary show mb-2" role="alert"> Informasi Pembayaran </div>
             </div>
             <div id="ticket" class="tab-pane active" role="tabpanel" aria-labelledby="ticket-tab">
-                <!-- <div class="box p-2 mt-5">
-                    <a href="javascript:;" data-tw-toggle="modal" data-tw-target="#add-item-modal" class="flex items-center p-3 cursor-pointer transition duration-300 ease-in-out bg-white dark:bg-darkmode-600 hover:bg-slate-100 dark:hover:bg-darkmode-400 rounded-md">
-                        <div class="max-w-[50%] truncate mr-1">
-                            <img class="mt-2" src="<?= site_url('asset') ?>/bca.png" width="60">
-                        </div>
-                        <div class="text-slate-500"></div>
-                        <div class="ml-auto font-medium">6750527090 / Shoppify Commerce</div>
-                    </a>
-                    <a href="javascript:;" data-tw-toggle="modal" data-tw-target="#add-item-modal" class="flex items-center p-3 cursor-pointer transition duration-300 ease-in-out bg-white dark:bg-darkmode-600 hover:bg-slate-100 dark:hover:bg-darkmode-400 rounded-md">
-                        <div class="max-w-[50%] truncate mr-1">
-                            <img class="mt-2" src="<?= site_url('asset') ?>/mandiri.png" width="80">
-                        </div>
-                        <div class="text-slate-500"></div>
-                        <div class="ml-auto font-medium">1918009817 / Shoppify Commerce</div>
-                    </a>
-                    <a href="javascript:;" data-tw-toggle="modal" data-tw-target="#add-item-modal" class="flex items-center p-3 cursor-pointer transition duration-300 ease-in-out bg-white dark:bg-darkmode-600 hover:bg-slate-100 dark:hover:bg-darkmode-400 rounded-md">
-                        <div class="max-w-[50%] truncate mr-1">
-                            <img class="mt-2" src="<?= site_url('asset') ?>/bni.png" width="60">
-                        </div>
-                        <div class="text-slate-500"></div>
-                        <div class="ml-auto font-medium">6721598021 / Shoppify Commerce</div>
-                    </a>
-                    <a href="javascript:;" data-tw-toggle="modal" data-tw-target="#add-item-modal" class="flex items-center p-3 cursor-pointer transition duration-300 ease-in-out bg-white dark:bg-darkmode-600 hover:bg-slate-100 dark:hover:bg-darkmode-400 rounded-md">
-                        <div class="max-w-[50%] truncate mr-1">
-                            <img class="mt-2" src="<?= site_url('asset') ?>/bri.png" width="50">
-                        </div>
-                        <div class="text-slate-500"></div>
-                        <div class="ml-auto font-medium">6750527090 / Shoppify Commerce</div>
-                    </a>
-                    <a href="javascript:;" data-tw-toggle="modal" data-tw-target="#add-item-modal" class="flex items-center p-3 cursor-pointer transition duration-300 ease-in-out bg-white dark:bg-darkmode-600 hover:bg-slate-100 dark:hover:bg-darkmode-400 rounded-md">
-                        <div class="max-w-[50%] truncate mr-1">
-                            <img class="mt-2" src="<?= site_url('asset') ?>/btpn.png" width="50">
-                        </div>
-                        <div class="text-slate-500"></div>
-                        <div class="ml-auto font-medium">6750527090 / Shoppify Commerce</div>
-                    </a>
-                </div> -->
 
                 <div class="box p-5 mt-5">
                     <div class="flex">

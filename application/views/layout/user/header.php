@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <link href="<?= site_url('asset') ?>/admin/dist/images/logo.svg" rel="shortcut icon">
+    <link href="<?= site_url('asset') ?>/logo.png" rel="shortcut icon">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Icewall admin is super flexible, powerful, clean & modern responsive tailwind admin template with unlimited possibilities.">
     <meta name="keywords" content="admin template, Icewall Admin Template, dashboard template, flat admin template, responsive admin template, web app">
@@ -81,7 +81,7 @@
                 <li>
                     <a href="<?= base_url('pay') ?>" class="menu">
                         <div class="menu__icon"> <i data-lucide="home"></i> </div>
-                        <div class="menu__title"> Riwayat Faktur </div>
+                        <div class="menu__title"> Invoice </div>
                     </a>
                 </li>
                 <li>
@@ -107,14 +107,14 @@
             <nav aria-label="breadcrumb" class="-intro-x h-full mr-auto">
                 <ol class="breadcrumb breadcrumb-light">
                     <li class="breadcrumb-item"><a href=""><?= $title ?></a></li>
-                    <li class="breadcrumb-item active" aria-current="page"><a href="<?= site_url('admin/dashboard') ?>">Dashboard</a></li>
+                    <li class="breadcrumb-item active" aria-current="page"><a href="">Dashboard</a></li>
                 </ol>
             </nav>
             <!-- END: Breadcrumb -->
 
             <!-- BEGIN: Notifications -->
             <div class="intro-x dropdown mr-4 sm:mr-6">
-                <div class="dropdown-toggle notification notification--bullet cursor-pointer" role="button" aria-expanded="false" data-tw-toggle="dropdown"> <i data-lucide="shopping-cart" class="notification__icon dark:text-slate-500"></i> </div>
+                <div class="dropdown-toggle notification notification--bullet cursor-pointer" role="button" aria-expanded="false" data-tw-toggle="dropdown"><i data-lucide="shopping-cart" class="notification__icon dark:text-slate-500"></i> </div>
                 <div class="notification-content pt-2 dropdown-menu">
                     <div class="notification-content__box dropdown-content">
                         <div class="notification-content__title"> <?php $keranjang = 'Shopping Cart : ' . $this->cart->total_items() . ' items ' ?>&nbsp; <?php echo $keranjang ?></div>
@@ -241,7 +241,7 @@
                     <li>
                         <a href="<?= base_url('pay') ?>" class="side-menu">
                             <div class="side-menu__icon"> <i data-lucide="file-text"></i> </div>
-                            <div class="side-menu__title"> Riwayat Faktur </div>
+                            <div class="side-menu__title"> Invoice </div>
                         </a>
                     </li>
                     <li>

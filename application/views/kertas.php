@@ -20,7 +20,7 @@
                     <div class="p-5">
                         <div class="h-40 2xl:h-56 image-fit rounded-md overflow-hidden before:block before:absolute before:w-full before:h-full before:top-0 before:left-0 before:z-10 before:bg-gradient-to-t before:from-black before:to-black/10">
                             <img alt="Midone - HTML Admin Template" class="rounded-md" src="<?= base_url() . '/uploads/' . $row->gambar ?>">
-                            <span class="absolute top-0 bg-pending/80 text-white text-xs m-5 px-2 py-1 rounded z-10">Featured</span>
+                            <span class="absolute top-0 bg-primary text-white text-xs m-5 px-2 py-1 rounded z-10"><i data-lucide="star" class="w-4 h-4 mr-1"></i></span>
                             <div class="absolute bottom-0 text-white px-5 pb-6 z-10"> <a href="" class="block font-medium text-base"><?= $row->nama_brg ?></a> <span class="text-white/90 text-xs mt-3"><?= $row->kategori ?></span> </div>
                         </div>
                         <div class="text-slate-600 dark:text-slate-500 mt-5">
@@ -31,8 +31,7 @@
                     </div>
                     <div class="flex justify-center lg:justify-end items-center p-5 border-t border-slate-200/60">
                         <a class="flex items-center btn btn-sm btn-success text-white mr-3" href="<?php echo base_url('dashboard/detail_product/' . $row->id_brg) ?>"> <i data-lucide="info" class="w-4 h-4 mr-1"></i> Detail </a>
-                        <a class="flex items-center btn btn-sm btn-success text-white mr-3" href="<?php echo base_url('dashboard/cart/' . $row->id_brg) ?>"> <i data-lucide="shopping-cart" class="w-4 h-4 mr-1"></i></a>
-                        <a class="flex items-center btn btn-sm btn-primary " href="<?= site_url('dashboard/checkout/') ?>"> <i data-lucide="dollar-sign" class="w-4 h-4 mr-1"></i> Jual </a>
+                        <a class="flex items-center btn btn-sm btn-success text-white mr-3" href="<?php echo base_url('dashboard/cart/' . $row->id_brg) ?>"> <i data-lucide="shopping-cart" class="w-4 h-4 mr-1"></i>Keranjang</a>
                     </div>
                 </div>
             </div>

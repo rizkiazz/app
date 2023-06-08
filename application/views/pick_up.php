@@ -21,7 +21,7 @@
                     </li>
                 </ul>
                 <div class="post__content tab-content">
-                    <form id="payment-form" action="<?= site_url('dashboard/checkout_proccess') ?>" method="post">
+                    <form id="payment-form" action="<?= site_url('dashboard/pick_up_proccess') ?>" method="post" enctype="multipart/form-data">
                         <div id="content" class="tab-pane p-5 active" role="tabpanel" aria-labelledby="content-tab">
                             <div class="border border-slate-200/60 dark:border-darkmode-400 rounded-md p-5">
                                 <div class="font-medium flex items-center border-b border-slate-200/60 dark:border-darkmode-400 pb-5"> <i data-lucide="chevron-down" class="w-4 h-4 mr-2"></i> Info Pelanggan </div>
@@ -30,9 +30,10 @@
                                         <label for="post-form-7" class="form-label"> Nama <small class="text-danger">*</small></label>
                                         <input type="hidden" id="order_id" name="order_id" value="INV-<?= mt_rand(000000000, 111111111) ?>" maxlength="8" autocomplete="off" required>
                                         <input type="hidden" id="tracking_id" name="tracking_id" value="<?= mt_rand(0000000000000, 1111111111111) ?>" maxlength="12" autocomplete="off" required>
-                                        <input type="hidden" name="payment_method" value="Direct Bank Transfer">
+                                        <input type="hidden" name="payment_method" value="Transfer Bank">
                                         <input type="hidden" name="id_user" id="id_user" value="<?php echo $this->session->userdata('id_user') ?>">
                                         <input type="hidden" name="status" id="status" value="0">
+                                        <input type="hidden" name="layanan_pesanan" id="layanan_pesanan" value="Pick Up">
                                         <input type="text" class="form-control" id="name" name="name" value="<?php echo $this->session->userdata('nama_user') ?>" autocomplete="off" readonly>
                                     </div>
 
@@ -43,7 +44,7 @@
 
                                     <div class="mb-5">
                                         <label for="post-form-7" class="form-label">Nomor HP <small class="text-danger">*</small></label>
-                                        <input type="text" id="nomor_hp" name="nomor_hp" value="<?php echo $this->session->userdata('nomor_hp') ?>" class="form-control" autocomplete="off">
+                                        <input type="text" id="mobile_phone" name="mobile_phone" class="form-control" autocomplete="off" required>
                                     </div>
                                 </div>
                             </div>
@@ -54,7 +55,7 @@
                                 <div class="mt-5">
                                     <div>
                                     <label for="post-form-7" class="form-label">Caption</label>
-                                    <select data-placeholder="Select Caption" class="tom-select w-full" multiple>
+                                    <select name="caption" id="caption" data-placeholder="Select Caption" class="tom-select w-full" multiple>
                                         <option value="Plastik">Plastik</option>
                                         <option value="Kertas">Kertas</option>
                                         <option value="Kaca">Kaca</option>
@@ -64,36 +65,17 @@
                                     </div>
                                     <div class="mt-3">
                                         <label class="form-label">Upload Image</label>
-                                        <div class="border-2 border-dashed dark:border-darkmode-400 rounded-md pt-4">
+                                        <div class="border-2 border-dashed dark:border-darkmode-600 rounded-md pt-4">
                                             <div class="flex flex-wrap px-4">
-                                                <div class="w-24 h-24 relative image-fit mb-5 mr-5 cursor-pointer zoom-in">
-                                                    <img class="rounded-md" alt="Midone - HTML Admin Template" src="http://icewall.left4code.com/dist/images/preview-5.jpg">
-                                                    <div title="Remove this image?" class="tooltip w-5 h-5 flex items-center justify-center absolute rounded-full text-white bg-danger right-0 top-0 -mr-2 -mt-2">
-                                                        <i data-lucide="x" class="w-4 h-4"></i>
-                                                    </div>
-                                                </div>
-                                                <div class="w-24 h-24 relative image-fit mb-5 mr-5 cursor-pointer zoom-in">
-                                                    <img class="rounded-md" alt="Midone - HTML Admin Template" src="http://icewall.left4code.com/dist/images/preview-5.jpg">
-                                                    <div title="Remove this image?" class="tooltip w-5 h-5 flex items-center justify-center absolute rounded-full text-white bg-danger right-0 top-0 -mr-2 -mt-2">
-                                                        <i data-lucide="x" class="w-4 h-4"></i>
-                                                    </div>
-                                                </div>
-                                                <div class="w-24 h-24 relative image-fit mb-5 mr-5 cursor-pointer zoom-in">
-                                                    <img class="rounded-md" alt="Midone - HTML Admin Template" src="http://icewall.left4code.com/dist/images/preview-12.jpg">
-                                                    <div title="Remove this image?" class="tooltip w-5 h-5 flex items-center justify-center absolute rounded-full text-white bg-danger right-0 top-0 -mr-2 -mt-2">
-                                                        <i data-lucide="x" class="w-4 h-4"></i>
-                                                    </div>
-                                                </div>
-                                                <div class="w-24 h-24 relative image-fit mb-5 mr-5 cursor-pointer zoom-in">
-                                                    <img class="rounded-md" alt="Midone - HTML Admin Template" src="http://icewall.left4code.com/dist/images/preview-3.jpg">
-                                                    <div title="Remove this image?" class="tooltip w-5 h-5 flex items-center justify-center absolute rounded-full text-white bg-danger right-0 top-0 -mr-2 -mt-2">
-                                                        <i data-lucide="x" class="w-4 h-4"></i>
-                                                    </div>
+                                                <div class="image-fit zoom-in relative mb-5 mr-5 h-24 w-24 cursor-pointer">
+                                                    <img class="rounded-md" alt="" id="output">
+                                                    <!-- <div class="tooltip cursor-pointer absolute top-0 right-0 -mt-2 -mr-2 flex h-5 w-5 items-center justify-center rounded-full bg-danger text-white absolute top-0 right-0 -mt-2 -mr-2 flex h-5 w-5 items-center justify-center rounded-full bg-danger text-white"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" icon-name="x" data-lucide="x" class="lucide lucide-x stroke-1.5 h-4 w-4"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></div> -->
                                                 </div>
                                             </div>
+
                                             <div class="px-4 pb-4 flex items-center cursor-pointer relative">
-                                                <i data-lucide="image" class="w-4 h-4 mr-2"></i> <span class="text-primary mr-1">Upload a file</span> or drag and drop
-                                                <input type="file" class="w-full h-full top-0 left-0 absolute opacity-0">
+                                                <i data-lucide="image" class="w-4 h-4 mr-2"></i> <span class="upload text-primary mr-1">Upload gambar</span> atau tarik dan taruh disini
+                                                <input name="file_gambar" id="file_gambar" type="file" class="w-full h-full top-0 left-0 absolute opacity-0" accept="image/png, image/jpeg, image/jpg" onchange="loadFile(event)">
                                             </div>
                                         </div>
                                     </div>
@@ -104,7 +86,7 @@
                                 <div class="mt-5">
                                     <div class="mb-5">
                                         <label for="post-form-7" class="form-label"> Alamat <small class="text-danger">*</small></label>
-                                        <input type="text" id="alamat" name="alamat" class="form-control" placeholder="Masukan Alamat Anda" autocomplete="off" required>
+                                        <input type="text" id="alamat" name="alamat" class="form-control" placeholder="Alamat anda" autocomplete="off" required>
                                     </div>
 
                                     <div class="mb-5">
@@ -119,13 +101,8 @@
 
                                     <div class="mb-5">
                                         <label for="post-form-7" class="form-label"> Kode Pos <small class="text-danger">*</small></label>
-                                        <input type="text" class="form-control" id="kode_pos" name="kode_pos" placeholder="Masukan Kode Pos" autocomplete="off" required>
+                                        <input type="text" class="form-control" id="kode_pos" name="kode_pos" placeholder="Your mobile phone" autocomplete="off" required>
                                     </div>
-
-                                    <!-- <div class="mb-5">
-                                        <label for="post-form-7" class="form-label">Layanan Antar <small class="text-danger">*</small></label>
-                                        <select name="ekspedisi" id="ekspedisi" class="form-control"></select>
-                                    </div> -->
                                 </div>
                             </div>
                             <div class="flex mt-5">
@@ -205,3 +182,13 @@
         <!-- END: Post Info -->
     </div>
 </div>
+<script>
+  var loadFile = function(event) {
+    var output = document.getElementById('output');
+    output.src = URL.createObjectURL(event.target.files[0]);
+    output.onload = function() {
+      URL.revokeObjectURL(output.src) // free memory
+    }
+  };
+</script>
+

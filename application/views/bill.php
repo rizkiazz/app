@@ -12,7 +12,7 @@
                     <select class="form-select box ml-2">
                         <option hidden>Status</option>
                         <option>Pending</option>
-                        <option>Paid</option>
+                        <option>Dibayar</option>
                     </select>
                     <button class="btn btn-sm btn-primary ml-2">Search</button>
                 </div>
@@ -23,47 +23,43 @@
                 <table class="table table-report -mt-2">
                     <thead>
                         <tr>
-                            <th class="whitespace-nowrap">
-                                <input class="form-check-input" type="checkbox">
-                            </th>
-                            <th class="whitespace-nowrap">ORDER ID</th>
-                            <th class="whitespace-nowrap">TRACKING NUMBER</th>
-                            <th class="whitespace-nowrap">PAYMENT METHOD</th>
-                            <th class="whitespace-nowrap">TRANSACTION TIME</th>
-                            <th class="whitespace-nowrap">TRANSACTION END</th>
-                            <th class="whitespace-nowrap">STATUS</th>
-                            <th class="whitespace-nowrap">ACTION</th>
+                            <th class="whitespace-nowrap">Order ID</th>
+                            <th class="whitespace-nowrap">Nomor Pelacakan</th>
+                            <th class="whitespace-nowrap">Metode Pemabayaran</th>
+                            <th class="whitespace-nowrap">Waktu Transaksi</th>
+                            <!-- <th class="whitespace-nowrap">TRANSACTION END</th> -->
+                            <th class="whitespace-nowrap">Status</th>
+                            <th class="whitespace-nowrap">Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($bill as $row) : ?>
+                        <?php
+                        $bill = array_reverse($bill);
+                        foreach ($bill as $row) : ?>
                             <tr class="intro-x">
-                                <td class="w-10">
-                                    <input class="form-check-input" type="checkbox">
-                                </td>
-                                <td class="w-40 !py-4"> <a href="<?= site_url('bill/detail/'.$row->order_id) ?>" class="underline decoration-dotted whitespace-nowrap">#<?= $row->order_id ?></a> </td>
+                                <td class="w-60 !py-4"> <a href="<?= site_url('bill/detail/'.$row->order_id) ?>" class="underline decoration-dotted whitespace-nowrap">#<?= $row->order_id ?></a> </td>
                                 <td class="w-40 !py-4"> <a class="underline decoration-dotted whitespace-nowrap"><?= $row->tracking_id ?></a> </td>
                                 <td class="w-40">
                                     <a href="" class="font-medium text-primary whitespace-nowrap"><?= $row->payment_method ?></a>
                                 </td>
                                 <td class="w-40">
-                                    <a href="" class="font-medium whitespace-nowrap"><?= $row->transaction_time ?></a>
+                                    <a href="" class="font-medium whitespace-nowrap"><?= date('d-M-Y H:i', strtotime($row->transaction_time)) ?></a>
                                 </td>
-                                <td class="w-40">
+                                <!-- <td class="w-40">
                                     <a href="" class="font-medium whitespace-nowrap"><?= $row->payment_limit ?></a>
-                                </td>
+                                </td> -->
                                 <td>
                                     <?php if ($row->status == "0"){ ?>
-                                        <div class="flex items-center whitespace-nowrap text-pending"> Pending </div>
+                                        <div class="flex items-center whitespace-nowrap text-pending">Pending <i data-loading-icon="circles" class="w-4 h-4"></i></div>
                                     <?php } else if ($row->status == "1"){ ?>
-                                        <div class="flex items-center whitespace-nowrap text-success"> Paid </div>
+                                        <div class="flex items-center whitespace-nowrap text-success"> Dibayar </div>
                                     <?php } ?>
                                 </td>
                                 <td>
                                     <?php if (empty($row->gambar)){ ?>
-                                    <a data-tw-toggle="modal" data-tw-target="#upload-confirmation-modal" class="btn btn-sm btn-rounded-primary">Upload Bukti</a>
+                                    <a data-tw-toggle="modal" data-tw-target="#upload-confirmation-modal" class="btn btn-sm btn-rounded-primary">Upload Bukti<i data-lucide="image" class="w-4 h-4 mr-2"></i></a>
                                     <?php } else { ?>
-                                        <a class="btn btn-sm btn-rounded-success text-white">Verified</a>
+                                        <a class="btn btn-sm btn-rounded-success text-white">Verified <i data-lucide="pocket" class="w-4 h-4 mr-2"></i></a>
                                      <?php } ?>
                                 </td>
                             </tr>

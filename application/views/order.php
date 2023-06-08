@@ -18,22 +18,18 @@
                             <table class="table table-report -mt-2">
                                 <thead>
                                     <tr>
-                                        <th class="whitespace-nowrap">
-                                            <input class="form-check-input" type="checkbox">
-                                        </th>
-                                        <th class="whitespace-nowrap">ORDER ID</th>
-                                        <th class="whitespace-nowrap">CUSTOMER NAME</th>
-                                        <th class="text-center whitespace-nowrap">SHIPPING ADDRESS</th>
-                                        <th class="whitespace-nowrap">DELIVERY SERVICE</th>
-                                        <th class="whitespace-nowrap">TRANSACTION TIME</th>
+                                        <th class="whitespace-nowrap">Order ID</th>
+                                        <th class="whitespace-nowrap">Nama Pelanggan</th>
+                                        <th class="text-center whitespace-nowrap">Alamat Pengiriman</th>
+                                        <th class="whitespace-nowrap">Layanan Pesanan</th>
+                                        <th class="whitespace-nowrap">Waktu Order</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php foreach ($order as $row) : ?>
+                                    <?php
+                                    $order = array_reverse($order);
+                                    foreach ($order as $row) : ?>
                                     <tr class="intro-x">
-                                        <td class="w-10">
-                                            <input class="form-check-input" type="checkbox">
-                                        </td>
                                         <td class="w-40 !py-4"> <a href="<?= site_url('order/detail/'.$row->order_id) ?>" class="underline decoration-dotted whitespace-nowrap">#<?= $row->order_id ?></a> </td>
                                         <td class="w-40">
                                             <a href="" class="font-medium whitespace-nowrap"><?= $row->name ?></a>
@@ -41,23 +37,17 @@
                                         <td class="text-center">
                                             <div class="flex items-center justify-center whitespace-nowrap "> <?= $row->alamat ?>, <?= $row->city ?>, <?= $row->kode_pos ?> </div>
                                         </td>
-                                         <td>
-                                            <?php if ($row->ekspedisi == "JNE"){ ?>
-                                            <div class="flex items-center whitespace-nowrap text-pending text-uppercase"> <i data-lucide="package" class="w-4 h-4 mr-2"></i> <b>JNE</b> </div>
-                                            <?php } else if ($row->ekspedisi == "J&T Express"){ ?>
-                                            <div class="flex items-center whitespace-nowrap text-danger text-uppercase"> <i data-lucide="package" class="w-4 h-4 mr-2"></i> <b>J&T Express</b> </div>
-                                            <?php } else if ($row->ekspedisi == "SICEPAT"){ ?>
-                                            <div class="flex items-center whitespace-nowrap text-danger text-uppercase"> <i data-lucide="package" class="w-4 h-4 mr-2"></i> <b>SICEPAT</b> </div>
-                                            <?php } else if ($row->ekspedisi == "ANTERAJA"){ ?>
-                                            <div class="flex items-center whitespace-nowrap text-primary text-uppercase"> <i data-lucide="package" class="w-4 h-4 mr-2"></i> <b>ANTERAJA</b> </div>
-                                            <?php } else if ($row->ekspedisi == "GO-SEND"){ ?>
-                                            <div class="flex items-center whitespace-nowrap text-success text-uppercase"> <i data-lucide="package" class="w-4 h-4 mr-2"></i> <b>GO-SEND</b> </div>
-                                            <?php } else if ($row->ekspedisi == "GRAB-SEND"){ ?>
-                                            <div class="flex items-center whitespace-nowrap text-success text-uppercase"> <i data-lucide="package" class="w-4 h-4 mr-2"></i> <b>GRAB-SEND</b> </div>
-                                            <?php } ?>
+                                        <td>
+                                            <?php
+                                                if ($row->layanan_pesanan == "Pick Up") {
+                                                echo '<button class="flex items-center mr-3 text-white btn btn-sm btn-success shadow-md mr-2"><i data-lucide="package" class="w-4 h-4 mr-1"></i>' . $row->layanan_pesanan . '</button>';
+                                                } else {
+                                                echo '<button class="flex items-center mr-3 text-white btn btn-sm btn-pending shadow-md mr-2"><i data-lucide="package" class="w-4 h-4 mr-1"></i>' . $row->layanan_pesanan . '</button>';
+                                                }
+                                            ?>
                                         </td>
                                         <td>
-                                            <div class="text-slate-500 whitespace-nowrap mt-0.5"><?= $row->transaction_time ?></div>
+                                            <div class="text-slate-500 whitespace-nowrap mt-0.5"><?= date('d-M-Y H:i', strtotime($row->transaction_time)) ?></div>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>

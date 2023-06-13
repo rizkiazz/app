@@ -91,7 +91,7 @@
                                <?php endforeach; ?>
 
                                <tr>
-                                   <td colspan="3" align="right">Poin yang didapat</td>
+                                   <td colspan="4" align="right">Poin yang didapat</td>
                                    <td align="right"><b><?= number_format($total, 0, ',', '.') ?> poin</b></td>
                                </tr>
                            </tbody>

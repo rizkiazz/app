@@ -36,7 +36,7 @@
                     <thead>
                         <tr>
                             <th class="whitespace-nowrap !py-5">Produk Item</th>
-                            <th class="whitespace-nowrap text-right">Harga Satuan</th>
+                            <th class="whitespace-nowrap text-right">Poin</th>
                             <th class="whitespace-nowrap text-right">Jumlah</th>
                             <th class="whitespace-nowrap text-right">Sub Total</th>
                         </tr>
@@ -53,7 +53,7 @@
                                         <a href="" class="font-medium whitespace-nowrap ml-4"><?= $row->nama_brg?></a> 
                                     </div>
                                 </td>
-                                <td class="text-right">Rp. <?= number_format($row->harga, 0, ',', '.') ?></td>
+                                <td class="text-right"><?= number_format($row->harga, 0, ',', '.') ?> poin</td>
                                 <td class="text-right"><?= number_format($row->jumlah, 0, ',', '.') ?></td>
                                 <td class="text-right">Rp. <?= number_format($subtotal, 0, ',', '.') ?></td>
                             </tr>

@@ -10,10 +10,12 @@
         if ($keranjang = $this->cart->contents()) {
             foreach ($keranjang as $item) {
                 $grand_total = $grand_total + $item['subtotal'];
+                $qty = $item['qty'];
+                $item_poin = $grand_total / $item['qty'];
             }
         } ?>
         <div class="intro-y col-span-12 lg:col-span-8">
-            <div class="alert alert-primary show mb-2" role="alert">Jumlah Transaksi Yang Harus Dibayar : <b>Rp. <?= number_format($grand_total, 0, ',', '.') ?>,-</b></div>
+            <div class="alert alert-primary show mb-2" role="alert">Jumlah Poin Yang Didapatkan : <b><?= number_format($grand_total, 0, ',', '.') ?> poin,-</b></div>
             <div class="post intro-y overflow-hidden box mt-5">
                 <ul class="post__tabs nav nav-tabs flex-col sm:flex-row bg-slate-200 dark:bg-darkmode-800" role="tablist">
                     <li class="nav-item">
@@ -30,7 +32,7 @@
                                         <label for="post-form-7" class="form-label"> Nama <small class="text-danger">*</small></label>
                                         <input type="hidden" id="order_id" name="order_id" value="INV-<?= mt_rand(000000000, 111111111) ?>" maxlength="8" autocomplete="off" required>
                                         <input type="hidden" id="tracking_id" name="tracking_id" value="<?= mt_rand(0000000000000, 1111111111111) ?>" maxlength="12" autocomplete="off" required>
-                                        <input type="hidden" name="payment_method" value="Direct Bank Transfer">
+                                        <input type="hidden" name="payment_method" value="Antar Sendiri">
                                         <input type="hidden" name="id_user" id="id_user" value="<?php echo $this->session->userdata('id_user') ?>">
                                         <input type="hidden" name="status" id="status" value="0">
                                         <input type="hidden" name="layanan_pesanan" id="layanan_pesanan" value="Drop Off">
@@ -111,26 +113,22 @@
         <!-- BEGIN: Post Info -->
         <div class="col-span-12 lg:col-span-4">
             <div class="intro-y pr-1">
-                <div class="alert alert-primary show mb-2" role="alert"> Informasi Pembayaran </div>
+                <div class="alert alert-primary show mb-2" role="alert"> Informasi Poin </div>
             </div>
             <div id="ticket" class="tab-pane active" role="tabpanel" aria-labelledby="ticket-tab">
 
                 <div class="box p-5 mt-5">
                     <div class="flex">
-                        <div class="mr-auto">Subtotal</div>
-                        <div class="font-medium">Rp. <?= number_format($this->cart->total(), 0, ',', '.') ?></div>
+                        <div class="mr-auto">Poin/kg</div>
+                        <div class="font-medium"><?= number_format($item_poin, 0, ',', '.') ?></div>
                     </div>
                     <div class="flex mt-4">
-                        <div class="mr-auto">Diskon</div>
-                        <div class="font-medium text-danger">Rp. 0</div>
-                    </div>
-                    <div class="flex mt-4">
-                        <div class="mr-auto">Pajak</div>
-                        <div class="font-medium">Rp. 0</div>
+                        <div class="mr-auto">Berat barang</div>
+                        <div class="font-medium text-danger"><?= number_format($qty, 0, ',', '.') ?></div>
                     </div>
                     <div class="flex mt-4 pt-4 border-t border-slate-200/60 dark:border-darkmode-400">
-                        <div class="mr-auto font-medium text-base">Total Biaya</div>
-                        <div class="font-medium text-base"><strong>Rp. <?= number_format($this->cart->total(), 0, ',', '.') ?>,-</strong></div>
+                        <div class="mr-auto font-medium text-base">Poin yang didapat</div>
+                        <div class="font-medium text-base"><strong><?= number_format($this->cart->total(), 0, ',', '.') ?> poin,-</strong></div>
                     </div>
                 </div>
             </div>

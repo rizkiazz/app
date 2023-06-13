@@ -104,4 +104,19 @@ class Tukar_poin extends CI_Controller
 		$this->load->view('qurban', $data);
 		$this->load->view('layout/user/footer');
     }
+    public function galang_dana_pembangunan()
+    {
+        $data['title'] = 'Galang Dana Pembagunan | Donasi Koin';
+
+        $id = $this->session->userdata('id_user');
+        $data['profile'] = $this->db->query("SELECT * FROM user 
+			WHERE user.id_user='$id'")->result();
+
+        $data['point'] = $this->db->query("SELECT SUM(harga) AS harga FROM cart 
+			WHERE cart.id_user='$id'")->result();
+
+        $this->load->view('layout/user/header', $data);
+		$this->load->view('galang_dana_pembangunan', $data);
+		$this->load->view('layout/user/footer');
+    }
 }

@@ -182,7 +182,7 @@
 
     <h2 class="mr-5 mt-5 truncate text-lg font-medium">Donasi Poin</h2>
     <div class="mt-5 grid grid-cols-12 gap-5 border-t pt-5">
-        <a class="intro-y col-span-12 block sm:col-span-4 2xl:col-span-3" data-tw-toggle="modal" data-tw-target="#add-item-modal" href="#">
+        <a class="intro-y col-span-12 block sm:col-span-4 2xl:col-span-3" data-tw-toggle="modal" data-tw-target="#add-item-modal" href="<?= site_url('/tukar_poin/qurban') ?>">
             <div class="box zoom-in relative rounded-md p-3">
                 <div class="relative block flex-none before:block before:w-full before:pt-[100%]">
                     <div class="image-fit absolute top-0 left-0 h-full w-full">
@@ -194,7 +194,7 @@
                 </div>
             </div>
         </a>
-        <a class="intro-y col-span-12 block sm:col-span-4 2xl:col-span-3" data-tw-toggle="modal" data-tw-target="#add-item-modal" href="#">
+        <a class="intro-y col-span-12 block sm:col-span-4 2xl:col-span-3" data-tw-toggle="modal" data-tw-target="#add-item-modal" href="<?= site_url('/tukar_poin/galang_dana_pembangunan') ?>">
             <div class="box zoom-in relative rounded-md p-3">
                 <div class="relative block flex-none before:block before:w-full before:pt-[100%]">
                     <div class="image-fit absolute top-0 left-0 h-full w-full">

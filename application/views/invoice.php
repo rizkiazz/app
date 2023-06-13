@@ -36,6 +36,7 @@
                     <thead>
                         <tr>
                             <th class="whitespace-nowrap !py-5">Produk Item</th>
+                            <th class="whitespace-nowrap !py-5">Layanan Pesanan</th>
                             <th class="whitespace-nowrap text-right">Poin</th>
                             <th class="whitespace-nowrap text-right">Jumlah</th>
                             <th class="whitespace-nowrap text-right">Total Poin</th>
@@ -52,6 +53,15 @@
                                     <div class="flex items-center">
                                         <a href="" class="font-medium whitespace-nowrap ml-4"><?= $row->nama_brg?></a> 
                                     </div>
+                                </td>
+                                <td>
+                                    <?php
+                                        if ($invoice->layanan_pesanan == "Pick Up") {
+                                        echo '<button class="flex items-center mr-3 text-white btn btn-sm btn-success shadow-md mr-2"><i data-lucide="package" class="w-4 h-4 mr-1"></i>' . $invoice->layanan_pesanan . '</button>';
+                                        } else {
+                                        echo '<button class="flex items-center mr-3 text-white btn btn-sm btn-pending shadow-md mr-2"><i data-lucide="package" class="w-4 h-4 mr-1"></i>' . $invoice->layanan_pesanan . '</button>';
+                                        }
+                                    ?>
                                 </td>
                                 <td class="text-right"><?= number_format($row->harga, 0, ',', '.') ?> poin</td>
                                 <td class="text-right"><?= number_format($row->jumlah, 0, ',', '.') ?></td>
@@ -70,7 +80,7 @@
         <div class="px-5 sm:px-20 pb-10 sm:pb-20 flex flex-col-reverse sm:flex-row">
             <div class="text-center sm:text-left mt-10 sm:mt-0">
                 <div class="text-base text-slate-500">Metode Pembayaran</div>
-                <div class="text-lg text-primary font-medium mt-2">Direct Bank Transfer</div>
+                <div class="text-lg text-primary font-medium mt-2"><?= $invoice->payment_method ?></div>
                 <div>
                     <?php if ($invoice->status == "0"){ ?>
                         <img class="mt-2" src="<?= site_url('asset') ?>/pending.jpg" width="120">

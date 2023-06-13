@@ -15,7 +15,7 @@
                        <div class="font-medium text-base truncate">Transaction Details</div>
                    </div>
                    <div class="flex items-center"> <i data-lucide="clipboard" class="w-4 h-4 text-slate-500 mr-2"></i> <b>Order ID</b><span class="flex items-center ml-auto bg-primary/20 text-primary rounded"><a href="" class="underline decoration-dotted ml-1">#<?= $invoice->order_id ?></a></span></div>
-                   <div class="flex items-center mt-3"> <i data-lucide="clipboard" class="w-4 h-4 text-slate-500 mr-2"></i><b>Metode Pembayaran&nbsp;</b><span class="flex items-center ml-auto">Direct Bank Transfer</span></div>
+                   <div class="flex items-center mt-3"> <i data-lucide="clipboard" class="w-4 h-4 text-slate-500 mr-2"></i><b>Metode Pembayaran&nbsp;</b><span class="flex items-center ml-auto"><?= $invoice->payment_method ?></span></div>
                    <div class="flex items-center mt-3"> <i data-lucide="calendar" class="w-4 h-4 text-slate-500 mr-2"></i><b>Tanggal Pembelian&nbsp;</b><span class="flex items-center ml-auto"><?= date('l d-M-Y H:i:s', strtotime($invoice->transaction_time)) ?></span></div>
                    <div class="flex items-center mt-3"> <i data-lucide="clock" class="w-4 h-4 text-slate-500 mr-2"></i> <b>Status Transaksi</b><span class="flex items-center ml-auto">
                        <?php if ($invoice->status == "0") { ?>
@@ -57,9 +57,10 @@
                            <thead>
                                <tr>
                                    <th class="whitespace-nowrap !py-5">Produk Item</th>
-                                   <th class="whitespace-nowrap text-right">Harga Satuan</th>
+                                   <th class="whitespace-nowrap !py-5">Layanan Pesanan</th>
+                                   <th class="whitespace-nowrap text-right">Poin</th>
                                    <th class="whitespace-nowrap text-right">Jumlah</th>
-                                   <th class="whitespace-nowrap text-right">Sub Total</th>
+                                   <th class="whitespace-nowrap text-right">Total poin</th>
                                </tr>
                            </thead>
                            <tbody>
@@ -74,15 +75,24 @@
                                                <a href="" class="font-medium whitespace-nowrap ml-4"><?= $row->nama_brg ?></a>
                                            </div>
                                        </td>
-                                       <td class="text-right">Rp. <?= number_format($row->harga, 0, ',', '.') ?></td>
+                                        <td>
+                                            <?php
+                                                if ($invoice->layanan_pesanan == "Pick Up") {
+                                                echo '<button class="flex items-center mr-3 text-white btn btn-sm btn-success shadow-md mr-2"><i data-lucide="package" class="w-4 h-4 mr-1"></i>' . $invoice->layanan_pesanan . '</button>';
+                                                } else {
+                                                echo '<button class="flex items-center mr-3 text-white btn btn-sm btn-pending shadow-md mr-2"><i data-lucide="package" class="w-4 h-4 mr-1"></i>' . $invoice->layanan_pesanan . '</button>';
+                                                }
+                                            ?>
+                                        </td>
+                                       <td class="text-right"><?= number_format($row->harga, 0, ',', '.') ?> poin</td>
                                        <td class="text-right"><?= number_format($row->jumlah, 0, ',', '.') ?></td>
-                                       <td class="text-right">Rp. <?= number_format($subtotal, 0, ',', '.') ?></td>
+                                       <td class="text-right"><?= number_format($subtotal, 0, ',', '.') ?> poin</td>
                                    </tr>
                                <?php endforeach; ?>
 
                                <tr>
-                                   <td colspan="3" align="right"></td>
-                                   <td align="right"><b>Rp. <?= number_format($total, 0, ',', '.') ?></b></td>
+                                   <td colspan="3" align="right">Poin yang didapat</td>
+                                   <td align="right"><b><?= number_format($total, 0, ',', '.') ?> poin</b></td>
                                </tr>
                            </tbody>
                        </table>

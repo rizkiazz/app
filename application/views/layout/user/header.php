@@ -224,6 +224,18 @@
                     <li class="side-nav__devider my-6"></li>
 
                     <li>
+                        <a href="<?= base_url('tukar_poin') ?>" class="side-menu">
+                            <div class="side-menu__icon"> <i data-lucide="shopping-bag"></i> </div>
+                            <div class="side-menu__title">
+                                Tukar Koin
+                                <div class="side-menu__sub-icon "></div>
+                            </div>
+                        </a>
+                    </li>
+
+                    <li class="side-nav__devider my-6"></li>
+
+                    <li>
                         <a href="<?= base_url('order') ?>" class="side-menu">
                             <div class="side-menu__icon"> <i data-lucide="shopping-bag"></i> </div>
                             <div class="side-menu__title">

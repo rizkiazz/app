@@ -29,6 +29,17 @@
                     <div class="truncate sm:whitespace-normal flex items-center mt-3 text-success"> <i data-lucide="alert-circle" class="w-4 h-4 mr-2 text-success"></i> <b>Akun Sudah Terverifikasi </b></div>
                 </div>
             </div>
+            <div class="mt-6 lg:mt-0 flex-1 px-5 border-l border-r border-slate-200/60 dark:border-darkmode-400 border-t lg:border-t-0 pt-5 lg:pt-0">
+                <div class="font-medium text-center lg:text-left lg:mt-3">Point</div>
+                <div class="flex flex-col justify-center items-center lg:items-start mt-4">
+    
+                    <?php foreach ($point as $row) : ?>
+                    <div class="truncate sm:whitespace-normal flex items-center"> <i data-lucide="dollar-sign" class="w-4 h-4 mr-2"></i> <?= number_format($row->harga, 0, ',', '.') ?> </div>
+                    <?php endforeach; ?>
+                    <a href="<?= site_url('/tukar_poin') ?>" class="btn btn-primary w-30 mt-3">Tukar Poin</a>
+    
+                </div>
+            </div>
         </div>
         <ul class="nav nav-link-tabs flex-col sm:flex-row justify-center lg:justify-start text-center" role="tablist">
             <!-- <li id="dashboard-tab" class="nav-item" role="presentation"> <a href="javascript:;" class="nav-link py-4 active" data-tw-target="#dashboard" aria-controls="dashboard" aria-selected="true" role="tab"> Dashboard </a> </li> -->

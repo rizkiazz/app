@@ -23,6 +23,9 @@ class Profile extends CI_Controller
         $data['bill'] = $this->db->query("SELECT * FROM transaction 
         WHERE transaction.id_user='$id' AND status='0' LIMIT 3")->result();
 
+        $data['point'] = $this->db->query("SELECT SUM(harga) AS harga FROM cart 
+			WHERE cart.id_user='$id'")->result();
+
         $this->load->view('layout/user/header', $data);
         $this->load->view('profile', $data);
         $this->load->view('layout/user/footer');

@@ -7,9 +7,15 @@
     <div class=" pos intro-y grid grid-cols-12 gap-5 mt-5">
         <!-- BEGIN: Post Content -->
         <?php $grand_total = 0;
+                $biaya_layanan = 500;
         if ($keranjang = $this->cart->contents()) {
             foreach ($keranjang as $item) {
                 $grand_total = $grand_total + $item['subtotal'];
+                $qty = $item['qty'];
+                $biaya_antar = $biaya_layanan * $item['qty']; 
+                $potongan = $biaya_antar /10;
+                $biaya_layanan_total = $biaya_antar - $potongan;
+
             }
         } ?>
         <div class="intro-y col-span-12 lg:col-span-8">
@@ -121,7 +127,7 @@
                 <div class="alert alert-primary show mb-2" role="alert"> Informasi Pembayaran </div>
             </div>
             <div id="ticket" class="tab-pane active" role="tabpanel" aria-labelledby="ticket-tab">
-                <!-- <div class="box p-2 mt-5">
+                <div class="box p-2 mt-5">
                     <a href="javascript:;" data-tw-toggle="modal" data-tw-target="#add-item-modal" class="flex items-center p-3 cursor-pointer transition duration-300 ease-in-out bg-white dark:bg-darkmode-600 hover:bg-slate-100 dark:hover:bg-darkmode-400 rounded-md">
                         <div class="max-w-[50%] truncate mr-1">
                             <img class="mt-2" src="<?= site_url('asset') ?>/bca.png" width="60">
@@ -157,24 +163,28 @@
                         <div class="text-slate-500"></div>
                         <div class="ml-auto font-medium">6750527090 / Shoppify Commerce</div>
                     </a>
-                </div> -->
+                </div>
 
                 <div class="box p-5 mt-5">
                     <div class="flex">
-                        <div class="mr-auto">Subtotal</div>
-                        <div class="font-medium">Rp. <?= number_format($this->cart->total(), 0, ',', '.') ?></div>
+                        <div class="mr-auto">Poin yang didapat</div>
+                        <div class="font-medium"><?= number_format($this->cart->total(), 0, ',', '.') ?></div>
                     </div>
                     <div class="flex mt-4">
-                        <div class="mr-auto">Diskon</div>
-                        <div class="font-medium text-danger">Rp. 0</div>
+                        <div class="mr-auto">Berat barang</div>
+                        <div class="font-medium text-danger"><?= number_format($qty, 0, ',', '.') ?></div>
                     </div>
                     <div class="flex mt-4">
-                        <div class="mr-auto">Pajak</div>
-                        <div class="font-medium">Rp. 0</div>
+                        <div class="mr-auto">Biaya layanan</div>
+                        <div class="font-medium text-danger">Rp. <?= number_format($potongan, 0, ',', '.') ?></div>
+                    </div>
+                    <div class="flex mt-4">
+                        <div class="mr-auto">Biaya</div>
+                        <div class="font-medium">Rp. <?= number_format($biaya_layanan, 0, ',', '.') ?>,-/kg</div>
                     </div>
                     <div class="flex mt-4 pt-4 border-t border-slate-200/60 dark:border-darkmode-400">
                         <div class="mr-auto font-medium text-base">Total Biaya</div>
-                        <div class="font-medium text-base"><strong>Rp. <?= number_format($this->cart->total(), 0, ',', '.') ?>,-</strong></div>
+                        <div class="font-medium text-base"><strong>Rp. <?= number_format($biaya_layanan_total, 0, ',', '.') ?>,-</strong></div>
                     </div>
                 </div>
             </div>

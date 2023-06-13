@@ -24,7 +24,7 @@
                             <div class="absolute bottom-0 text-white px-5 pb-6 z-10"> <a href="<?php echo base_url('dashboard/detail_product/' . $row->id_brg) ?>" class="block font-medium text-base"><?= $row->nama_brg ?></a> <span class="text-white/90 text-xs mt-3"><?= $row->kategori ?></span> </div>
                         </div>
                         <div class="text-slate-600 dark:text-slate-500 mt-5">
-                            <div class="flex items-center"> <i data-lucide="dollar-sign" class="w-4 h-4 mr-2"></i> IDR <?= number_format($row->harga, 0, ',', '.') ?> /kg </div>
+                            <div class="flex items-center"> <i data-lucide="dollar-sign" class="w-4 h-4 mr-2"></i><?= number_format($row->harga, 0, ',', '.') ?> Point /kg </div>
                             <div class="flex items-center mt-2"> <i data-lucide="layers" class="w-4 h-4 mr-2"></i> Sisa stok: <?= number_format($row->stok, 0, ',', '.') ?> </div>
                             <div class="flex items-center mt-2"> <i data-lucide="check-square" class="w-4 h-4 mr-2"></i> Status: Active </div>
                         </div>

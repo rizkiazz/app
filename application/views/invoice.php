@@ -38,14 +38,14 @@
                             <th class="whitespace-nowrap !py-5">Produk Item</th>
                             <th class="whitespace-nowrap text-right">Poin</th>
                             <th class="whitespace-nowrap text-right">Jumlah</th>
-                            <th class="whitespace-nowrap text-right">Sub Total</th>
+                            <th class="whitespace-nowrap text-right">Total Poin</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php $total = 0;
                         foreach ($pesanan as $row) :
                             $subtotal = $row->jumlah * $row->harga; 
-                            $total += $subtotal; 
+                            $total += $subtotal;
                             ?>
                             <tr>
                                 <td class="!py-4">
@@ -55,9 +55,14 @@
                                 </td>
                                 <td class="text-right"><?= number_format($row->harga, 0, ',', '.') ?> poin</td>
                                 <td class="text-right"><?= number_format($row->jumlah, 0, ',', '.') ?></td>
-                                <td class="text-right">Rp. <?= number_format($subtotal, 0, ',', '.') ?></td>
+                                <td class="text-right"><?= number_format($subtotal, 0, ',', '.') ?> poin</td>
                             </tr>
+                            
                         <?php endforeach; ?>
+                            <tr>
+                                <td class="text-right" colspan="3"><b>Poin yang didapatkan</b></td>
+                                <td class="text-right" colspan="4"><?= number_format($total, 0, ',', '.') ?> poin</td>
+                            </tr>
                     </tbody>
                 </table>
             </div>
@@ -76,7 +81,7 @@
             </div>
             <div class="text-center sm:text-right sm:ml-auto">
                 <div class="text-base text-slate-500">Jumlah total</div>
-                <div class="text-xl text-primary font-medium mt-2">Rp. <?= number_format($total, 0, ',', '.') ?></div>
+                <div class="text-xl text-primary font-medium mt-2">Rp. <?= $invoice->biaya ?></div>
                 <div class="mt-1 text-danger">*sudah termasuk pajak</div>
             </div>
         </div>

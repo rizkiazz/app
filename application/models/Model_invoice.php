@@ -67,6 +67,7 @@ class Model_invoice extends CI_Model
 		$city = $this->input->post('kota');
 		$kode_pos = $this->input->post('kode_pos');
 		$payment_method = $this->input->post('payment_method');
+		$biaya = $this->input->post('biaya');
 		$layanan_pesanan = $this->input->post('layanan_pesanan');
 		$mobile_phone = $this->input->post('mobile_phone');
 		$caption = $this->input->post('caption');
@@ -95,6 +96,7 @@ class Model_invoice extends CI_Model
 			'city' 				=> $city,
 			'kode_pos' 			=> $kode_pos,
 			'payment_method' 	=> $payment_method,
+			'biaya' 			=> $biaya,
 			'layanan_pesanan' 	=> $layanan_pesanan,
 			'mobile_phone' 		=> $mobile_phone,
 			'caption' 			=> $caption,
@@ -105,6 +107,8 @@ class Model_invoice extends CI_Model
 			'transaction_time' 	=> date('Y-m-d H:i:s'),
 			'payment_limit' 	=> date('Y-m-d H:i:s', mktime( date('H'), date('i'), date('s'), date('m'), date('d') + 1, date('Y'))),
 		);
+		// die(var_dump($invoice));
+
 		$this->db->insert('transaction', $invoice);
 		$id_invoice = $this->db->insert_id();
 

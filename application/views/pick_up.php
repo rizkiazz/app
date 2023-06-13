@@ -36,7 +36,7 @@
                                         <label for="post-form-7" class="form-label"> Nama <small class="text-danger">*</small></label>
                                         <input type="hidden" id="order_id" name="order_id" value="INV-<?= mt_rand(000000000, 111111111) ?>" maxlength="8" autocomplete="off" required>
                                         <input type="hidden" id="tracking_id" name="tracking_id" value="<?= mt_rand(0000000000000, 1111111111111) ?>" maxlength="12" autocomplete="off" required>
-                                        <!-- <input type="hidden" name="payment_method" value="Transfer Bank"> -->
+                                        <input type="hidden" name="biaya" value="<?= number_format($biaya_layanan_total, 0, ',', '.') ?>">
                                         <input type="hidden" name="id_user" id="id_user" value="<?php echo $this->session->userdata('id_user') ?>">
                                         <input type="hidden" name="status" id="status" value="0">
                                         <input type="hidden" name="layanan_pesanan" id="layanan_pesanan" value="Pick Up">

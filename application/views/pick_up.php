@@ -1,7 +1,7 @@
 <div class="content">
     <div class="intro-y flex flex-col sm:flex-row items-center mt-8">
         <h2 class="text-lg font-medium mr-auto">
-            Checkout Form
+            Pick Up Form
         </h2>
     </div>
     <div class=" pos intro-y grid grid-cols-12 gap-5 mt-5">
@@ -19,7 +19,7 @@
             }
         } ?>
         <div class="intro-y col-span-12 lg:col-span-8">
-            <div class="alert alert-primary show mb-2" role="alert">Jumlah Transaksi Yang Harus Dibayar : <b>Rp. <?= number_format($grand_total, 0, ',', '.') ?>,-</b></div>
+            <div class="alert alert-primary show mb-2" role="alert">Jumlah Transaksi Yang Harus Dibayar : <b>Rp. <?= number_format($biaya_layanan_total, 0, ',', '.') ?>,-</b></div>
             <div class="post intro-y overflow-hidden box mt-5">
                 <ul class="post__tabs nav nav-tabs flex-col sm:flex-row bg-slate-200 dark:bg-darkmode-800" role="tablist">
                     <li class="nav-item">
@@ -36,7 +36,7 @@
                                         <label for="post-form-7" class="form-label"> Nama <small class="text-danger">*</small></label>
                                         <input type="hidden" id="order_id" name="order_id" value="INV-<?= mt_rand(000000000, 111111111) ?>" maxlength="8" autocomplete="off" required>
                                         <input type="hidden" id="tracking_id" name="tracking_id" value="<?= mt_rand(0000000000000, 1111111111111) ?>" maxlength="12" autocomplete="off" required>
-                                        <input type="hidden" name="payment_method" value="Transfer Bank">
+                                        <!-- <input type="hidden" name="payment_method" value="Transfer Bank"> -->
                                         <input type="hidden" name="id_user" id="id_user" value="<?php echo $this->session->userdata('id_user') ?>">
                                         <input type="hidden" name="status" id="status" value="0">
                                         <input type="hidden" name="layanan_pesanan" id="layanan_pesanan" value="Pick Up">
@@ -108,6 +108,16 @@
                                     <div class="mb-5">
                                         <label for="post-form-7" class="form-label"> Kode Pos <small class="text-danger">*</small></label>
                                         <input type="text" class="form-control" id="kode_pos" name="kode_pos" placeholder="Your mobile phone" autocomplete="off" required>
+                                    </div>
+                                    <div class="mb-5">
+                                        <label for="post-form-7" class="form-label"> Metode Pembayaran <small class="text-danger">*</small></label>
+                                        <select name="payment_method" data-placeholder="Pilih Bank" class="tom-select w-full">
+                                            <option value="BRI - 6750527090">Bank BRI 6750527090</option>
+                                            <option value="BCA - 6750527080">Bank BCA 6750527080</option>
+                                            <option value="MANDIRI - 6750527070">Bank MANDIRI 6750527070</option>
+                                            <option value="BNI - 6750527060">Bank BNI 6750527060</option>
+                                            <option value="BTN - 6750527050">Bank BTN 6750527060</option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>

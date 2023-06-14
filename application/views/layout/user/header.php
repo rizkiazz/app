@@ -192,32 +192,32 @@
                     </li>
                             <li>
                         <a href="<?= base_url('dashboard_categories/plastik') ?>" class="side-menu side-menu">
-                            <div class="side-menu__icon"> <i data-lucide="home"></i> </div>
+                            <div class="side-menu__icon"> <i data-lucide="moon"></i> </div>
                             <div class="side-menu__title"> Plastik </div>
                         </a>
                     </li>
                     <li>
                         <a href="<?= base_url('dashboard_categories/kertas') ?>" class="side-menu">
-                            <div class="side-menu__icon"> <i data-lucide="shopping-bag"></i> </div>
+                            <div class="side-menu__icon"> <i data-lucide="moon"></i> </div>
                             <div class="side-menu__title"> Kertas </div>
                         </a>
                     </li>
                     <li>
                         <a href="<?= base_url('dashboard_categories/kaca') ?>" class="side-menu">
-                            <div class="side-menu__icon"> <i data-lucide="file-text"></i> </div>
+                            <div class="side-menu__icon"> <i data-lucide="moon"></i> </div>
                             <div class="side-menu__title"> Kaca </div>
                         </a>
                     </li>
                     <li>
                         <a href="<?= base_url('dashboard_categories/elektronik') ?>" class="side-menu">
-                            <div class="side-menu__icon"> <i data-lucide="file-text"></i> </div>
+                            <div class="side-menu__icon"> <i data-lucide="moon"></i> </div>
                             <div class="side-menu__title"> Barang Elektronik </div>
                         </a>
                     </li>
 
                     <li>
                         <a href="<?= base_url('dashboard_categories/tekstil') ?>" class="side-menu">
-                            <div class="side-menu__icon"> <i data-lucide="file-text"></i> </div>
+                            <div class="side-menu__icon"> <i data-lucide="moon"></i> </div>
                             <div class="side-menu__title"> Tekstil </div>
                         </a>
                     </li>
@@ -225,7 +225,7 @@
 
                     <li>
                         <a href="<?= base_url('tukar_poin') ?>" class="side-menu">
-                            <div class="side-menu__icon"> <i data-lucide="shopping-bag"></i> </div>
+                            <div class="side-menu__icon"> <i data-lucide="dollar-sign"></i> </div>
                             <div class="side-menu__title">
                                 Tukar Koin
                                 <div class="side-menu__sub-icon "></div>
@@ -237,9 +237,9 @@
 
                     <li>
                         <a href="<?= base_url('order') ?>" class="side-menu">
-                            <div class="side-menu__icon"> <i data-lucide="shopping-bag"></i> </div>
+                            <div class="side-menu__icon"> <i data-lucide="box"></i> </div>
                             <div class="side-menu__title">
-                                Riwayat Pesanan
+                                Riwayat Order
                                 <div class="side-menu__sub-icon "></div>
                             </div>
                         </a>
@@ -247,12 +247,12 @@
                     <li>
                         <a href="<?= base_url('bill') ?>" class="side-menu">
                             <div class="side-menu__icon"> <i data-lucide="file-text"></i> </div>
-                            <div class="side-menu__title"> Riwayat Penagihan </div>
+                            <div class="side-menu__title"> Belum Bayar </div>
                         </a>
                     </li>
                     <li>
                         <a href="<?= base_url('pay') ?>" class="side-menu">
-                            <div class="side-menu__icon"> <i data-lucide="file-text"></i> </div>
+                            <div class="side-menu__icon"> <i data-lucide="check-circle"></i> </div>
                             <div class="side-menu__title"> Invoice </div>
                         </a>
                     </li>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="light">
+<html lang="en" class="theme-1">
 <!-- BEGIN: Head -->
 
 <head>
@@ -192,32 +192,32 @@
                     </li>
                             <li>
                         <a href="<?= base_url('dashboard_categories/plastik') ?>" class="side-menu side-menu">
-                            <div class="side-menu__icon"> <i data-lucide="moon"></i> </div>
+                            <div class="side-menu__icon"> <i data-lucide="hexagon"></i> </div>
                             <div class="side-menu__title"> Plastik </div>
                         </a>
                     </li>
                     <li>
                         <a href="<?= base_url('dashboard_categories/kertas') ?>" class="side-menu">
-                            <div class="side-menu__icon"> <i data-lucide="moon"></i> </div>
+                            <div class="side-menu__icon"> <i data-lucide="hexagon"></i> </div>
                             <div class="side-menu__title"> Kertas </div>
                         </a>
                     </li>
                     <li>
                         <a href="<?= base_url('dashboard_categories/kaca') ?>" class="side-menu">
-                            <div class="side-menu__icon"> <i data-lucide="moon"></i> </div>
+                            <div class="side-menu__icon"> <i data-lucide="hexagon"></i> </div>
                             <div class="side-menu__title"> Kaca </div>
                         </a>
                     </li>
                     <li>
                         <a href="<?= base_url('dashboard_categories/elektronik') ?>" class="side-menu">
-                            <div class="side-menu__icon"> <i data-lucide="moon"></i> </div>
+                            <div class="side-menu__icon"> <i data-lucide="hexagon"></i> </div>
                             <div class="side-menu__title"> Barang Elektronik </div>
                         </a>
                     </li>
 
                     <li>
                         <a href="<?= base_url('dashboard_categories/tekstil') ?>" class="side-menu">
-                            <div class="side-menu__icon"> <i data-lucide="moon"></i> </div>
+                            <div class="side-menu__icon"> <i data-lucide="hexagon"></i> </div>
                             <div class="side-menu__title"> Tekstil </div>
                         </a>
                     </li>
@@ -262,12 +262,7 @@
                             <div class="side-menu__title"> Profile </div>
                         </a>
                     </li>
-                    <!-- <li>
-                        <a href="<?= base_url('change_password') ?>" class="side-menu">
-                            <div class="side-menu__icon"> <i data-lucide="lock"></i> </div>
-                            <div class="side-menu__title"> Change Password </div>
-                        </a>
-                    </li> -->
                 </ul>
             </nav>
             <!-- END: Side Menu -->
+

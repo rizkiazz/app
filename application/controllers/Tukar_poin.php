@@ -137,7 +137,7 @@ class Tukar_poin extends CI_Controller
                 'no_tujuan'        => $no_tujuan,
                 'poin'             => $total
             );
-            // die(var_dump($data));
+            die(var_dump($data));
             $this->db->insert('penarikan', $data);
         };
 

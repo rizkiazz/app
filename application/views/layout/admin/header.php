@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="light">
+<html lang="en" class="theme-1">
 <!-- BEGIN: Head -->
 
 <head>

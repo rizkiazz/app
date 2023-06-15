@@ -76,7 +76,7 @@
                                 </div>
                             </div>
                         <?php endforeach; ?>
-                        <a href="<?= site_url('admin/invoice') ?>" class="intro-y w-full block text-center rounded-md py-4 border border-dotted border-slate-400 dark:border-darkmode-300 text-slate-500">View More</a>
+                        <a href="<?= site_url('admin/invoice') ?>" class="intro-y w-full block text-center rounded-md py-4 border border-dotted border-slate-400 dark:border-darkmode-300 text-slate-500">liat lebih banyak</a>
                     </div>
                 </div>
                 <!-- END: Users By Age -->

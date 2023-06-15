@@ -1,7 +1,7 @@
    <!-- BEGIN: Content -->
    <div class="content">
        <h2 class="intro-y text-lg font-medium mt-10">
-           Product List
+           Daftar Produk
        </h2>
        <div class="grid grid-cols-12 gap-6 mt-5">
            <div class="intro-y col-span-12 flex flex-wrap xl:flex-nowrap items-center mt-2">
@@ -18,7 +18,7 @@
                </div>
                <div class="hidden xl:block mx-auto text-slate-500"></div>
                <div class="w-full xl:w-auto flex flex-wrap xl:flex-nowrap items-center gap-y-3 mt-3 xl:mt-0">
-                   <a href="<?= site_url('admin/product/add') ?>" class="btn btn-primary shadow-md mr-2"> <i data-lucide="plus" class="w-4 h-4"></i></a>
+                   <a href="<?= site_url('admin/product/add') ?>" class="btn btn-primary shadow-md mr-2"> Tambah Produk Baru <i data-lucide="plus" class="w-4 h-4"></i></a>
 
                </div>
            </div>
@@ -27,23 +27,17 @@
                <table class="table table-report -mt-2">
                    <thead>
                        <tr>
-                           <th class="whitespace-nowrap">
-                               <input class="form-check-input" type="checkbox">
-                           </th>
-                           <th class="whitespace-nowrap">IMAGES</th>
-                           <th class="whitespace-nowrap">PRODUCT NAME</th>
-                           <th class="whitespace-nowrap">STOCK</th>
-                           <th class="text-center whitespace-nowrap">PRICE</th>
-                           <th class="text-center whitespace-nowrap">STATUS</th>
+                           <th class="whitespace-nowrap">Gambar</th>
+                           <th class="whitespace-nowrap">Nama Produk</th>
+                           <th class="whitespace-nowrap">Stok</th>
+                           <th class="text-center whitespace-nowrap">Poin</th>
+                           <th class="text-center whitespace-nowrap">Status</th>
                            <th class="text-center whitespace-nowrap">ACTIONS</th>
                        </tr>
                    </thead>
                    <tbody>
                        <?php foreach ($product as $row) : ?>
                            <tr class="intro-x">
-                               <td class="w-10">
-                                   <input class="form-check-input" type="checkbox">
-                               </td>
                                <td class="!py-4">
                                    <div class="flex items-center">
                                        <div class="w-10 h-10 image-fit zoom-in">

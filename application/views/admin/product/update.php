@@ -1,7 +1,7 @@
 <div class="content">
     <div class="intro-y flex items-center mt-8">
         <h2 class="text-lg font-medium mr-auto">
-            Update Product
+            Ubah Produk
         </h2>
     </div>
     <div class="grid grid-cols-12 gap-6">
@@ -11,23 +11,23 @@
             <div class="intro-y box lg:mt-5">
                 <div class="flex items-center p-5 border-b border-slate-200/60 dark:border-darkmode-400">
                     <h2 class="font-medium text-base mr-auto">
-                        Display Information
+                        Tampilan Informasi Produk
                     </h2>
                 </div>
                 <div class="p-5">
+                    <form action="<?= site_url('admin/product/insert_update') ?>" method="post" enctype="multipart/form-data">
                     <div class="flex flex-col-reverse xl:flex-row flex-col">
                             <div class="flex-1 mt-6 xl:mt-0">
-                                <form action="<?= site_url('admin/product/insert_update') ?>" method="post" enctype="multipart/form-data">
                                 <?php foreach ($product as $row) : ?>
                                     <div class="grid grid-cols-12 gap-x-5">
                                         <div class="col-span-12 2xl:col-span-6">
                                             <div>
-                                                <label for="update-profile-form-1" class="form-label">Display Name</label>
+                                                <label for="update-profile-form-1" class="form-label">Nama</label>
                                                 <input type="hidden" name="id_brg" value="<?= $row->id_brg ?>">
                                                 <input id="update-profile-form-1" type="text" class="form-control" name="nama_brg" value="<?= $row->nama_brg ?>">
                                             </div>
                                             <div class="mt-3">
-                                                <label for="update-profile-form-2" class="form-label">Categories</label>
+                                                <label for="update-profile-form-2" class="form-label">Kategori</label>
                                                 <select id="category" name="kategori" class="form-select">
                                                     <option selected hidden value="<?= $row->kategori ?>"><?= $row->kategori ?></option>
                                                     <option hidden>-- Select Categories --</option>
@@ -41,22 +41,21 @@
                                         </div>
                                         <div class="col-span-12 2xl:col-span-6">
                                             <div class="mt-3 2xl:mt-0">
-                                                <label for="update-profile-form-3" class="form-label">Product Stock</label>
+                                                <label for="update-profile-form-3" class="form-label">Stok</label>
                                                 <input id="update-profile-form-1" type="number" class="form-control" name="stok" value="<?= $row->stok ?>">
                                             </div>
                                             <div class="mt-3">
-                                                <label for="update-profile-form-4" class="form-label">Product Price</label>
+                                                <label for="update-profile-form-4" class="form-label">Poin</label>
                                                 <input id="update-profile-form-4" type="number" class="form-control" name="harga" value="<?= $row->harga ?>">
                                             </div>
                                         </div>
                                         <div class="col-span-12">
                                             <div class="mt-3">
-                                                <label for="update-profile-form-5" class="form-label">Product Description</label>
+                                                <label for="update-profile-form-5" class="form-label">Deskripsi Produk</label>
                                                 <textarea id="update-profile-form-5" class="form-control" name="keterangan" value="<?= $row->keterangan ?>"><?= $row->keterangan ?></textarea>
                                             </div>
                                         </div>
                                     </div>
-                                    <button type="submit" class="btn btn-primary w-20 mt-3">Save</button>
                             </div>
                             <div class="w-52 mx-auto xl:mr-0 xl:ml-6">
                                 <div class="border-2 border-dashed shadow-sm border-slate-200/60 dark:border-darkmode-400 rounded-md p-5">
@@ -65,14 +64,16 @@
                                         <div title="Remove this profile photo?" class="tooltip w-5 h-5 flex items-center justify-center absolute rounded-full text-white bg-danger right-0 top-0 -mr-2 -mt-2"> <i data-lucide="x" class="w-4 h-4"></i> </div>
                                     </div>
                                     <div class="mx-auto cursor-pointer relative mt-5">
-                                        <button type="button" class="btn btn-primary w-full">Product Image</button>
+                                        <button type="button" class="btn btn-primary w-full">Ubah Gambar</button>
                                         <input name="gambar" id="gambar" type="file" class="w-full h-full top-0 left-0 absolute opacity-0" accept="image/png, image/jpeg, image/jpg, image/gif">
                                     </div>
                                 </div>
                             </div>
+                            
+                        </div>
+                        <button type="submit" class="btn btn-primary w-20 mt-3">Save</button>
                         <?php endforeach; ?>
-                        </form>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>

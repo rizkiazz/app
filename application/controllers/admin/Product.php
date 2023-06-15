@@ -119,6 +119,7 @@ class Product extends CI_Controller
 
 
 		$this->model_pembayaran->update('product', $data, $where);
+		$_SESSION["sukses"] = 'Product berhasil di ubah';
 		redirect('admin/product');
 	}
 
@@ -126,6 +127,7 @@ class Product extends CI_Controller
 	{
 		$where = array('id_brg' => $id);
 		$this->model_pembayaran->delete($where, 'product');
+		$_SESSION["sukses"] = 'Product berhasil di dihapus';
 		redirect('admin/product');
 	}
 }

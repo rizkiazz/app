@@ -1,6 +1,6 @@
     <div class="content">
         <h2 class="intro-y text-lg font-medium mt-10">
-            Transaction List
+            Daftar Permintaan Order
         </h2>
         <div class="grid grid-cols-12 gap-6 mt-5">
             <div class="intro-y col-span-12 flex flex-wrap xl:flex-nowrap items-center mt-2">
@@ -26,14 +26,11 @@
                 <table class="table table-report -mt-2">
                     <thead>
                         <tr>
-                            <th class="whitespace-nowrap">
-                                <input class="form-check-input" type="checkbox">
-                            </th>
-                            <th class="whitespace-nowrap">ORDER ID</th>
-                            <th class="whitespace-nowrap">CUSTOMER NAME</th>
-                            <th class="whitespace-nowrap">TRANSACTION TIME</th>
-                            <th class="whitespace-nowrap">PROOF OF PAYMENT</th>
-                            <th class="whitespace-nowrap">STATUS</th>
+                            <th class="whitespace-nowrap">Order ID</th>
+                            <th class="whitespace-nowrap">Nama Pelanggan</th>
+                            <th class="whitespace-nowrap">Waktu Transaksi</th>
+                            <th class="whitespace-nowrap">Bukti Pembayaran</th>
+                            <th class="whitespace-nowrap">Status</th>
                             <th class="text-center whitespace-nowrap">ACTIONS</th>
                         </tr>
                     </thead>
@@ -41,15 +38,12 @@
                         <?php foreach ($invoice as $row) : ?>
 
                             <tr class="intro-x">
-                                <td class="w-10">
-                                    <input class="form-check-input" type="checkbox">
-                                </td>
                                 <td class="w-40 !py-4"> <a href="<?= site_url('admin/invoice/detail/'.$row->order_id) ?>" class="underline decoration-dotted whitespace-nowrap">#<?= $row->order_id ?></a> </td>
                                 <td class="w-40">
                                     <a href="" class="font-medium whitespace-nowrap"><?= $row->name ?></a>
                                 </td>
                                 <td>
-                                    <div class="text-slate-500 whitespace-nowrap mt-0.5"><?= $row->transaction_time ?></div>
+                                    <div class="text-slate-500 whitespace-nowrap mt-0.5"><?= date('d-M-Y H:i', strtotime($row->transaction_time)) ?></div>
                                 </td>
                                 <td><?php if (empty($row->gambar)){ ?>
                                        <div class="flex items-center whitespace-nowrap text-danger"> <i data-lucide="alert-circle" class="w-4 h-4 mr-2"></i>Belum upload bukti </div>
@@ -63,16 +57,16 @@
                                   <?php if ($row->status == "0"){ ?>
                                     <div class="flex items-center whitespace-nowrap text-pending"><b>PENDING</b> </div>
                                 <?php } else if ($row->status == "1"){ ?>
-                                    <div class="flex items-center whitespace-nowrap text-success"> <b>PAID</b> </div>
+                                    <div class="flex items-center whitespace-nowrap text-success"> <b>Terbayar</b> </div>
                                 <?php } ?>
                             </td>
                             <td class="table-report__action"><center>
                                 <?php if ($row->status == "0"){ ?>
                                     <div class="flex justify-center items-center">
-                                        <a class="flex items-center text-primary whitespace-nowrap" href="<?= site_url('admin/invoice/confirm/'. $row->order_id) ?>"> <i data-lucide="arrow-left-right" class="w-4 h-4 mr-1"></i> Change Status </a>
+                                        <a class="flex items-center text-primary whitespace-nowrap" href="<?= site_url('admin/invoice/confirm/'. $row->order_id) ?>"> <i data-lucide="arrow-left-right" class="w-4 h-4 mr-1"></i> Ubah Status </a>
                                     </div>
                                 <?php } else if ($row->status == "1"){ ?>
-                                    <button class="btn btn-sm btn-success text-white">Payment Successfully</button>
+                                    <button class="btn btn-sm btn-success text-white">Pembayaran Berhasil</button>
                                 <?php } ?>
                             </td>
                         </tr>

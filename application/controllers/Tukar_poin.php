@@ -19,9 +19,6 @@ class Tukar_poin extends CI_Controller
         $data['profile'] = $this->db->query("SELECT * FROM user 
 			WHERE user.id_user='$id'")->result();
 
-        $data['bill'] = $this->db->query("SELECT * FROM transaction 
-        WHERE transaction.id_user='$id' AND status='0' LIMIT 3")->result();
-
         $data['point'] = $this->db->query("SELECT SUM(harga) AS harga FROM cart 
 			WHERE cart.id_user='$id'")->result();
 
@@ -118,5 +115,33 @@ class Tukar_poin extends CI_Controller
         $this->load->view('layout/user/header', $data);
 		$this->load->view('galang_dana_pembangunan', $data);
 		$this->load->view('layout/user/footer');
+    }
+    public function tukar_dana()
+    {
+		$id_user = $this->input->post('id_user');
+		$jumlah_penarikan = $this->input->post('jumlah_penarikan');
+		$dana = $this->input->post('dana');
+		$no_tujuan = $this->input->post('no_tujuan');
+		$poin = $this->input->post('poin');
+
+        $total = $poin - $dana;
+        if($poin = 0){
+            echo "Point Anda Kosong";
+        }else if($poin >= $total){
+            echo "Point Anda Kurang";
+        }else{
+
+            $data = array(
+                'id_user'          => $id_user,
+                'jumlah_penarikan' => $jumlah_penarikan,
+                'no_tujuan'        => $no_tujuan,
+                'poin'             => $total
+            );
+            // die(var_dump($data));
+            $this->db->insert('penarikan', $data);
+        };
+
+		$_SESSION["sukses"] = 'Poin berhasil di tukar';
+		redirect('/tukar_poin/dana');
     }
 }

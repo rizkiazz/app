@@ -262,7 +262,22 @@
                             <div class="side-menu__title"> Profile </div>
                         </a>
                     </li>
+                    <li>
+                        <div class="side-menu active border">
+                            <div class="side-menu__icon"> <i data-lucide="moon"></i> </div>
+                            <button onclick="myFunction()" class="side-menu__title"> Mode Gelap </button>
+                        </div>
+                    </li>
                 </ul>
             </nav>
             <!-- END: Side Menu -->
+
+<script>
+function myFunction() {
+   var element = document.body;
+   element.classList.toggle("dark text-white");
+}
+</script>
+
+
 

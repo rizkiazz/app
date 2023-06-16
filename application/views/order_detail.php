@@ -96,6 +96,16 @@
                                </tr>
                            </tbody>
                        </table>
+                        <div class="border border-slate-200/60 dark:border-darkmode-400 rounded-md p-5 mt-5">
+                            <div class="font-medium flex items-center border-b border-slate-200/60 dark:border-darkmode-400 pb-5">
+                                <i data-lucide="chevron-down" class="w-4 h-4 mr-2"></i> Images
+                            </div>
+                            <div class="mt-3">
+                                <div class="image-fit zoom-in relative mb-5 mr-5 h-24 w-24 cursor-pointer">
+                                    <img class="rounded-md" alt="" src="<?= base_url() . '/uploads/order/' . $invoice->file_gambar ?>">
+                                </div>
+                            </div>
+                        </div>
                    </div>
                </div>
            </div>

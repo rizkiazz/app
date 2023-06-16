@@ -17,6 +17,9 @@ class Invoice extends CI_Controller
 	{
 		$data['title'] = 'Invoice';
 		$data['invoice'] = $this->model_invoice->get();
+		$data['bill'] = $this->db->query("SELECT * FROM transaction
+        WHERE status='0' ORDER BY order_id DESC LIMIT 5")->result();
+
 		$this->load->view('layout/admin/header', $data);
 		$this->load->view('admin/payment/invoice', $data);
 		$this->load->view('layout/admin/footer');

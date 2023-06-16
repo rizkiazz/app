@@ -18,7 +18,7 @@ class Order extends CI_Controller
 		$data['title'] = 'History Order';
 		$id = $this->session->userdata('id_user');
 		$data['order'] = $this->db->query("SELECT * FROM transaction 
-			WHERE transaction.id_user='$id'")->result();
+			WHERE transaction.id_user='$id' ORDER BY transaction_time DESC")->result();
 		$this->load->view('layout/user/header', $data);
 		$this->load->view('order', $data);
 		$this->load->view('layout/user/footer');

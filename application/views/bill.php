@@ -34,7 +34,7 @@
                     </thead>
                     <tbody>
                         <?php
-                        $bill = array_reverse($bill);
+                        // $bill = array_reverse($bill);
                         foreach ($bill as $row) : ?>
                             <tr class="intro-x">
                                 <td class="w-60 !py-4"> <a href="<?= site_url('bill/detail/'.$row->order_id) ?>" class="underline decoration-dotted whitespace-nowrap">#<?= $row->order_id ?></a> </td>

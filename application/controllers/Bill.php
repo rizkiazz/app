@@ -18,7 +18,7 @@ class Bill extends CI_Controller
 		$data['title'] = 'Billing History';
 		$id = $this->session->userdata('id_user');
 		$data['bill'] = $this->db->query("SELECT * FROM transaction 
-			WHERE transaction.id_user='$id' AND status='0'")->result();
+			WHERE transaction.id_user='$id' AND status='0' ORDER BY transaction_time DESC")->result();
 		$this->load->view('layout/user/header', $data);
 		$this->load->view('bill', $data);
 		$this->load->view('layout/user/footer');

@@ -40,7 +40,7 @@
                                    <tr>
                                        <td class="!py-4">
                                            <div class="flex items-center">
-                                            <img src="<?= base_url() . '/uploads/' . $row->gambar ?>" width="40px">
+                                            <img src="<?= base_url() . '/uploads/produk/' . $row->gambar ?>" width="40px">
                                                <a href="" class="font-medium whitespace-nowrap ml-4"><?= $row->nama_brg ?></a>
                                            </div>
                                        </td>

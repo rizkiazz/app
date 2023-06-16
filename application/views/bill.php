@@ -24,7 +24,7 @@
                     <thead>
                         <tr>
                             <th class="whitespace-nowrap">Order ID</th>
-                            <th class="whitespace-nowrap">Nomor Pelacakan</th>
+                            <th class="whitespace-nowrap">Layanan Pesanan</th>
                             <th class="whitespace-nowrap">Metode Pemabayaran</th>
                             <th class="whitespace-nowrap">Waktu Transaksi</th>
                             <!-- <th class="whitespace-nowrap">TRANSACTION END</th> -->
@@ -37,8 +37,17 @@
                         // $bill = array_reverse($bill);
                         foreach ($bill as $row) : ?>
                             <tr class="intro-x">
-                                <td class="w-60 !py-4"> <a href="<?= site_url('bill/detail/'.$row->order_id) ?>" class="underline decoration-dotted whitespace-nowrap">#<?= $row->order_id ?></a> </td>
-                                <td class="w-40 !py-4"> <a class="underline decoration-dotted whitespace-nowrap"><?= $row->tracking_id ?></a> </td>
+                                <td class="w-40 !py-4"> <a href="<?= site_url('bill/detail/'.$row->order_id) ?>" class="underline decoration-dotted whitespace-nowrap">#<?= $row->order_id ?></a> </td>
+                                <td class="w-40">
+                                    <?php
+                                        if ($row->layanan_pesanan == "Pick Up") {
+                                        echo '<button class="flex items-center mr-3 text-white btn btn-sm btn-success shadow-md mr-2"><i data-lucide="package" class="w-4 h-4 mr-1"></i>' . $row->layanan_pesanan . '</button>';
+                                        } else {
+                                        echo '<button class="flex items-center mr-3 text-white btn btn-sm btn-pending shadow-md mr-2"><i data-lucide="package" class="w-4 h-4 mr-1"></i>' . $row->layanan_pesanan . '</button>';
+                                        }
+                                    ?>
+                                </td>
+                                <!-- <td class="w-40 !py-4"> <a class="underline decoration-dotted whitespace-nowrap"><?= $row->tracking_id ?></a> </td> -->
                                 <td class="w-40">
                                     <a href="" class="font-medium text-primary whitespace-nowrap"><?= $row->payment_method ?></a>
                                 </td>

@@ -76,7 +76,7 @@
                                 <td class="w-40">
                                     <div class="flex">
                                         <div class="w-10 h-10 image-fit zoom-in">
-                                            <img alt="" class="tooltip rounded-full" src="<?= base_url() . '/uploads/' . $items['options']['gambar']; ?>" title="<?= $items['name']; ?>">
+                                            <img alt="" class="tooltip rounded-full" src="<?= base_url() . '/uploads/produk/' . $items['options']['gambar']; ?>" title="<?= $items['name']; ?>">
                                         </div>
                                     </div>
                                 </td>

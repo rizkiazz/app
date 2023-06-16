@@ -122,7 +122,7 @@
                         <?php foreach ($this->cart->contents() as $items) : ?>
                             <div class="cursor-pointer relative flex items-center ">
                                 <div class="w-12 h-12 flex-none image-fit mr-1">
-                                    <img alt="Midone - HTML Admin Template" class="rounded-full" src="<?= base_url() . '/uploads/' . $items['options']['gambar']; ?>">
+                                    <img alt="Midone - HTML Admin Template" class="rounded-full" src="<?= base_url() . '/uploads/produk/' . $items['options']['gambar']; ?>">
                                     <div class="w-3 h-3 bg-success absolute right-0 bottom-0 rounded-full border-2 border-white"></div>
                                 </div>
                                 <div class="ml-2 overflow-hidden">

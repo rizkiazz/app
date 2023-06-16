@@ -41,7 +41,7 @@
                                <td class="!py-4">
                                    <div class="flex items-center">
                                        <div class="w-10 h-10 image-fit zoom-in">
-                                           <img alt="Midone - HTML Admin Template" class="rounded-lg border-1 border-white shadow-md tooltip" src="<?= base_url() . '/uploads/' . $row->gambar ?>">
+                                           <img alt="Midone - HTML Admin Template" class="rounded-lg border-1 border-white shadow-md tooltip" src="<?= base_url() . '/uploads/produk/' . $row->gambar ?>">
                                        </div>
                                        <a href="" class="font-medium whitespace-nowrap ml-4"><?= $row->kategori ?></a>
                                    </div>
@@ -52,7 +52,7 @@
                                        <div class="text-xs text-slate-500 ml-1">( <?= $row->stok ?> ) </div>
                                    </div>
                                </td>
-                               <td class="text-center whitespace-nowrap">Rp. <?= number_format($row->harga, 0, ',', '.') ?></td>
+                               <td class="text-center whitespace-nowrap"><?= number_format($row->harga, 0, ',', '.') ?> poin</td>
                                <td class="w-40">
                                    <div class="flex items-center justify-center text-success"> <i data-lucide="check-square" class="w-4 h-4 mr-2"></i> Active </div>
                                </td>

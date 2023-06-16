@@ -43,21 +43,23 @@ class Profile extends CI_Controller
         $avatar		    = $_FILES['avatar']['name'];
 
 
-        $config['upload_path']          = './uploads/';
-		$config['allowed_types']        = 'png|jpg|gif';
-		$config['max_size']             = 2048;
-		$config['max_width']            = 40000;
-		$config['max_height']           = 40000;
+        if ($avatar != '') {
+            $config['upload_path']          = './uploads/avatar';
+            $config['allowed_types']        = 'png|jpg|gif';
+            $config['max_size']             = 2048;
+            $config['max_width']            = 40000;
+            $config['max_height']           = 40000;
+    
+            $this->load->library('upload', $config);
 
-		$this->load->library('upload', $config);
-        if ($avatar = '') {
-		} else {
 			if (!$this->upload->do_upload('avatar')) {
 				echo "File tidak dapat di upload!";
 			} else {
 				$avatar = $this->upload->data('file_name');
 			}
-		}
+		} else {
+            $avatar = $this->input->post('old');
+        };
 
         $data = array(
             'nama_user'         => $nama_user,

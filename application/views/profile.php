@@ -154,12 +154,13 @@
                                                             <div class="w-52 xl:mr-0 xl:ml-0">
                                                                 <div class="border-2 border-dashed shadow-sm border-slate-200/60 dark:border-darkmode-400 rounded-md p-5">
                                                                     <div class="h-40 relative image-fit cursor-pointer zoom-in mx-auto">
-                                                                        <img class="rounded-md" src="<?= base_url() . '/uploads/' . $row->avatar ?>">
+                                                                        <img class="rounded-md" src="<?= base_url() . '/uploads/avatar/' . $row->avatar ?>" id="output">
                                                                         <div class="tooltip w-5 h-5 flex items-center justify-center absolute rounded-full text-white bg-primary right-0 top-0 -mr-2 -mt-2"> <i data-lucide="alert-circle" class="w-4 h-4"></i> </div>
                                                                     </div>
                                                                     <div class="mx-auto cursor-pointer relative mt-5">
                                                                         <button type="button" class="btn btn-primary w-full">Ubah Foto</button>
-                                                                        <input name="avatar" id="avatar" type="file" class="w-full h-full top-0 left-0 absolute opacity-0" accept="image/png, image/jpeg, image/jpg, image/gif">
+                                                                        <input type="hidden"  id="old"  name="old"  value="<?php echo $row->avatar?>">
+                                                                        <input name="avatar" id="avatar" type="file" class="w-full h-full top-0 left-0 absolute opacity-0" accept="image/png, image/jpeg, image/jpg, image/gif" onchange="loadFile(event)">
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -192,3 +193,13 @@
     <!-- jangan lupa untuk menambahkan unset agar sweet alert tidak muncul lagi saat di refresh -->
 <?php unset($_SESSION['sukses']);
 } ?>
+
+<script>
+  var loadFile = function(event) {
+    var output = document.getElementById('output');
+    output.src = URL.createObjectURL(event.target.files[0]);
+    output.onload = function() {
+      URL.revokeObjectURL(output.src) // free memory
+    }
+  };
+</script>

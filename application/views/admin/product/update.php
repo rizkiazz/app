@@ -16,9 +16,9 @@
                 </div>
                 <div class="p-5">
                     <form action="<?= site_url('admin/product/insert_update') ?>" method="post" enctype="multipart/form-data">
-                    <div class="flex flex-col-reverse xl:flex-row flex-col">
+                    <?php foreach ($product as $row) : ?>
+                        <div class="flex flex-col-reverse xl:flex-row flex-col">
                             <div class="flex-1 mt-6 xl:mt-0">
-                                <?php foreach ($product as $row) : ?>
                                     <div class="grid grid-cols-12 gap-x-5">
                                         <div class="col-span-12 2xl:col-span-6">
                                             <div>
@@ -60,22 +60,40 @@
                             <div class="w-52 mx-auto xl:mr-0 xl:ml-6">
                                 <div class="border-2 border-dashed shadow-sm border-slate-200/60 dark:border-darkmode-400 rounded-md p-5">
                                     <div class="h-40 relative image-fit cursor-pointer zoom-in mx-auto">
-                                        <img class="rounded-md" alt="Midone - HTML Admin Template" src="<?= base_url() . '/uploads/' . $row->gambar ?>">
+                                        <img class="rounded-md" alt="Midone - HTML Admin Template" src="<?= base_url() . '/uploads/produk/' . $row->gambar ?>" id="output">
                                         <div title="Remove this profile photo?" class="tooltip w-5 h-5 flex items-center justify-center absolute rounded-full text-white bg-danger right-0 top-0 -mr-2 -mt-2"> <i data-lucide="x" class="w-4 h-4"></i> </div>
                                     </div>
                                     <div class="mx-auto cursor-pointer relative mt-5">
                                         <button type="button" class="btn btn-primary w-full">Ubah Gambar</button>
-                                        <input name="gambar" id="gambar" type="file" class="w-full h-full top-0 left-0 absolute opacity-0" accept="image/png, image/jpeg, image/jpg, image/gif">
+                                        <input type="hidden"  id="old"  name="old"  value="<?php echo $row->gambar?>">
+                                        <input name="gambar_product" id="gambar_product" type="file" class="w-full h-full top-0 left-0 absolute opacity-0" accept="image/png, image/jpeg, image/jpg, image/gif" onchange="loadFile(event)">
                                     </div>
                                 </div>
                             </div>
                             
                         </div>
                         <button type="submit" class="btn btn-primary w-20 mt-3">Save</button>
-                        <?php endforeach; ?>
+                    <?php endforeach; ?>
                     </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<script>
+  var loadFile = function(event) {
+    var output = document.getElementById('output');
+    output.src = URL.createObjectURL(event.target.files[0]);
+    output.onload = function() {
+      URL.revokeObjectURL(output.src) // free memory
+    }
+  };
+</script>
+<?php if (@$_SESSION['sukses']) { ?>
+    <script>
+        swal("Good job!", "<?php echo $_SESSION['sukses']; ?>", "success");
+    </script>
+    <!-- jangan lupa untuk menambahkan unset agar sweet alert tidak muncul lagi saat di refresh -->
+<?php unset($_SESSION['sukses']);
+} ?>

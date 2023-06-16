@@ -83,24 +83,26 @@ class Product extends CI_Controller
 		$kategori 		= $this->input->post('kategori');
 		$harga 			= $this->input->post('harga');
 		$stok 			= $this->input->post('stok');
-        $gambar		    = $_FILES['gambar']['name'];
+        $gambar_product = $_FILES['gambar_product']['name'];
 
 
-        $config['upload_path']          = './uploads/';
-		$config['allowed_types']        = 'png|jpg|gif';
-		$config['max_size']             = 2048;
-		$config['max_width']            = 40000;
-		$config['max_height']           = 40000;
+        if ($gambar_product != '') {
+			$config['upload_path']          = './uploads/produk';
+			$config['allowed_types']        = 'png|jpg|gif';
+			$config['max_size']             = 2048;
+			$config['max_width']            = 40000;
+			$config['max_height']           = 40000;
+	
+			$this->load->library('upload', $config);
 
-		$this->load->library('upload', $config);
-        if ($gambar = '') {
-		} else {
-			if (!$this->upload->do_upload('gambar')) {
+			if (!$this->upload->do_upload('gambar_product')) {
 				echo "File tidak dapat di upload!";
 			} else {
-				$gambar = $this->upload->data('file_name');
+				$gambar_product = $this->upload->data('file_name');
 			}
-		}
+		} else {
+            $gambar_product = $this->input->post('old');
+        };
 
 		$data = array(
 			'nama_brg' 		=> $nama_brg,
@@ -108,7 +110,7 @@ class Product extends CI_Controller
 			'kategori' 		=> $kategori,
 			'harga' 		=> $harga,
 			'stok' 			=> $stok,
-			'gambar' 		=> $gambar
+			'gambar' 		=> $gambar_product
 
 		);
 

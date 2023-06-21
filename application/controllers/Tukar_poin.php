@@ -71,6 +71,8 @@ class Tukar_poin extends CI_Controller
 
         $data['point'] = $this->db->query("SELECT SUM(harga) AS harga FROM cart 
 			WHERE cart.id_user='$id'")->result();
+        $data['nominal'] = $this->db->query("SELECT SUM(poin) AS poin FROM penarikan 
+            WHERE penarikan.id_user='$id'")->result();
 
         $this->load->view('layout/user/header', $data);
 		$this->load->view('ovo', $data);
@@ -86,6 +88,8 @@ class Tukar_poin extends CI_Controller
 
         $data['point'] = $this->db->query("SELECT SUM(harga) AS harga FROM cart 
 			WHERE cart.id_user='$id'")->result();
+        $data['nominal'] = $this->db->query("SELECT SUM(poin) AS poin FROM penarikan 
+            WHERE penarikan.id_user='$id'")->result();
 
         $this->load->view('layout/user/header', $data);
 		$this->load->view('shopee_pay', $data);
@@ -200,5 +204,85 @@ class Tukar_poin extends CI_Controller
 
 		$_SESSION["sukses"] = 'Poin berhasil di tukar';
 		redirect('/tukar_poin/gopay');
+    }
+    public function tukar_shopee_pay()
+    {
+		$id_user = $this->input->post('id_user');
+		$jumlah_penarikan = $this->input->post('jumlah_penarikan');
+		$shopee_pay = $this->input->post('shopee_pay');
+		$no_tujuan = $this->input->post('no_tujuan');
+		$platform = $this->input->post('platform');
+		$poin = $this->input->post('poin');
+
+        $total = abs($poin - $shopee_pay);
+        if($poin == '0'){
+            echo "Point Anda Kosong";
+            $_SESSION["warning"] = 'Poin Anda Kosong';
+		    redirect('/tukar_poin/shopee_pay');
+        }else if($poin <= $total){
+            echo "Point Anda Kurang";
+            $_SESSION["warning"] = 'Poin Anda Kurang';
+		    redirect('/tukar_poin/shopee_pay');
+        }else{
+            $data = array(
+                'id_user'          => $id_user,
+                'jumlah_penarikan' => $jumlah_penarikan,
+                'no_tujuan'        => $no_tujuan,
+                'platform'        => $platform,
+                'poin'             => $shopee_pay
+            );
+            $current_poin = array(
+                'poin'             => $total
+            );
+            $where = array(
+                'id_user' => $id_user
+            );
+            // die(var_dump($current_poin));
+            $this->db->insert('penarikan', $data, $where);
+            $this->db->update('user', $current_poin, $where);
+        };
+
+		$_SESSION["sukses"] = 'Poin berhasil di tukar';
+		redirect('/tukar_poin/shopee_pay');
+    }
+    public function tukar_ovo()
+    {
+		$id_user = $this->input->post('id_user');
+		$jumlah_penarikan = $this->input->post('jumlah_penarikan');
+		$ovo = $this->input->post('ovo');
+		$no_tujuan = $this->input->post('no_tujuan');
+		$platform = $this->input->post('platform');
+		$poin = $this->input->post('poin');
+
+        $total = abs($poin - $ovo);
+        if($poin == '0'){
+            echo "Point Anda Kosong";
+            $_SESSION["warning"] = 'Poin Anda Kosong';
+		    redirect('/tukar_poin/ovo');
+        }else if($poin <= $total){
+            echo "Point Anda Kurang";
+            $_SESSION["warning"] = 'Poin Anda Kurang';
+		    redirect('/tukar_poin/ovo');
+        }else{
+            $data = array(
+                'id_user'          => $id_user,
+                'jumlah_penarikan' => $jumlah_penarikan,
+                'no_tujuan'        => $no_tujuan,
+                'platform'        => $platform,
+                'poin'             => $ovo
+            );
+            $current_poin = array(
+                'poin'             => $total
+            );
+            $where = array(
+                'id_user' => $id_user
+            );
+            // die(var_dump($current_poin));
+            $this->db->insert('penarikan', $data, $where);
+            $this->db->update('user', $current_poin, $where);
+        };
+
+		$_SESSION["sukses"] = 'Poin berhasil di tukar';
+		redirect('/tukar_poin/ovo');
     }
 }

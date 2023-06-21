@@ -31,62 +31,72 @@
             <a href="javascript:;" class="mobile-menu-toggler"> <i data-lucide="x-circle" class="w-8 h-8 text-white transform -rotate-90"></i> </a>
             <ul class="scrollable__content py-2">
                 <li>
-                    <a href="<?= base_url('home') ?>" class="menu">
+                    <a href="<?= base_url('dashboard') ?>" class="menu">
                         <div class="menu__icon"> <i data-lucide="home"></i> </div>
                         <div class="menu__title"> Dashboard </div>
                     </a>
                 </li>
                 <li>
                     <a href="<?= base_url('dashboard_categories/plastik') ?>" class="menu">
-                        <div class="menu__icon"> <i data-lucide="home"></i> </div>
+                        <div class="menu__icon"> <i data-lucide="hexagon"></i> </div>
                         <div class="menu__title"> Plastik </div>
                     </a>
                 </li>
                 <li>
                     <a href="<?= base_url('dashboard_categories/kertas') ?>" class="menu">
-                        <div class="menu__icon"> <i data-lucide="home"></i> </div>
+                        <div class="menu__icon"> <i data-lucide="hexagon"></i> </div>
                         <div class="menu__title"> Kertas </div>
                     </a>
                 </li>
                 <li>
                     <a href="<?= base_url('dashboard_categories/kaca') ?>" class="menu">
-                        <div class="menu__icon"> <i data-lucide="home"></i> </div>
+                        <div class="menu__icon"> <i data-lucide="hexagon"></i> </div>
                         <div class="menu__title"> Kaca </div>
                     </a>
                 </li>
                 <li>
                     <a href="<?= base_url('dashboard_categories/elektronik') ?>" class="menu">
-                        <div class="menu__icon"> <i data-lucide="home"></i> </div>
+                        <div class="menu__icon"> <i data-lucide="hexagon"></i> </div>
                         <div class="menu__title"> Barang Elektronik </div>
                     </a>
                 </li>
                 <li>
                     <a href="<?= base_url('tekstil') ?>" class="menu">
-                        <div class="menu__icon"> <i data-lucide="home"></i> </div>
+                        <div class="menu__icon"> <i data-lucide="hexagon"></i> </div>
                         <div class="menu__title"> Tekstil </div>
                     </a>
                 </li>
+                <li class="side-nav__devider my-6"></li>
+
+                <li>
+                    <a href="<?= base_url('tukar_poin') ?>" class="menu">
+                        <div class="menu__icon"> <i data-lucide="dollar-sign"></i> </div>
+                        <div class="menu__title"> Tukar Koin </div>
+                    </a>
+                </li>
+                <li class="side-nav__devider my-6"></li>
+
                 <li>
                     <a href="<?= base_url('order') ?>" class="menu">
-                        <div class="menu__icon"> <i data-lucide="home"></i> </div>
-                        <div class="menu__title"> Riwayat Pesanan </div>
+                        <div class="menu__icon"> <i data-lucide="box"></i> </div>
+                        <div class="menu__title"> Riwayat Order </div>
                     </a>
                 </li>
                 <li>
                     <a href="<?= base_url('bill') ?>" class="menu">
-                        <div class="menu__icon"> <i data-lucide="home"></i> </div>
-                        <div class="menu__title"> Riwayat Penagihan </div>
+                        <div class="menu__icon"> <i data-lucide="file-text"></i> </div>
+                        <div class="menu__title"> Belum Bayar </div>
                     </a>
                 </li>
                 <li>
                     <a href="<?= base_url('pay') ?>" class="menu">
-                        <div class="menu__icon"> <i data-lucide="home"></i> </div>
+                        <div class="menu__icon"> <i data-lucide="check-circle"></i> </div>
                         <div class="menu__title"> Invoice </div>
                     </a>
                 </li>
                 <li>
                     <a href="<?= base_url('profile  ') ?>" class="menu">
-                        <div class="menu__icon"> <i data-lucide="home"></i> </div>
+                        <div class="menu__icon"> <i data-lucide="settings"></i> </div>
                         <div class="menu__title"> Profile </div>
                     </a>
                 </li>
@@ -262,12 +272,12 @@
                             <div class="side-menu__title"> Profile </div>
                         </a>
                     </li>
-                    <li>
+                    <!-- <li>
                         <div class="side-menu active border">
                             <div class="side-menu__icon"> <i data-lucide="moon"></i> </div>
                             <button onclick="myFunction()" class="side-menu__title"> Mode Gelap </button>
                         </div>
-                    </li>
+                    </li> -->
                 </ul>
             </nav>
             <!-- END: Side Menu -->

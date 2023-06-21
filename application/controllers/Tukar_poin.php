@@ -167,6 +167,7 @@ class Tukar_poin extends CI_Controller
 		$jumlah_penarikan = $this->input->post('jumlah_penarikan');
 		$gopay = $this->input->post('gopay');
 		$no_tujuan = $this->input->post('no_tujuan');
+		$platform = $this->input->post('platform');
 		$poin = $this->input->post('poin');
 
         $total = abs($poin - $gopay);
@@ -183,6 +184,7 @@ class Tukar_poin extends CI_Controller
                 'id_user'          => $id_user,
                 'jumlah_penarikan' => $jumlah_penarikan,
                 'no_tujuan'        => $no_tujuan,
+                'platform'        => $platform,
                 'poin'             => $gopay
             );
             $current_poin = array(

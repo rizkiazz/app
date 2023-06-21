@@ -38,20 +38,20 @@
             <a href="javascript:;" class="mobile-menu-toggler"> <i data-lucide="x-circle" class="w-8 h-8 text-white transform -rotate-90"></i> </a>
             <ul class="scrollable__content py-2">
                 <li>
-                    <a href="side-menu-light-inbox.html" class="menu">
-                        <div class="menu__icon"> <i data-lucide="inbox"></i> </div>
+                    <a href="<?= base_url('admin/dashboard') ?>" class="menu">
+                        <div class="menu__icon"> <i data-lucide="box"></i> </div>
                         <div class="menu__title"> Dashboard </div>
                     </a>
                 </li>
                 <li>
-                    <a href="side-menu-light-file-manager.html" class="menu">
-                        <div class="menu__icon"> <i data-lucide="hard-drive"></i> </div>
+                    <a href="<?= base_url('admin/product') ?>" class="menu">
+                        <div class="menu__icon"> <i data-lucide="shopping-bag"></i> </div>
                         <div class="menu__title"> Produk </div>
                     </a>
                 </li>
                 <li>
-                    <a href="side-menu-light-point-of-sale.html" class="menu">
-                        <div class="menu__icon"> <i data-lucide="credit-card"></i> </div>
+                    <a href="<?= base_url('admin/invoice') ?>" class="menu">
+                        <div class="menu__icon"> <i data-lucide="file-text"></i> </div>
                         <div class="menu__title"> Invoice </div>
                     </a>
                 </li>

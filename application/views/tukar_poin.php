@@ -16,116 +16,20 @@
                 </div>
                 <div class="ml-8">
                     <div class="w-24 sm:w-40 truncate sm:whitespace-normal font-medium text-lg">Poin</div>
-                    <?php foreach ($point as $row) : ?>
-
-                    <div class="text-slate-500"><?= number_format($row->harga, 0, ',', '.') ?></div>
-
+                    <?php foreach ($profile as $row) : ?>
+                        <?php $point = $row->poin ?>
+                        <?php if(!$point){
+                            echo'<div class="text-slate-500">0</div>';
+                        } else {
+                            echo '<div class="text-slate-500">' .$point. '</div>';
+                        
+                        }?>
                     <?php endforeach; ?>    
 
                 </div>
             </div>
         </div>
     </div>
-    <!-- BEGIN: General Report -->
-    <!-- <div class="col-span-12 mt-8">
-        <div class="intro-y flex h-10 items-center">
-            <h2 class="mr-5 truncate text-lg font-medium">Tukar Poin</h2>
-        </div>
-        <div class="mt-5 grid grid-cols-12 gap-6">
-            <div class="intro-y col-span-12 sm:col-span-6 xl:col-span-3">
-                <div class="relative zoom-in before:content-[''] before:w-[90%] before:shadow-[0px_3px_20px_#0000000b] before:bg-slate-50 before:h-full before:mt-3 before:absolute before:rounded-md before:mx-auto before:inset-x-0 before:dark:bg-darkmode-400/70">
-                    <div class="box p-5">
-                        <div class="flex">
-                            <i data-lucide="shopping-cart" width="24" height="24" class="stroke-1.5 h-[28px] w-[28px] text-primary h-[28px] w-[28px] text-primary"></i>
-                            <div class="ml-auto">
-                                <div title="33% Higher than last month" class="tooltip cursor-pointer flex cursor-pointer items-center rounded-full bg-success py-[3px] pl-2 pr-1 text-xs font-medium text-white flex cursor-pointer items-center rounded-full bg-success py-[3px] pl-2 pr-1 text-xs font-medium text-white">
-                                    33%
-                                    <i data-lucide="chevron-up" width="24" height="24" class="stroke-1.5 ml-0.5 h-4 w-4 ml-0.5 h-4 w-4"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mt-6 text-3xl font-medium leading-8">4.710</div>
-                        <div class="mt-1 text-base text-slate-500">DANA</div>
-                    </div>
-                </div>
-            </div>
-            <div class="intro-y col-span-12 sm:col-span-6 xl:col-span-3">
-                <div class="relative zoom-in before:content-[''] before:w-[90%] before:shadow-[0px_3px_20px_#0000000b] before:bg-slate-50 before:h-full before:mt-3 before:absolute before:rounded-md before:mx-auto before:inset-x-0 before:dark:bg-darkmode-400/70">
-                    <div class="box p-5">
-                        <div class="flex">
-                            <i data-lucide="credit-card" width="24" height="24" class="stroke-1.5 h-[28px] w-[28px] text-pending h-[28px] w-[28px] text-pending"></i>
-                            <div class="ml-auto">
-                                <div title="2% Lower than last month" class="tooltip cursor-pointer flex cursor-pointer items-center rounded-full bg-danger py-[3px] pl-2 pr-1 text-xs font-medium text-white flex cursor-pointer items-center rounded-full bg-danger py-[3px] pl-2 pr-1 text-xs font-medium text-white">
-                                    2%
-                                    <i data-lucide="chevron-down" width="24" height="24" class="stroke-1.5 ml-0.5 h-4 w-4 ml-0.5 h-4 w-4"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mt-6 text-3xl font-medium leading-8">3.721</div>
-                        <div class="mt-1 text-base text-slate-500">GOPAY</div>
-                    </div>
-                </div>
-            </div>
-            <div class="intro-y col-span-12 sm:col-span-6 xl:col-span-3">
-                <div class="relative zoom-in before:content-[''] before:w-[90%] before:shadow-[0px_3px_20px_#0000000b] before:bg-slate-50 before:h-full before:mt-3 before:absolute before:rounded-md before:mx-auto before:inset-x-0 before:dark:bg-darkmode-400/70">
-                    <div class="box p-5">
-                        <div class="flex">
-                            <i data-lucide="monitor" width="24" height="24" class="stroke-1.5 h-[28px] w-[28px] text-warning h-[28px] w-[28px] text-warning"></i>
-                            <div class="ml-auto">
-                                <div title="12% Higher than last month" class="tooltip cursor-pointer flex cursor-pointer items-center rounded-full bg-success py-[3px] pl-2 pr-1 text-xs font-medium text-white flex cursor-pointer items-center rounded-full bg-success py-[3px] pl-2 pr-1 text-xs font-medium text-white">
-                                    12%
-                                    <i data-lucide="chevron-up" width="24" height="24" class="stroke-1.5 ml-0.5 h-4 w-4 ml-0.5 h-4 w-4"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mt-6 text-3xl font-medium leading-8">2.149</div>
-                        <div class="mt-1 text-base text-slate-500">SHOPEEPAY</div>
-                    </div>
-                </div>
-            </div>
-            <div class="intro-y col-span-12 sm:col-span-6 xl:col-span-3">
-                <div class="relative zoom-in before:content-[''] before:w-[90%] before:shadow-[0px_3px_20px_#0000000b] before:bg-slate-50 before:h-full before:mt-3 before:absolute before:rounded-md before:mx-auto before:inset-x-0 before:dark:bg-darkmode-400/70">
-                    <div class="box p-5">
-                        <div class="flex">
-                            <i data-lucide="user" width="24" height="24" class="stroke-1.5 h-[28px] w-[28px] text-success h-[28px] w-[28px] text-success"></i>
-                            <div class="ml-auto">
-                                <div title="22% Higher than last month" class="tooltip cursor-pointer flex cursor-pointer items-center rounded-full bg-success py-[3px] pl-2 pr-1 text-xs font-medium text-white flex cursor-pointer items-center rounded-full bg-success py-[3px] pl-2 pr-1 text-xs font-medium text-white">
-                                    22%
-                                    <i data-lucide="chevron-up" width="24" height="24" class="stroke-1.5 ml-0.5 h-4 w-4 ml-0.5 h-4 w-4"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mt-6 text-3xl font-medium leading-8">152.040</div>
-                        <div class="mt-1 text-base text-slate-500">OVO</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> -->
-    <!-- END: General Report -->
-
-    <!-- <div class="intro-y flex h-10 items-center">
-            <h2 class="mr-5 truncate text-lg font-medium">Donasi Poin</h2>
-        </div>
-        <div class="mt-5 grid grid-cols-12 gap-6">
-            <div class="intro-y col-span-12 sm:col-span-6 xl:col-span-3">
-                <div class="relative zoom-in before:content-[''] before:w-[90%] before:shadow-[0px_3px_20px_#0000000b] before:bg-slate-50 before:h-full before:mt-3 before:absolute before:rounded-md before:mx-auto before:inset-x-0 before:dark:bg-darkmode-400/70">
-                    <div class="box p-5">
-                        <div class="flex">
-                            <i data-lucide="shopping-cart" width="24" height="24" class="stroke-1.5 h-[28px] w-[28px] text-primary h-[28px] w-[28px] text-primary"></i>
-                            <div class="ml-auto">
-                                <div title="33% Higher than last month" class="tooltip cursor-pointer flex cursor-pointer items-center rounded-full bg-success py-[3px] pl-2 pr-1 text-xs font-medium text-white flex cursor-pointer items-center rounded-full bg-success py-[3px] pl-2 pr-1 text-xs font-medium text-white">
-                                    33%
-                                    <i data-lucide="chevron-up" width="24" height="24" class="stroke-1.5 ml-0.5 h-4 w-4 ml-0.5 h-4 w-4"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mt-6 text-3xl font-medium leading-8">4.710</div>
-                        <div class="mt-1 text-base text-slate-500">DANA</div>
-                    </div>
-                </div>
-            </div>
-    </div> -->
 
     <h2 class="mr-5 mt-5 truncate text-lg font-medium">Tukar Poin</h2>
 

@@ -26,7 +26,10 @@ body, html {
   background-image: url("<?= site_url('asset/home/') ?>/home.jpg");
   min-height: 100%;
 }
-
+.w3-top, .container{
+  background-color : #064e3b;
+  color : #fff;
+}
 .w3-bar .w3-button {
   padding: 16px;
 }
@@ -36,7 +39,7 @@ body, html {
 
 <!-- Navbar (sit on top) -->
 <div class="w3-top">
-  <div class="w3-bar w3-green w3-card" id="myNavbar">
+  <div class="w3-bar w3-card" id="myNavbar">
     <a href="<?= base_url('home') ?>" class="w3-bar-item w3-button w3-wide">EasyPickTrash</a>
     <!-- Right-sided navbar links -->
     <div class="w3-right w3-hide-small">
@@ -71,7 +74,7 @@ body, html {
 </header>
 
 <!-- tentang kami -->
-<div class="w3-container w3-green" style="padding:128px 16px" id="tentangkami">
+<div class="w3-container" style="padding:128px 16px" id="tentangkami">
     <div class="w3-row-padding" style="margin-top:64px; align-items: center; display: flex; justify-content: center; font-size: medium;">
       <div class="w3-col m6">
         <h2>EasyPickTrash.</h2>
@@ -85,7 +88,7 @@ body, html {
   </div>
 
   <!-- layanan -->
-  <div class="w3-container" style="padding:128px 16px" id="layanan">
+  <div class="w3-container container" style="padding:128px 16px" id="layanan">
     <h3 class="w3-center">Layanan</h3>
     <p class="w3-center w3-large">Revolusi daur ulang dari EasyPickTrash untuk semua orang.</p>
     <div class="w3-row-padding" style="margin-top:64px; text-align: center; align-items: center; display: flex; justify-content: center; font-size: medium;">
@@ -160,7 +163,7 @@ body, html {
 </div>  
 
 <!-- Footer -->
-<footer class="w3-center w3-green w3-padding-64" id="kontakkami">
+<footer class="w3-center footer w3-padding-64" id="kontakkami">
   <a href="#home" class="w3-button w3-light-grey w3-text-green"><i class="fa fa-arrow-up w3-margin-right"></i>Kembali ke atas</a>
   <div class="w3-xlarge w3-section">
     <i class="fa fa-facebook-official w3-hover-opacity"></i>

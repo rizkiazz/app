@@ -32,10 +32,14 @@
             <div class="mt-6 lg:mt-0 flex-1 px-5 border-l border-r border-slate-200/60 dark:border-darkmode-400 border-t lg:border-t-0 pt-5 lg:pt-0">
                 <div class="font-medium text-center lg:text-left lg:mt-3">Point</div>
                 <div class="flex flex-col justify-center items-center lg:items-start mt-4">
-    
-                    <?php foreach ($point as $row) : ?>
-                    <div class="truncate sm:whitespace-normal flex items-center"> <i data-lucide="dollar-sign" class="w-4 h-4 mr-2"></i> <?= number_format($row->harga, 0, ',', '.') ?> </div>
-                    <?php endforeach; ?>
+                    <?php foreach ($profile as $row) : ?>
+                        <?php $point = $row->poin ?>
+                        <?php if(!$point){
+                            echo'<div class="truncate sm:whitespace-normal flex items-center"> <i data-lucide="dollar-sign" class="w-4 h-4 mr-2"></i>0</div>';
+                        } else {
+                            echo '<div class="truncate sm:whitespace-normal flex items-center"> <i data-lucide="dollar-sign" class="w-4 h-4 mr-2"></i>' .$point . '</div>';
+                        }?>
+                    <?php endforeach; ?>  
                     <a href="<?= site_url('/tukar_poin') ?>" class="btn btn-primary w-30 mt-3">Tukar Poin</a>
     
                 </div>

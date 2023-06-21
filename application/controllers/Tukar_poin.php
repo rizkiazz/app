@@ -105,6 +105,8 @@ class Tukar_poin extends CI_Controller
 
         $data['point'] = $this->db->query("SELECT SUM(harga) AS harga FROM cart 
 			WHERE cart.id_user='$id'")->result();
+        $data['nominal'] = $this->db->query("SELECT SUM(poin) AS poin FROM donasi 
+            WHERE donasi.id_user='$id'")->result();
 
         $this->load->view('layout/user/header', $data);
 		$this->load->view('qurban', $data);
@@ -120,11 +122,15 @@ class Tukar_poin extends CI_Controller
 
         $data['point'] = $this->db->query("SELECT SUM(harga) AS harga FROM cart 
 			WHERE cart.id_user='$id'")->result();
+        $data['nominal'] = $this->db->query("SELECT SUM(poin) AS poin FROM donasi 
+            WHERE donasi.id_user='$id'")->result();
 
         $this->load->view('layout/user/header', $data);
 		$this->load->view('galang_dana_pembangunan', $data);
 		$this->load->view('layout/user/footer');
     }
+
+    // Fungsi penukaran poin
     public function tukar_dana()
     {
 		$id_user = $this->input->post('id_user');
@@ -160,10 +166,10 @@ class Tukar_poin extends CI_Controller
             // die(var_dump($current_poin));
             $this->db->insert('penarikan', $data, $where);
             $this->db->update('user', $current_poin, $where);
+            $_SESSION["sukses"] = 'Poin berhasil di tukar';
+            redirect('/tukar_poin/dana');
         };
 
-		$_SESSION["sukses"] = 'Poin berhasil di tukar';
-		redirect('/tukar_poin/dana');
     }
     public function tukar_gopay()
     {
@@ -200,10 +206,10 @@ class Tukar_poin extends CI_Controller
             // die(var_dump($current_poin));
             $this->db->insert('penarikan', $data, $where);
             $this->db->update('user', $current_poin, $where);
+            $_SESSION["sukses"] = 'Poin berhasil di tukar';
+            redirect('/tukar_poin/gopay');
         };
 
-		$_SESSION["sukses"] = 'Poin berhasil di tukar';
-		redirect('/tukar_poin/gopay');
     }
     public function tukar_shopee_pay()
     {
@@ -240,10 +246,10 @@ class Tukar_poin extends CI_Controller
             // die(var_dump($current_poin));
             $this->db->insert('penarikan', $data, $where);
             $this->db->update('user', $current_poin, $where);
+            $_SESSION["sukses"] = 'Poin berhasil di tukar';
+            redirect('/tukar_poin/shopee_pay');
         };
 
-		$_SESSION["sukses"] = 'Poin berhasil di tukar';
-		redirect('/tukar_poin/shopee_pay');
     }
     public function tukar_ovo()
     {
@@ -280,9 +286,91 @@ class Tukar_poin extends CI_Controller
             // die(var_dump($current_poin));
             $this->db->insert('penarikan', $data, $where);
             $this->db->update('user', $current_poin, $where);
+            $_SESSION["sukses"] = 'Poin berhasil di tukar';
+            redirect('/tukar_poin/ovo');
         };
 
-		$_SESSION["sukses"] = 'Poin berhasil di tukar';
-		redirect('/tukar_poin/ovo');
+    }
+
+    // function donasi
+    public function donasi_qurban()
+    {
+        $id_user = $this->input->post('id_user');
+		$name = $this->input->post('name');
+		$email = $this->input->post('email');
+		$nominal = $this->input->post('nominal');
+		$platform = $this->input->post('platform');
+		$poin = $this->input->post('poin');
+
+        $total = abs($poin - $nominal);
+        if($poin == '0'){
+            echo "Point Anda Kosong";
+            $_SESSION["warning"] = 'Poin Anda Kosong';
+		    redirect('/tukar_poin/qurban');
+        }else if($poin <= $total){
+            echo "Point Anda Kurang";
+            $_SESSION["warning"] = 'Poin Anda Kurang';
+		    redirect('/tukar_poin/qurban');
+        }else{
+            $data = array(
+                'id_user'          => $id_user,
+                'name'             => $name,
+                'email'            => $email,
+                'platform'         => $platform,
+                'poin'             => $nominal
+            );
+            $current_poin = array(
+                'poin'             => $total
+            );
+            $where = array(
+                'id_user' => $id_user
+            );
+            // die(var_dump($data));
+            $this->db->insert('donasi', $data, $where);
+            $this->db->update('user', $current_poin, $where);
+            $_SESSION["sukses"] = 'Poin berhasil di tukar';
+            redirect('/tukar_poin/qurban');
+        };
+    }
+
+    public function donasi_galang_dana_pembangunan()
+    {
+        $id_user = $this->input->post('id_user');
+		$name = $this->input->post('name');
+		$email = $this->input->post('email');
+		$nominal = $this->input->post('nominal');
+		$platform = $this->input->post('platform');
+		$poin = $this->input->post('poin');
+
+        $total = abs($poin - $nominal);
+        if($poin == '0'){
+            echo "Point Anda Kosong";
+            $_SESSION["warning"] = 'Poin Anda Kosong';
+		    redirect('/tukar_poin/galang_dana_pembangunan');
+        }else if($poin <= $total){
+            echo "Point Anda Kurang";
+            $_SESSION["warning"] = 'Poin Anda Kurang';
+		    redirect('/tukar_poin/galang_dana_pembangunan');
+        }else{
+            $data = array(
+                'id_user'          => $id_user,
+                'name'             => $name,
+                'email'            => $email,
+                'platform'         => $platform,
+                'poin'             => $nominal
+            );
+            $current_poin = array(
+                'poin'             => $total
+            );
+            $where = array(
+                'id_user' => $id_user
+            );
+            // die(var_dump($data));
+            $this->db->insert('donasi', $data, $where);
+            $this->db->update('user', $current_poin, $where);
+            $_SESSION["sukses"] = 'Poin berhasil di tukar';
+            redirect('/tukar_poin/galang_dana_pembangunan');
+        };
+
     }
 }

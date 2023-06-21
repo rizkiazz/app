@@ -124,6 +124,8 @@
             <input type="hidden" name="id_user" id="id_user" value="<?php echo $this->session->userdata('id_user') ?>">
             <input type="hidden" name="dana" id="dana" value="50">
 
+            <input type="hidden" name="platform" id="platform" value="dana">
+
             <input type="hidden" name="poin" id="poin" value="<?= $current_poin ?>">
 
             <div class="col-span-12 sm:col-span-12">
@@ -164,6 +166,8 @@
         <div class="p-5 grid grid-cols-12 gap-4 gap-y-3">
             <input type="hidden" name="id_user" id="id_user" value="<?php echo $this->session->userdata('id_user') ?>">
             <input type="hidden" name="dana" id="dana" value="100">
+
+            <input type="hidden" name="platform" id="platform" value="dana">
 
             <input type="hidden" name="poin" id="poin" value="<?= $current_poin ?>">
 
@@ -206,6 +210,8 @@
             <input type="hidden" name="id_user" id="id_user" value="<?php echo $this->session->userdata('id_user') ?>">
             <input type="hidden" name="dana" id="dana" value="250">
 
+            <input type="hidden" name="platform" id="platform" value="dana">
+
             <input type="hidden" name="poin" id="poin" value="<?= $current_poin ?>">
 
             <div class="col-span-12 sm:col-span-12">
@@ -247,6 +253,8 @@
             <input type="hidden" name="id_user" id="id_user" value="<?php echo $this->session->userdata('id_user') ?>">
             <input type="hidden" name="dana" id="dana" value="500">
 
+            <input type="hidden" name="platform" id="platform" value="dana">
+
             <input type="hidden" name="poin" id="poin" value="<?= $current_poin ?>">
 
             <div class="col-span-12 sm:col-span-12">
@@ -287,6 +295,7 @@
         <div class="p-5 grid grid-cols-12 gap-4 gap-y-3">
             <input type="hidden" name="id_user" id="id_user" value="<?php echo $this->session->userdata('id_user') ?>">
             <input type="hidden" name="dana" id="dana" value="1000">
+            <input type="hidden" name="platform" id="platform" value="dana">
 
             <input type="hidden" name="poin" id="poin" value="<?= $current_poin ?>">
 

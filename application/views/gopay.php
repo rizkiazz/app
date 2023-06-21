@@ -4,16 +4,28 @@
             <div class="w-24 ml-5 sm:w-40 truncate sm:whitespace-normal font-medium text-lg">Poin Anda</div>
             <div class="flex flex-1 px-0 items-center justify-center lg:justify-end">
                 <div class="mr-5">
-                    <?php foreach ($profile as $row) : ?>
-
-                    <div class="text-slate-500 text-lg"><b><?= number_format($row->poin, 0, ',', '.') ?> poin</b></div>
-
-                    <?php endforeach; ?>    
                     <?php foreach ($point as $row) : ?>
-
-                    <div class="text-slate-500 text-lg"><b><?= number_format($row->harga, 0, ',', '.') ?> poin</b></div>
-
+                        <?php $point = $row->harga ?>
+                        <?php if(!$point){
+                            echo'<div class="text-slate-500 text-lg">poin dari checkout <b>0 poin</b></div>';
+                        } else {
+                            echo '<div class="text-slate-500 text-lg">poin dari checkout <b>' . $point . 'poin</b></div>';
+                        
+                        }?>                        
                     <?php endforeach; ?>    
+                    <?php foreach ($nominal as $row) : ?>
+                        <?php $nominal = $row->poin ?>
+                        
+                        <?php if(!$nominal){
+                            echo'<div class="text-slate-500 text-lg">poin yang ditukar <b>0 poin</b></div>';
+                        } else {
+                            echo '<div class="text-slate-500 text-lg">poin yang ditukar <b>' . $nominal. 'poin</b></div>';
+                        
+                        }?>                         
+                    <?php endforeach; ?>  
+                    <?php $current_poin = $point - $nominal ?>
+  
+                    <div class="text-slate-500 text-lg">poin saat ini <b><?= $current_poin ?> poin</b></div>
 
                 </div>
             </div>
@@ -24,7 +36,7 @@
     <!-- BEGIN: General Report -->
     <div class="col-span-12 mt-8">
         <div class="intro-y flex h-10 items-center">
-            <h2 class="mr-5 truncate text-lg font-medium">GOPAY POIN</h2>
+            <h2 class="mr-5 truncate text-lg font-medium">Gopay Poin</h2>
         </div>
 
         <div class="mt-5 grid grid-cols-12 gap-6">
@@ -107,15 +119,13 @@
             </h2>
         </div>
 
-        <form action="<?= site_url('tukar_poin/tukar_dana') ?>" method="post">
+        <form action="<?= site_url('tukar_poin/tukar_gopay') ?>" method="post">
         <div class="p-5 grid grid-cols-12 gap-4 gap-y-3">
             <input type="hidden" name="id_user" id="id_user" value="<?php echo $this->session->userdata('id_user') ?>">
-            <input type="hidden" name="dana" id="dana" value="50">
-            <?php foreach ($point as $row) : ?>
+            <input type="hidden" name="gopay" id="gopay" value="50">
 
-            <input type="hidden" name="poin" id="poin" value="<?= $row->harga ?>">
+            <input type="hidden" name="poin" id="poin" value="<?= $current_poin ?>">
 
-            <?php endforeach; ?>              
             <div class="col-span-12 sm:col-span-12">
                 <label data-tw-merge for="modal-form-1" class="inline-block mb-2">
                     Nama User
@@ -150,15 +160,13 @@
             </h2>
         </div>
 
-        <form action="<?= site_url('tukar_poin/tukar_dana') ?>" method="post">
+        <form action="<?= site_url('tukar_poin/tukar_gopay') ?>" method="post">
         <div class="p-5 grid grid-cols-12 gap-4 gap-y-3">
             <input type="hidden" name="id_user" id="id_user" value="<?php echo $this->session->userdata('id_user') ?>">
-            <input type="hidden" name="dana" id="dana" value="100">
-            <?php foreach ($point as $row) : ?>
+            <input type="hidden" name="gopay" id="gopay" value="100">
 
-            <input type="hidden" name="poin" id="poin" value="<?= $row->harga ?>">
+            <input type="hidden" name="poin" id="poin" value="<?= $current_poin ?>">
 
-            <?php endforeach; ?>              
             <div class="col-span-12 sm:col-span-12">
                 <label data-tw-merge for="modal-form-1" class="inline-block mb-2">
                     Nama User
@@ -193,15 +201,13 @@
             </h2>
         </div>
 
-        <form action="<?= site_url('tukar_poin/tukar_dana') ?>" method="post">
+        <form action="<?= site_url('tukar_poin/tukar_gopay') ?>" method="post">
         <div class="p-5 grid grid-cols-12 gap-4 gap-y-3">
             <input type="hidden" name="id_user" id="id_user" value="<?php echo $this->session->userdata('id_user') ?>">
-            <input type="hidden" name="dana" id="dana" value="250">
-            <?php foreach ($point as $row) : ?>
+            <input type="hidden" name="gopay" id="gopay" value="250">
 
-            <input type="hidden" name="poin" id="poin" value="<?= $row->harga ?>">
+            <input type="hidden" name="poin" id="poin" value="<?= $current_poin ?>">
 
-            <?php endforeach; ?>              
             <div class="col-span-12 sm:col-span-12">
                 <label data-tw-merge for="modal-form-1" class="inline-block mb-2">
                     Nama User
@@ -236,15 +242,13 @@
             </h2>
         </div>
 
-        <form action="<?= site_url('tukar_poin/tukar_dana') ?>" method="post">
+        <form action="<?= site_url('tukar_poin/tukar_gopay') ?>" method="post">
         <div class="p-5 grid grid-cols-12 gap-4 gap-y-3">
             <input type="hidden" name="id_user" id="id_user" value="<?php echo $this->session->userdata('id_user') ?>">
-            <input type="hidden" name="dana" id="dana" value="500">
-            <?php foreach ($point as $row) : ?>
+            <input type="hidden" name="gopay" id="gopay" value="500">
 
-            <input type="hidden" name="poin" id="poin" value="<?= $row->harga ?>">
+            <input type="hidden" name="poin" id="poin" value="<?= $current_poin ?>">
 
-            <?php endforeach; ?>              
             <div class="col-span-12 sm:col-span-12">
                 <label data-tw-merge for="modal-form-1" class="inline-block mb-2">
                     Nama User
@@ -279,15 +283,13 @@
             </h2>
         </div>
 
-        <form action="<?= site_url('tukar_poin/tukar_dana') ?>" method="post">
+        <form action="<?= site_url('tukar_poin/tukar_gopay') ?>" method="post">
         <div class="p-5 grid grid-cols-12 gap-4 gap-y-3">
             <input type="hidden" name="id_user" id="id_user" value="<?php echo $this->session->userdata('id_user') ?>">
-            <input type="hidden" name="dana" id="dana" value="1000">
-            <?php foreach ($point as $row) : ?>
+            <input type="hidden" name="gopay" id="gopay" value="1000">
 
-            <input type="hidden" name="poin" id="poin" value="<?= $row->harga ?>">
+            <input type="hidden" name="poin" id="poin" value="<?= $current_poin ?>">
 
-            <?php endforeach; ?>              
             <div class="col-span-12 sm:col-span-12">
                 <label data-tw-merge for="modal-form-1" class="inline-block mb-2">
                     Nama User
@@ -318,7 +320,31 @@
 
 </div>
 
+<link href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.33.1/sweetalert2.min.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.33.1/sweetalert2.min.js"></script>
 
+<?php if (@$_SESSION['sukses']) { ?>
+    <script>
+        swal("Good job!", "<?php echo $_SESSION['sukses']; ?>", "success");
+    </script>
+    <!-- jangan lupa untuk menambahkan unset agar sweet alert tidak muncul lagi saat di refresh -->
+<?php unset($_SESSION['sukses']);
+
+} ?>
+<?php if (@$_SESSION['error']) { ?>
+    <script>
+        swal("Ups!", "<?php echo $_SESSION['error']; ?>", "error");
+    </script>
+    <!-- jangan lupa untuk menambahkan unset agar sweet alert tidak muncul lagi saat di refresh -->
+<?php unset($_SESSION['error']);
+} ?>
+<?php if (@$_SESSION['warning']) { ?>
+    <script>
+        swal("Ups!", "<?php echo $_SESSION['warning']; ?>", "warning");
+    </script>
+    <!-- jangan lupa untuk menambahkan unset agar sweet alert tidak muncul lagi saat di refresh -->
+<?php unset($_SESSION['warning']);
+} ?>
 
 
 

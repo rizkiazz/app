@@ -36,6 +36,8 @@ class Tukar_poin extends CI_Controller
 
         $data['point'] = $this->db->query("SELECT SUM(harga) AS harga FROM cart 
 			WHERE cart.id_user='$id'")->result();
+        $data['nominal'] = $this->db->query("SELECT SUM(poin) AS poin FROM penarikan 
+            WHERE penarikan.id_user='$id'")->result();
 
         $this->load->view('layout/user/header', $data);
 		$this->load->view('gopay', $data);
@@ -51,7 +53,7 @@ class Tukar_poin extends CI_Controller
     
         $data['point'] = $this->db->query("SELECT SUM(harga) AS harga FROM cart 
 			WHERE cart.id_user='$id'")->result();
-       $data['nominal'] = $this->db->query("SELECT SUM(poin) AS poin FROM penarikan 
+        $data['nominal'] = $this->db->query("SELECT SUM(poin) AS poin FROM penarikan 
             WHERE penarikan.id_user='$id'")->result();
             
 

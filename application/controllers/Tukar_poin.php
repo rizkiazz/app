@@ -48,9 +48,15 @@ class Tukar_poin extends CI_Controller
         $id = $this->session->userdata('id_user');
         $data['profile'] = $this->db->query("SELECT * FROM user 
 			WHERE user.id_user='$id'")->result();
+        $data['poin'] = $this->db->query("SELECT user.poin FROM(SELECT SUM(harga) AS harga FROM cart 
+			WHERE cart.id_user='$id') 
+			WHERE user.id_user='$id'")->result();
 
         $data['point'] = $this->db->query("SELECT SUM(harga) AS harga FROM cart 
 			WHERE cart.id_user='$id'")->result();
+       $data['nominal'] = $this->db->query("SELECT SUM(poin) AS poin FROM penarikan 
+            WHERE penarikan.id_user='$id'")->result();
+            
 
         $this->load->view('layout/user/header', $data);
 		$this->load->view('dana', $data);
@@ -125,20 +131,32 @@ class Tukar_poin extends CI_Controller
 		$poin = $this->input->post('poin');
 
         $total = $poin - $dana;
-        if($poin = 0){
+        if($poin == '0'){
             echo "Point Anda Kosong";
-        }else if($poin >= $total){
+            $_SESSION["warning"] = 'Poin Anda Kosong';
+		    redirect('/tukar_poin/dana');
+        }else if($poin <= $total){
             echo "Point Anda Kurang";
+            $_SESSION["warning"] = 'Poin Anda Kurang';
+		    redirect('/tukar_poin/dana');
         }else{
-
             $data = array(
                 'id_user'          => $id_user,
                 'jumlah_penarikan' => $jumlah_penarikan,
                 'no_tujuan'        => $no_tujuan,
-                'poin'             => $total
+                'poin'             => $dana
             );
-            die(var_dump($data));
+            // die(var_dump($data));
             $this->db->insert('penarikan', $data);
+            $current_poin = array(
+                'poin'             => $dana
+            );
+            $where = array(
+			    'id_user' => $id
+            );
+
+            // die(var_dump($data));
+            $this->db->insert('user', $data);
         };
 
 		$_SESSION["sukses"] = 'Poin berhasil di tukar';

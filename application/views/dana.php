@@ -14,6 +14,11 @@
                     <div class="text-slate-500 text-lg"><b><?= number_format($row->harga, 0, ',', '.') ?> poin</b></div>
 
                     <?php endforeach; ?>    
+                    <?php foreach ($nominal as $row) : ?>
+
+                    <div class="text-slate-500 text-lg"><b>- <?= number_format($row->poin, 0, ',', '.') ?> poin</b></div>
+
+                    <?php endforeach; ?>    
 
                 </div>
             </div>
@@ -26,15 +31,6 @@
         <div class="intro-y flex h-10 items-center">
             <h2 class="mr-5 truncate text-lg font-medium">Dana Poin</h2>
         </div>
-        <!-- <div class="mt-5">
-            <label data-tw-merge class="inline-block mb-2">
-                Nomor Tujuan
-            </label>
-            <div class="grid grid-cols-12 gap-4">
-                <input data-tw-merge type="text" aria-label="default input inline 1" placeholder="Masukan Nomor Tujuan" class="md disabled:bg-slate-100 disabled:cursor-not-allowed dark:disabled:bg-darkmode-800/50 dark:disabled:border-transparent [&amp;[readonly]]:bg-slate-100 [&amp;[readonly]]:cursor-not-allowed [&amp;[readonly]]:dark:bg-darkmode-800/50 [&amp;[readonly]]:dark:border-transparent transition duration-200 ease-in-out w-full text-sm border-slate-200 shadow-sm rounded-md placeholder:text-slate-400/90 focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus:border-primary focus:border-opacity-40 dark:bg-darkmode-800 dark:border-transparent dark:focus:ring-slate-700 dark:focus:ring-opacity-50 dark:placeholder:text-slate-500/80 col-span-6 col-span-6" />
-                <button data-tw-merge class="transition duration-200 border shadow-sm inline-flex items-center justify-center py-2 px-3 rounded-md font-medium cursor-pointer focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus-visible:outline-none dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&amp;:hover:not(:disabled)]:bg-opacity-90 [&amp;:hover:not(:disabled)]:border-opacity-90 [&amp;:not(button)]:text-center disabled:opacity-70 disabled:cursor-not-allowed bg-primary border-primary text-white dark:border-primary col-span-6 col-span-6">Tukar</button>
-            </div>
-        </div> -->
 
         <div class="mt-5 grid grid-cols-12 gap-6">
             <div class="intro-y col-span-12 sm:col-span-6 xl:col-span-3">
@@ -327,7 +323,31 @@
 
 </div>
 
+<link href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.33.1/sweetalert2.min.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.33.1/sweetalert2.min.js"></script>
 
+<?php if (@$_SESSION['sukses']) { ?>
+    <script>
+        swal("Good job!", "<?php echo $_SESSION['sukses']; ?>", "success");
+    </script>
+    <!-- jangan lupa untuk menambahkan unset agar sweet alert tidak muncul lagi saat di refresh -->
+<?php unset($_SESSION['sukses']);
+
+} ?>
+<?php if (@$_SESSION['error']) { ?>
+    <script>
+        swal("Ups!", "<?php echo $_SESSION['error']; ?>", "error");
+    </script>
+    <!-- jangan lupa untuk menambahkan unset agar sweet alert tidak muncul lagi saat di refresh -->
+<?php unset($_SESSION['error']);
+} ?>
+<?php if (@$_SESSION['warning']) { ?>
+    <script>
+        swal("Ups!", "<?php echo $_SESSION['warning']; ?>", "warning");
+    </script>
+    <!-- jangan lupa untuk menambahkan unset agar sweet alert tidak muncul lagi saat di refresh -->
+<?php unset($_SESSION['warning']);
+} ?>
 
 
 

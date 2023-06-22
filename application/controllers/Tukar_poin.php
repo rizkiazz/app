@@ -307,7 +307,11 @@ class Tukar_poin extends CI_Controller
             echo "Point Anda Kosong";
             $_SESSION["warning"] = 'Poin Anda Kosong';
 		    redirect('/tukar_poin/qurban');
-        }else if($poin <= $total){
+        }else if($nominal <= '100'){
+            echo "Minimal Donasi 100 poin";
+            $_SESSION["warning"] = 'Minimal Donasi 100 poin';
+		    redirect('/tukar_poin/qurban');
+        }else if($poin <= $nominal){
             echo "Point Anda Kurang";
             $_SESSION["warning"] = 'Poin Anda Kurang';
 		    redirect('/tukar_poin/qurban');
@@ -347,6 +351,10 @@ class Tukar_poin extends CI_Controller
             echo "Point Anda Kosong";
             $_SESSION["warning"] = 'Poin Anda Kosong';
 		    redirect('/tukar_poin/galang_dana_pembangunan');
+        }else if($nominal <= '100'){
+            echo "Minimal Donasi 100 poin";
+            $_SESSION["warning"] = 'Minimal Donasi 100 poin';
+		    redirect('/tukar_poin/qurban');
         }else if($poin <= $total){
             echo "Point Anda Kurang";
             $_SESSION["warning"] = 'Poin Anda Kurang';

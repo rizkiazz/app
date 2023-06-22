@@ -75,7 +75,9 @@ class Model_invoice extends CI_Model
 		$email = $this->input->post('email');
 		$status = $this->input->post('status');
 		$file_gambar = $_FILES['file_gambar']['name'];
-		
+		$result = $this->db->query("SELECT SUM(poin) AS poin FROM user WHERE user.id_user='$id_user'");
+		$poin = $result->row()->poin; // Get the poin value from the result
+
 		if ($file_gambar = '') {
 		} else {
 			$config['upload_path'] = './uploads/order';
@@ -120,8 +122,16 @@ class Model_invoice extends CI_Model
 				'jumlah' 		=> $item['qty'],
 				'harga' 		=> $item['price'],
 			);
+						
+			$tambah_poin = array(
+				'poin' => $poin + ($item['price'] *  $item['qty'])
+			);
+			$where = array(
+				'id_user' 		=> $id_user,
+			);
 
 			$this->db->insert('cart', $data);
+			$this->db->update('user', $tambah_poin, $where);
 
 		}
 
@@ -146,6 +156,9 @@ class Model_invoice extends CI_Model
 		$email = $this->input->post('email');
 		$status = $this->input->post('status');
 		$file_gambar = $_FILES['file_gambar']['name'];
+		$result = $this->db->query("SELECT SUM(poin) AS poin FROM user WHERE user.id_user='$id_user'");
+		$poin = $result->row()->poin; // Get the poin value from the result
+
 		
 		if ($file_gambar = '') {
 		} else {
@@ -192,8 +205,16 @@ class Model_invoice extends CI_Model
 				'jumlah' 		=> $item['qty'],
 				'harga' 		=> $item['price'],
 			);
+						
+			$tambah_poin = array(
+				'poin' => $poin + ($item['price'] *  $item['qty'])
+			);
+			$where = array(
+				'id_user' 		=> $id_user,
+			);
 
 			$this->db->insert('cart', $data);
+			$this->db->update('user', $tambah_poin, $where);
 
 		}
 

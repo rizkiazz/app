@@ -4,15 +4,6 @@
             <div class="w-24 ml-5 sm:w-40 truncate sm:whitespace-normal font-medium text-lg">Poin Anda</div>
             <div class="flex flex-1 px-0 items-center justify-center lg:justify-end">
                 <div class="mr-5">
-                    <?php foreach ($point as $row) : ?>
-                        <?php $point = $row->harga ?>
-                        <?php if(!$point){
-                            echo'<div class="text-slate-500 text-lg">poin dari checkout <b>0 poin</b></div>';
-                        } else {
-                            echo '<div class="text-slate-500 text-lg">poin dari checkout <b>' . $point . 'poin</b></div>';
-                        
-                        }?>                        
-                    <?php endforeach; ?>    
                     <?php foreach ($nominal as $row) : ?>
                         <?php $nominal = $row->poin ?>
                         
@@ -22,11 +13,16 @@
                             echo '<div class="text-slate-500 text-lg">poin yang ditukar <b>' . $nominal. 'poin</b></div>';
                         
                         }?>                         
-                    <?php endforeach; ?>  
-                    <?php $current_poin = $point - $nominal ?>
-  
-                    <div class="text-slate-500 text-lg">poin saat ini <b><?= $current_poin ?> poin</b></div>
-
+                    <?php endforeach; ?> 
+                    <?php foreach ($profile as $row) : ?>
+                        <?php $profile = $row->poin ?>
+                        <?php if(!$profile){
+                            echo'<div class="text-slate-500 text-lg">poin saat ini <b>0 poin</b></div>';
+                        } else {
+                            echo '<div class="text-slate-500 text-lg">poin saat ini <b>' . $profile . 'poin</b></div>';
+                        
+                        }?>                        
+                    <?php endforeach; ?>
                 </div>
             </div>
         </div>
@@ -64,7 +60,7 @@
 
                                 <div class="mb-5">
                                     <label for="post-form-7" class="form-label">Nominal <small class="text-danger">(Minimal 100 poin)</small></label>
-                                    <input type="number" id="nominal" name="nominal" class="form-control" autocomplete="off" required placeholder="Min 100 poin" min="100">
+                                    <input type="number" id="nominal" name="nominal" class="form-control" autocomplete="off" required placeholder="Min 100 poin">
                                 </div>
                                 <div class="flex mt-5">
                                     <button type="submit" class="btn btn-primary w-40 shadow-md ml-auto">Donasi Sekarang</button>

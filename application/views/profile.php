@@ -114,7 +114,14 @@
                                                             <div class="w-52 xl:mr-0 xl:ml-0">
                                                                 <div class="border-2 border-dashed shadow-sm border-slate-200/60 dark:border-darkmode-400 rounded-md p-5">
                                                                     <div class="h-40 relative image-fit cursor-pointer zoom-in mx-auto">
-                                                                        <img class="rounded-md" src="<?= base_url() . '/uploads/avatar/' . $row->avatar ?>" id="output">
+                                                                        <?php 
+                                                                            if (empty($row->avatar)) {
+                                                                                echo '<img src="' . site_url('asset') . '/user.jpg">';
+                                                                            } else {
+                                                                                echo '<img class="rounded-md" src="' . base_url() . '/uploads/avatar/' . $row->avatar . '">';
+                                                                            }
+                                                                        ?>   
+                                                                        <img class="rounded-md" id="output">
                                                                         <div class="tooltip w-5 h-5 flex items-center justify-center absolute rounded-full text-white bg-primary right-0 top-0 -mr-2 -mt-2"> <i data-lucide="alert-circle" class="w-4 h-4"></i> </div>
                                                                     </div>
                                                                     <div class="mx-auto cursor-pointer relative mt-5">

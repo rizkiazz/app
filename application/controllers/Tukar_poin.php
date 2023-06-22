@@ -19,8 +19,6 @@ class Tukar_poin extends CI_Controller
         $data['profile'] = $this->db->query("SELECT * FROM user 
 			WHERE user.id_user='$id'")->result();
 
-        $data['point'] = $this->db->query("SELECT SUM(harga) AS harga FROM cart 
-			WHERE cart.id_user='$id'")->result();
 
         $this->load->view('layout/user/header', $data);
 		$this->load->view('tukar_poin', $data);
@@ -34,8 +32,6 @@ class Tukar_poin extends CI_Controller
         $data['profile'] = $this->db->query("SELECT * FROM user 
 			WHERE user.id_user='$id'")->result();
 
-        $data['point'] = $this->db->query("SELECT SUM(harga) AS harga FROM cart 
-			WHERE cart.id_user='$id'")->result();
         $data['nominal'] = $this->db->query("SELECT SUM(poin) AS poin FROM penarikan 
             WHERE penarikan.id_user='$id'")->result();
 
@@ -51,8 +47,6 @@ class Tukar_poin extends CI_Controller
         $data['profile'] = $this->db->query("SELECT * FROM user 
 			WHERE user.id_user='$id'")->result();
     
-        $data['point'] = $this->db->query("SELECT SUM(harga) AS harga FROM cart 
-			WHERE cart.id_user='$id'")->result();
         $data['nominal'] = $this->db->query("SELECT SUM(poin) AS poin FROM penarikan 
             WHERE penarikan.id_user='$id'")->result();
             
@@ -69,8 +63,6 @@ class Tukar_poin extends CI_Controller
         $data['profile'] = $this->db->query("SELECT * FROM user 
 			WHERE user.id_user='$id'")->result();
 
-        $data['point'] = $this->db->query("SELECT SUM(harga) AS harga FROM cart 
-			WHERE cart.id_user='$id'")->result();
         $data['nominal'] = $this->db->query("SELECT SUM(poin) AS poin FROM penarikan 
             WHERE penarikan.id_user='$id'")->result();
 
@@ -86,8 +78,6 @@ class Tukar_poin extends CI_Controller
         $data['profile'] = $this->db->query("SELECT * FROM user 
 			WHERE user.id_user='$id'")->result();
 
-        $data['point'] = $this->db->query("SELECT SUM(harga) AS harga FROM cart 
-			WHERE cart.id_user='$id'")->result();
         $data['nominal'] = $this->db->query("SELECT SUM(poin) AS poin FROM penarikan 
             WHERE penarikan.id_user='$id'")->result();
 
@@ -103,8 +93,6 @@ class Tukar_poin extends CI_Controller
         $data['profile'] = $this->db->query("SELECT * FROM user 
 			WHERE user.id_user='$id'")->result();
 
-        $data['point'] = $this->db->query("SELECT SUM(harga) AS harga FROM cart 
-			WHERE cart.id_user='$id'")->result();
         $data['nominal'] = $this->db->query("SELECT SUM(poin) AS poin FROM donasi 
             WHERE donasi.id_user='$id'")->result();
 
@@ -120,8 +108,6 @@ class Tukar_poin extends CI_Controller
         $data['profile'] = $this->db->query("SELECT * FROM user 
 			WHERE user.id_user='$id'")->result();
 
-        $data['point'] = $this->db->query("SELECT SUM(harga) AS harga FROM cart 
-			WHERE cart.id_user='$id'")->result();
         $data['nominal'] = $this->db->query("SELECT SUM(poin) AS poin FROM donasi 
             WHERE donasi.id_user='$id'")->result();
 

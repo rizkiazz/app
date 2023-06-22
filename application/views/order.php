@@ -27,7 +27,17 @@
                                 </thead>
                                 <tbody>
                                     <?php
-                                    // $order = array_reverse($order);
+                                        if (empty($order)) {
+                                            echo '
+                                            <tr class="w-50 mx-auto">
+                                                <td class="text-center ">
+                                                    <div> Data Kosong </div>
+                                                </td>
+                                            </tr>
+                                            ';
+                                        }
+                                    ?>
+                                    <?php
                                     foreach ($order as $row) : ?>
                                     <tr class="intro-x">
                                         <td class="w-40 !py-4"> <a href="<?= site_url('order/detail/'.$row->order_id) ?>" class="underline decoration-dotted whitespace-nowrap">#<?= $row->order_id ?></a> </td>

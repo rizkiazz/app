@@ -80,7 +80,7 @@ body, html {
 <!-- Header with full-height image -->
 <header class="bgimg-1 w3-display-container w3-grayscale-min" id="home">
   <div class="w3-display-left w3-text-white" style="padding:48px">
-    <p class="p-image w3-padding-large w3-large w3-margin-top w3-hover-opacity-off">Hargai dan Lindungi Bumi Kita, Kalau Bukan Kita Siapa Lagi.</p>
+    <p class="p-image w3-padding w3-large w3-margin-top w3-hover-opacity-off">Hargai dan Lindungi Bumi Kita, Kalau Bukan Kita Siapa Lagi.</p>
     <p><a href="<?= base_url('welcome') ?>" class="w3-round-large w3-button w3-white w3-text-black w3-padding-large w3-large w3-margin-top w3-hover-opacity-off">Daur ulang sekarang!</a></p>
   </div> 
 </header>

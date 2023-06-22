@@ -166,7 +166,7 @@
 
             <input type="hidden" name="platform" id="platform" value="gopay">
 
-            <input type="hidden" name="poin" id="poin" value="<?= $profile ?>">
+            <input type="hidden" name="poin" id="poin" value="<?= $current_poin ?>">
 
             <div class="col-span-12 sm:col-span-12">
                 <label data-tw-merge for="modal-form-1" class="inline-block mb-2">
@@ -209,7 +209,7 @@
 
             <input type="hidden" name="platform" id="platform" value="gopay">
 
-            <input type="hidden" name="poin" id="poin" value="<?= $profile ?>">
+            <input type="hidden" name="poin" id="poin" value="<?= $current_poin ?>">
 
             <div class="col-span-12 sm:col-span-12">
                 <label data-tw-merge for="modal-form-1" class="inline-block mb-2">
@@ -252,7 +252,7 @@
 
             <input type="hidden" name="platform" id="platform" value="gopay">
 
-            <input type="hidden" name="poin" id="poin" value="<?= $profile ?>">
+            <input type="hidden" name="poin" id="poin" value="<?= $current_poin ?>">
 
             <div class="col-span-12 sm:col-span-12">
                 <label data-tw-merge for="modal-form-1" class="inline-block mb-2">
@@ -294,7 +294,7 @@
             <input type="hidden" name="gopay" id="gopay" value="1000">
             <input type="hidden" name="platform" id="platform" value="gopay">
 
-            <input type="hidden" name="poin" id="poin" value="<?= $profile ?>">
+            <input type="hidden" name="poin" id="poin" value="<?= $current_poin ?>">
 
             <div class="col-span-12 sm:col-span-12">
                 <label data-tw-merge for="modal-form-1" class="inline-block mb-2">

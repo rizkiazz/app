@@ -41,7 +41,7 @@
                 <form id="payment-form" action="<?= site_url('tukar_poin/donasi_qurban') ?>" method="post">
                     <input type="hidden" name="id_user" id="id_user" value="<?php echo $this->session->userdata('id_user') ?>">
                     <input type="hidden" name="platform" id="platform" value="qurban">
-                    <input type="hidden" name="poin" id="poin" value="<?= $current_poin ?>">
+                    <input type="hidden" name="poin" id="poin" value="<?= $profile ?>">
 
 
                     <div id="content" class="tab-pane p-5 active" role="tabpanel" aria-labelledby="content-tab">

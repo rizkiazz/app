@@ -36,23 +36,23 @@ class Bill extends CI_Controller
 
 	public function upload()
 	{
-		$id			= $this->input->post('order_id');
-		$gambar		= $_FILES['gambar']['name'];
-		if ($gambar = '') {
+		$id	= $this->input->post('order_id');
+		$bukti_pembayaran = $_FILES['bukti_pembayaran']['name'];
+		if ($bukti_pembayaran = '') {
 		} else {
-			$config['upload_path'] = './uploads';
+			$config['upload_path'] = './uploads/bukti_pembayaran/';
 			$config['allowed_types'] = 'jpg|jpeg|png';
 
 			$this->load->library('upload', $config);
-			if (!$this->upload->do_upload('gambar')) {
+			if (!$this->upload->do_upload('bukti_pembayaran')) {
 				echo "File tidak dapat di upload!";
 			} else {
-				$gambar = $this->upload->data('file_name');
+				$bukti_pembayaran = $this->upload->data('file_name');
 			}
 		}
 
 		$data = array(
-			'gambar' 			=> $gambar
+			'bukti_pembayaran' 	=> $bukti_pembayaran
 		);
 
 		$where = array(

@@ -27,7 +27,6 @@
                         <th class="whitespace-nowrap">Layanan Pesanan</th>
                         <th class="whitespace-nowrap">Metode Pemabayaran</th>
                         <th class="whitespace-nowrap">Waktu Transaksi</th>
-                        <!-- <th class="whitespace-nowrap">TRANSACTION END</th> -->
                         <th class="whitespace-nowrap">Status</th>
                         <th class="whitespace-nowrap">Action</th>
                     </tr>
@@ -71,11 +70,15 @@
                                 <?php } ?>
                             </td>
                             <td>
-                                <?php if (empty($row->gambar)){ ?>
-                                <a data-tw-toggle="modal" data-tw-target="#upload-confirmation-modal" class="btn btn-sm btn-rounded-primary">Upload Bukti<i data-lucide="image" class="w-4 h-4 mr-2"></i></a>
-                                <?php } else { ?>
-                                    <a class="btn btn-sm btn-rounded-success text-white">Verified <i data-lucide="pocket" class="w-4 h-4 mr-2"></i></a>
+                                <?php if ($row->layanan_pesanan == "Pick Up") { ?>
+                                    <?php if (empty($row->bukti_pembayaran)){ ?>
+                                    <a data-tw-toggle="modal" data-tw-target="#upload-confirmation-modal" class="btn btn-sm btn-rounded-primary">Upload Bukti<i data-lucide="image" class="w-4 h-4 mr-2"></i></a>
+                                    <?php } else { ?>
+                                        <a class="btn btn-sm btn-rounded-success text-white">Verified <i data-lucide="pocket" class="w-4 h-4 mr-2"></i></a>
                                     <?php } ?>
+                                <?php } else { ?>
+                                    <a data-tw-toggle="modal" data-tw-target="#upload-confirmation-modal" class="btn btn-sm btn-rounded-primary">Upload Bukti Antar<i data-lucide="image" class="w-4 h-4 mr-2"></i></a>
+                                <?php } ?>
                             </td>
                         </tr>
                     <?php endforeach; ?>
@@ -114,41 +117,65 @@
                         </select>
                     </div> -->
         <!-- END: Pagination -->
-                </div>
-                <!-- BEGIN: Delete Confirmation Modal -->
-                <?php foreach ($bill as $row) : ?>
-                <div id="upload-confirmation-modal" class="modal" tabindex="-1" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-body p-0">
-                                <form action="<?= site_url('bill/upload')?>" method="post" enctype="multipart/form-data">
-                                <div class="p-5">
-                                    <div class="intro-y col-span-11 alert alert-primary alert-dismissible show flex items-center mb-6" role="alert">
-                                    <span><i data-lucide="info" class="w-4 h-4 mr-2"></i></span>
-                                    <span>Silahkan Upload Bukti Pembayaran Anda.</span>
-                                    <button type="button" class="btn-close text-white" data-tw-dismiss="alert" aria-label="Close"> <i data-lucide="x" class="w-4 h-4"></i> </button>
-                                </div>
-                                <div class="text-slate-500 mt-2">
-                                        
-                                    <div class="mt-3">
-                                        <div class="input-group">
-                                            <input type="hidden" name="order_id" value="<?= $row->order_id ?>">
-                                            <input id="crud-form-3"  name="gambar" type="file" class="form-control" value="<?= $row->gambar ?>" placeholder="Quantity" aria-describedby="input-group-1">
-                                        </div>
+    </div>
+    <!-- BEGIN: Delete Confirmation Modal -->
+    <div id="upload-confirmation-modal" class="modal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body p-0">
+                    <form action="<?= site_url('bill/upload')?>" method="post" enctype="multipart/form-data">
+                    <?php foreach ($bill as $row) : ?>
+                    <input type="hidden" name="order_id" id="order_id" value="<?= $row->order_id ?>">
+                    <?php endforeach;?>
+                        <div class="p-5">
+                            <div class="intro-y col-span-11 alert alert-primary alert-dismissible show flex items-center mb-6" role="alert">
+                                <span><i data-lucide="info" class="w-4 h-4 mr-2"></i></span>
+                                <span>Silahkan Upload Bukti Disini.</span>
+                                <button type="button" class="btn-close text-white" data-tw-dismiss="alert" aria-label="Close"> <i data-lucide="x" class="w-4 h-4"></i> </button>
+                            </div>
+                            <div class="text-slate-500 mt-2">
+                                <div class="border-2 border-dashed shadow-sm border-slate-200/60 dark:border-darkmode-400 rounded-md p-5">
+                                    <div class="h-40 relative image-fit cursor-pointer zoom-in mx-auto"> 
+                                        <img class="rounded-md" id="output">
+                                        <div class="tooltip w-5 h-5 flex items-center justify-center absolute rounded-full text-white bg-primary right-0 top-0 -mr-2 -mt-2"> <i data-lucide="alert-circle" class="w-4 h-4"></i> </div>
                                     </div>
-                                    
+                                    <div class="mx-auto cursor-pointer relative mt-5">
+                                        <?php if ($row->layanan_pesanan == "Pick Up") { ?>
+                                            <button type="button" class="btn btn-primary w-full">Upload Bukti Pembayaran</button>
+                                        <?php } else { ?>
+                                            <button type="button" class="btn btn-primary w-full">Upload Bukti Antar</button>
+                                        <?php } ?>
+                                        <input name="bukti_pembayaran" id="bukti_pembayaran" type="file" class="w-full h-full top-0 left-0 absolute opacity-0" accept="image/png, image/jpeg, image/jpg, image/gif" onchange="loadFile(event)">
+                                    </div>
+                                </div>
+                                
                             </div>
                         </div>
                         <hr>
                         <div class="px-5 pb-8 mt-6 text-center">
                             <button type="button" data-tw-dismiss="modal" class="btn btn-outline-secondary w-24 mr-1">Cancel</button>
-                            <button type="submit" class="btn btn-danger w-24">Upload</button>
+                            <button type="submit" class="btn btn-danger w-24">Kirim</button>
                         </div>
-                        </form>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
-        <!-- END: Delete Confirmation Modal -->
     </div>
-        <?php endforeach;?>
+    <!-- END: Delete Confirmation Modal -->
+</div>
+<?php if (@$_SESSION['sukses']) { ?>
+    <script>
+        swal("Good job!", "<?php echo $_SESSION['sukses']; ?>", "success");
+    </script>
+    <!-- jangan lupa untuk menambahkan unset agar sweet alert tidak muncul lagi saat di refresh -->
+<?php unset($_SESSION['sukses']);
+} ?>
+<script>
+  var loadFile = function(event) {
+    var output = document.getElementById('output');
+    output.src = URL.createObjectURL(event.target.files[0]);
+    output.onload = function() {
+      URL.revokeObjectURL(output.src) // free memory
+    }
+  };
+</script>

@@ -52,55 +52,6 @@
     </div>
     <!-- END: Profile Info -->
     <div class="intro-y tab-content mt-5">
-        <!-- <div id="dashboard" class="tab-pane active" role="tabpanel" aria-labelledby="dashboard-tab">
-            <div class="grid grid-cols-12 gap-6"> -->
-
-                <!-- BEGIN: Work In Progress -->
-                <!-- <div class="intro-y box col-span-12 lg:col-span-12">
-                    <div class="flex items-center px-5 py-5 sm:py-0 border-b border-slate-200/60 dark:border-darkmode-400">
-                        <h2 class="font-medium text-base mr-auto">
-                            Menunggu Pembayaran
-                        </h2>
-                        <div class="dropdown ml-auto sm:hidden">
-                            <a class="dropdown-toggle w-5 h-5 block" href="javascript:;" aria-expanded="false" data-tw-toggle="dropdown"> <i data-lucide="more-horizontal" class="w-5 h-5 text-slate-500"></i> </a>
-                            <div class="nav nav-tabs dropdown-menu w-40" role="tablist">
-                                <ul class="dropdown-content">
-                                    <li> <a id="work-in-progress-mobile-new-tab" href="javascript:;" data-tw-toggle="tab" data-tw-target="#work-in-progress-new" class="dropdown-item" role="tab" aria-controls="work-in-progress-new" aria-selected="true"></a> </li>
-                                    <li> <a id="work-in-progress-mobile-last-week-tab" href="javascript:;" data-tw-toggle="tab" data-tw-target="#work-in-progress-last-week" class="dropdown-item" role="tab" aria-selected="false"></a> </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <ul class="nav nav-link-tabs w-auto ml-auto hidden sm:flex" role="tablist">
-                            <li id="work-in-progress-new-tab" class="nav-item" role="presentation"> <a href="javascript:;" class="nav-link py-5 active" data-tw-target="#work-in-progress-new" aria-controls="work-in-progress-new" aria-selected="true" role="tab"> </a> </li>
-                            <li id="work-in-progress-last-week-tab" class="nav-item" role="presentation"> <a href="javascript:;" class="nav-link py-5" data-tw-target="#work-in-progress-last-week" aria-selected="false" role="tab"> </a> </li>
-                        </ul>
-                    </div>
-                    <div class="p-5">
-                        <div class="tab-content">
-                            <div id="work-in-progress-new" class="tab-pane active" role="tabpanel" aria-labelledby="work-in-progress-new-tab">
-                                <?php foreach ($bill as $row) : ?>
-                                    <div class="mt-2 mb-5">
-                                        <div class="flex">
-                                            <div class="mr-auto">Order ID : <b>#<?= $row->order_id ?></b></div>
-                                            <div>
-                                                <i data-loading-icon="three-dots" class="w-8 h-8"></i>
-                                            </div>
-                                        </div>
-                                        <div class="progress h-1 mt-2">
-                                            <div class="progress-bar w-1/4 bg-primary" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                    </div>
-                                <?php endforeach; ?>
-                                <br>
-                                <a href="<?= site_url('bill') ?>" class="btn btn-secondary block w-40 mx-auto mt-5">View More Details</a>
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
-                <!-- END: Work In Progress -->
-
-            <!-- </div>
-        </div> -->
 
         <div id="account-and-profile" class="tab-pane active" role="tabpanel" aria-labelledby="account-and-profile-tab">
             <div class="grid grid-cols-12 gap-6">

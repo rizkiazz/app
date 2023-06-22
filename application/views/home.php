@@ -26,12 +26,24 @@ body, html {
   background-image: url("<?= site_url('asset/home/') ?>/home.jpg");
   min-height: 100%;
 }
-.w3-top, .container{
+.w3-top, .container, .footer ,.p-image {
   background-color : #064e3b;
   color : #fff;
 }
+.fitur {
+  background-color : #fff;
+  color : #000;
+  border-radius: 10px;
+}
 .w3-bar .w3-button {
   padding: 16px;
+}
+.img_about{
+  border:2px solid #ccc;
+  box-shadow: 10px 10px 5px #ccc;
+  -moz-box-shadow: 10px 10px 5px #ccc;
+  -webkit-box-shadow: 10px 10px 5px #ccc;
+  -khtml-box-shadow: 10px 10px 5px #ccc;
 }
 </style>
 </head>
@@ -68,8 +80,8 @@ body, html {
 <!-- Header with full-height image -->
 <header class="bgimg-1 w3-display-container w3-grayscale-min" id="home">
   <div class="w3-display-left w3-text-white" style="padding:48px">
-    <p class="w3-green w3-padding-large w3-large w3-margin-top w3-hover-opacity-off">Hargai dan Lindungi Bumi Kita, Kalau Bukan Kita Siapa Lagi.</p>
-    <p><a href="<?= base_url('welcome') ?>" class="w3-button w3-white w3-text-green w3-padding-large w3-large w3-margin-top w3-hover-opacity-off">Daur ulang sekarang!</a></p>
+    <p class="p-image w3-padding-large w3-large w3-margin-top w3-hover-opacity-off">Hargai dan Lindungi Bumi Kita, Kalau Bukan Kita Siapa Lagi.</p>
+    <p><a href="<?= base_url('welcome') ?>" class="w3-round-large w3-button w3-white w3-text-black w3-padding-large w3-large w3-margin-top w3-hover-opacity-off">Daur ulang sekarang!</a></p>
   </div> 
 </header>
 
@@ -82,7 +94,7 @@ body, html {
         <p>EasyPickTrash adalah proyek sistem website yang dapat digunakan semua orang untuk upload jenis sampah yang tersedia di website yang akan di pick up dimana bertujuan membantu pengepul untuk mengumpulkan sampah.</p>
       </div>
       <div class="w3-col m6">
-        <img class="w3-image w3-round-large" src="<?= site_url('asset/home/') ?>/footer.jpg" alt="Buildings" width="600" height="394">
+        <img class="w3-image w3-round-large img_about" src="<?= site_url('asset/home/') ?>/logo2.png" alt="Buildings" width="600" height="394">
       </div>
     </div>
   </div>
@@ -93,8 +105,8 @@ body, html {
     <p class="w3-center w3-large">Revolusi daur ulang dari EasyPickTrash untuk semua orang.</p>
     <div class="w3-row-padding" style="margin-top:64px; text-align: center; align-items: center; display: flex; justify-content: center; font-size: medium;">
       <div class="w3-col l3 m6 w3-margin-bottom">
-        <div class="w3-card">
-          <img src="<?= site_url('asset/home/') ?>/pickup.jpg" style="width:60%">
+        <div class="w3-card fitur">
+          <img src="<?= site_url('asset/home/') ?>/pickup.jpg" style="width:60%; margin-top: 10px">
           <div class="w3-container">
             <h3>Pick Up</h3>
             <p>Foto sampah daur ulangmu, upload ke EasyPickTrash, kolektor EasyPickTrash terdekat akan menjemput dan membayar sampahmu.</p>
@@ -102,7 +114,7 @@ body, html {
         </div>
       </div>
       <div class="w3-col l3 m6 w3-margin-bottom">
-        <div class="w3-card">
+        <div class="w3-card fitur">
           <img src="<?= site_url('asset/home/') ?>/dropoff.jpg" style="width:60%">
           <div class="w3-container">
             <h3>Drop Off</h3>
@@ -120,7 +132,7 @@ body, html {
   <div class="w3-row-padding" style="margin-top:64px; text-align: center; align-items: center; display: flex; justify-content: center; font-size: medium;">
     <div class="w3-col l3 m6 w3-margin-bottom">
       <div class="w3-card">
-        <img src="<?= site_url('asset/home/') ?>/sampah-kertas.jpg" style="width:70%">
+        <img class="w3-round-large " src="<?= site_url('asset/home/') ?>/sampah-kertas.jpg" style="width:70%; margin-top: 20px;">
         <div class="w3-container">
           <p>Sampah Kertas</p>
         </div>
@@ -128,7 +140,7 @@ body, html {
     </div>
     <div class="w3-col l3 m6 w3-margin-bottom">
       <div class="w3-card">
-        <img src="<?= site_url('asset/home/') ?>/sampah plastik.jpg" style="width:70%">
+        <img class="w3-round-large " src="<?= site_url('asset/home/') ?>/sampah plastik.jpg" style="width:70%; margin-top: 20px;">
         <div class="w3-container">
           <p>Sampah Plastik</p>
         </div>
@@ -136,7 +148,7 @@ body, html {
     </div>
     <div class="w3-col l3 m6 w3-margin-bottom">
       <div class="w3-card">
-        <img src="<?= site_url('asset/home/') ?>/sampah botol.jpg" style="width:70%">
+        <img class="w3-round-large " src="<?= site_url('asset/home/') ?>/sampah botol.jpg" style="width:70%; margin-top: 20px;">
         <div class="w3-container">
           <p>Sampah Botol</p>
         </div>
@@ -144,7 +156,7 @@ body, html {
     </div>
     <div class="w3-col l3 m6 w3-margin-bottom">
       <div class="w3-card">
-        <img src="<?= site_url('asset/home/') ?>/sampah elektronik.jpg" style="width:70%">
+        <img class="w3-round-large " src="<?= site_url('asset/home/') ?>/sampah elektronik.jpg" style="width:70%; margin-top: 20px;">
         <div class="w3-container">
           <p>Sampah Elektronik</p>
         </div>
@@ -164,7 +176,7 @@ body, html {
 
 <!-- Footer -->
 <footer class="w3-center footer w3-padding-64" id="kontakkami">
-  <a href="#home" class="w3-button w3-light-grey w3-text-green"><i class="fa fa-arrow-up w3-margin-right"></i>Kembali ke atas</a>
+  <a href="#home" class="w3-button w3-light-grey w3-text-black"><i class="fa fa-arrow-up w3-margin-right"></i>Kembali ke atas</a>
   <div class="w3-xlarge w3-section">
     <i class="fa fa-facebook-official w3-hover-opacity"></i>
     <i class="fa fa-instagram w3-hover-opacity"></i>

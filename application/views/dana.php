@@ -166,7 +166,7 @@
 
             <input type="hidden" name="platform" id="platform" value="dana">
 
-            <input type="hidden" name="poin" id="poin" value="<?= $current_poin ?>">
+            <input type="hidden" name="poin" id="poin" value="<?= $profile ?>">
 
             <div class="col-span-12 sm:col-span-12">
                 <label data-tw-merge for="modal-form-1" class="inline-block mb-2">
@@ -209,7 +209,7 @@
 
             <input type="hidden" name="platform" id="platform" value="dana">
 
-            <input type="hidden" name="poin" id="poin" value="<?= $current_poin ?>">
+            <input type="hidden" name="poin" id="poin" value="<?= $profile ?>">
 
             <div class="col-span-12 sm:col-span-12">
                 <label data-tw-merge for="modal-form-1" class="inline-block mb-2">
@@ -252,7 +252,7 @@
 
             <input type="hidden" name="platform" id="platform" value="dana">
 
-            <input type="hidden" name="poin" id="poin" value="<?= $current_poin ?>">
+            <input type="hidden" name="poin" id="poin" value="<?= $profile ?>">
 
             <div class="col-span-12 sm:col-span-12">
                 <label data-tw-merge for="modal-form-1" class="inline-block mb-2">
@@ -294,7 +294,7 @@
             <input type="hidden" name="dana" id="dana" value="1000">
             <input type="hidden" name="platform" id="platform" value="dana">
 
-            <input type="hidden" name="poin" id="poin" value="<?= $current_poin ?>">
+            <input type="hidden" name="poin" id="poin" value="<?= $profile ?>">
 
             <div class="col-span-12 sm:col-span-12">
                 <label data-tw-merge for="modal-form-1" class="inline-block mb-2">

@@ -77,7 +77,11 @@
                                         <a class="btn btn-sm btn-rounded-success text-white">Verified <i data-lucide="pocket" class="w-4 h-4 mr-2"></i></a>
                                     <?php } ?>
                                 <?php } else { ?>
+                                    <?php if (empty($row->bukti_pembayaran)){ ?>
                                     <a data-tw-toggle="modal" data-tw-target="#upload-confirmation-modal" class="btn btn-sm btn-rounded-primary">Upload Bukti Antar<i data-lucide="image" class="w-4 h-4 mr-2"></i></a>
+                                    <?php } else { ?>
+                                        <a class="btn btn-sm btn-rounded-success text-white">Verified <i data-lucide="pocket" class="w-4 h-4 mr-2"></i></a>
+                                    <?php } ?>
                                 <?php } ?>
                             </td>
                         </tr>

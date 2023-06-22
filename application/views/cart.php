@@ -69,6 +69,17 @@
                             </tr>
                         </thead>
                         <tbody>
+                            <?php
+                                if (empty($this->cart->contents())) {
+                                    echo '
+                                    <tr>
+                                        <td colspan="12" class="text-center">
+                                            <div> Data Kosong </div>
+                                        </td>
+                                    </tr>
+                                    ';
+                                }
+                            ?>
                             
                             <?php $no = 1;
                             foreach ($this->cart->contents() as $items) : ?>

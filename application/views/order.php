@@ -29,8 +29,8 @@
                                     <?php
                                         if (empty($order)) {
                                             echo '
-                                            <tr class="w-50 mx-auto">
-                                                <td class="text-center ">
+                                            <tr>
+                                                <td colspan="12" class="text-center">
                                                     <div> Data Kosong </div>
                                                 </td>
                                             </tr>

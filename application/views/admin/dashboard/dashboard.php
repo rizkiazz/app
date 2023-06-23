@@ -84,6 +84,56 @@
 
             </div>
         </div>
+        <div class="col-span-12 2xl:col-span-9">
+            <div class="box p-5 rounded-md">
+                <div class="flex items-center border-b border-slate-200/60 dark:border-darkmode-400 pb-5 mb-5">
+                    <div class="font-medium text-base truncate">Daftar User</div>
+                </div>
+
+                <table class="table table-report table-striped mt-2">
+                    <thead>
+                        <tr>
+                            <th class="whitespace-nowrap">No</th>
+                            <th class="whitespace-nowrap">User ID</th>
+                            <th class="whitespace-nowrap">Nama User</th>
+                            <th class="whitespace-nowrap">Email</th>
+                            <th class="whitespace-nowrap">Jenis Kelamin</th>
+                            <th class="whitespace-nowrap">Nomor HP</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php 
+                        $counter = 1; // Initialize the counter variable
+                        foreach ($user as $row) : ?>
+
+                            <tr class="intro-x">
+                                 <td class="w-5">
+                                    <span><?= $counter ?></span>
+                                </td>
+                                <td class="w-10">
+                                    <a href="" class="font-medium whitespace-nowrap"><?= $row->id_user ?></a>
+                                </td>
+                                <td class="w-40">
+                                    <a href="" class="font-medium whitespace-nowrap"><?= $row->nama_user ?></a>
+                                </td>
+                                <td class="w-40">
+                                    <a href="" class="font-medium whitespace-nowrap"><?= $row->email ?></a>
+                                </td>
+                                <td class="w-40">
+                                    <a href="" class="font-medium whitespace-nowrap"><?= $row->gender ?></a>
+                                </td>
+                                <td class="w-40">
+                                    <a href="" class="font-medium whitespace-nowrap"><?= $row->nomor_hp ?></a>
+                                </td>
+                            </tr>
+
+                        <?php 
+                        $counter++; // Increment the counter variable
+                        endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 </div>
 <!-- END: Content -->

@@ -17,10 +17,11 @@ class Dashboard extends CI_Controller
 	{
 		$data['title'] = 'Dashboard Admin';
 		$data['bill'] = $this->db->query("SELECT * FROM transaction
-        WHERE status='0' ORDER BY order_id DESC LIMIT 5")->result();
+        WHERE status='0' ORDER BY order_id DESC LIMIT 4")->result();
 		$data['count'] = $this->model_pembayaran->count_order();
 		$data['pending'] = $this->model_pembayaran->count_pending();
 		$data['sukses'] = $this->model_pembayaran->count_success();
+		$data['user'] = $this->db->query("SELECT * FROM user WHERE level='2' ORDER BY id_user ASC")->result();
 		$this->load->view('layout/admin/header', $data);
 		$this->load->view('admin/dashboard/dashboard', $data);
 		$this->load->view('layout/admin/footer');

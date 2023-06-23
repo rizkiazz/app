@@ -26,7 +26,7 @@ body, html {
   background-image: url("<?= site_url('asset/home/') ?>/home.jpg");
   min-height: 100%;
 }
-.w3-top, .container, .footer ,.p-image {
+.w3-top, .container, .footer ,.w3-sidebar ,.p-image {
   background-color : #064e3b;
   color : #fff;
 }
@@ -35,6 +35,10 @@ body, html {
   color : #000;
   border-radius: 10px;
 }
+.custom-card {
+    width: 100%;
+    max-width: 300px; /* Adjust the width as needed */
+  }
 .w3-bar .w3-button {
   padding: 16px;
 }
@@ -69,7 +73,7 @@ body, html {
 </div>
 
 <!-- Sidebar on small screens when clicking the menu icon -->
-<nav class="w3-sidebar w3-bar-block w3-green w3-card w3-animate-left w3-hide-medium w3-hide-large" style="display:none" id="mySidebar">
+<nav class="w3-sidebar w3-bar-block w3-card w3-animate-left w3-hide-medium w3-hide-large" style="display:none" id="mySidebar">
   <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16">Close ×</a>
     <a href="#tentangkami" class="w3-bar-item w3-button">Tentang Kami</a>
     <a href="#layanan" class="w3-bar-item w3-button"></i> Layanan</a>
@@ -104,7 +108,7 @@ body, html {
     <h3 class="w3-center">Layanan</h3>
     <p class="w3-center w3-large">Revolusi daur ulang dari EasyPickTrash untuk semua orang.</p>
     <div class="w3-row-padding" style="margin-top:64px; text-align: center; align-items: center; display: flex; justify-content: center; font-size: medium;">
-      <div class="w3-col l3 m6 w3-margin-bottom">
+      <div class="w3-col l3 m6 w3-margin-bottom custom-card">
         <div class="w3-card fitur">
           <img src="<?= site_url('asset/home/') ?>/pickup.jpg" style="width:60%; margin-top: 10px">
           <div class="w3-container">
@@ -113,9 +117,9 @@ body, html {
           </div>
         </div>
       </div>
-      <div class="w3-col l3 m6 w3-margin-bottom">
+      <div class="w3-col l3 m6 w3-margin-bottom custom-card">
         <div class="w3-card fitur">
-          <img src="<?= site_url('asset/home/') ?>/dropoff.jpg" style="width:60%">
+          <img src="<?= site_url('asset/home/') ?>/dropoff.jpg" style="width:60%; margin-top: 10px">
           <div class="w3-container">
             <h3>Drop Off</h3>
             <p>Antar langsung sampahmu ke pusat daur ulang terdekat, kamu bisa mendaur ulang dengan ukuran kecil seperti satu botol plastik.</p>

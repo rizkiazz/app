@@ -4,22 +4,12 @@
             <div class="w-24 ml-5 sm:w-40 truncate sm:whitespace-normal font-medium text-lg">Poin Anda</div>
             <div class="flex flex-1 px-0 items-center justify-center lg:justify-end">
                 <div class="mr-5">
-                    <?php foreach ($nominal as $row) : ?>
-                        <?php $nominal = $row->poin ?>
-                        
-                        <?php if(!$nominal){
-                            echo'<div class="text-slate-500 text-lg">poin yang ditukar <b>0 poin</b></div>';
-                        } else {
-                            echo '<div class="text-slate-500 text-lg">poin yang ditukar <b>' . $nominal. 'poin</b></div>';
-                        
-                        }?>                         
-                    <?php endforeach; ?> 
                     <?php foreach ($profile as $row) : ?>
                         <?php $profile = $row->poin ?>
                         <?php if(!$profile){
-                            echo'<div class="text-slate-500 text-lg">poin saat ini <b>0 poin</b></div>';
+                            echo'<div class="text-slate-500 text-lg"><b>0 poin</b></div>';
                         } else {
-                            echo '<div class="text-slate-500 text-lg">poin saat ini <b>' . $profile . 'poin</b></div>';
+                            echo '<div class="text-slate-500 text-lg"><b>' . $profile . ' poin</b></div>';
                         
                         }?>                        
                     <?php endforeach; ?>
@@ -32,8 +22,11 @@
 
     <!-- BEGIN: General Report -->
     <div class="col-span-12 mt-8">
-        <div class="intro-y flex h-10 items-center">
+        <div class="intro-y flex h-10 items-center" style="display: flex; justify-content:space-between;">
             <h2 class="mr-5 truncate text-lg font-medium">Galang Dana Pembangunan</h2>
+            <div class="sm:w-auto sm:mt-0">
+                <a href="<?= site_url('tukar_poin') ?>" class="btn btn-danger shadow-md mr-2"> Kembali</a>
+            </div>
         </div>
     </div>
     <div class="intro-y col-span-12 lg:col-span-8">
@@ -73,6 +66,70 @@
             </div>
         </div>
     </div>
+
+     <!-- BEGIN: riwayat Donasi -->
+    <div class="intro-y grid grid-cols-11 gap-5 mt-5">
+
+        <div class="col-span-12 lg:col-span-12 2xl:col-span-8">
+            <div class="box p-5 rounded-md">
+                <div class="flex items-center border-b border-slate-200/60 dark:border-darkmode-400 pb-5 mb-5">
+                    <div class="font-medium text-base truncate">Riwayat Donasi</div>
+                </div>
+                <div class="overflow-auto lg:overflow-visible -mt-3">
+                    <table class="table table-report table-striped mt-2">
+                        <thead>
+                            <tr>
+                                <th class="whitespace-nowrap">Nama User</th>
+                                <th class="whitespace-nowrap">Email</th>
+                                <th class="whitespace-nowrap">Jenis Donasi</th>
+                                <th class="whitespace-nowrap">Nominal Donasi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                                if (empty($riwayat)) {
+                                    echo '
+                                    <tr>
+                                        <td colspan="12" class="text-center">
+                                            <div> Data Kosong </div>
+                                        </td>
+                                    </tr>
+                                    ';
+                                }
+                            ?>
+                            
+                            <?php
+                            $totalPoints = 0;
+                            foreach ($riwayat as $row) : ?>
+                            <?php $totalPoints += $row->poin;?>
+                                <td>
+                                    <div class="font-medium whitespace-nowrap text-slate-500"><?= $row->name ?></div>
+                                </td>
+                                <td>
+                                    <div class="font-medium whitespace-nowrap text-slate-500"><?= $row->email ?></div>
+                                </td>
+                                <td>
+                                    <div class="font-medium whitespace-nowrap text-slate-500"><?= $row->platform ?></div>
+                                </td>
+                                <td>
+                                    <div class="font-medium whitespace-nowrap text-slate-500 text-success">+ <?= number_format($row->poin, 0, ',', '.') ?></div>
+                                </td>
+                            </tr>
+
+                            <?php endforeach; ?>
+
+                            <tr>
+                                <td colspan="3"></td>
+                                <td class="text-left"><strong><?= number_format($totalPoints, 0, ',', '.') ?> poin,-</strong></td>
+                            </tr>
+
+                        </tbody>
+                    </table>                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END: riwayat Donasi -->
 
 </div>
 

@@ -108,7 +108,7 @@ class Tukar_poin extends CI_Controller
             WHERE donasi.id_user='$id'")->result();
 
         $data['riwayat'] = $this->db->query("SELECT * FROM donasi 
-            WHERE donasi.id_user='$id' AND donasi.platform='donasi'")->result();
+            WHERE donasi.id_user='$id' AND donasi.platform='qurban'")->result();
 
         $this->load->view('layout/user/header', $data);
 		$this->load->view('qurban', $data);
@@ -124,6 +124,9 @@ class Tukar_poin extends CI_Controller
 
         $data['nominal'] = $this->db->query("SELECT SUM(poin) AS poin FROM donasi 
             WHERE donasi.id_user='$id'")->result();
+
+        $data['riwayat'] = $this->db->query("SELECT * FROM donasi 
+            WHERE donasi.id_user='$id' AND donasi.platform='galang dana pembangunan'")->result();
 
         $this->load->view('layout/user/header', $data);
 		$this->load->view('galang_dana_pembangunan', $data);
@@ -311,7 +314,7 @@ class Tukar_poin extends CI_Controller
             echo "Minimal Donasi 100 poin";
             $_SESSION["warning"] = 'Minimal Donasi 100 poin';
 		    redirect('/tukar_poin/qurban');
-        }else if($poin <= $nominal){
+        }else if($nominal > $poin){
             echo "Point Anda Kurang";
             $_SESSION["warning"] = 'Poin Anda Kurang';
 		    redirect('/tukar_poin/qurban');
@@ -351,11 +354,11 @@ class Tukar_poin extends CI_Controller
             echo "Point Anda Kosong";
             $_SESSION["warning"] = 'Poin Anda Kosong';
 		    redirect('/tukar_poin/galang_dana_pembangunan');
-        }else if($nominal <= '100'){
+        }else if($nominal < '100'){
             echo "Minimal Donasi 100 poin";
             $_SESSION["warning"] = 'Minimal Donasi 100 poin';
-		    redirect('/tukar_poin/qurban');
-        }else if($poin <= $total){
+		    redirect('/tukar_poin/galang_dana_pembangunan');
+        }else if($nominal > $poin){
             echo "Point Anda Kurang";
             $_SESSION["warning"] = 'Poin Anda Kurang';
 		    redirect('/tukar_poin/galang_dana_pembangunan');
@@ -373,7 +376,7 @@ class Tukar_poin extends CI_Controller
             $where = array(
                 'id_user' => $id_user
             );
-            // die(var_dump($data));
+            // die(var_dump($total));
             $this->db->insert('donasi', $data, $where);
             $this->db->update('user', $current_poin, $where);
             $_SESSION["sukses"] = 'Poin berhasil di tukar';

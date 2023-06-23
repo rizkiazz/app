@@ -35,6 +35,9 @@ class Tukar_poin extends CI_Controller
         $data['nominal'] = $this->db->query("SELECT SUM(poin) AS poin FROM penarikan 
             WHERE penarikan.id_user='$id'")->result();
 
+        $data['riwayat'] = $this->db->query("SELECT * FROM penarikan 
+            WHERE penarikan.id_user='$id' AND penarikan.platform='gopay'")->result();
+
         $this->load->view('layout/user/header', $data);
 		$this->load->view('gopay', $data);
 		$this->load->view('layout/user/footer');
@@ -49,8 +52,10 @@ class Tukar_poin extends CI_Controller
     
         $data['nominal'] = $this->db->query("SELECT SUM(poin) AS poin FROM penarikan 
             WHERE penarikan.id_user='$id'")->result();
-            
 
+        $data['riwayat'] = $this->db->query("SELECT * FROM penarikan 
+            WHERE penarikan.id_user='$id' AND penarikan.platform='dana'")->result();
+            
         $this->load->view('layout/user/header', $data);
 		$this->load->view('dana', $data);
 		$this->load->view('layout/user/footer');
@@ -65,6 +70,9 @@ class Tukar_poin extends CI_Controller
 
         $data['nominal'] = $this->db->query("SELECT SUM(poin) AS poin FROM penarikan 
             WHERE penarikan.id_user='$id'")->result();
+
+        $data['riwayat'] = $this->db->query("SELECT * FROM penarikan 
+            WHERE penarikan.id_user='$id' AND penarikan.platform='ovo'")->result();
 
         $this->load->view('layout/user/header', $data);
 		$this->load->view('ovo', $data);
@@ -81,6 +89,9 @@ class Tukar_poin extends CI_Controller
         $data['nominal'] = $this->db->query("SELECT SUM(poin) AS poin FROM penarikan 
             WHERE penarikan.id_user='$id'")->result();
 
+        $data['riwayat'] = $this->db->query("SELECT * FROM penarikan 
+            WHERE penarikan.id_user='$id' AND penarikan.platform='shopee pay'")->result();
+
         $this->load->view('layout/user/header', $data);
 		$this->load->view('shopee_pay', $data);
 		$this->load->view('layout/user/footer');
@@ -95,6 +106,9 @@ class Tukar_poin extends CI_Controller
 
         $data['nominal'] = $this->db->query("SELECT SUM(poin) AS poin FROM donasi 
             WHERE donasi.id_user='$id'")->result();
+
+        $data['riwayat'] = $this->db->query("SELECT * FROM donasi 
+            WHERE donasi.id_user='$id' AND donasi.platform='donasi'")->result();
 
         $this->load->view('layout/user/header', $data);
 		$this->load->view('qurban', $data);

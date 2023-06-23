@@ -21,13 +21,24 @@
                                             <div class="ml-2 px-2 py-0.5 bg-slate-200 text-slate-600 dark:bg-darkmode-300 dark:text-slate-400 text-xs rounded-md">Required</div>
                                         </div>
                                         <div class="leading-relaxed text-slate-500 text-xs mt-3">
-                                            <div>Format gambar adalah .jpg .jpeg .png dan ukuran minimal 300 x 300 piksel (Untuk gambar optimal gunakan ukuran minimal 700 x 700 piksel).</div>
+                                            <div>Format gambar adalah .jpg .jpeg .png dan ukuran minimal 300 x 300 piksel (Untuk gambar optimal gunakan ukuran minimal 1080 x 1080 piksel).</div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="w-full mt-3 xl:mt-0 flex-1">
-                                    <input id="product-name" name="gambar" type="file" class="form-control" placeholder="Product name">
-                                    <div class="form-help text-right">Diperlukan untuk jenis file dengan tipe jpg, jpeg atau png</div>
+                                    <div class="border-2 border-dashed dark:border-darkmode-600 rounded-md pt-4">
+                                        <div class="flex flex-wrap jus px-4">
+                                            <div class="image-fit zoom-in relative mb-5 mr-5 h-24 w-24 cursor-pointer">
+                                                <img class="rounded-md" alt="" id="output">
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="px-4 pb-4 flex items-center cursor-pointer relative">
+                                                <i data-lucide="image" class="w-4 h-4 mr-2"></i> <span class="upload text-primary mr-1">Upload gambar</span> atau tarik dan taruh disini
+                                                <input name="gambar" id="gambar" type="file" class="w-full h-full top-0 left-0 absolute opacity-0" accept="image/png, image/jpeg, image/jpg" onchange="loadFile(event)" required>
+                                            </div>
+                                        </div>  
+                                    <div class="form-help text-right text-danger">Gambar max 1MB</div>
                                 </div>
                             </div>
                         </div>
@@ -49,7 +60,7 @@
                                     </div>
                                 </div>
                                 <div class="w-full mt-3 xl:mt-0 flex-1">
-                                    <input id="product-name" type="text" name="nama_brg" class="form-control" placeholder="Nama Produk">
+                                    <input id="product-name" type="text" name="nama_brg" class="form-control" placeholder="Nama Produk" required>
                                     <div class="form-help text-right">Maximum character 0/70</div>
                                 </div>
                             </div>
@@ -63,7 +74,7 @@
                                     </div>
                                 </div>
                                 <div class="w-full mt-3 xl:mt-0 flex-1">
-                                    <select id="category" name="kategori" class="form-select">
+                                    <select id="category" name="kategori" class="form-select" required>
                                         <option hidden>-- Pilih Kategori --</option>
                                         <option value="Plastik">Plastik</option>
                                         <option value="Kertas">Kertas</option>
@@ -83,7 +94,7 @@
                                     </div>
                                 </div>
                                 <div class="w-full mt-3 xl:mt-0 flex-1">
-                                    <input id="product-name" type="text" name="keterangan" class="form-control" placeholder="Deskripsi Produk">
+                                    <input id="product-name" type="text" name="keterangan" class="form-control" placeholder="Deskripsi Produk" required>
                                     <div class="form-help text-right">Maximum character 0/255</div>
                                 </div>
                             </div>
@@ -107,7 +118,7 @@
                                     </div>
                                 </div>
                                 <div class="w-full mt-3 xl:mt-0 flex-1">
-                                    <input id="product-stock" type="text" name="stok" class="form-control" placeholder="Stok produk">
+                                    <input id="product-stock" type="text" name="stok" class="form-control" placeholder="Stok produk" required>
                                 </div>
                             </div>
                             <div class="form-inline items-start flex-col xl:flex-row mt-5 pt-5 first:mt-0 first:pt-0">
@@ -120,7 +131,7 @@
                                     </div>
                                 </div>
                                 <div class="w-full mt-3 xl:mt-0 flex-1">
-                                    <input id="sku" name="harga" type="number" class="form-control" placeholder="0 poin">
+                                    <input id="sku" name="harga" type="number" class="form-control" placeholder="0 poin" required>
                                 </div>
                             </div>
                         </div>
@@ -133,28 +144,15 @@
                 </div>
             </form>
         </div>
-        <div class="intro-y col-span-2 hidden 2xl:block">
-            <div class="pt-10 sticky top-0">
-                <ul class="text-slate-500 relative before:content-[''] before:w-[2px] before:bg-slate-200 before:dark:bg-darkmode-600 before:h-full before:absolute before:left-0 before:z-[-1]">
-                    <li class="mb-4 border-l-2 pl-5 border-primary dark:border-primary text-primary font-medium"> <a href="">Upload Product</a> </li>
-                    <li class="mb-4 border-l-2 pl-5 border-transparent dark:border-transparent"> <a href="">Product Information</a> </li>
-                    <li class="mb-4 border-l-2 pl-5 border-transparent dark:border-transparent"> <a href="">Product Detail</a> </li>
-                    <li class="mb-4 border-l-2 pl-5 border-transparent dark:border-transparent"> <a href="">Product Variant</a> </li>
-                    <li class="mb-4 border-l-2 pl-5 border-transparent dark:border-transparent"> <a href="">Product Variant (Details)</a> </li>
-                    <li class="mb-4 border-l-2 pl-5 border-transparent dark:border-transparent"> <a href="">Product Management</a> </li>
-                </ul>
-                <div class="mt-10 bg-warning/20 dark:bg-darkmode-600 border border-warning dark:border-0 rounded-md relative p-5">
-                    <i data-lucide="lightbulb" class="w-12 h-12 text-warning/80 absolute top-0 right-0 mt-5 mr-3"></i>
-                    <h2 class="text-lg font-medium">
-                        Tips
-                    </h2>
-                    <div class="mt-5 font-medium">Price</div>
-                    <div class="leading-relaxed text-xs mt-2 text-slate-600 dark:text-slate-500">
-                        <div>The image format is .jpg .jpeg .png and a minimum size of 300 x 300 pixels (For optimal images use a minimum size of 700 x 700 pixels).</div>
-                        <div class="mt-2">Select product photos or drag and drop up to 5 photos at once here. Include min. 3 attractive photos to make the product more attractive to buyers.</div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 </div>
+<script>
+  var loadFile = function(event) {
+    var output = document.getElementById('output');
+    output.src = URL.createObjectURL(event.target.files[0]);
+    output.onload = function() {
+      URL.revokeObjectURL(output.src) // free memory
+    }
+  };
+</script>
+

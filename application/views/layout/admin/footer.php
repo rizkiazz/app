@@ -18,6 +18,13 @@
      <!-- jangan lupa untuk menambahkan unset agar sweet alert tidak muncul lagi saat di refresh -->
  <?php unset($_SESSION['sukses']);
     } ?>
+<?php if (@$_SESSION['warning']) { ?>
+    <script>
+        swal("Ups!", "<?php echo $_SESSION['warning']; ?>", "warning");
+    </script>
+    <!-- jangan lupa untuk menambahkan unset agar sweet alert tidak muncul lagi saat di refresh -->
+<?php unset($_SESSION['warning']);
+} ?>
 
  <!-- Chart code -->
  <script>

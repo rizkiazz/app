@@ -43,16 +43,22 @@ class Product extends CI_Controller
 		$gambar		= $_FILES['gambar']['name'];
 		if ($gambar = '') {
 		} else {
-			$config['upload_path'] = './uploads';
-			$config['allowed_types'] = 'jpg|jpeg|png';
+			$config['upload_path'] 			= './uploads';
+			$config['allowed_types'] 		= 'jpg|jpeg|png';
+			$config['max_size']             = 1024; // 1MB
+			$config['max_width']            = 1080; // batas lebar gambar dalam piksel
+			$config['max_height']           = 1080; // batas tinggi gambar dalam piksel
 
 			$this->load->library('upload', $config);
 			if (!$this->upload->do_upload('gambar')) {
 				echo "File tidak dapat di upload!";
+				$_SESSION["warning"] = 'Gambar tidak memenuhi syarat!!';
+				redirect('admin/product/add');
 			} else {
 				$gambar = $this->upload->data('file_name');
 			}
 		}
+		die(var_dump($gambar));
 
 		$data = array(
 			'nama_brg' 	=> $nama_brg,
@@ -62,6 +68,7 @@ class Product extends CI_Controller
 			'stok' 	=> $stok,
 			'gambar' 	=> $gambar
 		);
+		die(var_dump($data));
 
 		$this->model_pembayaran->insert($data, 'product');
 		$_SESSION["sukses"] = 'Product berhasil di tambahkan';

@@ -133,7 +133,7 @@
                             <div class="cursor-pointer relative flex items-center ">
                                 <div class="ml-2 overflow-hidden">
                                     <div class="flex items-center">
-                                        <a class="font-medium truncate mr-5 btn btn-sm btn-outline-pending">Keranjang Kosong!!</small><i data-lucide="frown" class="text-danger"></i><i data-lucide="frown"></i></a>
+                                        <a class="font-medium truncate mr-5 btn btn-sm btn-outline-dark">Keranjang Kosong!!</small><i data-lucide="frown" class="text-pending"></i><i data-lucide="frown" class="text-pending"></i></a>
                                     </div>
                                 </div>
                             </div>

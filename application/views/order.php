@@ -61,7 +61,7 @@
                                             <?php if ($row->status == "0"){ ?>
                                                 <div class="btn btn-sm btn-outline-rounded-info flex items-center whitespace-nowrap text-pending">Proses  &nbsp; &nbsp;<i data-loading-icon="circles" class="w-4 h-4"></i></div>
                                             <?php } else if ($row->status == "1"){ ?>
-                                                <div class="btn btn-sm btn-outline-rounded flex items-center whitespace-nowrap text-success"> Selesai  &nbsp; &nbsp;<i data-loading-icon="hearts" class="w-4 h-4"></i></div>
+                                                <div class="btn btn-sm btn-outline-rounded flex items-center whitespace-nowrap text-success"> Selesai  &nbsp; &nbsp;<i data-loading-icon="circles" class="w-4 h-4"></i></div>
                                             <?php } ?>
                                         </td>
                                         <td>

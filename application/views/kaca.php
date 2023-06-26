@@ -1,6 +1,6 @@
 <div class="content">
     <h2 class="intro-y text-lg font-medium mt-10">
-        Product List
+        Produk List
     </h2>
     <div class="grid grid-cols-12 gap-6 mt-5">
         <div class="intro-y col-span-12 flex flex-wrap sm:flex-nowrap items-center mt-2">
@@ -14,31 +14,64 @@
             </div>
         </div>
         <!-- BEGIN: Users Layout -->
-        <?php foreach ($kaca as $row) : ?>
+        <?php if(!$kaca) { ?>
             <div class="intro-y col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-3">
                 <div class="box">
                     <div class="p-5">
-                        <div class="h-40 2xl:h-56 image-fit rounded-md overflow-hidden before:block before:absolute before:w-full before:h-full before:top-0 before:left-0 before:z-10 before:bg-gradient-to-t before:from-black before:to-black/10">
-                            <img alt="Midone - HTML Admin Template" class="rounded-md" src="<?= base_url() . '/uploads/produk/' . $row->gambar ?>">
-                            <span class="absolute top-0 bg-success text-white text-xs m-5 px-2 py-1 rounded z-10"><i data-lucide="star" class="w-4 h-4 mr-1"></i></span>
-                            <div class="absolute bottom-0 text-white px-5 pb-6 z-10">
-                                <a href="<?php echo base_url('dashboard/detail_product/' . $row->id_brg) ?>" class="block font-medium text-base"><?= $row->nama_brg ?></a>
-                                <span class="text-white/90 text-xs mt-3"><?= $row->kategori ?></span>
-                            </div>
+                        <div class="h-40 2xl:h-56 image-fit rounded-md overflow-hidden before:block before:absolute before:w-full before:h-full before:top-0 before:left-0 before:z-10 before:bg-gradient-to-t before:from-white before:to-black/10">
+                            <img alt="Midone - HTML Admin Template" class="rounded-md" src="<?= base_url() . '/uploads/produk/coming_soon.png'?>">
                         </div>
                         <div class="text-slate-600 dark:text-slate-500 mt-5">
-                            <div class="flex items-center"> <i data-lucide="dollar-sign" class="w-4 h-4 mr-2"></i> Poin <?= number_format($row->harga, 0, ',', '.') ?> /kg </div>
-                            <!-- <div class="flex items-center mt-2"> <i data-lucide="layers" class="w-4 h-4 mr-2"></i> Sisa stok: <?= number_format($row->stok, 0, ',', '.') ?> </div>
-                            <div class="flex items-center mt-2"> <i data-lucide="check-square" class="w-4 h-4 mr-2"></i> Status: Active </div> -->
+                            <div class="flex items-center" style="justify-content: space-between;"> Segera Hadir!!
+                                <span class="w-8 h-8">
+                                    <svg class="w-full h-full" width="20" viewBox="0 0 57 57" xmlns="http://www.w3.org/2000/svg">
+                                        <g fill="none" fill-rule="evenodd">
+                                            <g transform="translate(1 1)">
+                                                <circle cx="5" cy="50" r="5" fill="#2d3748">
+                                                    <animate values="50;5;50;50" attributeName="cy" begin="0s" dur="2.2s" calcMode="linear" repeatCount="indefinite"></animate>
+                                                    <animate values="5;27;49;5" attributeName="cx" begin="0s" dur="2.2s" calcMode="linear" repeatCount="indefinite"></animate>
+                                                </circle>
+                                                <circle cx="27" cy="5" r="5" fill="#2d3748">
+                                                    <animate values="5;50;50;5" attributeName="cy" begin="0s" dur="2.2s" from="5" to="5" calcMode="linear" repeatCount="indefinite"></animate>
+                                                    <animate values="27;49;5;27" attributeName="cx" begin="0s" dur="2.2s" from="27" to="27" calcMode="linear" repeatCount="indefinite"></animate>
+                                                </circle>
+                                                <circle cx="49" cy="50" r="5" fill="#2d3748">
+                                                    <animate values="50;50;5;50" attributeName="cy" begin="0s" dur="2.2s" calcMode="linear" repeatCount="indefinite"></animate>
+                                                    <animate values="49;5;27;49" attributeName="cx" from="49" to="49" begin="0s" dur="2.2s" calcMode="linear" repeatCount="indefinite"></animate>
+                                                </circle>
+                                            </g>
+                                        </g>
+                                    </svg>
+                                </span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="flex justify-center lg:justify-end items-center p-5 border-t border-slate-200/60">
-                        <a class="flex items-center btn btn-sm btn-success text-white mr-3" href="<?php echo base_url('dashboard/detail_product/' . $row->id_brg) ?>"> <i data-lucide="info" class="w-4 h-4 mr-1"></i> Detail </a>
-                        <a class="flex items-center btn btn-sm btn-success text-white mr-3" href="<?php echo base_url('dashboard/cart/' . $row->id_brg) ?>"> <i data-lucide="shopping-cart" class="w-4 h-4 mr-1"></i>Keranjang</a>
                     </div>
                 </div>
             </div>
-        <?php endforeach; ?>
+        <?php } else { ?>
+
+            <?php foreach ($kaca as $row) : ?>
+                <div class="intro-y col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-3">
+                    <div class="box">
+                        <div class="p-5">
+                            <div class="h-40 2xl:h-56 image-fit rounded-md overflow-hidden before:block before:absolute before:w-full before:h-full before:top-0 before:left-0 before:z-10 before:bg-gradient-to-t before:from-black before:to-black/10">
+                                <img alt="Midone - HTML Admin Template" class="rounded-md" src="<?= base_url() . '/uploads/produk/' . $row->gambar ?>">
+                                <span class="absolute top-0 bg-warning text-white text-xs m-5 px-2 py-1 rounded z-10"><i data-lucide="star" class="w-4 h-4 mr-1"></i></span>
+                                <div class="absolute bottom-0 text-white px-5 pb-6 z-10"> <a href="<?php echo base_url('dashboard/detail_product/' . $row->id_brg) ?>" class="block font-medium text-base"><?= $row->nama_brg ?></a> <span class="text-white/90 text-xs mt-3"><?= $row->kategori ?></span> </div>
+                            </div>
+                            <div class="text-slate-600 dark:text-slate-500 mt-5">
+                                <div class="flex items-center"> <i data-lucide="link" class="w-4 h-4 mr-2"></i> Poin <?= number_format($row->harga, 0, ',', '.') ?> /kg</div>
+                            </div>
+                        </div>
+                         <div class="flex justify-center lg:justify-end items-center p-5 border-t border-slate-200/60">
+                            <a class="flex items-center btn btn-sm btn-success text-white mr-3" href="<?php echo base_url('dashboard/detail_product/' . $row->id_brg) ?>"> <i data-lucide="info" class="w-4 h-4 mr-1"></i> Detail </a>
+                            <a class="flex items-center btn btn-sm btn-success text-white mr-3" href="<?php echo base_url('dashboard/cart/' . $row->id_brg) ?>"> <i data-lucide="shopping-cart" class="w-4 h-4 mr-1"></i>Keranjang</a>
+                        </div>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+
+        <?php } ?>
         <!-- END: Users Layout -->
         <!-- BEGIN: Pagination -->
         <!-- <div class="intro-y col-span-12 flex flex-wrap sm:flex-row sm:flex-nowrap items-center">

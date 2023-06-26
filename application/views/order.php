@@ -19,9 +19,10 @@
                                 <thead>
                                     <tr>
                                         <th class="whitespace-nowrap">Order ID</th>
-                                        <th class="whitespace-nowrap">Nama Pelanggan</th>
+                                        <th class="whitespace-nowrap">Nama</th>
                                         <th class="text-center whitespace-nowrap">Alamat Pengiriman</th>
                                         <th class="whitespace-nowrap">Layanan Pesanan</th>
+                                        <th class="whitespace-nowrap">Status</th>
                                         <th class="whitespace-nowrap">Waktu Order</th>
                                     </tr>
                                 </thead>
@@ -41,7 +42,7 @@
                                     foreach ($order as $row) : ?>
                                     <tr class="intro-x">
                                         <td class="w-40 !py-4"> <a href="<?= site_url('order/detail/'.$row->order_id) ?>" class="underline decoration-dotted whitespace-nowrap">#<?= $row->order_id ?></a> </td>
-                                        <td class="w-40">
+                                        <td class="w-10">
                                             <a href="" class="font-medium whitespace-nowrap"><?= $row->name ?></a>
                                         </td>
                                         <td class="text-center">
@@ -55,6 +56,13 @@
                                                 echo '<button class="flex items-center mr-3 text-white btn btn-sm btn-pending shadow-md mr-2"><i data-lucide="package" class="w-4 h-4 mr-1"></i>' . $row->layanan_pesanan . '</button>';
                                                 }
                                             ?>
+                                        </td>
+                                        <td>
+                                            <?php if ($row->status == "0"){ ?>
+                                                <div class="btn btn-sm btn-outline-rounded-info flex items-center whitespace-nowrap text-pending">Proses  &nbsp; &nbsp;<i data-loading-icon="circles" class="w-4 h-4"></i></div>
+                                            <?php } else if ($row->status == "1"){ ?>
+                                                <div class="btn btn-sm btn-outline-rounded flex items-center whitespace-nowrap text-success"> Selesai  &nbsp; &nbsp;<i data-loading-icon="hearts" class="w-4 h-4"></i></div>
+                                            <?php } ?>
                                         </td>
                                         <td>
                                             <div class="text-slate-500 whitespace-nowrap mt-0.5"><?= date('d-M-Y H:i', strtotime($row->transaction_time)) ?></div>

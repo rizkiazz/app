@@ -17,7 +17,7 @@ class Dashboard extends CI_Controller
 	{
 		$data['title'] = 'Dashboard User';
 		// $data['product'] = $this->model_pembayaran->get('product')->result();
-		$data['product_category'] = $this->db->query("SELECT DISTINCT kategori, gambar FROM product LIMIT 5;")->result();
+		$data['product_category'] = $this->db->query("SELECT DISTINCT kategori, gambar FROM product;")->result();
 
 		$this->load->view('layout/user/header', $data);
 		$this->load->view('dashboard', $data);

@@ -110,7 +110,7 @@ body, html {
     <div class="w3-row-padding" style="margin-top:64px; text-align: center; align-items: center; display: flex; justify-content: center; font-size: medium;">
       <div class="w3-col l3 m6 w3-margin-bottom custom-card">
         <div class="w3-card fitur">
-          <img src="<?= site_url('asset/home/') ?>/pickup.jpg" style="width:60%; margin-top: 10px">
+          <img src="<?= site_url('asset/home/') ?>/pickup.jpg" style="width:50%; margin-top: 10px">
           <div class="w3-container">
             <h3>Pick Up</h3>
             <p>Foto sampah daur ulangmu, upload ke EasyPickTrash, kolektor EasyPickTrash terdekat akan menjemput dan membayar sampahmu.</p>
@@ -119,10 +119,19 @@ body, html {
       </div>
       <div class="w3-col l3 m6 w3-margin-bottom custom-card">
         <div class="w3-card fitur">
-          <img src="<?= site_url('asset/home/') ?>/dropoff.jpg" style="width:60%; margin-top: 10px">
+          <img src="<?= site_url('asset/home/') ?>/dropoff.jpg" style="width:50%; margin-top: 10px">
           <div class="w3-container">
             <h3>Drop Off</h3>
             <p>Antar langsung sampahmu ke pusat daur ulang terdekat, kamu bisa mendaur ulang dengan ukuran kecil seperti satu botol plastik.</p>
+          </div>
+        </div>
+      </div>
+      <div class="w3-col l3 m6 w3-margin-bottom custom-card">
+        <div class="w3-card fitur">
+          <img src="<?= site_url('asset/home/') ?>/tukar_poin.png" style="width:20%; margin-top: 10px">
+          <div class="w3-container">
+            <h3>Tukar Poin</h3>
+            <p>Kamu dapat menukarkan poin sampahmu menjadi uang digital seperti Dana, Ovo, Gopay, dll <br> Atau kamu juga bisa donasikan poinmu</p>
           </div>
         </div>
       </div>

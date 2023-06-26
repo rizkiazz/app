@@ -310,7 +310,7 @@ class Tukar_poin extends CI_Controller
             echo "Point Anda Kosong";
             $_SESSION["warning"] = 'Poin Anda Kosong';
 		    redirect('/tukar_poin/qurban');
-        }else if($nominal <= '100'){
+        }else if($nominal < '100'){
             echo "Minimal Donasi 100 poin";
             $_SESSION["warning"] = 'Minimal Donasi 100 poin';
 		    redirect('/tukar_poin/qurban');

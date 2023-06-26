@@ -129,20 +129,32 @@
                     <div class="notification-content__box dropdown-content">
                         <div class="notification-content__title"> <?php $keranjang = 'Keranjang Anda : ' . $this->cart->total_items() . ' items ' ?>&nbsp; <?php echo $keranjang ?></div>
 
-                        <?php foreach ($this->cart->contents() as $items) : ?>
+                        <?php if(!$this->cart->contents()) { ?>
                             <div class="cursor-pointer relative flex items-center ">
-                                <div class="w-12 h-12 flex-none image-fit mr-1">
-                                    <img alt="Midone - HTML Admin Template" class="rounded-full" src="<?= base_url() . '/uploads/produk/' . $items['options']['gambar']; ?>">
-                                    <div class="w-3 h-3 bg-success absolute right-0 bottom-0 rounded-full border-2 border-white"></div>
-                                </div>
                                 <div class="ml-2 overflow-hidden">
                                     <div class="flex items-center">
-                                        <a href="javascript:;" class="font-medium truncate mr-5"> <?php echo $items['name']; ?> &nbsp; <small>x <?php echo $items['qty']; ?></small></a>
+                                        <a class="font-medium truncate mr-5 btn btn-sm btn-outline-pending">Keranjang Kosong!!</small><i data-lucide="frown" class="text-danger"></i><i data-lucide="frown"></i></a>
                                     </div>
-                                    <div class="w-full truncate text-slate-500 mt-0.5"><?php echo $items['options']['keterangan']; ?> </div>
                                 </div>
                             </div>
-                        <?php endforeach; ?>
+                        <?php } else { ?>
+                            
+                            <?php foreach ($this->cart->contents() as $items) : ?>
+                                <div class="cursor-pointer relative flex items-center ">
+                                    <div class="w-12 h-12 flex-none image-fit mr-1">
+                                        <img alt="Midone - HTML Admin Template" class="rounded-full" src="<?= base_url() . '/uploads/produk/' . $items['options']['gambar']; ?>">
+                                        <div class="w-3 h-3 bg-success absolute right-0 bottom-0 rounded-full border-2 border-white"></div>
+                                    </div>
+                                    <div class="ml-2 overflow-hidden">
+                                        <div class="flex items-center">
+                                            <a href="javascript:;" class="font-medium truncate mr-5"> <?php echo $items['name']; ?> &nbsp; <small>x <?php echo $items['qty']; ?></small></a>
+                                        </div>
+                                        <div class="w-full truncate text-slate-500 mt-0.5"><?php echo $items['options']['keterangan']; ?> </div>
+                                    </div>
+                                </div>
+                            <?php endforeach; ?>
+
+                        <?php }?>
                         <br>
                         <hr>
                         <button class="btn btn-sm btn-rounded-primary mt-4"><span class="text-uppercase"><a href="<?= site_url('dashboard/detail_cart') ?>">Liat Keranjang</a></span></button>

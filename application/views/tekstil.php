@@ -24,9 +24,7 @@
                             <div class="absolute bottom-0 text-white px-5 pb-6 z-10"> <a href="<?php echo base_url('dashboard/detail_product/' . $row->id_brg) ?>" class="block font-medium text-base"><?= $row->nama_brg ?></a> <span class="text-white/90 text-xs mt-3"><?= $row->kategori ?></span> </div>
                         </div>
                         <div class="text-slate-600 dark:text-slate-500 mt-5">
-                            <div class="flex items-center"> <i data-lucide="link" class="w-4 h-4 mr-2"></i> Poin <?= number_format($row->harga, 0, ',', '.') ?> </div>
-                            <!-- <div class="flex items-center mt-2"> <i data-lucide="layers" class="w-4 h-4 mr-2"></i> Remaining Stock: <?= number_format($row->stok, 0, ',', '.') ?> </div>
-                            <div class="flex items-center mt-2"> <i data-lucide="check-square" class="w-4 h-4 mr-2"></i> Status: Active </div> -->
+                            <div class="flex items-center"> <i data-lucide="link" class="w-4 h-4 mr-2"></i> Poin <?= number_format($row->harga, 0, ',', '.') ?> /kg</div>
                         </div>
                     </div>
                      <div class="flex justify-center lg:justify-end items-center p-5 border-t border-slate-200/60">
@@ -94,7 +92,7 @@
     </div>
 </div>
 <!-- END: Delete Confirmation Modal -->
-<!-- END: Delete Confirmation Modal -->
+<!-- START: Sweet Alert -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.33.1/sweetalert2.min.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.33.1/sweetalert2.min.js"></script>
 
@@ -105,3 +103,4 @@
     <!-- jangan lupa untuk menambahkan unset agar sweet alert tidak muncul lagi saat di refresh -->
 <?php unset($_SESSION['sukses']);
 } ?>
+<!-- END: Sweet Alert -->

@@ -127,7 +127,7 @@
                 <div class="dropdown-toggle notification notification--bullet cursor-pointer" role="button" aria-expanded="false" data-tw-toggle="dropdown"><i data-lucide="shopping-cart" class="notification__icon dark:text-slate-500"></i> </div>
                 <div class="notification-content pt-2 dropdown-menu">
                     <div class="notification-content__box dropdown-content">
-                        <div class="notification-content__title"> <?php $keranjang = 'Shopping Cart : ' . $this->cart->total_items() . ' items ' ?>&nbsp; <?php echo $keranjang ?></div>
+                        <div class="notification-content__title"> <?php $keranjang = 'Keranjang Anda : ' . $this->cart->total_items() . ' items ' ?>&nbsp; <?php echo $keranjang ?></div>
 
                         <?php foreach ($this->cart->contents() as $items) : ?>
                             <div class="cursor-pointer relative flex items-center ">
@@ -145,7 +145,7 @@
                         <?php endforeach; ?>
                         <br>
                         <hr>
-                        <button class="btn btn-sm btn-rounded-primary mt-4"><span class="text-uppercase"><a href="<?= site_url('dashboard/detail_cart') ?>">DETAIL CART</a></span></button>
+                        <button class="btn btn-sm btn-rounded-primary mt-4"><span class="text-uppercase"><a href="<?= site_url('dashboard/detail_cart') ?>">Liat Keranjang</a></span></button>
                     </div>
                 </div>
             </div>

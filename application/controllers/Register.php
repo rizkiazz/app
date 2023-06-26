@@ -21,7 +21,6 @@ class Register extends CI_Controller
                 'email'            => $this->input->post('email'),
                 'password'         => md5($this->input->post('password_1')),
                 'level'            => 0,
-                'avatar'           => 'user.png',
                 'poin'             => 0,
             );
 

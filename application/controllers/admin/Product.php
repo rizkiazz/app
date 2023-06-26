@@ -138,8 +138,26 @@ class Product extends CI_Controller
 	public function delete($id)
 	{
 		$where = array('id_brg' => $id);
+		$product = $this->db->query("SELECT gambar FROM product WHERE product.id_brg='$id'")->row();
+
+		if ($product) {
+			$imagePath = FCPATH . '/uploads/produk/' . $product->gambar;
+			if (isset($imagePath)) {
+				if (unlink($imagePath)) {
+					// File deletion successful
+					echo 'Image deleted successfully.';
+				} else {
+					// File deletion failed
+					echo 'Unable to delete the image.';
+				}
+			} else {
+				// File does not exist
+				echo 'Image file not found.';
+			}
+		}
 		$this->model_pembayaran->delete($where, 'product');
-		$_SESSION["sukses"] = 'Product berhasil di dihapus';
+		$_SESSION["sukses"] = 'Product berhasil dihapus';
 		redirect('admin/product');
+
 	}
 }

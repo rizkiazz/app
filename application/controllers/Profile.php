@@ -50,6 +50,24 @@ class Profile extends CI_Controller
 				echo "File tidak dapat di upload!";
 			} else {
 				$avatar = $this->upload->data('file_name');
+                $profile = $this->db->query("SELECT avatar FROM user WHERE user.id_user='$id'")->row();
+                // die(var_dump($profile));
+
+                if ($profile) {
+                    $imagePath = FCPATH . '/uploads/avatar/' . $profile->avatar;
+                    if (isset($imagePath)) {
+                        if (unlink($imagePath)) {
+                            // File deletion successful
+                            echo 'Image deleted successfully.';
+                        } else {
+                            // File deletion failed
+                            echo 'Unable to delete the image.';
+                        }
+                    } else {
+                        // File does not exist
+                        echo 'Image file not found.';
+                    }
+                }
 			}
 		} else {
             $avatar = $this->input->post('old');

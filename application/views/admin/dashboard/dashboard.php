@@ -62,20 +62,33 @@
                         <a href="" class="ml-auto text-primary truncate"></a>
                     </div>
                     <div class="mt-5">
-                        <?php foreach ($bill as $row) : ?>
+                        <?php if(empty($bill)) { ?>
                             <div class="intro-y">
                                 <div class="box px-4 py-4 mb-3 flex items-center zoom-in">
                                     <div class="w-10 h-10 flex-none image-fit rounded-md overflow-hidden">
                                         <img src="<?= base_url('asset') ?>/user.png">
                                     </div>
-                                    <div class="ml-4 mr-auto">
-                                        <div class="font-medium"><b>#<?= $row->order_id ?></b> | <?= $row->name ?></div>
-                                        <div class="text-slate-500 text-xs mt-0.5"><?= date("d F Y H:i:s", strtotime($row->transaction_time)); ?></div>
+                                    <div class="ml-4">
+                                        <div class="font-medium"><b>Pesanan Masuk Kosong</b></div>
                                     </div>
-                                    <div class="py-1 px-2 rounded-full text-xs bg-danger text-white cursor-pointer font-medium">Menunggu Pembayaran</div>
                                 </div>
                             </div>
-                        <?php endforeach; ?>
+                        <?php } else { ?>
+                            <?php foreach ($bill as $row) : ?>
+                                <div class="intro-y">
+                                    <div class="box px-4 py-4 mb-3 flex items-center zoom-in">
+                                        <div class="w-10 h-10 flex-none image-fit rounded-md overflow-hidden">
+                                            <img src="<?= base_url('asset') ?>/user.png">
+                                        </div>
+                                        <div class="ml-4 mr-auto">
+                                            <div class="font-medium"><b>#<?= $row->order_id ?></b> | <?= $row->name ?></div>
+                                            <div class="text-slate-500 text-xs mt-0.5"><?= date("d F Y H:i:s", strtotime($row->transaction_time)); ?></div>
+                                        </div>
+                                        <div class="py-1 px-2 rounded-full text-xs bg-danger text-white cursor-pointer font-medium">Menunggu Pembayaran</div>
+                                    </div>
+                                </div>
+                            <?php endforeach; ?>
+                        <?php } ?>
                         <a href="<?= site_url('admin/invoice') ?>" class="intro-y w-full block text-center rounded-md py-4 border border-dotted border-slate-400 dark:border-darkmode-300 text-slate-500">liat lebih banyak</a>
                     </div>
                 </div>
@@ -102,6 +115,14 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <?php if(empty($invoice)) { ?>
+                        <tr>
+                            <td colspan="12" class="text-center">
+                                <div> User Kosong </div>
+                            </td>
+                        </tr>
+                        <?php } else { ?>
+
                         <?php 
                         $counter = 1; // Initialize the counter variable
                         foreach ($user as $row) : ?>
@@ -130,6 +151,8 @@
                         <?php 
                         $counter++; // Increment the counter variable
                         endforeach; ?>
+
+                        <?php }?>
                     </tbody>
                 </table>
             </div>

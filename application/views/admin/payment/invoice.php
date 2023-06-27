@@ -86,75 +86,85 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($invoice as $row) : ?>
-
-                        <tr class="intro-x">
-                            <td class="w-40 !py-4"> <a href="<?= site_url('admin/invoice/detail/'.$row->order_id) ?>" class="underline decoration-dotted whitespace-nowrap">#<?= $row->order_id ?></a> </td>
-                            <td class="w-40">
-                                <a href="" class="font-medium whitespace-nowrap"><?= $row->name ?></a>
+                    <?php if(empty($invoice)) { ?>
+                        <tr>
+                            <td colspan="12" class="text-center">
+                                <div> Invoice Kosong </div>
                             </td>
-                            <td>
-                                <div class="text-slate-500 whitespace-nowrap mt-0.5"><?= date('d-M-Y H:i', strtotime($row->transaction_time)) ?></div>
-                            </td>
-                            <td>
-                                <?php if (empty($row->bukti_pembayaran)){ ?>
-                                    <div class="flex items-center whitespace-nowrap text-danger"> <i data-lucide="alert-circle" class="w-4 h-4 mr-2"></i>Belum upload bukti </div>
-                                <?php } else { ?>
-                                    <div class="flex items-center whitespace-nowrap text-primary"> <i data-lucide="link" class="w-4 h-4 mr-2"></i>
-                                        <a data-tw-toggle="modal" data-tw-target="#show-upload-bukti-<?php echo $row->order_id; ?>">Lihat Bukti</a>
-                                        <i data-lucide="image" class="w-4 h-4 mr-2"></i>
-                                    </div>
-                                <?php } ?>
-                            </td>
-                            <td>
-                                <?php if ($row->status == "0"){ ?>
-                                    <div class="flex items-center whitespace-nowrap text-pending"><b>PENDING</b> </div>
-                                <?php } else if ($row->status == "1"){ ?>
-                                    <div class="flex items-center whitespace-nowrap text-success"> <b>Terbayar</b> </div>
-                                <?php } ?>
-                            </td>
-                            <td class="table-report__action">
-                                <center>
-                                    <?php if ($row->status == "0"){ ?>
-                                        <div class="flex justify-center items-center">
-                                            <a class="flex items-center text-primary whitespace-nowrap" href="<?= site_url('admin/invoice/confirm/'. $row->order_id) ?>"> <i data-lucide="arrow-left-right" class="w-4 h-4 mr-1"></i> Ubah Status </a>
+                        </tr>
+                    <?php } else { ?>
+                    
+                        <?php foreach ($invoice as $row) : ?>
+    
+                            <tr class="intro-x">
+                                <td class="w-40 !py-4"> <a href="<?= site_url('admin/invoice/detail/'.$row->order_id) ?>" class="underline decoration-dotted whitespace-nowrap">#<?= $row->order_id ?></a> </td>
+                                <td class="w-40">
+                                    <a href="" class="font-medium whitespace-nowrap"><?= $row->name ?></a>
+                                </td>
+                                <td>
+                                    <div class="text-slate-500 whitespace-nowrap mt-0.5"><?= date('d-M-Y H:i', strtotime($row->transaction_time)) ?></div>
+                                </td>
+                                <td>
+                                    <?php if (empty($row->bukti_pembayaran)){ ?>
+                                        <div class="flex items-center whitespace-nowrap text-danger"> <i data-lucide="alert-circle" class="w-4 h-4 mr-2"></i>Belum upload bukti </div>
+                                    <?php } else { ?>
+                                        <div class="flex items-center whitespace-nowrap text-primary"> <i data-lucide="link" class="w-4 h-4 mr-2"></i>
+                                            <a data-tw-toggle="modal" data-tw-target="#show-upload-bukti-<?php echo $row->order_id; ?>">Lihat Bukti</a>
+                                            <i data-lucide="image" class="w-4 h-4 mr-2"></i>
                                         </div>
-                                    <?php } else if ($row->status == "1"){ ?>
-                                        <button class="btn btn-sm btn-success text-white">Pembayaran Berhasil</button>
                                     <?php } ?>
                                 </td>
-                            </tr>
-
-                            <!-- Show bukti Modal -->
-                            <div id="show-upload-bukti-<?php echo $row->order_id; ?>" class="modal" tabindex="-1" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-body p-0">
-                                            <div class="p-5">
-                                                <div class="text-slate-500 mt-2">
-                                                    <div class="border-2 border-dashed shadow-sm border-slate-200/60 dark:border-darkmode-400 rounded-md p-5">
-                                                        <div class="h-40 relative image-fit cursor-pointer zoom-in mx-auto">
-                                                            <h5 class="font-medium whitespace-nowrap"><?= $row->order_id ?></h5>
-                                                            <img class="rounded-md" src="<?= base_url() . '/uploads/bukti_pembayaran/' . $row->bukti_pembayaran ?>">
-                                                            <div class="tooltip w-5 h-5 flex items-center justify-center absolute rounded-full text-white bg-primary right-0 top-0 -mr-2 -mt-2">
-                                                                <i data-lucide="alert-circle" class="w-4 h-4"></i> 
+                                <td>
+                                    <?php if ($row->status == "0"){ ?>
+                                        <div class="flex items-center whitespace-nowrap text-pending"><b>PENDING</b> </div>
+                                    <?php } else if ($row->status == "1"){ ?>
+                                        <div class="flex items-center whitespace-nowrap text-success"> <b>Terbayar</b> </div>
+                                    <?php } ?>
+                                </td>
+                                <td class="table-report__action">
+                                    <center>
+                                        <?php if ($row->status == "0"){ ?>
+                                            <div class="flex justify-center items-center">
+                                                <a class="flex items-center text-primary whitespace-nowrap" href="<?= site_url('admin/invoice/confirm/'. $row->order_id) ?>"> <i data-lucide="arrow-left-right" class="w-4 h-4 mr-1"></i> Ubah Status </a>
+                                            </div>
+                                        <?php } else if ($row->status == "1"){ ?>
+                                            <button class="btn btn-sm btn-success text-white">Pembayaran Berhasil</button>
+                                        <?php } ?>
+                                    </td>
+                                </tr>
+    
+                                <!-- Show bukti Modal -->
+                                <div id="show-upload-bukti-<?php echo $row->order_id; ?>" class="modal" tabindex="-1" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-body p-0">
+                                                <div class="p-5">
+                                                    <div class="text-slate-500 mt-2">
+                                                        <div class="border-2 border-dashed shadow-sm border-slate-200/60 dark:border-darkmode-400 rounded-md p-5">
+                                                            <div class="h-40 relative image-fit cursor-pointer zoom-in mx-auto">
+                                                                <h5 class="font-medium whitespace-nowrap"><?= $row->order_id ?></h5>
+                                                                <img class="rounded-md" src="<?= base_url() . '/uploads/bukti_pembayaran/' . $row->bukti_pembayaran ?>">
+                                                                <div class="tooltip w-5 h-5 flex items-center justify-center absolute rounded-full text-white bg-primary right-0 top-0 -mr-2 -mt-2">
+                                                                    <i data-lucide="alert-circle" class="w-4 h-4"></i> 
+                                                                </div>
                                                             </div>
                                                         </div>
+                                                        
                                                     </div>
-                                                    
                                                 </div>
-                                            </div>
-                                            <hr>
-                                            <div class="px-3 pb-3 mt-3 text-center">
-                                                <button type="button" data-tw-dismiss="modal" class="btn btn-primary w-24 mr-1">Kembali</button>
+                                                <hr>
+                                                <div class="px-3 pb-3 mt-3 text-center">
+                                                    <button type="button" data-tw-dismiss="modal" class="btn btn-primary w-24 mr-1">Kembali</button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <!-- End Show bukti Modal -->
-
-                    <?php endforeach; ?>
+                                <!-- End Show bukti Modal -->
+    
+                        <?php endforeach; ?>
+                        
+                    <?php }?>
                 </tbody>
             </table>
 

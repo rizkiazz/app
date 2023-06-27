@@ -6,7 +6,20 @@
     </div>
     <div class=" pos intro-y grid grid-cols-12 gap-5 mt-5">
         <!-- BEGIN: Post Content -->
-        <?php $grand_total = 0;
+        <?php if(empty($keranjang = $this->cart->contents())) {?>
+            <div class="col-span-12 lg:col-span-12">
+                <div class="intro-y pr-1">
+                    <div class="alert alert-primary show mb-2 text-center" role="alert"> Anda Belum Memilih Produk </div>
+                </div>
+                <div id="ticket" class="tab-pane active" role="tabpanel" aria-labelledby="ticket-tab">
+                    <div class="box p-2 mt-5 justify-content-center text-center">
+                        <a href="<?= site_url('dashboard') ?>" class="btn btn-danger shadow-md mr-2"> Kembali Ke Dashboard</a>
+                    </div>
+                </div>
+            </div>
+        <?php }else { ?>
+
+            <?php $grand_total = 0;
                 $biaya_layanan = 500;
         if ($keranjang = $this->cart->contents()) {
             foreach ($keranjang as $item) {
@@ -200,6 +213,9 @@
             </div>
         </div>
         <!-- END: Post Info -->
+
+        <?php }?>
+        
     </div>
 </div>
 <script>

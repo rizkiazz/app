@@ -61,7 +61,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="<?= base_url('tekstil') ?>" class="menu">
+                    <a href="<?= base_url('dashboard_categories/tekstil') ?>" class="menu">
                         <div class="menu__icon"> <i data-lucide="hexagon"></i> </div>
                         <div class="menu__title"> Tekstil </div>
                     </a>

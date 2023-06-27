@@ -115,7 +115,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php if(empty($invoice)) { ?>
+                        <?php if(empty($user)) { ?>
                         <tr>
                             <td colspan="12" class="text-center">
                                 <div> User Kosong </div>

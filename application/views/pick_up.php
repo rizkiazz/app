@@ -21,26 +21,16 @@
 
             <?php
             $grand_total = 0;
-            $biaya_layanan = 0;
-            
+
             if ($keranjang = $this->cart->contents()) {
             foreach ($keranjang as $item) {
-                if($item['name'] == 'Sampah Plastik'){
-                    $biaya_layanan = 1500;
-                } else if($item['name'] == 'Sampah Kertas'){ 
-                    $biaya_layanan = 2000;
-                } else if($item['name'] == 'Sampah Kaca'){ 
-                    $biaya_layanan = 1000;
-                } else if($item['name'] == 'Sampah Tekstil'){ 
-                    $biaya_layanan = 500;
-                } else if($item['name'] == 'Sampah Elektronik'){ 
-                    $biaya_layanan = 10000;
-                }
+                $harga = $item['price']; //harga /kg
+                $items_subtotal = $item['poin'] * $item['qty'];//poin yg didapat
 
-                $grand_total = $grand_total + $item['subtotal'];
-                $qty = $item['qty'];
-                $biaya_antar = $biaya_layanan * $item['qty']; 
-                $potongan = $biaya_antar /5;
+                $qty = $item['qty']; //quantity
+                $grand_total = $harga * $qty; // total harga
+                $biaya_antar = $harga * $item['qty']; //biaya antar
+                $potongan = $biaya_antar /5; //biaya antar / t
                 $biaya_layanan_total = $biaya_antar - $potongan;
 
             }
@@ -136,28 +126,32 @@
                                         <label for="post-form-7" class="form-label"> Kode Pos <small class="text-danger">*</small></label>
                                         <input type="text" class="form-control" id="kode_pos" name="kode_pos" placeholder="Your mobile phone" autocomplete="off" required>
                                     </div>
-                                    <div class="mb-5">
-                                        <label for="post-form-7" class="form-label"> Metode Pembayaran <small class="text-danger">*</small></label>
-                                        <select name="payment_method" data-placeholder="Pilih Bank" class="tom-select w-full">
-                                            <option value="BRI - 6750527090">Bank BRI 6750527090</option>
-                                            <option value="BCA - 6750527080">Bank BCA 6750527080</option>
-                                            <option value="MANDIRI - 6750527070">Bank MANDIRI 6750527070</option>
-                                            <option value="BNI - 6750527060">Bank BNI 6750527060</option>
-                                            <option value="BTN - 6750527050">Bank BTN 6750527060</option>
-                                        </select>
-                                    </div>
-                                    <div class="mb-5">
-                                        <label for="post-form-7" class="form-label"> Rekening User <small class="text-danger">*</small></label>
-                                        <input type="text" class="form-control" id="kode_pos" name="kode_pos" placeholder="Your mobile phone" autocomplete="off" required>
-                                    </div>
                                 </div>
+                            </div>
+                            <!-- <div class="border border-slate-200/60 dark:border-darkmode-400 rounded-md p-5 mt-5">
+                                <div class="font-medium flex items-center border-b border-slate-200/60 dark:border-darkmode-400 pb-5"> <i data-lucide="chevron-down" class="w-4 h-4 mr-2"></i> Nomor Rekening </div>
+                                    <div class="mt-5">
+                                        <div class="mb-5">
+                                            <label for="post-form-7" class="form-label"> Metode Pembayaran <small class="text-danger">*</small></label>
+                                            <select name="payment_method" data-placeholder="Pilih Bank" class="tom-select w-full">
+                                                <option value="BRI - 6750527090">Bank BRI 6750527090</option>
+                                                <option value="BCA - 6750527080">Bank BCA 6750527080</option>
+                                                <option value="MANDIRI - 6750527070">Bank MANDIRI 6750527070</option>
+                                                <option value="BNI - 6750527060">Bank BNI 6750527060</option>
+                                                <option value="BTN - 6750527050">Bank BTN 6750527060</option>
+                                            </select>
+                                        </div>
+                                        <div class="mb-5">
+                                            <label for="post-form-7" class="form-label"> Rekening User <small class="text-danger">*</small></label>
+                                            <input type="text" class="form-control" id="no_rekening" name="no_rekening" placeholder="Nomor Rekening Anda" autocomplete="off" required>
+                                        </div>
+                                    </div>
                             </div>
                             <div class="flex mt-5">
                                 <a href="<?= site_url('dashboard/detail_cart') ?>" class="btn w-32 border-slate-300 dark:border-darkmode-400 text-slate-500">My Cart</a>
                                 <button type="submit" class="btn btn-primary w-32 shadow-md ml-auto">Check Out</button>
-                            </div>
+                            </div> -->
                         </div>
-                    </form>
                 </div>
             </div>
         </div>
@@ -171,27 +165,56 @@
                 <div class="box p-5 mt-5">
                     <div class="flex">
                         <div class="mr-auto">Poin yang didapat</div>
-                        <div class="font-medium"><?= number_format($this->cart->total(), 0, ',', '.') ?></div>
+                        <div class="font-medium"><?= number_format($items_subtotal, 0, ',', '.') ?></div>
                     </div>
                     <div class="flex mt-4">
                         <div class="mr-auto">Berat barang</div>
-                        <div class="font-medium text-danger"><?= number_format($qty, 0, ',', '.') ?></div>
+                        <div class="font-medium text-danger"><?= number_format($qty, 0, ',', '.') ?> kg</div>
                     </div>
                     <div class="flex mt-4">
-                        <div class="mr-auto">Pendapatan</div>
-                        <div class="font-medium">Rp. <?= number_format($biaya_layanan, 0, ',', '.') ?>,-/kg</div>
+                        <div class="mr-auto">Harga</div>
+                        <div class="font-medium">Rp. <?= number_format($harga, 0, ',', '.') ?>,-/kg</div>
                     </div>
                     <div class="flex mt-4 pt-4 border-t border-slate-200/60 dark:border-darkmode-400">
-                        <div class="mr-auto">Biaya layanan</div>
+                        <div class="mr-auto">Total Harga</div>
+                        <div class="font-medium text-primary">Rp. <?= number_format($grand_total, 0, ',', '.') ?></div>
+                    </div>
+                    <div class="flex mt-4">
+                        <div class="mr-auto text-danger"><small>Biaya layanan</small></div>
                         <div class="font-medium text-danger">Rp. <?= number_format($potongan, 0, ',', '.') ?></div>
                     </div>
                     <div class="flex mt-4 pt-4 border-t border-slate-200/60 dark:border-darkmode-400">
-                        <div class="mr-auto font-medium text-base">Pendapatan User</div>
+                        <div class="mr-auto font-medium text-base">Anda mendapat</div>
                         <div class="font-medium text-base"><strong>Rp. <?= number_format($biaya_layanan_total, 0, ',', '.') ?>,-</strong></div>
+                    </div>
+                    <p class="text-base text-info"><b>Note : </b><br>Akan dikirim ke nomor rekening anda <br>silahkan lengkapi form anda</p>
+                </div>
+            </div>
+            <div id="ticket" class="tab-pane active" role="tabpanel" aria-labelledby="ticket-tab">
+                <div class="box p-5 mt-5">
+                    <div class="mb-5">
+                        <div class="mb-5">
+                            <label for="post-form-7" class="form-label"> Rekening Anda <small class="text-danger">*</small></label>
+                            <input type="number" class="form-control" id="no_rekening" name="no_rekening" placeholder="Nomor Rekening Anda" autocomplete="off" required>
+                        </div>
+                        <label for="post-form-7" class="form-label"> Metode Pembayaran <small class="text-danger">*</small></label>
+                        <select name="payment_method" data-placeholder="Pilih Bank" class="tom-select w-full">
+                            <option value="BRI - 6750527090">Bank BRI 6750527090</option>
+                            <option value="BCA - 6750527080">Bank BCA 6750527080</option>
+                            <option value="MANDIRI - 6750527070">Bank MANDIRI 6750527070</option>
+                            <option value="BNI - 6750527060">Bank BNI 6750527060</option>
+                            <option value="BTN - 6750527050">Bank BTN 6750527060</option>
+                        </select>
+                    </div>
+                    <div class="flex mt-5">
+                        <a href="<?= site_url('dashboard/detail_cart') ?>" class="btn w-32 border-slate-300 dark:border-darkmode-400 text-slate-500">Keranjang Saya</a>
+                        <button type="submit" class="btn btn-primary w-32 shadow-md ml-auto">Check Out</button>
                     </div>
                 </div>
             </div>
         </div>
+        </form>
+
         <!-- END: Post Info -->
 
         <?php }?>

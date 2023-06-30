@@ -32,6 +32,7 @@ class Dashboard extends CI_Controller
 			'id'      => $product->id_brg,
 			'qty'     => 1,
 			'price'   => $product->harga,
+			'poin'   => $product->poin,
 			'name'    => $product->nama_brg,
 			'options' => array(
 				'keterangan' => $product->keterangan,

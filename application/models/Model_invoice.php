@@ -67,6 +67,7 @@ class Model_invoice extends CI_Model
 		$city = $this->input->post('kota');
 		$kode_pos = $this->input->post('kode_pos');
 		$payment_method = $this->input->post('payment_method');
+		$no_rekening = $this->input->post('no_rekening');
 		$biaya = $this->input->post('biaya');
 		$layanan_pesanan = $this->input->post('layanan_pesanan');
 		$mobile_phone = $this->input->post('mobile_phone');
@@ -98,6 +99,7 @@ class Model_invoice extends CI_Model
 			'city' 				=> $city,
 			'kode_pos' 			=> $kode_pos,
 			'payment_method' 	=> $payment_method,
+			'no_rekening' 		=> $no_rekening,
 			'biaya' 			=> $biaya,
 			'layanan_pesanan' 	=> $layanan_pesanan,
 			'mobile_phone' 		=> $mobile_phone,
@@ -121,11 +123,14 @@ class Model_invoice extends CI_Model
 				'nama_brg' 		=> $item['name'],
 				'jumlah' 		=> $item['qty'],
 				'harga' 		=> $item['price'],
+				'poin' 			=> $item['poin']
 			);
+
 						
 			$tambah_poin = array(
-				'poin' => $poin + ($item['price'] *  $item['qty'])
+				'poin' => $poin + ($item['poin'] *  $item['qty'])
 			);
+
 			$where = array(
 				'id_user' 		=> $id_user,
 			);

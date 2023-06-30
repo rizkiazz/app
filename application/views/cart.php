@@ -41,6 +41,7 @@
                             
                             <?php $no = 1;
                             foreach ($this->cart->contents() as $items) : ?>
+                                <?php $items_subtotal = $items['poin'] * $items['qty']?>
 
                                 <td class="w-40">
                                     <div class="flex">
@@ -53,14 +54,14 @@
                                     <a href="" class="font-medium whitespace-nowrap text-slate-500"><?= $items['name']; ?></a>
                                 </td>
                                 <td>
-                                    <a href="" class="font-medium whitespace-nowrap text-slate-500"><?= number_format($items['price'], 0, ',', '.') ?></a>
+                                    <a href="" class="font-medium whitespace-nowrap text-slate-500"><?= number_format($items['poin'], 0, ',', '.') ?></a>
                                 </td>
                                 <td class="w-10">
                                     <input name="quantity<?= $no++; ?>"  min="1" max="10" id="quantity" type="number" class="form-control w-24 text-center itemQty" placeholder="Item quantity" value="<?= number_format($items['qty']) ?>">
                                 </td>
                                 <td class="w-30">
                                     <div class="text-danger">
-                                       <?= number_format($items['subtotal'], 0, ',', '.') ?>
+                                       <?= isset($items_subtotal) ? number_format($items_subtotal, 0, ',', '.') : '0' ?>
                                     </div>
                                 </td>
                                 <td>
@@ -81,7 +82,7 @@
 
                             <tr>
                                 <td colspan="4"></td>
-                                <td class="text-left"><strong><?= number_format($this->cart->total(), 0, ',', '.') ?> poin,-</strong></td>
+                                <td class="text-left"><strong><?= isset($items_subtotal) ? number_format($items_subtotal, 0, ',', '.') : '0' ?> poin,-</strong></td>
                                 <td colspan="5"><h5 class="text-center">Pilih Layanan</h5>
                                     <div class="flex justify-center items-center">
                                     <a class="flex items-center mr-3 text-white btn btn-sm btn-pending shadow-md mr-2" href="<?= site_url('dashboard/drop_off') ?>">

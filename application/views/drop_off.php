@@ -27,7 +27,7 @@
                     $item_poin = $grand_total / $item['qty'];
                 }
             } ?>
-            <div class="intro-y col-span-12 lg:col-span-8">
+            <div class="intro-y col-span-12 lg:col-span-6">
                 <div class="alert alert-primary show mb-2" role="alert">Jumlah Poin Yang Didapatkan : <b><?= number_format($grand_total, 0, ',', '.') ?> poin,-</b></div>
                 <div class="post intro-y overflow-hidden box mt-5">
                     <ul class="post__tabs nav nav-tabs flex-col sm:flex-row bg-slate-200 dark:bg-darkmode-800" role="tablist">
@@ -97,34 +97,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="border border-slate-200/60 dark:border-darkmode-400 rounded-md p-5 mt-5">
-                                    <div class="font-medium flex items-center border-b border-slate-200/60 dark:border-darkmode-400 pb-5"> <i data-lucide="chevron-down" class="w-4 h-4 mr-2"></i> Info Alamat </div>
-                                    <div class="mt-5">
-                                        <div class="mb-5">
-                                            <label for="post-form-7" class="form-label"> Alamat <small class="text-danger">*</small></label>
-                                            <input type="text" id="alamat" name="alamat" class="form-control" placeholder="Alamat anda" autocomplete="off" required>
-                                        </div>
-    
-                                        <div class="mb-5">
-                                            <label for="post-form-7" class="form-label"> Provinsi <small class="text-danger">*</small></label>
-                                            <select name="provinsi" id="provinsi" class="form-control"></select>
-                                        </div>
-    
-                                        <div class="mb-5">
-                                            <label for="post-form-7" class="form-label"> Kota <small class="text-danger">*</small></label>
-                                            <select name="kota" id="kota" class="form-control"></select>
-                                        </div>
-    
-                                        <div class="mb-5">
-                                            <label for="post-form-7" class="form-label"> Kode Pos <small class="text-danger">*</small></label>
-                                            <input type="text" class="form-control" id="kode_pos" name="kode_pos" placeholder="Your mobile phone" autocomplete="off" required>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="flex mt-5">
-                                    <a href="<?= site_url('dashboard/detail_cart') ?>" class="btn w-32 border-slate-300 dark:border-darkmode-400 text-slate-500">My Cart</a>
-                                    <button type="submit" class="btn btn-primary w-32 shadow-md ml-auto">Check Out</button>
-                                </div>
                             </div>
                         </form>
                     </div>
@@ -132,9 +104,37 @@
             </div>
             <!-- END: Post Content -->
             <!-- BEGIN: Post Info -->
-            <div class="col-span-12 lg:col-span-4">
+            <div class="col-span-12 lg:col-span-6">
                 <div class="intro-y pr-1">
-                    <div class="alert alert-primary show mb-2" role="alert"> Informasi Poin </div>
+                    <div class="alert alert-primary show mb-2" role="alert"> Informasi Alamat </div>
+                </div>
+                <div id="ticket" class="tab-pane active" role="tabpanel" aria-labelledby="ticket-tab">
+    
+                    <div class="box p-5 mt-5">
+                        <div class="mb-5">
+                            <label for="post-form-7" class="form-label"> Provinsi <small class="text-danger">*</small></label>
+                            <select name="provinsi" id="provinsi" class="form-control"></select>
+                        </div>
+
+                        <div class="mb-5">
+                            <label for="post-form-7" class="form-label"> Kota <small class="text-danger">*</small></label>
+                            <select name="kota" id="kota" class="form-control"></select>
+                        </div>
+                        <div class="mb-5">
+                            <label for="post-form-7" class="form-label"> pilih Alamat <small class="text-danger">*</small></label>
+                            <select name="payment_method" class="tom-select w-full">
+                                <option value="Bank Sampah Kencana">Bank Sampah Kencana</option>
+                                <option value="Bank Sampah Polar">Bank Sampah Polar</option>
+                                <option value="Bank Sampah Sejati">Bank Sampah Sejati</option>
+                                <option value="Bank Sampah Juara">Bank Sampah Juara</option>
+                                <option value="Bank Sampah Bersama">Bank Sampah Bersama</option>
+                                <option value="Bank Sampah Kita">Bank Sampah Kita</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-5">
+                    <div class="alert alert-primary show mb-2 mt-5" role="alert"> Informasi Poin </div>
                 </div>
                 <div id="ticket" class="tab-pane active" role="tabpanel" aria-labelledby="ticket-tab">
     
@@ -151,6 +151,10 @@
                             <div class="mr-auto font-medium text-base">Poin yang didapat</div>
                             <div class="font-medium text-base"><strong><?= number_format($this->cart->total(), 0, ',', '.') ?> poin,-</strong></div>
                         </div>
+                    </div>
+                    <div class="flex mt-5">
+                        <a href="<?= site_url('dashboard/detail_cart') ?>" class="btn w-32 border bg-danger text-white">Keranjang Saya</a>
+                        <button type="submit" class="btn btn-primary w-32 shadow-md ml-auto">Check Out</button>
                     </div>
                 </div>
             </div>

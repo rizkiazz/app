@@ -38,7 +38,7 @@
                                                 <input name="gambar" id="gambar" type="file" class="w-full h-full top-0 left-0 absolute opacity-0" accept="image/png, image/jpeg, image/jpg" onchange="loadFile(event)" required>
                                             </div>
                                         </div>  
-                                    <div class="form-help text-right text-danger">Gambar max 1MB</div>
+                                    <div class="form-help text-right">Gambar max 2MB</div>
                                 </div>
                             </div>
                         </div>
@@ -60,8 +60,8 @@
                                     </div>
                                 </div>
                                 <div class="w-full mt-3 xl:mt-0 flex-1">
-                                    <input id="product-name" type="text" name="nama_brg" class="form-control" placeholder="Nama Produk" required>
-                                    <div class="form-help text-right">Maximum character 0/70</div>
+                                    <input id="product-name" type="text" name="nama_brg" class="form-control" placeholder="Nama Produk" maxlength="70" required>
+                                    <div id="character-count" class="form-help-name text-right">Maximum character 0/70</div>
                                 </div>
                             </div>
                             <div class="form-inline items-start flex-col xl:flex-row mt-5 pt-5 first:mt-0 first:pt-0">
@@ -94,8 +94,8 @@
                                     </div>
                                 </div>
                                 <div class="w-full mt-3 xl:mt-0 flex-1">
-                                    <input id="product-name" type="text" name="keterangan" class="form-control" placeholder="Deskripsi Produk" required>
-                                    <div class="form-help text-right">Maximum character 0/255</div>
+                                    <input id="product-keterangan" type="text" name="keterangan" class="form-control" placeholder="Deskripsi Produk" max="255" required>
+                                    <div id="keterangan-count" class="form-help-keterangan text-right">Maximum character 0/255</div>
                                 </div>
                             </div>
                         </div>
@@ -167,5 +167,33 @@
       URL.revokeObjectURL(output.src) // free memory
     }
   };
+    // Get the input element
+    var input = document.getElementById("product-name");
+    var input_ket = document.getElementById("product-keterangan");
+
+    // Add an event listener to the input element
+    input.addEventListener("input", function() {
+    // Get the current value of the input
+    var text = input.value;
+
+    // Get the character count
+    var characterCount = text.length;
+
+    // Update the character count display
+    var characterCountDisplay = document.querySelector(".form-help-name");
+    characterCountDisplay.textContent = "Maximum character " + characterCount + "/70";
+    });
+    input_ket.addEventListener("input", function() {
+    // Get the current value of the input
+    var text = input_ket.value;
+
+    // Get the character count
+    var characterCount = text.length;
+
+    // Update the character count display
+    var characterCountDisplay = document.querySelector(".form-help-keterangan");
+    characterCountDisplay.textContent = "Maximum character " + characterCount + "/255";
+    });
+
 </script>
 

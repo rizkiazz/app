@@ -46,7 +46,7 @@ class Product extends CI_Controller
 		} else {
 			$config['upload_path'] 			= './uploads';
 			$config['allowed_types'] 		= 'jpg|jpeg|png';
-			$config['max_size']             = 2048; // 1MB
+			$config['max_size']             = 2048; // 2MB
 			$config['max_width']            = 40000; // batas lebar gambar dalam piksel
 			$config['max_height']           = 40000; // batas tinggi gambar dalam piksel
 

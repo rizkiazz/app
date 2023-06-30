@@ -39,15 +39,16 @@ class Product extends CI_Controller
 		$keterangan = $this->input->post('keterangan');
 		$kategori 	= $this->input->post('kategori');
 		$harga 		= $this->input->post('harga');
+		$poin 		= $this->input->post('poin');
 		$stok 		= $this->input->post('stok');
 		$gambar		= $_FILES['gambar']['name'];
 		if ($gambar = '') {
 		} else {
 			$config['upload_path'] 			= './uploads';
 			$config['allowed_types'] 		= 'jpg|jpeg|png';
-			$config['max_size']             = 1024; // 1MB
-			$config['max_width']            = 1080; // batas lebar gambar dalam piksel
-			$config['max_height']           = 1080; // batas tinggi gambar dalam piksel
+			$config['max_size']             = 2048; // 1MB
+			$config['max_width']            = 40000; // batas lebar gambar dalam piksel
+			$config['max_height']           = 40000; // batas tinggi gambar dalam piksel
 
 			$this->load->library('upload', $config);
 			if (!$this->upload->do_upload('gambar')) {
@@ -58,17 +59,18 @@ class Product extends CI_Controller
 				$gambar = $this->upload->data('file_name');
 			}
 		}
-		die(var_dump($gambar));
+		// die(var_dump($gambar));
 
 		$data = array(
 			'nama_brg' 	=> $nama_brg,
 			'keterangan' 	=> $keterangan,
 			'kategori' 	=> $kategori,
 			'harga' 	=> $harga,
+			'poin' 	=> $poin,
 			'stok' 	=> $stok,
 			'gambar' 	=> $gambar
 		);
-		die(var_dump($data));
+		// die(var_dump($data));
 
 		$this->model_pembayaran->insert($data, 'product');
 		$_SESSION["sukses"] = 'Product berhasil di tambahkan';
@@ -92,6 +94,7 @@ class Product extends CI_Controller
 		$keterangan 	= $this->input->post('keterangan');
 		$kategori 		= $this->input->post('kategori');
 		$harga 			= $this->input->post('harga');
+		$poin 			= $this->input->post('poin');
 		$stok 			= $this->input->post('stok');
         $gambar_product = $_FILES['gambar_product']['name'];
 
@@ -119,6 +122,7 @@ class Product extends CI_Controller
 			'keterangan' 	=> $keterangan,
 			'kategori' 		=> $kategori,
 			'harga' 		=> $harga,
+			'poin' 		=> $poin,
 			'stok' 			=> $stok,
 			'gambar' 		=> $gambar_product
 

@@ -30,6 +30,7 @@
                         <th class="whitespace-nowrap">Gambar</th>
                         <th class="whitespace-nowrap">Nama Produk</th>
                         <th class="whitespace-nowrap">Stok</th>
+                        <th class="whitespace-nowrap">Harga</th>
                         <th class="text-center whitespace-nowrap">Poin</th>
                         <th class="text-center whitespace-nowrap">Status</th>
                         <th class="text-center whitespace-nowrap">ACTIONS</th>
@@ -61,7 +62,10 @@
                                         <div class="text-xs text-slate-500 ml-1">( <?= $row->stok ?> ) </div>
                                     </div>
                                 </td>
-                                <td class="text-center whitespace-nowrap"><?= number_format($row->harga, 0, ',', '.') ?> poin</td>
+                                <td class="text-center whitespace-nowrap">Rp.&nbsp;<?= number_format($row->harga, 0, ',', '.') ?>&nbsp;<small> /kg ,-</small></td>
+                                <td class="w-40">
+                                    <div class="flex items-center justify-center"><i data-lucide="dollar-sign" class="w-4 h-4 mr-2"></i><?= number_format($row->poin, 0, ',', '.') ?>&nbsp;<small>poin</small></div>
+                                </td>
                                 <td class="w-40">
                                     <div class="flex items-center justify-center text-success"> <i data-lucide="check-square" class="w-4 h-4 mr-2"></i> Active </div>
                                 </td>

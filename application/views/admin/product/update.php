@@ -45,8 +45,12 @@
                                                 <input id="update-profile-form-1" type="number" class="form-control" name="stok" value="<?= $row->stok ?>">
                                             </div>
                                             <div class="mt-3">
-                                                <label for="update-profile-form-4" class="form-label">Poin</label>
+                                                <label for="update-profile-form-4" class="form-label">Harga</label>
                                                 <input id="update-profile-form-4" type="number" class="form-control" name="harga" value="<?= $row->harga ?>">
+                                            </div>
+                                            <div class="mt-3">
+                                                <label for="update-profile-form-4" class="form-label">Poin</label>
+                                                <input id="update-profile-form-4" type="number" class="form-control" name="poin" value="<?= $row->poin ?>">
                                             </div>
                                         </div>
                                         <div class="col-span-12">

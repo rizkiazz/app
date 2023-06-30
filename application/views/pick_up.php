@@ -19,20 +19,34 @@
             </div>
         <?php }else { ?>
 
-            <?php $grand_total = 0;
-                $biaya_layanan = 500;
-        if ($keranjang = $this->cart->contents()) {
+            <?php
+            $grand_total = 0;
+            $biaya_layanan = 0;
+            
+            if ($keranjang = $this->cart->contents()) {
             foreach ($keranjang as $item) {
+                if($item['name'] == 'Sampah Plastik'){
+                    $biaya_layanan = 1500;
+                } else if($item['name'] == 'Sampah Kertas'){ 
+                    $biaya_layanan = 2000;
+                } else if($item['name'] == 'Sampah Kaca'){ 
+                    $biaya_layanan = 1000;
+                } else if($item['name'] == 'Sampah Tekstil'){ 
+                    $biaya_layanan = 500;
+                } else if($item['name'] == 'Sampah Elektronik'){ 
+                    $biaya_layanan = 10000;
+                }
+
                 $grand_total = $grand_total + $item['subtotal'];
                 $qty = $item['qty'];
                 $biaya_antar = $biaya_layanan * $item['qty']; 
-                $potongan = $biaya_antar /10;
+                $potongan = $biaya_antar /5;
                 $biaya_layanan_total = $biaya_antar - $potongan;
 
             }
         } ?>
         <div class="intro-y col-span-12 lg:col-span-8">
-            <div class="alert alert-primary show mb-2" role="alert">Jumlah Transaksi Yang Harus Dibayar : <b>Rp. <?= number_format($biaya_layanan_total, 0, ',', '.') ?>,-</b></div>
+            <div class="alert alert-primary show mb-2" role="alert">Jumlah Transaksi Yang Harus Dibayar : <b>Rp. <?= number_format($potongan, 0, ',', '.') ?>,-</b></div>
             <div class="post intro-y overflow-hidden box mt-5">
                 <ul class="post__tabs nav nav-tabs flex-col sm:flex-row bg-slate-200 dark:bg-darkmode-800" role="tablist">
                     <li class="nav-item">
@@ -132,6 +146,10 @@
                                             <option value="BTN - 6750527050">Bank BTN 6750527060</option>
                                         </select>
                                     </div>
+                                    <div class="mb-5">
+                                        <label for="post-form-7" class="form-label"> Rekening User <small class="text-danger">*</small></label>
+                                        <input type="text" class="form-control" id="kode_pos" name="kode_pos" placeholder="Your mobile phone" autocomplete="off" required>
+                                    </div>
                                 </div>
                             </div>
                             <div class="flex mt-5">
@@ -150,44 +168,6 @@
                 <div class="alert alert-primary show mb-2" role="alert"> Informasi Pembayaran </div>
             </div>
             <div id="ticket" class="tab-pane active" role="tabpanel" aria-labelledby="ticket-tab">
-                <div class="box p-2 mt-5">
-                    <a href="javascript:;" data-tw-toggle="modal" data-tw-target="#add-item-modal" class="flex items-center p-3 cursor-pointer transition duration-300 ease-in-out bg-white dark:bg-darkmode-600 hover:bg-slate-100 dark:hover:bg-darkmode-400 rounded-md">
-                        <div class="max-w-[50%] truncate mr-1">
-                            <img class="mt-2" src="<?= site_url('asset') ?>/bca.png" width="60">
-                        </div>
-                        <div class="text-slate-500"></div>
-                        <div class="ml-auto font-medium">6750527090 / Shoppify Commerce</div>
-                    </a>
-                    <a href="javascript:;" data-tw-toggle="modal" data-tw-target="#add-item-modal" class="flex items-center p-3 cursor-pointer transition duration-300 ease-in-out bg-white dark:bg-darkmode-600 hover:bg-slate-100 dark:hover:bg-darkmode-400 rounded-md">
-                        <div class="max-w-[50%] truncate mr-1">
-                            <img class="mt-2" src="<?= site_url('asset') ?>/mandiri.png" width="80">
-                        </div>
-                        <div class="text-slate-500"></div>
-                        <div class="ml-auto font-medium">1918009817 / Shoppify Commerce</div>
-                    </a>
-                    <a href="javascript:;" data-tw-toggle="modal" data-tw-target="#add-item-modal" class="flex items-center p-3 cursor-pointer transition duration-300 ease-in-out bg-white dark:bg-darkmode-600 hover:bg-slate-100 dark:hover:bg-darkmode-400 rounded-md">
-                        <div class="max-w-[50%] truncate mr-1">
-                            <img class="mt-2" src="<?= site_url('asset') ?>/bni.png" width="60">
-                        </div>
-                        <div class="text-slate-500"></div>
-                        <div class="ml-auto font-medium">6721598021 / Shoppify Commerce</div>
-                    </a>
-                    <a href="javascript:;" data-tw-toggle="modal" data-tw-target="#add-item-modal" class="flex items-center p-3 cursor-pointer transition duration-300 ease-in-out bg-white dark:bg-darkmode-600 hover:bg-slate-100 dark:hover:bg-darkmode-400 rounded-md">
-                        <div class="max-w-[50%] truncate mr-1">
-                            <img class="mt-2" src="<?= site_url('asset') ?>/bri.png" width="50">
-                        </div>
-                        <div class="text-slate-500"></div>
-                        <div class="ml-auto font-medium">6750527090 / Shoppify Commerce</div>
-                    </a>
-                    <a href="javascript:;" data-tw-toggle="modal" data-tw-target="#add-item-modal" class="flex items-center p-3 cursor-pointer transition duration-300 ease-in-out bg-white dark:bg-darkmode-600 hover:bg-slate-100 dark:hover:bg-darkmode-400 rounded-md">
-                        <div class="max-w-[50%] truncate mr-1">
-                            <img class="mt-2" src="<?= site_url('asset') ?>/btpn.png" width="50">
-                        </div>
-                        <div class="text-slate-500"></div>
-                        <div class="ml-auto font-medium">6750527090 / Shoppify Commerce</div>
-                    </a>
-                </div>
-
                 <div class="box p-5 mt-5">
                     <div class="flex">
                         <div class="mr-auto">Poin yang didapat</div>
@@ -198,15 +178,15 @@
                         <div class="font-medium text-danger"><?= number_format($qty, 0, ',', '.') ?></div>
                     </div>
                     <div class="flex mt-4">
-                        <div class="mr-auto">Biaya layanan</div>
-                        <div class="font-medium text-danger">Rp. <?= number_format($potongan, 0, ',', '.') ?></div>
-                    </div>
-                    <div class="flex mt-4">
-                        <div class="mr-auto">Biaya</div>
+                        <div class="mr-auto">Pendapatan</div>
                         <div class="font-medium">Rp. <?= number_format($biaya_layanan, 0, ',', '.') ?>,-/kg</div>
                     </div>
                     <div class="flex mt-4 pt-4 border-t border-slate-200/60 dark:border-darkmode-400">
-                        <div class="mr-auto font-medium text-base">Total Biaya</div>
+                        <div class="mr-auto">Biaya layanan</div>
+                        <div class="font-medium text-danger">Rp. <?= number_format($potongan, 0, ',', '.') ?></div>
+                    </div>
+                    <div class="flex mt-4 pt-4 border-t border-slate-200/60 dark:border-darkmode-400">
+                        <div class="mr-auto font-medium text-base">Pendapatan User</div>
                         <div class="font-medium text-base"><strong>Rp. <?= number_format($biaya_layanan_total, 0, ',', '.') ?>,-</strong></div>
                     </div>
                 </div>

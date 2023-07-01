@@ -22,27 +22,22 @@
             <?php $grand_total = 0;
             if ($keranjang = $this->cart->contents()) {
                 foreach ($keranjang as $item) {
-                    $grand_total = $grand_total + $item['subtotal'];
-                    $qty = $item['qty'];
-                    $item_poin = $grand_total / $item['qty'];
+                    $poin = $item['poin'];
+                    $qty = $item['qty']; //quantity
+                    $total_poin = $poin * $qty;//poin yg didapat
+                    
                 }
             } ?>
             <div class="intro-y col-span-12 lg:col-span-6">
-                <div class="alert alert-primary show mb-2" role="alert">Jumlah Poin Yang Didapatkan : <b><?= number_format($grand_total, 0, ',', '.') ?> poin,-</b></div>
+                <div class="alert alert-primary show mb-2" role="alert">Jumlah Poin Yang Didapatkan : <b><?= number_format($total_poin, 0, ',', '.') ?> poin,-</b></div>
                 <div class="post intro-y overflow-hidden box mt-5">
-                    <ul class="post__tabs nav nav-tabs flex-col sm:flex-row bg-slate-200 dark:bg-darkmode-800" role="tablist">
-                        <li class="nav-item">
-                            <button title="Fill in the article content" data-tw-toggle="tab" data-tw-target="#content" class="nav-link tooltip w-full sm:w-200 py-4 active" id="content-tab" role="tab" aria-controls="content" aria-selected="true"> <i data-lucide="file-text" class="w-4 h-4 mr-2"></i> Detail Pengiriman </button>
-                        </li>
-                    </ul>
                     <div class="post__content tab-content">
                         <form id="payment-form" action="<?= site_url('dashboard/drop_off_proccess') ?>" method="post" enctype="multipart/form-data">
                             <div id="content" class="tab-pane p-5 active" role="tabpanel" aria-labelledby="content-tab">
                                 <div class="border border-slate-200/60 dark:border-darkmode-400 rounded-md p-5">
-                                    <div class="font-medium flex items-center border-b border-slate-200/60 dark:border-darkmode-400 pb-5"> <i data-lucide="chevron-down" class="w-4 h-4 mr-2"></i> Info Pelanggan </div>
+                                    <div class="font-medium flex items-center border-b border-slate-200/60 dark:border-darkmode-400 pb-5"> <i data-lucide="chevron-down" class="w-4 h-4 mr-2"></i> Info Pengirim </div>
                                     <div class="mt-5">
                                         <div class="mb-5">
-                                            <label for="post-form-7" class="form-label"> Nama <small class="text-danger">*</small></label>
                                             <input type="hidden" id="order_id" name="order_id" value="INV-<?= mt_rand(000000000, 111111111) ?>" maxlength="8" autocomplete="off" required>
                                             <input type="hidden" id="tracking_id" name="tracking_id" value="<?= mt_rand(0000000000000, 1111111111111) ?>" maxlength="12" autocomplete="off" required>
                                             <input type="hidden" name="payment_method" value="Antar Sendiri">
@@ -50,17 +45,25 @@
                                             <input type="hidden" name="status" id="status" value="0">
                                             <input type="hidden" name="biaya" id="biaya" value="0 (Antar Sendiri)">
                                             <input type="hidden" name="layanan_pesanan" id="layanan_pesanan" value="Drop Off">
-                                            <input type="text" class="form-control" id="name" name="name" value="<?php echo $this->session->userdata('nama_user') ?>" autocomplete="off" readonly>
                                         </div>
     
-                                        <div class="mb-5">
-                                            <label for="post-form-7" class="form-label"> Email <small class="text-danger">*</small></label>
-                                            <input type="email" id="email" name="email" class="form-control" value="<?php echo $this->session->userdata('email') ?>" autocomplete="off" readonly>
+                                        <div class="flex mb-5 mt-5">
+                                            <div class="mr-auto">Nama Pengirim</div>
+                                            <div class="font-medium"><?php echo $this->session->userdata('nama_user') ?></div>
+                                            <input type="hidden" id="name" name="name" value="<?= $user->nama_user ?>" class="form-control">
+                                        </div>                                     
+                                        <div class="flex mb-5">
+                                            <div class="mr-auto">Email</div>
+                                            <div class="font-medium"><?php echo $this->session->userdata('email') ?></div>
+                                            <input type="hidden" id="email" name="email" value="<?= $user->email ?>" class="form-control">
+                                        </div>                                     
+                                        <div class="flex mb-5">
+                                            <label for="post-form-7" class="form-label mr-auto">Nomor HP <small class="text-danger">*</small></label>
+                                            <input type="text" id="mobile_phone" name="mobile_phone" value="<?= $user->nomor_hp ?>" class="form-control" autocomplete="off" style="text-align: right;border: none;outline: none;width: 50%;">
                                         </div>
-    
-                                        <div class="mb-5">
-                                            <label for="post-form-7" class="form-label">Nomor HP <small class="text-danger">*</small></label>
-                                            <input type="text" id="nomor_hp" name="nomor_hp" value="<?php echo $this->session->userdata('nomor_hp') ?>" class="form-control" autocomplete="off">
+                                        <div class="flex mb-5">
+                                            <label for="post-form-7" class="form-label mr-auto">Alamat <small class="text-danger">*</small></label>
+                                            <textarea id="alamat" name="alamat" class="form-control" autocomplete="off" style="text-align: right;border: none;outline:none; width: 50%;"><?= $user->alamat ?></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -98,7 +101,6 @@
                                     </div>
                                 </div>
                             </div>
-                        </form>
                     </div>
                 </div>
             </div>
@@ -106,7 +108,7 @@
             <!-- BEGIN: Post Info -->
             <div class="col-span-12 lg:col-span-6">
                 <div class="intro-y pr-1">
-                    <div class="alert alert-primary show mb-2" role="alert"> Informasi Alamat </div>
+                    <div class="alert alert-primary show mb-2" role="alert"> Informasi Penerima </div>
                 </div>
                 <div id="ticket" class="tab-pane active" role="tabpanel" aria-labelledby="ticket-tab">
     
@@ -121,35 +123,38 @@
                             <select name="kota" id="kota" class="form-control"></select>
                         </div>
                         <div class="mb-5">
-                            <label for="post-form-7" class="form-label"> pilih Alamat <small class="text-danger">*</small></label>
-                            <select name="payment_method" class="tom-select w-full">
-                                <option value="Bank Sampah Kencana">Bank Sampah Kencana</option>
-                                <option value="Bank Sampah Polar">Bank Sampah Polar</option>
-                                <option value="Bank Sampah Sejati">Bank Sampah Sejati</option>
-                                <option value="Bank Sampah Juara">Bank Sampah Juara</option>
-                                <option value="Bank Sampah Bersama">Bank Sampah Bersama</option>
-                                <option value="Bank Sampah Kita">Bank Sampah Kita</option>
-                            </select>
+                            <label for="post-form-7" class="form-label"> Pilih Mitra Drop Off Tujuan <small class="text-danger">*</small></label>
+                            <select name="ekspedisi" id="ekspedisi" class="form-control"></select>
+                        </div>
+                        <div class="flex">
+                            <div class="form-check form-switch">
+                                <input id="checkbox-switch-7" class="form-check-input" type="checkbox" checked disabled />
+                                <label class="form-check-label" for="checkbox-switch-7">Saya bawa sendiri ke mitra tujuan</label>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="mt-5">
-                    <div class="alert alert-primary show mb-2 mt-5" role="alert"> Informasi Poin </div>
+                    <div class="alert alert-primary show mb-2 mt-5" role="alert"> Informasi Produk </div>
                 </div>
                 <div id="ticket" class="tab-pane active" role="tabpanel" aria-labelledby="ticket-tab">
     
                     <div class="box p-5 mt-5">
                         <div class="flex">
-                            <div class="mr-auto">Poin/kg</div>
-                            <div class="font-medium"><?= number_format($item_poin, 0, ',', '.') ?></div>
+                            <div class="mr-auto">Nama Produk</div>
+                            <div class="font-medium"><?= $item['name'] ?></div>
+                        </div>
+                        <div class="flex mt-4">
+                            <div class="mr-auto">Poin <small class="text_primary">/kg</small></div>
+                            <div class="font-medium"><?= number_format($poin, 0, ',', '.') ?></div>
                         </div>
                         <div class="flex mt-4">
                             <div class="mr-auto">Berat barang</div>
-                            <div class="font-medium text-danger"><?= number_format($qty, 0, ',', '.') ?></div>
+                            <div class="font-medium text-danger"><?= number_format($qty, 0, ',', '.') ?> kg</div>
                         </div>
                         <div class="flex mt-4 pt-4 border-t border-slate-200/60 dark:border-darkmode-400">
                             <div class="mr-auto font-medium text-base">Poin yang didapat</div>
-                            <div class="font-medium text-base"><strong><?= number_format($this->cart->total(), 0, ',', '.') ?> poin,-</strong></div>
+                            <div class="font-medium text-base"><strong><?= number_format($total_poin, 0, ',', '.') ?> poin,-</strong></div>
                         </div>
                     </div>
                     <div class="flex mt-5">
@@ -158,6 +163,8 @@
                     </div>
                 </div>
             </div>
+        </form>
+
             <!-- END: Post Info -->
             
         <<?php }?>
@@ -172,4 +179,6 @@
       URL.revokeObjectURL(output.src) // free memory
     }
   };
+
+
 </script>

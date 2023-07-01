@@ -151,7 +151,7 @@ class Model_invoice extends CI_Model
 		$name = $this->input->post('name');
 		$alamat = $this->input->post('alamat');
 		$city = $this->input->post('kota');
-		$kode_pos = $this->input->post('kode_pos');
+		$tujuan = $this->input->post('ekspedisi');
 		$payment_method = $this->input->post('payment_method');
 		$biaya = $this->input->post('biaya');
 		$layanan_pesanan = $this->input->post('layanan_pesanan');
@@ -183,7 +183,7 @@ class Model_invoice extends CI_Model
 			'name' 				=> $name,
 			'alamat' 			=> $alamat,
 			'city' 				=> $city,
-			'kode_pos' 			=> $kode_pos,
+			'tujuan' 			=> $tujuan,
 			'payment_method' 	=> $payment_method,
 			'biaya' 			=> $biaya,
 			'layanan_pesanan' 	=> $layanan_pesanan,
@@ -194,11 +194,11 @@ class Model_invoice extends CI_Model
 			'email' 			=> $email,
 			'status' 			=> $status,
 			'transaction_time' 	=> date('Y-m-d H:i:s'),
-			'payment_limit' 	=> date('Y-m-d H:i:s', mktime( date('H'), date('i'), date('s'), date('m'), date('d') + 1, date('Y'))),
+			'payment_limit' 	=> date('Y-m-d H:i:s', mktime( date('H'), date('i'), date('s'), date('m'), date('d') + 7, date('Y'))),
 		);
-				// die(var_dump($invoice));
+				die(var_dump($invoice));
 
-		$this->db->insert('transaction', $invoice);
+		$this->db->insert('drop_off', $invoice);
 		$id_invoice = $this->db->insert_id();
 
 		foreach ($this->cart->contents() as $item) {

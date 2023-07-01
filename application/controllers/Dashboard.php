@@ -16,7 +16,6 @@ class Dashboard extends CI_Controller
 	public function index()
 	{
 		$data['title'] = 'Dashboard User';
-		// $data['product'] = $this->model_pembayaran->get('product')->result();
 		$data['product_category'] = $this->db->query("SELECT DISTINCT kategori, gambar FROM product;")->result();
 
 		$this->load->view('layout/user/header', $data);
@@ -83,6 +82,9 @@ class Dashboard extends CI_Controller
 	public function drop_off()
     {
         $data['title'] = 'Drop Off';
+		$id = $this->session->userdata('id_user');
+        $data['user'] = $this->db->query("SELECT * FROM user WHERE id_user='$id'")->row();
+
 		$this->load->view('layout/user/header', $data);
 		$this->load->view('drop_off', $data);
 		$this->load->view('layout/user/footer');

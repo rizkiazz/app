@@ -77,15 +77,14 @@ class Rajaongkir extends CI_Controller
             }
         }
     }
-
     public function ekspedisi()
     {
-        echo "<option hidden>Pilih Ekspedisi</option>";
-        echo "<option value='JNE'>JNE</option>";
-        echo "<option value='J&T Express'>JNT Express</option>";
-        echo "<option value='SICEPAT'>Sicepat</option>";
-        echo "<option value='ANTERAJA'>Anteraja</option>";
-        echo "<option value='GO-SEND'>Gojek</option>";
-        echo "<option value='GRAB-SEND'>Grab</option>";
+        echo "<option hidden>Pilih Tempat</option>";
+        echo "<option value='Bank Sampah Kencana'>Bank Sampah Kencana</option>";
+        echo "<option value='Bank Sampah Polar'>Bank Sampah Polar</option>";
+        echo "<option value='Bank Sampah Sejati'>Bank Sampah Sejati</option>";
+        echo "<option value='Bank Sampah Juara'>Bank Sampah Juara</option>";
+        echo "<option value='Bank Sampah Bersama'>Bank Sampah Bersama</option>";
+        echo "<option value='Bank Sampah Kita'>Bank Sampah Kita</option>";
     }
 }

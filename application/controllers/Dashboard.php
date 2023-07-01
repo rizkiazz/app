@@ -92,6 +92,8 @@ class Dashboard extends CI_Controller
 	public function pick_up()
     {
         $data['title'] = 'Pick Up';
+		$id = $this->session->userdata('id_user');
+        $data['user'] = $this->db->query("SELECT * FROM user WHERE id_user='$id'")->row();
 		$this->load->view('layout/user/header', $data);
 		$this->load->view('pick_up', $data);
 		$this->load->view('layout/user/footer');

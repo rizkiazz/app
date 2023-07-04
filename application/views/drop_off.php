@@ -33,8 +33,7 @@
                 }
             } ?>
         <div class="intro-y col-span-12 lg:col-span-6">
-            <div class="alert alert-primary show mb-2" role="alert">Jumlah Poin Yang Didapatkan :
-                <b><?= number_format($total_poin, 0, ',', '.') ?> poin,-</b>
+            <div class="alert alert-primary show mb-2" role="alert">Informasi Pelanggan
             </div>
             <div class="post intro-y overflow-hidden box mt-5">
                 <div class="post__content tab-content">
@@ -135,11 +134,7 @@
                         </div>
                 </div>
             </div>
-        </div>
-        <!-- END: Post Content -->
-        <!-- BEGIN: Post Info -->
-        <div class="col-span-12 lg:col-span-6">
-            <div class="intro-y pr-1">
+            <div class="mt-5">
                 <div class="alert alert-primary show mb-2" role="alert"> Informasi Penerima </div>
             </div>
             <div id="ticket" class="tab-pane active" role="tabpanel" aria-labelledby="ticket-tab">
@@ -169,6 +164,11 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <!-- END: Post Content -->
+        <!-- BEGIN: Post Info -->
+        <div class="col-span-12 lg:col-span-6">
+
             <div class="col-span-12 lg:col-span-6">
                 <div class="intro-y pr-1">
                     <div class="alert alert-primary show mb-2" role="alert"> Informasi Pembayaran </div>
@@ -176,8 +176,8 @@
                 <div id="ticket" class="tab-pane active" role="tabpanel" aria-labelledby="ticket-tab">
                     <div class="box p-5 mt-5">
                         <div class="mb-5">
-                            <label for="post-form-7" class="form-label"> Metode Pembayaran <small
-                                    class="text-danger">*</small></label>
+                            <label for="post-form-7" class="form-label"> Metode Pembayaran Ke Rekening/Dompet Digital
+                                Anda <small class="text-danger">*</small></label>
                             <select name="metode_bayar" data-placeholder="Pilih Metode Pembayaran"
                                 class="tom-select w-full">
                                 <option>Pilih Metode Pembayaran</option>

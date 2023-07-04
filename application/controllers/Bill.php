@@ -54,10 +54,11 @@ class Bill extends CI_Controller
 		$data = array(
 			'bukti_pembayaran' 	=> $bukti_pembayaran
 		);
-
+		
 		$where = array(
 			'order_id' => $id
 		);
+		// die(var_dump($data, $where));
 
 		$this->model_pembayaran->update('transaction', $data, $where);
 		$_SESSION["sukses"] = 'Bukti transfer berhasil di upload';

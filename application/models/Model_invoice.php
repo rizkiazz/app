@@ -196,9 +196,9 @@ class Model_invoice extends CI_Model
 			'transaction_time' 	=> date('Y-m-d H:i:s'),
 			'payment_limit' 	=> date('Y-m-d H:i:s', mktime( date('H'), date('i'), date('s'), date('m'), date('d') + 7, date('Y'))),
 		);
-				die(var_dump($invoice));
+				// die(var_dump($invoice));
 
-		$this->db->insert('drop_off', $invoice);
+		$this->db->insert('transaction', $invoice);
 		$id_invoice = $this->db->insert_id();
 
 		foreach ($this->cart->contents() as $item) {
@@ -209,6 +209,7 @@ class Model_invoice extends CI_Model
 				'nama_brg' 		=> $item['name'],
 				'jumlah' 		=> $item['qty'],
 				'harga' 		=> $item['price'],
+				'poin' 			=> $item['poin']
 			);
 						
 			$tambah_poin = array(

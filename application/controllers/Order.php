@@ -18,9 +18,9 @@ class Order extends CI_Controller
 		$data['title'] = 'History Order';
 		$id = $this->session->userdata('id_user');
 		$data['pickOff'] = $this->db->query("SELECT * FROM transaction 
-			WHERE transaction.id_user='$id' AND layanan_pesanan='Pick Up' ORDER BY transaction_time,status DESC")->result();
+			WHERE transaction.id_user='$id' AND layanan_pesanan='Pick Up' ORDER BY status, transaction_time  ASC")->result();
 		$data['dropOff'] = $this->db->query("SELECT * FROM transaction 
-			WHERE transaction.id_user='$id' AND layanan_pesanan='Drop Off' ORDER BY transaction_time DESC")->result();
+			WHERE transaction.id_user='$id' AND layanan_pesanan='Drop Off' ORDER BY status, transaction_time ASC")->result();
 		$this->load->view('layout/user/header', $data);
 		$this->load->view('order', $data);
 		$this->load->view('layout/user/footer');

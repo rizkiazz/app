@@ -13,12 +13,14 @@
                 <div class="hidden xl:block mx-auto text-slate-500"></div>
 
             </div>
-            <h3 class="flex justify-content-center">Pick Up List</h3>
+            <h2 class="intro-y text-lg font-medium mt-5">
+                Pick Up List</h2>
             <!-- BEGIN: Data List -->
             <div class="intro-y col-span-12 overflow-auto 2xl:overflow-visible">
                 <table class="table table-report -mt-2">
                     <thead>
                         <tr>
+                            <th class="whitespace-nowrap">No</th>
                             <th class="whitespace-nowrap">Order ID</th>
                             <th class="whitespace-nowrap">Nama</th>
                             <th class="text-center whitespace-nowrap">Alamat Pengiriman</th>
@@ -39,8 +41,12 @@
                                 ';
                             }
                         ?>
-                        <?php foreach ($pickOff as $row) : ?>
+                        <?php $counter = 1;
+                        foreach ($pickOff as $row) : ?>
                         <tr class="intro-x">
+                            <td class="w-5">
+                                <div class="font-medium whitespace-nowrap"><?= $counter ?></div>
+                            </td>
                             <td class="w-40 !py-4"> <a href="<?= site_url('order/detail/'.$row->order_id) ?>"
                                     class="underline decoration-dotted whitespace-nowrap">#<?= $row->order_id ?></a>
                             </td>
@@ -51,14 +57,10 @@
                                 <div class="flex items-center justify-center whitespace-nowrap "> <?= $row->alamat ?>,
                                     <?= $row->city ?>, <?= $row->kode_pos ?> </div>
                             </td>
-                            <td>
-                                <?php
-                                    if ($row->layanan_pesanan == "Pick Up") {
-                                    echo '<button class="flex items-center mr-3 text-white btn btn-sm btn-success shadow-md mr-2"><i data-lucide="package" class="w-4 h-4 mr-1"></i>' . $row->layanan_pesanan . '</button>';
-                                    } else {
-                                    echo '<button class="flex items-center mr-3 text-white btn btn-sm btn-pending shadow-md mr-2"><i data-lucide="package" class="w-4 h-4 mr-1"></i>' . $row->layanan_pesanan . '</button>';
-                                    }
-                                ?>
+                            <td><button
+                                    class="flex items-center mr-3 text-white btn btn-sm btn-success shadow-md mr-2"><i
+                                        data-lucide="package" class="w-4 h-4 mr-1"></i> <?= $row->layanan_pesanan ?>
+                                </button>
                             </td>
                             <td>
                                 <?php if ($row->status == "0"){ ?>
@@ -76,20 +78,20 @@
                                     <?= date('d-M-Y H:i', strtotime($row->transaction_time)) ?></div>
                             </td>
                         </tr>
-                        <?php endforeach; ?>
+                        <?php $counter++; endforeach; ?>
                     </tbody>
                 </table>
             </div>
-            <h2 class="intro-y text-lg font-medium mt-10">
+            <h2 class="intro-y text-lg font-medium mt-5">
                 Drop Off List
             </h2>
             <div class="intro-y col-span-12 overflow-auto 2xl:overflow-visible">
                 <table class="table table-report -mt-2">
                     <thead>
                         <tr>
+                            <th class="whitespace-nowrap">NO</th>
                             <th class="whitespace-nowrap">Order ID</th>
                             <th class="whitespace-nowrap">Nama</th>
-                            <th class="text-center whitespace-nowrap">Alamat</th>
                             <th class="text-center whitespace-nowrap">Tujuan Pengiriman</th>
                             <th class="whitespace-nowrap">Layanan Pesanan</th>
                             <th class="whitespace-nowrap">Status</th>
@@ -109,29 +111,26 @@
                                 ';
                             }
                         ?>
-                        <?php foreach ($dropOff as $row) : ?>
+                        <?php $counter = 1;
+                        foreach ($dropOff as $row) : ?>
                         <tr class="intro-x">
+                            <td class="w-5">
+                                <div class="font-medium whitespace-nowrap"><?= $counter ?></div>
+                            </td>
                             <td class="w-40 !py-4"> <a href="<?= site_url('order/detail/'.$row->order_id) ?>"
                                     class="underline decoration-dotted whitespace-nowrap">#<?= $row->order_id ?></a>
                             </td>
                             <td class="w-10">
-                                <a href="" class="font-medium whitespace-nowrap"><?= $row->name ?></a>
+                                <div class="font-medium whitespace-nowrap"><?= $row->name ?></div>
                             </td>
                             <td class="text-center">
-                                <div class="flex items-center justify-center whitespace-nowrap "> <?= $row->alamat ?>,
-                                    <?= $row->city ?> </div>
-                            </td>
-                            <td class="w-10">
-                                <a href="" class="font-medium whitespace-nowrap"><?= $row->tujuan ?></a>
+                                <div class="font-medium whitespace-nowrap"><?= $row->tujuan ?></div>
                             </td>
                             <td>
-                                <?php
-                                    if ($row->layanan_pesanan == "Pick Up") {
-                                    echo '<button class="flex items-center mr-3 text-white btn btn-sm btn-success shadow-md mr-2"><i data-lucide="package" class="w-4 h-4 mr-1"></i>' . $row->layanan_pesanan . '</button>';
-                                    } else {
-                                    echo '<button class="flex items-center mr-3 text-white btn btn-sm btn-pending shadow-md mr-2"><i data-lucide="package" class="w-4 h-4 mr-1"></i>' . $row->layanan_pesanan . '</button>';
-                                    }
-                                ?>
+                                <button
+                                    class="flex items-center mr-3 text-white btn btn-sm btn-pending shadow-md mr-2"><i
+                                        data-lucide="package" class="w-4 h-4 mr-1"></i> <?= $row->layanan_pesanan ?>
+                                </button>
                             </td>
                             <td>
                                 <?php if ($row->status == "0"){ ?>
@@ -149,7 +148,7 @@
                                     <?= date('d-M-Y H:i', strtotime($row->transaction_time)) ?></div>
                             </td>
                         </tr>
-                        <?php endforeach; ?>
+                        <?php $counter++; endforeach; ?>
                     </tbody>
                 </table>
             </div>

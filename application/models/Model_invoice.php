@@ -153,6 +153,10 @@ class Model_invoice extends CI_Model
 		$city = $this->input->post('kota');
 		$tujuan = $this->input->post('ekspedisi');
 		$payment_method = $this->input->post('payment_method');
+		$metode_bayar1 = $this->input->post('metode_bayar1');
+		$metode_bayar2 = $this->input->post('metode_bayar2');
+		$metode_bayar3 = $this->input->post('metode_bayar3');
+		$metode_bayar4 = $this->input->post('metode_bayar4');
 		$biaya = $this->input->post('biaya');
 		$layanan_pesanan = $this->input->post('layanan_pesanan');
 		$mobile_phone = $this->input->post('mobile_phone');
@@ -164,7 +168,15 @@ class Model_invoice extends CI_Model
 		$result = $this->db->query("SELECT SUM(poin) AS poin FROM user WHERE user.id_user='$id_user'");
 		$poin = $result->row()->poin; // Get the poin value from the result
 
-		
+		if ($metode_bayar1 !== null && $metode_bayar3 !== null) {
+			$no_rekening = $metode_bayar1 . ' - ' . $metode_bayar3;
+		} elseif ($metode_bayar2 !== null && $metode_bayar4 !== null) {
+			$no_rekening = $metode_bayar2 .' - ' . $metode_bayar4;
+		} else {
+			// Handle the case when the conditions are not met
+			$no_rekening = null;
+		}
+
 		if ($file_gambar = '') {
 		} else {
 			$config['upload_path'] = './uploads/order';
@@ -185,6 +197,7 @@ class Model_invoice extends CI_Model
 			'city' 				=> $city,
 			'tujuan' 			=> $tujuan,
 			'payment_method' 	=> $payment_method,
+			'no_rekening' 		=> $no_rekening,
 			'biaya' 			=> $biaya,
 			'layanan_pesanan' 	=> $layanan_pesanan,
 			'mobile_phone' 		=> $mobile_phone,

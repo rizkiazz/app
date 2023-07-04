@@ -26,12 +26,16 @@
                     $poin = $item['poin'];
                     $qty = $item['qty']; //quantity
                     $total_poin = $poin * $qty;//poin yg didapat
+                    $harga = $item['price']; //harga /kg
+
+                    $grand_total = $harga * $qty; // total harga
                     
                 }
             } ?>
         <div class="intro-y col-span-12 lg:col-span-6">
             <div class="alert alert-primary show mb-2" role="alert">Jumlah Poin Yang Didapatkan :
-                <b><?= number_format($total_poin, 0, ',', '.') ?> poin,-</b></div>
+                <b><?= number_format($total_poin, 0, ',', '.') ?> poin,-</b>
+            </div>
             <div class="post intro-y overflow-hidden box mt-5">
                 <div class="post__content tab-content">
                     <form id="payment-form" action="<?= site_url('dashboard/drop_off_proccess') ?>" method="post"
@@ -40,7 +44,8 @@
                             <div class="border border-slate-200/60 dark:border-darkmode-400 rounded-md p-5">
                                 <div
                                     class="font-medium flex items-center border-b border-slate-200/60 dark:border-darkmode-400 pb-5">
-                                    <i data-lucide="chevron-down" class="w-4 h-4 mr-2"></i> Info Pengirim </div>
+                                    <i data-lucide="chevron-down" class="w-4 h-4 mr-2"></i> Info Pengirim
+                                </div>
                                 <div class="mt-5">
                                     <div class="mb-5">
                                         <input type="hidden" id="order_id" name="order_id"
@@ -164,6 +169,67 @@
                     </div>
                 </div>
             </div>
+            <div class="col-span-12 lg:col-span-6">
+                <div class="intro-y pr-1">
+                    <div class="alert alert-primary show mb-2" role="alert"> Informasi Pembayaran </div>
+                </div>
+                <div id="ticket" class="tab-pane active" role="tabpanel" aria-labelledby="ticket-tab">
+                    <div class="box p-5 mt-5">
+                        <div class="mb-5">
+                            <label for="post-form-7" class="form-label"> Metode Pembayaran <small
+                                    class="text-danger">*</small></label>
+                            <select name="metode_bayar" data-placeholder="Pilih Metode Pembayaran"
+                                class="tom-select w-full">
+                                <option>Pilih Metode Pembayaran</option>
+                                <option value="Bank Transfer">Bank Transfer</option>
+                                <option value="Dompet Digital">Dompet Digital</option>
+                            </select>
+                        </div>
+                        <div class="mb-5" id="bank_field" style="display: none;">
+                            <label for="post-form-7" class="form-label"> Pilih Bank <small
+                                    class="text-danger">*</small></label>
+                            <select name="metode_bayar1" id="pilih_bank" data-placeholder="Pilih Bank"
+                                class="tom-select w-full">
+                                <option disabled selected hidden>Pilih Bank</option>
+                                <option value="BRI">Bank BRI</option>
+                                <option value="BCA">Bank BCA</option>
+                                <option value="MANDIRI">Bank MANDIRI</option>
+                                <option value="BNI">Bank BNI</option>
+                                <option value="BTN ">Bank BTN</option>
+                            </select>
+                        </div>
+                        <div class="mb-5" id="dompet_digital_field" style="display: none;">
+                            <label for="post-form-7" class="form-label"> Pilih Dompet Digital <small
+                                    class="text-danger">*</small></label>
+                            <select name="metode_bayar2" id="pilih_dompet_digital"
+                                data-placeholder="Pilih Dompet Digital" class="tom-select w-full">
+                                <option disabled selected hidden>Pilih Dompet Digital</option>
+                                <option value="Dana">Dana</option>
+                                <option value="Ovo">Ovo</option>
+                                <option value="Gopay">Gopay</option>
+                                <option value="Shopee Pay">Shopee Pay</option>
+                            </select>
+                        </div>
+                        <div class="mb-5">
+                            <div id="rekening_field" class="mb-5" style="display: none;">
+                                <label for="post-form-7" class="form-label"> Rekening Anda <small
+                                        class="text-danger">*</small></label>
+                                <input type="number" class="form-control" id="metode_bayar2" name="metode_bayar3"
+                                    placeholder="Nomor Rekening Anda" autocomplete="off">
+                            </div>
+                        </div>
+                        <div class="mb-5">
+                            <div id="nomor_field" class="mb-5" style="display: none;">
+                                <label for="post-form-7" class="form-label"> Nomor HP Anda <small
+                                        class="text-danger">*</small></label>
+                                <input type="number" class="form-control" id="metode_bayar2" name="metode_bayar4"
+                                    placeholder="Nomor HP Anda" autocomplete="off">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
             <div class="mt-5">
                 <div class="alert alert-primary show mb-2 mt-5" role="alert"> Informasi Produk </div>
             </div>
@@ -182,11 +248,26 @@
                         <div class="mr-auto">Berat barang</div>
                         <div class="font-medium text-danger"><?= number_format($qty, 0, ',', '.') ?> kg</div>
                     </div>
+                    <div class="flex mt-4">
+                        <div class="mr-auto">Harga</div>
+                        <div class="font-medium">Rp. <?= number_format($harga, 0, ',', '.') ?>,-/kg</div>
+                    </div>
                     <div class="flex mt-4 pt-4 border-t border-slate-200/60 dark:border-darkmode-400">
                         <div class="mr-auto font-medium text-base">Poin yang didapat</div>
                         <div class="font-medium text-base"><strong><?= number_format($total_poin, 0, ',', '.') ?>
                                 poin,-</strong></div>
+
                     </div>
+                    <div class="flex mt-4 pt-4 border-t border-slate-200/60 dark:border-darkmode-400">
+                        <div class="mr-auto font-medium text-base">Anda mendapat</div>
+                        <div class="font-medium text-base"><strong>Rp.
+                                <?= number_format($grand_total, 0, ',', '.') ?>,-</strong></div>
+                    </div>
+                    <p class="text-base text-info text-sm"><b>Note : </b><br>Akan dikirim ke nomor rekening/dompet
+                        digital anda
+                        <br>silahkan lengkapi form anda
+                    </p>
+
                 </div>
                 <div class="flex mt-5">
                     <a href="<?= site_url('dashboard/detail_cart') ?>"
@@ -210,4 +291,50 @@
             URL.revokeObjectURL(output.src) // free memory
         }
     };
+    document.querySelector('select[name="metode_bayar"]').addEventListener('change', function() {
+        var selectedOption = this.value;
+        var bankField = document.getElementById('bank_field');
+        var rekeningField = document.getElementById('rekening_field');
+        var dompetDigitalField = document.getElementById('dompet_digital_field');
+        var nomorField = document.getElementById('nomor_field');
+
+        if (selectedOption === 'Bank Transfer') {
+            bankField.style.display = 'block';
+            rekeningField.style.display = 'none';
+            dompetDigitalField.style.display = 'none';
+            nomorField.style.display = 'none';
+        } else if (selectedOption === 'Dompet Digital') {
+            bankField.style.display = 'none';
+            rekeningField.style.display = 'none';
+            dompetDigitalField.style.display = 'block';
+            nomorField.style.display = 'none';
+        } else {
+            bankField.style.display = 'none';
+            rekeningField.style.display = 'none';
+            dompetDigitalField.style.display = 'none';
+            nomorField.style.display = 'none';
+        }
+    });
+
+    document.querySelector('select[id="pilih_bank"]').addEventListener('change', function() {
+        var selectedOption = this.value;
+        var rekeningField = document.getElementById('rekening_field');
+
+        if (selectedOption === '') {
+            rekeningField.style.display = 'none';
+        } else {
+            rekeningField.style.display = 'block';
+        }
+    });
+
+    document.querySelector('select[id="pilih_dompet_digital"]').addEventListener('change', function() {
+        var selectedOption = this.value;
+        var nomorField = document.getElementById('nomor_field');
+
+        if (selectedOption === '') {
+            nomorField.style.display = 'none';
+        } else {
+            nomorField.style.display = 'block';
+        }
+    });
     </script>

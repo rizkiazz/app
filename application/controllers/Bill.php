@@ -42,6 +42,9 @@ class Bill extends CI_Controller
 		} else {
 			$config['upload_path'] = './uploads/bukti_pembayaran/';
 			$config['allowed_types'] = 'jpg|jpeg|png';
+			$config['max_size']             = 2048;
+			$config['max_width']            = 40000;
+			$config['max_height']           = 40000;
 
 			$this->load->library('upload', $config);
 			if (!$this->upload->do_upload('bukti_pembayaran')) {

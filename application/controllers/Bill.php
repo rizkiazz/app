@@ -17,8 +17,10 @@ class Bill extends CI_Controller
 	{
 		$data['title'] = 'Billing History';
 		$id = $this->session->userdata('id_user');
-		$data['bill'] = $this->db->query("SELECT * FROM transaction 
-			WHERE transaction.id_user='$id' AND status='0' ORDER BY transaction_time DESC")->result();
+		$data['bill_pickUp'] = $this->db->query("SELECT * FROM transaction 
+			WHERE transaction.id_user='$id' AND status='0' AND layanan_pesanan='Pick Up' ORDER BY transaction_time DESC")->result();
+		$data['bill_dropOff'] = $this->db->query("SELECT * FROM transaction 
+			WHERE transaction.id_user='$id' AND status='0' AND layanan_pesanan='Drop Off' ORDER BY transaction_time DESC")->result();
 		$this->load->view('layout/user/header', $data);
 		$this->load->view('bill', $data);
 		$this->load->view('layout/user/footer');

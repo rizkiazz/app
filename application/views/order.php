@@ -1,20 +1,18 @@
     <div class="content">
         <h2 class="intro-y text-lg font-medium mt-10">
-            Orders List
+            Orders List - Pick Up
         </h2>
         <div class="grid grid-cols-12 gap-6 mt-5">
             <div class="intro-y col-span-12 flex flex-wrap xl:flex-nowrap items-center mt-2">
                 <div class="flex w-full sm:w-auto">
                     <div class="w-48 relative text-slate-500">
-                        <input type="text" class="form-control w-48 box pr-10" placeholder="Search by invoice...">
+                        <input type="text" class="form-control w-48 box pr-10" placeholder="Cari disini...">
                         <i class="w-4 h-4 absolute my-auto inset-y-0 mr-3 right-0" data-lucide="search"></i>
                     </div>
                 </div>
                 <div class="hidden xl:block mx-auto text-slate-500"></div>
 
             </div>
-            <h2 class="intro-y text-lg font-medium mt-5">
-                Pick Up List</h2>
             <!-- BEGIN: Data List -->
             <div class="intro-y col-span-12 overflow-auto 2xl:overflow-visible">
                 <table class="table table-report -mt-2">
@@ -82,9 +80,22 @@
                     </tbody>
                 </table>
             </div>
-            <h2 class="intro-y text-lg font-medium mt-5">
-                Drop Off List
-            </h2>
+            <!-- END: Data List -->
+        </div>
+        <h2 class="intro-y text-lg font-medium mt-10">
+            Orders List - Drop Off
+        </h2>
+        <div class="grid grid-cols-12 gap-6 mt-5">
+            <div class="intro-y col-span-12 flex flex-wrap xl:flex-nowrap items-center mt-2">
+                <div class="flex w-full sm:w-auto">
+                    <div class="w-48 relative text-slate-500">
+                        <input type="text" class="form-control w-48 box pr-10" placeholder="Cari disini...">
+                        <i class="w-4 h-4 absolute my-auto inset-y-0 mr-3 right-0" data-lucide="search"></i>
+                    </div>
+                </div>
+                <div class="hidden xl:block mx-auto text-slate-500"></div>
+
+            </div>
             <div class="intro-y col-span-12 overflow-auto 2xl:overflow-visible">
                 <table class="table table-report -mt-2">
                     <thead>

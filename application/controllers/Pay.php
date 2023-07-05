@@ -17,8 +17,10 @@ class Pay extends CI_Controller
     {
         $data['title'] = 'Billing History';
         $id = $this->session->userdata('id_user');
-        $data['bill'] = $this->db->query("SELECT * FROM transaction 
-			WHERE transaction.id_user='$id' AND status='1' ORDER BY transaction_time DESC")->result();
+        $data['bill_pickUp'] = $this->db->query("SELECT * FROM transaction 
+			WHERE transaction.id_user='$id' AND status='1' AND layanan_pesanan='Pick Up' ORDER BY transaction_time DESC")->result();
+		$data['bill_dropOff'] = $this->db->query("SELECT * FROM transaction 
+			WHERE transaction.id_user='$id' AND status='1' AND layanan_pesanan='Drop Off' ORDER BY transaction_time DESC")->result();
         $this->load->view('layout/user/header', $data);
         $this->load->view('pay', $data);
         $this->load->view('layout/user/footer');

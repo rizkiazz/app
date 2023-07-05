@@ -16,7 +16,10 @@ class Invoice extends CI_Controller
 	public function index()
 	{
 		$data['title'] = 'Invoice';
-		$data['invoice'] = $this->model_invoice->get();
+		$data['invoice_paid'] = $this->db->query("SELECT * FROM transaction
+        WHERE status='1' ORDER BY transaction_time DESC")->result();
+		$data['invoice_pending'] = $this->db->query("SELECT * FROM transaction
+        WHERE status='0' ORDER BY transaction_time DESC")->result();
 		$data['bill'] = $this->db->query("SELECT * FROM transaction
         WHERE status='0' ORDER BY order_id DESC LIMIT 5")->result();
 

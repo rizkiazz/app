@@ -28,7 +28,7 @@ class Order extends CI_Controller
 
 	public function detail($id_invoice)
 	{
-		$data['title'] = 'Detail Invoice';
+		$data['title'] = 'Detail Order';
 		$data['invoice'] = $this->model_invoice->get_id_invoice($id_invoice);
 		$data['pesanan'] = $this->model_invoice->get_id_pesanan($id_invoice);
 		$this->load->view('layout/user/header', $data);

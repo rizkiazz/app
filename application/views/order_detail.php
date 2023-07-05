@@ -22,7 +22,7 @@
                            class="w-4 h-4 text-slate-500 mr-2"></i><b>Metode Pembayaran&nbsp;</b><span
                            class="flex items-center ml-auto"><?= $invoice->payment_method ?></span></div>
                    <div class="flex items-center mt-3"> <i data-lucide="calendar"
-                           class="w-4 h-4 text-slate-500 mr-2"></i><b>Tanggal Pembelian&nbsp;</b><span
+                           class="w-4 h-4 text-slate-500 mr-2"></i><b>Tanggal Transaksi&nbsp;</b><span
                            class="flex items-center ml-auto"><?= date('l d-M-Y H:i:s', strtotime($invoice->transaction_time)) ?></span>
                    </div>
                    <div class="flex items-center mt-3"> <i data-lucide="clock" class="w-4 h-4 text-slate-500 mr-2"></i>
@@ -47,7 +47,12 @@
                    </div>
                    <div class="flex items-center mt-3"> <i data-lucide="calendar"
                            class="w-4 h-4 text-slate-500 mr-2"></i> <b>Nomor Telepon</b><span
-                           class="flex items-center ml-auto"><?= $invoice->mobile_phone ?></span></div>
+                           class="flex items-center ml-auto"><?= $invoice->mobile_phone ?></span>
+                   </div>
+                   <div class="flex items-center mt-3"> <i data-lucide="calendar"
+                           class="w-4 h-4 text-slate-500 mr-2"></i> <b>Nomor Rekening/Dompet Digital</b><span
+                           class="flex items-center ml-auto"><?= $invoice->no_rekening ?></span>
+                   </div>
                </div>
            </div>
            <div class="col-span-12 lg:col-span-12 2xl:col-span-12">
@@ -57,17 +62,26 @@
                        <a href="" class="flex items-center ml-auto text-primary"> <i data-lucide="map-pin"
                                class="w-4 h-4 mr-2"></i> Tracking Info </a>
                    </div>
+                   <?php if($invoice->layanan_pesanan == "Pick Up") { ?>
                    <div class="flex items-center"> <i data-lucide="clipboard" class="w-4 h-4 text-slate-500 mr-2"></i>
                        <b>Courier</b><span class="flex items-center ml-auto">Kurir EasyPickTrash</span>
                    </div>
+                   <?php }else {?>
+                   <div class="flex items-center"> <i data-lucide="clipboard" class="w-4 h-4 text-slate-500 mr-2"></i>
+                       <b>Tujuan</b><span class="flex items-center ml-auto"><?= $invoice->tujuan ?></span>
+                   </div>
+                   <div class="flex items-center mt-3"> <i data-lucide="clipboard"
+                           class="w-4 h-4 text-slate-500 mr-2"></i>
+                       <b>Alamat Mitra</b><span class="flex items-center ml-auto"><?= $invoice->city ?>.</span>
+                   </div>
+                   <?php }?>
                    <div class="flex items-center mt-3"> <i data-lucide="calendar"
                            class="w-4 h-4 text-slate-500 mr-2"></i> <b>Tracking Order</b><span
                            class="flex items-center ml-auto"> <?= $invoice->tracking_id ?> <i data-lucide="copy"
                                class="w-4 h-4 text-slate-500 ml-2"></i></span></div>
                    <div class="flex items-center mt-3"> <i data-lucide="map-pin"
-                           class="w-4 h-4 text-slate-500 mr-2"></i> <b>Alamat</b><span
-                           class="flex items-center ml-auto"> <small><?= $invoice->alamat ?>,
-                               <?= $invoice->city ?>.</small></span></div>
+                           class="w-4 h-4 text-slate-500 mr-2"></i> <b>Alamat Pelanggan</b><span
+                           class="flex items-center ml-auto"><?= $invoice->alamat ?></span></div>
                </div>
            </div>
            <div class="col-span-12 lg:col-span-12 2xl:col-span-12">
@@ -82,6 +96,7 @@
                                    <th class="whitespace-nowrap !py-5">Produk Item</th>
                                    <th class="whitespace-nowrap !py-5">Layanan Pesanan</th>
                                    <th class="whitespace-nowrap text-right">Poin</th>
+                                   <th class="whitespace-nowrap text-right">Harga</th>
                                    <th class="whitespace-nowrap text-right">Jumlah</th>
                                    <th class="whitespace-nowrap text-right">Total poin</th>
                                </tr>
@@ -96,7 +111,7 @@
                                <?php } else { ?>
                                <?php $total = 0;
                                  foreach ($pesanan as $row) :
-                                     $subtotal = $row->jumlah * $row->harga;
+                                     $subtotal = $row->jumlah * $row->poin;
                                      $total += $subtotal;
                                  ?>
                                <tr>
@@ -115,31 +130,67 @@
                                              }
                                          ?>
                                    </td>
-                                   <td class="text-right"><?= number_format($row->harga, 0, ',', '.') ?> poin</td>
+                                   <td class="text-right"><?= number_format($row->poin, 0, ',', '.') ?> poin</td>
+                                   <td class="text-right">Rp. <?= number_format($row->harga, 0, ',', '.') ?> /kg,-</td>
                                    <td class="text-right"><?= number_format($row->jumlah, 0, ',', '.') ?></td>
                                    <td class="text-right"><?= number_format($subtotal, 0, ',', '.') ?> poin</td>
                                </tr>
                                <?php endforeach; ?>
 
                                <tr>
-                                   <td colspan="4" align="right">Poin yang didapat</td>
+                                   <td colspan="5" align="right">Poin yang didapat</td>
                                    <td align="right"><b><?= number_format($total, 0, ',', '.') ?> poin</b></td>
                                </tr>
                                <?php }?>
                            </tbody>
                        </table>
-                       <div class="border border-slate-200/60 dark:border-darkmode-400 rounded-md p-5 mt-5">
-                           <div
-                               class="font-medium flex items-center border-b border-slate-200/60 dark:border-darkmode-400 pb-5">
-                               <i data-lucide="chevron-down" class="w-4 h-4 mr-2"></i> Gambar di Upload
+                   </div>
+               </div>
+           </div>
+           <div class="col-span-6 lg:col-span-6 2xl:col-span-6">
+               <div class="box p-5 rounded-md">
+                   <div class="border border-slate-200/60 dark:border-darkmode-400 rounded-md p-5 mt-5">
+                       <div
+                           class="font-medium flex items-center border-b border-slate-200/60 dark:border-darkmode-400 pb-5">
+                           <i data-lucide="chevron-down" class="w-4 h-4 mr-2"></i> Gambar di Upload
+                       </div>
+                       <div class="mt-3">
+                           <?php if(empty($invoice->file_gambar)) {?>
+                           <h2 class="text-center mt-5 text-xl">belum upload file</h2>
+                           <?php } else {?>
+                           <div class="image-fit zoom-in relative mb-5 mr-5 h-64 w-5/5 cursor-pointer">
+                               <img class="rounded-md" alt="" data-action="zoom"
+                                   src="<?= base_url() . '/uploads/order/' . $invoice->file_gambar ?>">
                            </div>
-                           <div class="mt-3">
-                               <div class="image-fit zoom-in relative mb-5 mr-5 h-64 w-3/5 cursor-pointer">
-                                   <img class="rounded-md" alt="" data-action="zoom"
-                                       src="<?= base_url() . '/uploads/order/' . $invoice->file_gambar ?>">
-                               </div>
+                           <?php }?>
+                       </div>
+                   </div>
+               </div>
+           </div>
+           <div class="col-span-6 lg:col-span-6 2xl:col-span-6">
+               <div class="box p-5 rounded-md">
+                   <div class="border border-slate-200/60 dark:border-darkmode-400 rounded-md p-5 mt-5">
+                       <?php if($invoice->layanan_pesanan == "Pick Up") {?>
+                       <div
+                           class="font-medium flex items-center border-b border-slate-200/60 dark:border-darkmode-400 pb-5">
+                           <i data-lucide="chevron-down" class="w-4 h-4 mr-2"></i> Bukti Sampah Sudah diambil
+                       </div>
+                       <?php } else {?>
+                       <div
+                           class="font-medium flex items-center border-b border-slate-200/60 dark:border-darkmode-400 pb-5">
+                           <i data-lucide="chevron-down" class="w-4 h-4 mr-2"></i> Upload Bukti Sampah diserahkan Mitra
+                       </div>
+                       <?php }?>
+                       <div class="mt-3">
+                           <?php if(empty($invoice->bukti_pembayaran)) {?>
+                           <h2 class="text-center mt-5 text-xl">belum upload file</h2>
+                           <?php } else {?>
+                           <div class="image-fit zoom-in relative mb-5 mr-5 h-64 w-3/5 cursor-pointer">
+                               <img class="rounded-md" alt="" data-action="zoom"
+                                   src="<?= base_url() . '/uploads/bukti_pembayaran/' . $invoice->bukti_pembayaran ?>">
                            </div>
                        </div>
+                       <?php }?>
                    </div>
                </div>
            </div>

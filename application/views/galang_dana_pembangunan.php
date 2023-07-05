@@ -39,7 +39,7 @@
             </div>
             <div class="flex justify-center">
                 <div class="relative mx-auto mt-8 text-5xl font-semibold">
-                    <span class="absolute top-0 left-0 -ml-4 text-2xl">$</span>23 Miliar++ Poin
+                    <span class="absolute top-0 left-0 -ml-4 text-2xl">$</span>399 Juta++ Poin
                 </div>
             </div>
             <div class="mx-auto mt-2 py-10 text-center text-xl text-slate-500 font-semibold">

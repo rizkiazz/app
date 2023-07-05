@@ -124,8 +124,8 @@
                                                 taruh disini
                                                 <input name="file_gambar" id="file_gambar" type="file"
                                                     class="w-full h-full top-0 left-0 absolute opacity-0"
-                                                    accept="image/png, image/jpeg, image/jpg"
-                                                    onchange="loadFile(event)">
+                                                    accept="image/png, image/jpeg, image/jpg" onchange="loadFile(event)"
+                                                    required>
                                             </div>
                                         </div>
                                     </div>
@@ -148,12 +148,12 @@
 
                     <div class="mb-5">
                         <label for="post-form-7" class="form-label"> Kota <small class="text-danger">*</small></label>
-                        <select name="kota" id="kota" class="form-control"></select>
+                        <select name="kota" id="kota" class="form-control" required></select>
                     </div>
                     <div class="mb-5">
                         <label for="post-form-7" class="form-label"> Pilih Mitra Drop Off Tujuan <small
                                 class="text-danger">*</small></label>
-                        <select name="ekspedisi" id="ekspedisi" class="form-control"></select>
+                        <select name="ekspedisi" id="ekspedisi" class="form-control" required></select>
                     </div>
                     <div class="flex">
                         <div class="form-check form-switch">

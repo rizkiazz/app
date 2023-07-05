@@ -20,8 +20,7 @@
     <div class="intro-y box col-span-12 md:col-span-6 mt-3">
         <div
             class="image-fit h-[320px] before:absolute before:top-0 before:left-0 before:z-10 before:block before:h-full before:w-full before:bg-gradient-to-t before:from-black/90 before:to-black/10">
-            <img class="rounded-t-md"
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStUCjFYtO1PYwVHh8mGfizz5wXypx0Rdj2L--pPPcFxJoAHkc4K2seGqQLeJO-VgokwOI&usqp=CAU"
+            <img class="rounded-t-md" src="https://pantiyatim.or.id/wp-content/uploads/2022/06/qurban.png"
                 alt="Midone Tailwind HTML Admin Template">
             <div class="absolute bottom-0 z-10 px-5 pb-6 text-white">
                 <span class="rounded bg-white/20 px-2 py-1">

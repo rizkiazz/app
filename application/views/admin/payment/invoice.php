@@ -164,9 +164,9 @@
                         <th class="whitespace-nowrap">Order ID</th>
                         <th class="whitespace-nowrap">Nama Pelanggan</th>
                         <th class="whitespace-nowrap">Waktu Transaksi</th>
+                        <th class="whitespace-nowrap">Pesanan Terkonfirmasi</th>
                         <th class="whitespace-nowrap">Bukti Pembayaran</th>
-                        <th class="whitespace-nowrap">Status</th>
-                        <th class="text-center whitespace-nowrap">ACTIONS</th>
+                        <th class="text-center whitespace-nowrap">Status</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -194,6 +194,10 @@
                                 <?= date('d-M-Y H:i', strtotime($row->transaction_time)) ?></div>
                         </td>
                         <td>
+                            <div class="text-slate-500 whitespace-nowrap mt-0.5">
+                                <?= date('d-M-Y H:i', strtotime($row->payment_limit)) ?></div>
+                        </td>
+                        <td>
                             <?php if (empty($row->bukti_pembayaran)){ ?>
                             <div class="flex items-center whitespace-nowrap text-danger"> <i data-lucide="alert-circle"
                                     class="w-4 h-4 mr-2"></i>Belum upload bukti </div>
@@ -206,20 +210,9 @@
                             </div>
                             <?php } ?>
                         </td>
-                        <td>
-                            <div class="flex items-center whitespace-nowrap text-success"> <b>Terbayar</b> </div>
-                        </td>
                         <td class="table-report__action">
                             <center>
-                                <?php if ($row->status == "0"){ ?>
-                                <div class="flex justify-center items-center">
-                                    <a class="flex items-center text-primary whitespace-nowrap"
-                                        href="<?= site_url('admin/invoice/confirm/'. $row->order_id) ?>"> <i
-                                            data-lucide="arrow-left-right" class="w-4 h-4 mr-1"></i> Ubah Status </a>
-                                </div>
-                                <?php } else if ($row->status == "1"){ ?>
                                 <button class="btn btn-sm btn-success text-white">Pembayaran Berhasil</button>
-                                <?php } ?>
                         </td>
                     </tr>
 

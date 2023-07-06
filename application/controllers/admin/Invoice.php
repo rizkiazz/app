@@ -43,13 +43,9 @@ class Invoice extends CI_Controller
 		date_default_timezone_set('Asia/Jakarta');
 		$data = ['status' => '1', 'payment_limit' => date('Y-m-d H:i:s') ];
 		$where = ['order_id' => $id];
-		// die(var_dump($data));
 		$this->db->update('transaction', $data, $where);
 		$_SESSION["sukses"] = 'Pesanan berhasil di konfirmasi';
     	redirect('admin/invoice');
-	// 	$this->db->update('transaction', ['status' => '1'], ['payment_limit' => date('Y-m-d H:i:s')], ['order_id' => $id]);
-	// 	$_SESSION["sukses"] = 'Pesanan berhasil di konfirmasi';
-	// 	redirect('admin/invoice');
 	}
 
 	public function pdf($id_invoice)

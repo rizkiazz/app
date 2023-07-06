@@ -189,7 +189,7 @@ class Model_invoice extends CI_Model
 			);
 						
 			$tambah_poin = array(
-				'poin' => $poin + ($item['price'] *  $item['qty'])
+				'poin' => $poin + ($item['poin'] *  $item['qty'])
 			);
 			$where = array(
 				'id_user' 		=> $id_user,

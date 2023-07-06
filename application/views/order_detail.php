@@ -68,11 +68,12 @@
                    </div>
                    <?php }else {?>
                    <div class="flex items-center"> <i data-lucide="clipboard" class="w-4 h-4 text-slate-500 mr-2"></i>
-                       <b>Tujuan</b><span class="flex items-center ml-auto"><?= $invoice->tujuan ?></span>
+                       <b>Lokasi Kantor Center EasyPickTrash</b><span
+                           class="flex items-center ml-auto"><?= $invoice->tujuan ?></span>
                    </div>
                    <div class="flex items-center mt-3"> <i data-lucide="clipboard"
                            class="w-4 h-4 text-slate-500 mr-2"></i>
-                       <b>Alamat Mitra</b><span class="flex items-center ml-auto"><?= $invoice->city ?>.</span>
+                       <b>Kota</b><span class="flex items-center ml-auto"><?= $invoice->city ?>.</span>
                    </div>
                    <?php }?>
                    <div class="flex items-center mt-3"> <i data-lucide="calendar"

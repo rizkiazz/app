@@ -30,7 +30,7 @@
                            <?php if ($invoice->status == "0") { ?>
                            <span class="bg-warning/20 text-warning rounded px-2 ml-1">Pending(Tertunda)</span>
                            <?php } else if ($invoice->status == "1") { ?>
-                           <span class="bg-success/20 text-success rounded px-2 ml-1">Paid(Dibayar)</span>
+                           <span class="bg-success/20 text-success rounded px-2 ml-1 font-medium">Paid(Dibayar)</span>
                            <?php } ?>
                        </span>
                    </div>
@@ -52,6 +52,11 @@
                    <div class="flex items-center mt-3"> <i data-lucide="calendar"
                            class="w-4 h-4 text-slate-500 mr-2"></i> <b>Nomor Rekening/Dompet Digital</b><span
                            class="flex items-center ml-auto"><?= $invoice->no_rekening ?></span>
+                   </div>
+                   <div class="flex items-center mt-3"> <i data-lucide="calendar"
+                           class="w-4 h-4 text-slate-500 mr-2"></i> <b>Pesanan Dikonfirmasi</b>
+                       <span
+                           class="bg-success/20 text-success rounded px-2 ml-1 font-medium flex items-center ml-auto"><?= date('l d-M-Y H:i:s', strtotime($invoice->payment_limit)) ?></span>
                    </div>
                </div>
            </div>

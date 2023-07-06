@@ -28,7 +28,7 @@
                     <tr>
                         <th class="whitespace-nowrap">No</th>
                         <th class="whitespace-nowrap">Order ID</th>
-                        <th class="whitespace-nowrap">Nama Pelanggan</th>
+                        <th class="whitespace-nowrap text-center">Nama<br>Pelanggan</th>
                         <th class="whitespace-nowrap">Waktu Transaksi</th>
                         <th class="whitespace-nowrap">Bukti Pembayaran</th>
                         <th class="whitespace-nowrap">Status</th>
@@ -53,8 +53,8 @@
                         </td>
                         <td class="w-40 !py-4"> <a href="<?= site_url('admin/invoice/detail/'.$row->order_id) ?>"
                                 class="underline decoration-dotted whitespace-nowrap">#<?= $row->order_id ?></a> </td>
-                        <td class="w-40">
-                            <a href="" class="font-medium whitespace-nowrap"><?= $row->name ?></a>
+                        <td class="w-10">
+                            <div class="font-medium whitespace-nowrap text-center"><?= $row->name ?></div>
                         </td>
                         <td>
                             <div class="text-slate-500 whitespace-nowrap mt-0.5">
@@ -162,9 +162,9 @@
                     <tr>
                         <th class="whitespace-nowrap">No</th>
                         <th class="whitespace-nowrap">Order ID</th>
-                        <th class="whitespace-nowrap">Nama Pelanggan</th>
+                        <th class="whitespace-nowrap text-center">Nama<br>Pelanggan</th>
                         <th class="whitespace-nowrap">Waktu Transaksi</th>
-                        <th class="whitespace-nowrap">Pesanan Terkonfirmasi</th>
+                        <th class="whitespace-nowrap text-center">Pesanan<br>Terkonfirmasi</th>
                         <th class="whitespace-nowrap">Bukti Pembayaran</th>
                         <th class="text-center whitespace-nowrap">Status</th>
                     </tr>
@@ -186,8 +186,8 @@
                         </td>
                         <td class="w-40 !py-4"> <a href="<?= site_url('admin/invoice/detail/'.$row->order_id) ?>"
                                 class="underline decoration-dotted whitespace-nowrap">#<?= $row->order_id ?></a> </td>
-                        <td class="w-40">
-                            <a href="" class="font-medium whitespace-nowrap"><?= $row->name ?></a>
+                        <td class="w-10">
+                            <div class="text-center font-medium whitespace-nowrap"><?= $row->name ?></div>
                         </td>
                         <td>
                             <div class="text-slate-500 whitespace-nowrap mt-0.5">

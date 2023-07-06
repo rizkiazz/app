@@ -18,12 +18,13 @@
         <div class="intro-y col-span-12 overflow-auto 2xl:overflow-visible">
             <table class="table table-report -mt-2" id="myTable">
                 <thead>
-                    <tr>
+                    <tr class="text-center">
                         <th class="whitespace-nowrap">No</th>
                         <th class="whitespace-nowrap">Order ID</th>
                         <th class="whitespace-nowrap">Layanan Pesanan</th>
                         <th class="whitespace-nowrap">Metode Pembayaran</th>
                         <th class="whitespace-nowrap">Waktu Transaksi</th>
+                        <th class="whitespace-nowrap">Pesanan Dikonfirmasi</th>
                         <th class="whitespace-nowrap">Status</th>
                         <th class="whitespace-nowrap">Keterangan</th>
                     </tr>
@@ -47,25 +48,30 @@
                             <div class="font-medium whitespace-nowrap"><?= $counter ?></div>
                         </td>
                         <td class="w-40 !py-4"> <a href="<?= site_url('bill/detail/' . $row->order_id) ?>"
-                                class="underline decoration-dotted whitespace-nowrap">#<?= $row->order_id ?></a> </td>
-                        <td>
+                                class="underline decoration-dotted whitespace-nowrap text-center">#<?= $row->order_id ?></a>
+                        </td>
+                        <td class="w-40">
                             <button class="flex items-center mr-3 text-white btn btn-sm btn-success shadow-md mr-2"><i
                                     data-lucide="package" class="w-4 h-4 mr-1"></i><?= $row->layanan_pesanan ?></button>
                         </td>
                         <td class="w-40">
-                            <a href=""
-                                class="font-medium text-primary whitespace-nowrap"><?= $row->payment_method ?></a>
+                            <div class="font-medium text-primary whitespace-nowrap text-center">
+                                <?= $row->payment_method ?></div>
                         </td>
                         <td class="w-40">
-                            <a href=""
-                                class="font-medium whitespace-nowrap"><?= date('d-M-Y H:i', strtotime($row->transaction_time)) ?></a>
+                            <div class="font-medium whitespace-nowrap text-center">
+                                <?= date('d-M-Y H:i', strtotime($row->transaction_time)) ?></div>
                         </td>
-                        <td>
-                            <div class="flex items-center whitespace-nowrap text-success"> Dibayar </div>
+                        <td class="w-40">
+                            <div class="font-medium whitespace-nowrap text-center">
+                                <?= date('d-M-Y H:i', strtotime($row->payment_limit)) ?></div>
                         </td>
-                        <td>
-                            <a class="btn btn-sm btn-rounded-success text-white">Selesai <i data-lucide="pocket"
-                                    class="w-4 h-4 mr-2"></i></a>
+                        <td class="w-40">
+                            <div class="whitespace-nowrap text-center text-success"> Dibayar </div>
+                        </td>
+                        <td class="w-40">
+                            <a class="btn btn-sm btn-rounded-success text-white flex items-center">Selesai <i
+                                    data-lucide="pocket" class="w-4 h-4 mr-2"></i></a>
                         </td>
                     </tr>
                     <?php $counter++; endforeach; ?>
@@ -92,12 +98,13 @@
         <div class="intro-y col-span-12 overflow-auto 2xl:overflow-visible">
             <table class="table table-report -mt-2">
                 <thead>
-                    <tr>
+                    <tr class="text-center">
                         <th class="whitespace-nowrap">No</th>
                         <th class="whitespace-nowrap">Order ID</th>
                         <th class="whitespace-nowrap">Layanan Pesanan</th>
                         <th class="whitespace-nowrap">Metode Pembayaran</th>
                         <th class="whitespace-nowrap">Waktu Transaksi</th>
+                        <th class="whitespace-nowrap">Pesanan Dikonfirmasi</th>
                         <th class="whitespace-nowrap">Status</th>
                         <th class="whitespace-nowrap">Keterangan</th>
                     </tr>
@@ -118,30 +125,35 @@
                     foreach ($bill_dropOff as $row) : ?>
                     <tr class="intro-x">
                         <td class="w-5">
-                            <div class="font-medium whitespace-nowrap"><?= $counter ?></div>
+                            <div class="font-medium whitespace-nowrap text-center"><?= $counter ?></div>
                         </td>
                         <td class="w-40 !py-4"> <a href="<?= site_url('bill/detail/' . $row->order_id) ?>"
-                                class="underline decoration-dotted whitespace-nowrap">#<?= $row->order_id ?></a> </td>
-                        <td>
+                                class="underline decoration-dotted whitespace-nowrap text-center">#<?= $row->order_id ?></a>
+                        </td>
+                        <td class="w-20">
 
                             <button class="flex items-center mr-3 text-white btn btn-sm btn-pending shadow-md mr-2"><i
                                     data-lucide="truck" class="w-4 h-4 mr-1"></i><?= $row->layanan_pesanan ?></button>
 
                         </td>
-                        <td class="w-40">
-                            <a href=""
-                                class="font-medium text-primary whitespace-nowrap"><?= $row->payment_method ?></a>
+                        <td class="w-10">
+                            <div class="font-medium text-primary whitespace-nowrap text-center">
+                                <?= $row->payment_method ?></div>
                         </td>
                         <td class="w-40">
-                            <a href=""
-                                class="font-medium whitespace-nowrap"><?= date('d-M-Y H:i', strtotime($row->transaction_time)) ?></a>
+                            <div class="font-medium whitespace-nowrap text-center">
+                                <?= date('d-M-Y H:i', strtotime($row->transaction_time)) ?></div>
                         </td>
-                        <td>
-                            <div class="flex items-center whitespace-nowrap text-warning"> Antar Sendiri </div>
+                        <td class="w-40">
+                            <div class="font-medium whitespace-nowrap text-center">
+                                <?= date('d-M-Y H:i', strtotime($row->payment_limit)) ?></div>
                         </td>
-                        <td>
-                            <a class="btn btn-sm btn-rounded-success text-white">Selesai <i data-lucide="pocket"
-                                    class="w-4 h-4 mr-2"></i></a>
+                        <td class="w-40">
+                            <div class="whitespace-nowrap text-warning text-center"> Antar Sendiri </div>
+                        </td>
+                        <td class="w-40">
+                            <a class="flex items-center btn btn-sm btn-rounded-success text-white">Selesai <i
+                                    data-lucide="pocket" class="w-4 h-4 mr-2"></i></a>
                         </td>
                     </tr>
 

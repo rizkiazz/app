@@ -151,14 +151,14 @@
                         <select name="kota" id="kota" class="form-control" required></select>
                     </div>
                     <div class="mb-5">
-                        <label for="post-form-7" class="form-label"> Pilih Mitra Drop Off Tujuan <small
+                        <label for="post-form-7" class="form-label"> Pilih Kantor Center EasyPickTrash Tujuan <small
                                 class="text-danger">*</small></label>
                         <select name="ekspedisi" id="ekspedisi" class="form-control" required></select>
                     </div>
                     <div class="flex">
                         <div class="form-check form-switch">
                             <input id="checkbox-switch-7" class="form-check-input" type="checkbox" checked disabled />
-                            <label class="form-check-label" for="checkbox-switch-7">Saya bawa sendiri ke mitra
+                            <label class="form-check-label" for="checkbox-switch-7">Saya bawa sendiri ke kantor center
                                 tujuan</label>
                         </div>
                     </div>

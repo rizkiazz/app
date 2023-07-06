@@ -87,12 +87,12 @@ class Rajaongkir extends CI_Controller
         // echo "<option value='Bank Sampah Bersama'>Bank Sampah Bersama</option>";
         // echo "<option value='Bank Sampah Kita'>Bank Sampah Kita</option>";
         
-        echo "<option hidden>Pilih Tempat</option>";
-        echo "<option value='Jalan Merpati 14'>Jalan Merpati 14</option>";
-        echo "<option value='Jalan Kencana 15'>Jalan Kencana 15</option>";
-        echo "<option value='Jalan Peri 16'>Jalan Peri 16</option>";
-        echo "<option value='Jalan Koala 17'>Jalan Koala 17</option>";
-        echo "<option value='Jalan Musu 18'>Jalan Musu 18</option>";
-        echo "<option value='Jalan Perintis 19'>Jalan Perintis 19</option>";
+        echo "<option hidden>Pilih Tujuan</option>";
+        echo "<option value='Jalan Merpati 14 - 1234'>Jalan Merpati 14 - 1234</option>";
+        echo "<option value='Jalan Kencana 15 - 2345'>Jalan Kencana 15 - 2345</option>";
+        echo "<option value='Jalan Peri 1 - 3456'>Jalan Peri 16 - 3456</option>";
+        echo "<option value='Jalan Koala 17 - 4567'>Jalan Koala 17 - 4567</option>";
+        echo "<option value='Jalan Musu 18 -  5678'>Jalan Musu 18 -  5678</option>";
+        echo "<option value='Jalan Perintis 19 - 6789'>Jalan Perintis 19 - 6789</option>";
     }
 }

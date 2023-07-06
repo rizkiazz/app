@@ -280,61 +280,62 @@
 
         <!-- END: Post Info -->
 
-        <<?php }?> </div>
+        <?php }?>
     </div>
+</div>
 
-    <script>
-    var loadFile = function(event) {
-        var output = document.getElementById('output');
-        output.src = URL.createObjectURL(event.target.files[0]);
-        output.onload = function() {
-            URL.revokeObjectURL(output.src) // free memory
-        }
-    };
-    document.querySelector('select[name="metode_bayar"]').addEventListener('change', function() {
-        var selectedOption = this.value;
-        var bankField = document.getElementById('bank_field');
-        var rekeningField = document.getElementById('rekening_field');
-        var dompetDigitalField = document.getElementById('dompet_digital_field');
-        var nomorField = document.getElementById('nomor_field');
+<script>
+var loadFile = function(event) {
+    var output = document.getElementById('output');
+    output.src = URL.createObjectURL(event.target.files[0]);
+    output.onload = function() {
+        URL.revokeObjectURL(output.src) // free memory
+    }
+};
+document.querySelector('select[name="metode_bayar"]').addEventListener('change', function() {
+    var selectedOption = this.value;
+    var bankField = document.getElementById('bank_field');
+    var rekeningField = document.getElementById('rekening_field');
+    var dompetDigitalField = document.getElementById('dompet_digital_field');
+    var nomorField = document.getElementById('nomor_field');
 
-        if (selectedOption === 'Bank Transfer') {
-            bankField.style.display = 'block';
-            rekeningField.style.display = 'none';
-            dompetDigitalField.style.display = 'none';
-            nomorField.style.display = 'none';
-        } else if (selectedOption === 'Dompet Digital') {
-            bankField.style.display = 'none';
-            rekeningField.style.display = 'none';
-            dompetDigitalField.style.display = 'block';
-            nomorField.style.display = 'none';
-        } else {
-            bankField.style.display = 'none';
-            rekeningField.style.display = 'none';
-            dompetDigitalField.style.display = 'none';
-            nomorField.style.display = 'none';
-        }
-    });
+    if (selectedOption === 'Bank Transfer') {
+        bankField.style.display = 'block';
+        rekeningField.style.display = 'none';
+        dompetDigitalField.style.display = 'none';
+        nomorField.style.display = 'none';
+    } else if (selectedOption === 'Dompet Digital') {
+        bankField.style.display = 'none';
+        rekeningField.style.display = 'none';
+        dompetDigitalField.style.display = 'block';
+        nomorField.style.display = 'none';
+    } else {
+        bankField.style.display = 'none';
+        rekeningField.style.display = 'none';
+        dompetDigitalField.style.display = 'none';
+        nomorField.style.display = 'none';
+    }
+});
 
-    document.querySelector('select[id="pilih_bank"]').addEventListener('change', function() {
-        var selectedOption = this.value;
-        var rekeningField = document.getElementById('rekening_field');
+document.querySelector('select[id="pilih_bank"]').addEventListener('change', function() {
+    var selectedOption = this.value;
+    var rekeningField = document.getElementById('rekening_field');
 
-        if (selectedOption === '') {
-            rekeningField.style.display = 'none';
-        } else {
-            rekeningField.style.display = 'block';
-        }
-    });
+    if (selectedOption === '') {
+        rekeningField.style.display = 'none';
+    } else {
+        rekeningField.style.display = 'block';
+    }
+});
 
-    document.querySelector('select[id="pilih_dompet_digital"]').addEventListener('change', function() {
-        var selectedOption = this.value;
-        var nomorField = document.getElementById('nomor_field');
+document.querySelector('select[id="pilih_dompet_digital"]').addEventListener('change', function() {
+    var selectedOption = this.value;
+    var nomorField = document.getElementById('nomor_field');
 
-        if (selectedOption === '') {
-            nomorField.style.display = 'none';
-        } else {
-            nomorField.style.display = 'block';
-        }
-    });
-    </script>
+    if (selectedOption === '') {
+        nomorField.style.display = 'none';
+    } else {
+        nomorField.style.display = 'block';
+    }
+});
+</script>

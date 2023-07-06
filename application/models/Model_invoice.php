@@ -12,7 +12,7 @@ class Model_invoice extends CI_Model
 		$alamat = $this->input->post('alamat');
 		$city = $this->input->post('kota');
 		$kode_pos = $this->input->post('kode_pos');
-		$payment_method = $this->input->post('payment_method');
+		// $payment_method = $this->input->post('payment_method');
 		$no_rekening = $this->input->post('no_rekening');
 		$biaya = $this->input->post('biaya');
 		$layanan_pesanan = $this->input->post('layanan_pesanan');
@@ -24,6 +24,21 @@ class Model_invoice extends CI_Model
 		$file_gambar = $_FILES['file_gambar']['name'];
 		$result = $this->db->query("SELECT SUM(poin) AS poin FROM user WHERE user.id_user='$id_user'");
 		$poin = $result->row()->poin; // Get the poin value from the result
+
+		$pay = $this->input->post('pay');
+		$pay_bank = $this->input->post('pay_bank');
+		$pay_dompet = $this->input->post('pay_dompet');
+
+		if ($pay !== null && $pay_bank !== null) {
+			$payment_method = $pay_bank;
+		}else if($pay !== null && $pay_dompet !== null) {
+			$payment_method = $pay_dompet;
+		} elseif ($pay !== null) {
+			$payment_method = $pay;
+		} else {
+			// Handle the case when the conditions are not met
+			$payment_method = null;
+		}
 
 		$metode_bayar1 = $this->input->post('metode_bayar1');
 		$metode_bayar2 = $this->input->post('metode_bayar2');

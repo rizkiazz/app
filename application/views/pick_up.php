@@ -226,7 +226,7 @@
                 </div>
                 <div class="box p-5 mt-5">
 
-                    <div class="mb-5">
+                    <!-- <div class="mb-5">
                         <label for="post-form-7" class="form-label"> Metode Pembayaran Ke Kami <small
                                 class="text-danger">*</small></label>
                         <select name="payment_method" data-placeholder="Pilih Bank" class="tom-select w-full">
@@ -235,6 +235,39 @@
                             <option value="MANDIRI - 6750527070">Bank MANDIRI 6750527070</option>
                             <option value="BNI - 6750527060">Bank BNI 6750527060</option>
                             <option value="BTN - 6750527050">Bank BTN 6750527060</option>
+                        </select>
+                    </div> -->
+                    <div class="mb-5">
+                        <label for="post-form-7" class="form-label"> Metode Pembayaran Ke Kami <small
+                                class="text-danger">*</small></label>
+                        <select name="pay" data-placeholder="Pilih Metode" class="tom-select w-full">
+                            <option disabled selected hidden>Pilih Metode</option>
+                            <option value="Bank Transfer">Bank Transfer</option>
+                            <option value="Dompet Digital">Dompet Digital</option>
+                            <option value="COD (Bayar Ditempat)">COD (Bayar Ditempat)</option>
+                        </select>
+                    </div>
+                    <div id="pay_bank" class="mb-5" style="display: none;">
+                        <label for="post-form-7" class="form-label"> Pilih Bank <small
+                                class="text-danger">*</small></label>
+                        <select name="pay_bank" data-placeholder="Pilih Bank" class="tom-select w-full">
+                            <option disabled selected hidden>Pilih Bank</option>
+                            <option value="BRI - 6750527090">Bank BRI 6750527090</option>
+                            <option value="BCA - 6750527080">Bank BCA 6750527080</option>
+                            <option value="MANDIRI - 6750527070">Bank MANDIRI 6750527070</option>
+                            <option value="BNI - 6750527060">Bank BNI 6750527060</option>
+                            <option value="BTN - 6750527050">Bank BTN 6750527060</option>
+                        </select>
+                    </div>
+                    <div id="pay_dompet" class="mb-5" style="display: none;">
+                        <label for="post-form-7" class="form-label"> Pilih Dompet Digital <small
+                                class="text-danger">*</small></label>
+                        <select name="pay_dompet" data-placeholder="Pilih Metode" class="tom-select w-full">
+                            <option disabled selected hidden>Pilih Dompet Digital</option>
+                            <option value="Dana - 081234567891">Dana - 081234567891</option>
+                            <option value="Ovo - 081234567891">Ovo - 081234567891</option>
+                            <option value="Gopay - 081234567891">Gopay - 081234567891</option>
+                            <option value="Shopee Pay - 081234567891">Shopee Pay - 081234567891</option>
                         </select>
                     </div>
                 </div>
@@ -348,6 +381,23 @@ document.querySelector('select[id="pilih_dompet_digital"]').addEventListener('ch
         nomorField.style.display = 'none';
     } else {
         nomorField.style.display = 'block';
+    }
+});
+
+document.querySelector('select[name="pay"]').addEventListener('change', function() {
+    var selectedOption = this.value;
+    var bankPayField = document.getElementById('pay_bank');
+    var dompetDigitalPayField = document.getElementById('pay_dompet');
+
+    if (selectedOption === 'Bank Transfer') {
+        bankPayField.style.display = 'block';
+        dompetDigitalPayField.style.display = 'none';
+    } else if (selectedOption === 'Dompet Digital') {
+        bankPayField.style.display = 'none';
+        dompetDigitalPayField.style.display = 'block';
+    } else {
+        bankPayField.style.display = 'none';
+        dompetDigitalPayField.style.display = 'none';
     }
 });
 </script>

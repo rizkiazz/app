@@ -179,7 +179,8 @@
                        <?php } else {?>
                        <div
                            class="font-medium flex items-center border-b border-slate-200/60 dark:border-darkmode-400 pb-5">
-                           <i data-lucide="chevron-down" class="w-4 h-4 mr-2"></i> Upload Bukti Sampah diserahkan Mitra
+                           <i data-lucide="chevron-down" class="w-4 h-4 mr-2"></i> Bukti Sampah diserahkan Kantor
+                           Center EasyPickTrash
                        </div>
                        <?php }?>
                        <div class="mt-3">

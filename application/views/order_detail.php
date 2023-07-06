@@ -187,7 +187,7 @@
                            <?php if(empty($invoice->bukti_pembayaran)) {?>
                            <h2 class="text-center mt-5 text-xl">belum upload file</h2>
                            <?php } else {?>
-                           <div class="image-fit zoom-in relative mb-5 mr-5 h-64 w-3/5 cursor-pointer">
+                           <div class="image-fit zoom-in relative mb-5 mr-5 h-64 w-5/5 cursor-pointer">
                                <img class="rounded-md" alt="" data-action="zoom"
                                    src="<?= base_url() . '/uploads/bukti_pembayaran/' . $invoice->bukti_pembayaran ?>">
                            </div>

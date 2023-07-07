@@ -18,9 +18,6 @@
                        <b>Order ID</b><span class="flex items-center ml-auto bg-primary/20 text-primary rounded"><a
                                href="" class="underline decoration-dotted ml-1">#<?= $invoice->order_id ?></a></span>
                    </div>
-                   <div class="flex items-center mt-3"> <i data-lucide="clipboard"
-                           class="w-4 h-4 text-slate-500 mr-2"></i><b>Metode Pembayaran&nbsp;</b><span
-                           class="flex items-center ml-auto"><?= $invoice->payment_method ?></span></div>
                    <div class="flex items-center mt-3"> <i data-lucide="calendar"
                            class="w-4 h-4 text-slate-500 mr-2"></i><b>Tanggal Transaksi&nbsp;</b><span
                            class="flex items-center ml-auto"><?= date('l d-M-Y H:i:s', strtotime($invoice->transaction_time)) ?></span>
@@ -34,6 +31,20 @@
                            <?php } ?>
                        </span>
                    </div>
+                   <?php if ($invoice->status == "0") { ?>
+                   <div class="flex items-center mt-3"> <i data-lucide="calendar"
+                           class="w-4 h-4 text-slate-500 mr-2"></i> <b>Pesanan Dikonfirmasi</b>
+                       <span
+                           class="bg-success/20 text-success rounded px-2 ml-1 font-medium flex items-center ml-auto">Menunggu<i
+                               data-loading-icon="circles" class="w-4 h-4"></i></span>
+                   </div>
+                   <?php } else if ($invoice->status == "1") { ?>
+                   <div class="flex items-center mt-3"> <i data-lucide="calendar"
+                           class="w-4 h-4 text-slate-500 mr-2"></i> <b>Pesanan Dikonfirmasi</b>
+                       <span
+                           class="bg-success/20 text-success rounded px-2 ml-1 font-medium flex items-center ml-auto"><?= date('l d-M-Y H:i:s', strtotime($invoice->payment_limit)) ?></span>
+                   </div>
+                   <?php } ?>
                </div>
            </div>
            <div class="col-span-6 lg:col-span-6 2xl:col-span-6">
@@ -53,20 +64,6 @@
                            class="w-4 h-4 text-slate-500 mr-2"></i> <b>Nomor Rekening/Dompet Digital</b><span
                            class="flex items-center ml-auto"><?= $invoice->no_rekening ?></span>
                    </div>
-                   <?php if ($invoice->status == "0") { ?>
-                   <div class="flex items-center mt-3"> <i data-lucide="calendar"
-                           class="w-4 h-4 text-slate-500 mr-2"></i> <b>Pesanan Dikonfirmasi</b>
-                       <span
-                           class="bg-success/20 text-success rounded px-2 ml-1 font-medium flex items-center ml-auto">Menunggu<i
-                               data-loading-icon="circles" class="w-4 h-4"></i></span>
-                   </div>
-                   <?php } else if ($invoice->status == "1") { ?>
-                   <div class="flex items-center mt-3"> <i data-lucide="calendar"
-                           class="w-4 h-4 text-slate-500 mr-2"></i> <b>Pesanan Dikonfirmasi</b>
-                       <span
-                           class="bg-success/20 text-success rounded px-2 ml-1 font-medium flex items-center ml-auto"><?= date('l d-M-Y H:i:s', strtotime($invoice->payment_limit)) ?></span>
-                   </div>
-                   <?php } ?>
                </div>
            </div>
            <div class="col-span-12 lg:col-span-12 2xl:col-span-12">

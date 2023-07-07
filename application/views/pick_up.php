@@ -25,14 +25,24 @@
 
             if ($keranjang = $this->cart->contents()) {
             foreach ($keranjang as $item) {
+                $kategori = $item['options']['kategori'];//kategori /kg
                 $harga = $item['price']; //harga /kg
                 $items_subtotal = $item['poin'] * $item['qty'];//poin yg didapat
 
                 $qty = $item['qty']; //quantity
+
                 $grand_total = $harga * $qty; // total harga
                 $biaya_antar = $harga * $item['qty']; //biaya antar
-                $potongan = $biaya_antar /5; //biaya antar / t
-                $biaya_layanan_total = $biaya_antar - $potongan;
+                //jika $qty <= 5 kg
+                if($qty <= '5'){
+                    $potongan = $biaya_antar /2.5; //biaya antar / t kecil
+                } else {
+                    $potongan = $biaya_antar /5;
+                }
+                $potongan2 = $biaya_antar /2.5; //biaya antar / t besar
+                $potongan3 = $biaya_antar /5; //biaya antar / t kecil
+                $biaya_layanan_total = $biaya_antar - $potongan2;
+                $biaya_layanan_total1 = $biaya_antar - $potongan3;
 
             }
         } ?>
@@ -57,7 +67,7 @@
                                             value="<?= mt_rand(0000000000000, 1111111111111) ?>" maxlength="12"
                                             autocomplete="off" required>
                                         <input type="hidden" name="biaya"
-                                            value="<?= number_format($biaya_layanan_total, 0, ',', '.') ?>">
+                                            value="<?= number_format($potongan, 0, ',', '.') ?>">
                                         <input type="hidden" name="id_user" id="id_user"
                                             value="<?php echo $this->session->userdata('id_user') ?>">
                                         <input type="hidden" name="status" id="status" value="0">
@@ -90,26 +100,20 @@
                             <div class="border border-slate-200/60 dark:border-darkmode-400 rounded-md p-5 mt-5">
                                 <div
                                     class="font-medium flex items-center border-b border-slate-200/60 dark:border-darkmode-400 pb-5">
-                                    <i data-lucide="chevron-down" class="w-4 h-4 mr-2"></i> Caption & Images
+                                    <i data-lucide="chevron-down" class="w-4 h-4 mr-2"></i> Foto Sampah
                                 </div>
                                 <div class="mt-5">
-                                    <div>
-                                        <label for="post-form-7" class="form-label">Caption</label>
-                                        <select name="caption" id="caption" data-placeholder="Select Caption"
-                                            class="tom-select w-full" multiple>
-                                            <option value="Plastik">Plastik</option>
-                                            <option value="Kertas">Kertas</option>
-                                            <option value="Kaca">Kaca</option>
-                                            <option value="Elektronik">Barang Elektronik</option>
-                                            <option value="Tekstil">Tekstil</option>
-                                        </select>
+                                    <div class="flex mb-3 mt-3">
+                                        <div class="mr-auto">Upload Foto Sampah<small class="text-danger">*</small>
+                                        </div>
+                                        <div class="btn btn-secondary btn-sm"><?= $kategori ?>
+                                        </div>
                                     </div>
-                                    <div class="mt-3">
-                                        <label class="form-label">Upload Image</label>
+                                    <div>
                                         <div class="border-2 border-dashed dark:border-darkmode-600 rounded-md pt-4">
                                             <div class="flex flex-wrap px-4">
                                                 <div
-                                                    class="image-fit zoom-in relative mb-5 mr-5 h-24 w-24 cursor-pointer">
+                                                    class="image-fit zoom-in relative mb-5 mr-5 h-24 w-3/5 cursor-pointer">
                                                     <img class="rounded-md" alt="" id="output">
                                                     <!-- <div class="tooltip cursor-pointer absolute top-0 right-0 -mt-2 -mr-2 flex h-5 w-5 items-center justify-center rounded-full bg-danger text-white absolute top-0 right-0 -mt-2 -mr-2 flex h-5 w-5 items-center justify-center rounded-full bg-danger text-white"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" icon-name="x" data-lucide="x" class="lucide lucide-x stroke-1.5 h-4 w-4"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></div> -->
                                                 </div>
@@ -117,7 +121,7 @@
 
                                             <div class="px-4 pb-4 flex items-center cursor-pointer relative">
                                                 <i data-lucide="image" class="w-4 h-4 mr-2"></i> <span
-                                                    class="upload text-primary mr-1">Upload gambar</span> atau tarik dan
+                                                    class="upload text-primary mr-1">Upload foto</span> atau tarik dan
                                                 taruh disini
                                                 <input name="file_gambar" id="file_gambar" type="file"
                                                     class="w-full h-full top-0 left-0 absolute opacity-0"
@@ -125,6 +129,12 @@
                                                     onchange="loadFile(event)">
                                             </div>
                                         </div>
+                                    </div>
+                                    <div class="mb-3 mt-3">
+                                        <label for="post-form-7" class="form-label mr-auto">Keterangan <small
+                                                class="text-dark">(Optional)</small></label>
+                                        <textarea id="keterangan" name="keterangan" class="form-control"
+                                            placeholder="Tambahkan Pesan Anda" autocomplete="off"></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -237,7 +247,7 @@
                             <option value="BTN - 6750527050">Bank BTN 6750527060</option>
                         </select>
                     </div> -->
-                    <div class="mb-5">
+                    <!-- <div class="mb-5">
                         <label for="post-form-7" class="form-label"> Metode Pembayaran Ke Kami <small
                                 class="text-danger">*</small></label>
                         <select name="pay" data-placeholder="Pilih Metode" class="tom-select w-full">
@@ -269,7 +279,7 @@
                             <option value="Gopay - 081234567891">Gopay - 081234567891</option>
                             <option value="Shopee Pay - 081234567891">Shopee Pay - 081234567891</option>
                         </select>
-                    </div>
+                    </div> -->
                 </div>
             </div>
             <div class="mt-5">
@@ -294,13 +304,16 @@
                         <div class="font-medium text-primary">Rp. <?= number_format($grand_total, 0, ',', '.') ?></div>
                     </div>
                     <div class="flex mt-4">
-                        <div class="mr-auto text-danger"><small>Biaya layanan</small></div>
-                        <div class="font-medium text-danger">Rp. <?= number_format($potongan, 0, ',', '.') ?></div>
+                        <div class="mr-auto text-danger"><small>Biaya Estimasi layanan</small></div>
+                        <div class="font-medium text-danger">Rp. <?= number_format($potongan3, 0, ',', '.') ?> sampai
+                            Rp. <?= number_format($potongan2, 0, ',', '.') ?>
+                        </div>
                     </div>
                     <div class="flex mt-4 pt-4 border-t border-slate-200/60 dark:border-darkmode-400">
                         <div class="mr-auto font-medium text-base">Anda mendapat</div>
                         <div class="font-medium text-base"><strong>Rp.
-                                <?= number_format($biaya_layanan_total, 0, ',', '.') ?>,-</strong></div>
+                                <?= number_format($biaya_layanan_total, 0, ',', '.') ?> sampai Rp.
+                                <?= number_format($biaya_layanan_total1, 0, ',', '.') ?>,-</strong></div>
                     </div>
                     <p class="text-base text-info text-sm mt-1"><b>Note : </b><br>Akan dikirim ke nomor rekening/dompet
                         digital anda
@@ -311,7 +324,7 @@
             <div role="alert"
                 class="mt-5 mb-5 alert relative border rounded-md px-5 py-4 bg-success border-success bg-opacity-20 border-opacity-5 text-dark dark:border-success dark:border-opacity-20 mb-2 flex items-center">
                 <i data-lucide="alert-triangle" width="24" height="24"
-                    class="stroke-1.5 mr-2 h-6 w-6 mr-2 h-6 w-6"></i>Jumlah Transaksi Yang Harus Dibayar : <b> Rp.
+                    class="stroke-1.5 mr-2 h-6 w-6 mr-2 h-6 w-6"></i>Jumlah Biaya Layanan : <b> Rp.
                     <?= number_format($potongan, 0, ',', '.') ?>,-</b>
             </div>
             <div class="flex mt-5">

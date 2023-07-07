@@ -236,9 +236,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="box p-5 mt-5">
+                <!-- <div class="box p-5 mt-5"> -->
 
-                    <!-- <div class="mb-5">
+                <!-- <div class="mb-5">
                         <label for="post-form-7" class="form-label"> Metode Pembayaran Ke Kami <small
                                 class="text-danger">*</small></label>
                         <select name="payment_method" data-placeholder="Pilih Bank" class="tom-select w-full">
@@ -249,7 +249,7 @@
                             <option value="BTN - 6750527050">Bank BTN 6750527060</option>
                         </select>
                     </div> -->
-                    <!-- <div class="mb-5">
+                <!-- <div class="mb-5">
                         <label for="post-form-7" class="form-label"> Metode Pembayaran Ke Kami <small
                                 class="text-danger">*</small></label>
                         <select name="pay" data-placeholder="Pilih Metode" class="tom-select w-full">
@@ -282,7 +282,7 @@
                             <option value="Shopee Pay - 081234567891">Shopee Pay - 081234567891</option>
                         </select>
                     </div> -->
-                </div>
+                <!-- </div> -->
             </div>
             <div class="mt-5">
                 <div class="alert alert-primary show mb-2 mt-5" role="alert"> Informasi Poin </div>

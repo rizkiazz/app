@@ -15,8 +15,6 @@ class Pick_up extends CI_Controller
     {
         $data['title'] = 'Pick Up';
 		$id = $this->session->userdata('id_user');
-		// $data['order'] = $this->db->query("SELECT * FROM transaction 
-		// 	WHERE transaction.id_user='$id'")->result();
 		$this->load->view('layout/user/header', $data);
 		$this->load->view('/dashboard/pick_up', $data);
 		$this->load->view('layout/user/footer');

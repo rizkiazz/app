@@ -115,7 +115,6 @@
                                                 <div
                                                     class="image-fit zoom-in relative mb-5 mr-5 h-24 w-3/5 cursor-pointer">
                                                     <img class="rounded-md" alt="" id="output">
-                                                    <!-- <div class="tooltip cursor-pointer absolute top-0 right-0 -mt-2 -mr-2 flex h-5 w-5 items-center justify-center rounded-full bg-danger text-white absolute top-0 right-0 -mt-2 -mr-2 flex h-5 w-5 items-center justify-center rounded-full bg-danger text-white"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" icon-name="x" data-lucide="x" class="lucide lucide-x stroke-1.5 h-4 w-4"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></div> -->
                                                 </div>
                                             </div>
 
@@ -128,6 +127,8 @@
                                                     accept="image/png, image/jpeg, image/jpg"
                                                     onchange="loadFile(event)">
                                             </div>
+                                            <?= form_error('file_gambar', '<div class="text-danger small ml-2 mt-2">', '</div>') ?>
+
                                         </div>
                                     </div>
                                     <div class="mb-3 mt-3">
@@ -190,6 +191,7 @@
                             <option>Pilih Metode Pembayaran</option>
                             <option value="Bank Transfer">Bank Transfer</option>
                             <option value="Dompet Digital">Dompet Digital</option>
+                            <option value="COD (Bayar Ditempat)">COD (Bayar Ditempat)</option>
                         </select>
                     </div>
                     <div class="mb-5" id="bank_field" style="display: none;">
@@ -342,6 +344,17 @@
 
     </div>
 </div>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.33.1/sweetalert2.min.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.33.1/sweetalert2.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
+    crossorigin="anonymous"></script>
+<?php if (@$_SESSION['warning']) { ?>
+<script>
+swal("Ups!", "<?php echo $_SESSION['warning']; ?>", "warning");
+</script>
+<!-- jangan lupa untuk menambahkan unset agar sweet alert tidak muncul lagi saat di refresh -->
+<?php unset($_SESSION['warning']);
+} ?>
 <script>
 var loadFile = function(event) {
     var output = document.getElementById('output');
@@ -397,20 +410,20 @@ document.querySelector('select[id="pilih_dompet_digital"]').addEventListener('ch
     }
 });
 
-document.querySelector('select[name="pay"]').addEventListener('change', function() {
-    var selectedOption = this.value;
-    var bankPayField = document.getElementById('pay_bank');
-    var dompetDigitalPayField = document.getElementById('pay_dompet');
+// document.querySelector('select[name="pay"]').addEventListener('change', function() {
+//     var selectedOption = this.value;
+//     var bankPayField = document.getElementById('pay_bank');
+//     var dompetDigitalPayField = document.getElementById('pay_dompet');
 
-    if (selectedOption === 'Bank Transfer') {
-        bankPayField.style.display = 'block';
-        dompetDigitalPayField.style.display = 'none';
-    } else if (selectedOption === 'Dompet Digital') {
-        bankPayField.style.display = 'none';
-        dompetDigitalPayField.style.display = 'block';
-    } else {
-        bankPayField.style.display = 'none';
-        dompetDigitalPayField.style.display = 'none';
-    }
-});
+//     if (selectedOption === 'Bank Transfer') {
+//         bankPayField.style.display = 'block';
+//         dompetDigitalPayField.style.display = 'none';
+//     } else if (selectedOption === 'Dompet Digital') {
+//         bankPayField.style.display = 'none';
+//         dompetDigitalPayField.style.display = 'block';
+//     } else {
+//         bankPayField.style.display = 'none';
+//         dompetDigitalPayField.style.display = 'none';
+//     }
+// });
 </script>

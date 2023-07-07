@@ -12,12 +12,11 @@ class Model_invoice extends CI_Model
 		$alamat = $this->input->post('alamat');
 		$city = $this->input->post('kota');
 		$kode_pos = $this->input->post('kode_pos');
-		// $payment_method = $this->input->post('payment_method');
 		$no_rekening = $this->input->post('no_rekening');
 		$biaya = $this->input->post('biaya');
 		$layanan_pesanan = $this->input->post('layanan_pesanan');
 		$mobile_phone = $this->input->post('mobile_phone');
-		$caption = $this->input->post('caption');
+		$keterangan = $this->input->post('keterangan');
 		$tracking_id = $this->input->post('tracking_id');
 		$email = $this->input->post('email');
 		$status = $this->input->post('status');
@@ -25,21 +24,22 @@ class Model_invoice extends CI_Model
 		$result = $this->db->query("SELECT SUM(poin) AS poin FROM user WHERE user.id_user='$id_user'");
 		$poin = $result->row()->poin; // Get the poin value from the result
 
-		$pay = $this->input->post('pay');
-		$pay_bank = $this->input->post('pay_bank');
-		$pay_dompet = $this->input->post('pay_dompet');
+		// $pay = $this->input->post('pay');
+		// $pay_bank = $this->input->post('pay_bank');
+		// $pay_dompet = $this->input->post('pay_dompet');
 
-		if ($pay !== null && $pay_bank !== null) {
-			$payment_method = $pay_bank;
-		}else if($pay !== null && $pay_dompet !== null) {
-			$payment_method = $pay_dompet;
-		} elseif ($pay !== null) {
-			$payment_method = $pay;
-		} else {
-			// Handle the case when the conditions are not met
-			$payment_method = null;
-		}
+		// if ($pay !== null && $pay_bank !== null) {
+		// 	$payment_method = $pay_bank;
+		// }else if($pay !== null && $pay_dompet !== null) {
+		// 	$payment_method = $pay_dompet;
+		// } elseif ($pay !== null) {
+		// 	$payment_method = $pay;
+		// } else {
+		// 	// Handle the case when the conditions are not met
+		// 	$payment_method = null;
+		// }
 
+		$metode_bayar = $this->input->post('metode_bayar');
 		$metode_bayar1 = $this->input->post('metode_bayar1');
 		$metode_bayar2 = $this->input->post('metode_bayar2');
 		$metode_bayar3 = $this->input->post('metode_bayar3');
@@ -47,8 +47,10 @@ class Model_invoice extends CI_Model
 		
 		if ($metode_bayar1 !== null && $metode_bayar3 !== null) {
 			$no_rekening = $metode_bayar1 . ' - ' . $metode_bayar3;
-		} elseif ($metode_bayar2 !== null && $metode_bayar4 !== null) {
+		} else if ($metode_bayar2 !== null && $metode_bayar4 !== null) {
 			$no_rekening = $metode_bayar2 .' - ' . $metode_bayar4;
+		}else if ($metode_bayar !== null) {
+			$no_rekening = $metode_bayar;
 		} else {
 			// Handle the case when the conditions are not met
 			$no_rekening = null;
@@ -62,6 +64,8 @@ class Model_invoice extends CI_Model
 			$this->load->library('upload', $config);
 			if (!$this->upload->do_upload('file_gambar')) {
 				echo "File tidak dapat di upload!";
+				$_SESSION["warning"] = 'Gambar Belum di Upload!!';
+				redirect('dashboard/pick_up');
 			} else {
 				$file_gambar = $this->upload->data('file_name');
 			}
@@ -73,12 +77,11 @@ class Model_invoice extends CI_Model
 			'alamat' 			=> $alamat,
 			'city' 				=> $city,
 			'kode_pos' 			=> $kode_pos,
-			'payment_method' 	=> $payment_method,
 			'no_rekening' 		=> $no_rekening,
 			'biaya' 			=> $biaya,
 			'layanan_pesanan' 	=> $layanan_pesanan,
 			'mobile_phone' 		=> $mobile_phone,
-			'caption' 			=> $caption,
+			'keterangan' 		=> $keterangan,
 			'file_gambar' 		=> $file_gambar,
 			'tracking_id' 		=> $tracking_id,
 			'email' 			=> $email,
@@ -86,8 +89,6 @@ class Model_invoice extends CI_Model
 			'transaction_time' 	=> date('Y-m-d H:i:s'),
 			'payment_limit' 	=> date('Y-m-d H:i:s', mktime( date('H'), date('i'), date('s'), date('m'), date('d') + 1, date('Y'))),
 		);
-						// die(var_dump($invoice));
-
 
 		$this->db->insert('transaction', $invoice);
 		$id_invoice = $this->db->insert_id();

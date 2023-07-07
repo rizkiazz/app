@@ -23,6 +23,7 @@
         <?php $grand_total = 0;
             if ($keranjang = $this->cart->contents()) {
                 foreach ($keranjang as $item) {
+                    $kategori = $item['options']['kategori'];//kategori /kg
                     $poin = $item['poin'];
                     $qty = $item['qty']; //quantity
                     $total_poin = $poin * $qty;//poin yg didapat
@@ -53,7 +54,7 @@
                                         <input type="hidden" id="tracking_id" name="tracking_id"
                                             value="<?= mt_rand(0000000000000, 1111111111111) ?>" maxlength="12"
                                             autocomplete="off" required>
-                                        <input type="hidden" name="payment_method" value="Antar Sendiri">
+                                        <!-- <input type="hidden" name="payment_method" value="Antar Sendiri"> -->
                                         <input type="hidden" name="id_user" id="id_user"
                                             value="<?php echo $this->session->userdata('id_user') ?>">
                                         <input type="hidden" name="status" id="status" value="0">
@@ -93,41 +94,42 @@
                             <div class="border border-slate-200/60 dark:border-darkmode-400 rounded-md p-5 mt-5">
                                 <div
                                     class="font-medium flex items-center border-b border-slate-200/60 dark:border-darkmode-400 pb-5">
-                                    <i data-lucide="chevron-down" class="w-4 h-4 mr-2"></i> Caption & Images
+                                    <i data-lucide="chevron-down" class="w-4 h-4 mr-2"></i> Foto Sampah
                                 </div>
                                 <div class="mt-5">
-                                    <div>
-                                        <label for="post-form-7" class="form-label">Caption</label>
-                                        <select name="caption" id="caption" data-placeholder="Select Caption"
-                                            class="tom-select w-full" multiple>
-                                            <option value="Plastik">Plastik</option>
-                                            <option value="Kertas">Kertas</option>
-                                            <option value="Kaca">Kaca</option>
-                                            <option value="Elektronik">Barang Elektronik</option>
-                                            <option value="Tekstil">Tekstil</option>
-                                        </select>
+                                    <div class="flex mb-3 mt-3">
+                                        <div class="mr-auto">Upload Foto Sampah<small class="text-danger">*</small>
+                                        </div>
+                                        <div class="btn btn-secondary btn-sm"><?= $kategori ?>
+                                        </div>
                                     </div>
-                                    <div class="mt-3">
-                                        <label class="form-label">Upload Image</label>
+                                    <div>
                                         <div class="border-2 border-dashed dark:border-darkmode-600 rounded-md pt-4">
                                             <div class="flex flex-wrap px-4">
                                                 <div
-                                                    class="image-fit zoom-in relative mb-5 mr-5 h-24 w-24 cursor-pointer">
+                                                    class="image-fit zoom-in relative mb-5 mr-5 h-24 w-3/5 cursor-pointer">
                                                     <img class="rounded-md" alt="" id="output">
-                                                    <!-- <div class="tooltip cursor-pointer absolute top-0 right-0 -mt-2 -mr-2 flex h-5 w-5 items-center justify-center rounded-full bg-danger text-white absolute top-0 right-0 -mt-2 -mr-2 flex h-5 w-5 items-center justify-center rounded-full bg-danger text-white"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" icon-name="x" data-lucide="x" class="lucide lucide-x stroke-1.5 h-4 w-4"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></div> -->
                                                 </div>
                                             </div>
 
                                             <div class="px-4 pb-4 flex items-center cursor-pointer relative">
                                                 <i data-lucide="image" class="w-4 h-4 mr-2"></i> <span
-                                                    class="upload text-primary mr-1">Upload gambar</span> atau tarik dan
+                                                    class="upload text-primary mr-1">Upload foto</span> atau tarik dan
                                                 taruh disini
                                                 <input name="file_gambar" id="file_gambar" type="file"
                                                     class="w-full h-full top-0 left-0 absolute opacity-0"
-                                                    accept="image/png, image/jpeg, image/jpg" onchange="loadFile(event)"
-                                                    required>
+                                                    accept="image/png, image/jpeg, image/jpg"
+                                                    onchange="loadFile(event)">
                                             </div>
+                                            <?= form_error('file_gambar', '<div class="text-danger small ml-2 mt-2">', '</div>') ?>
+
                                         </div>
+                                    </div>
+                                    <div class="mb-3 mt-3">
+                                        <label for="post-form-7" class="form-label mr-auto">Keterangan <small
+                                                class="text-dark">(Optional)</small></label>
+                                        <textarea id="keterangan" name="keterangan" class="form-control"
+                                            placeholder="Tambahkan Pesan Anda" autocomplete="off"></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -135,7 +137,7 @@
                 </div>
             </div>
             <div class="mt-5">
-                <div class="alert alert-primary show mb-2" role="alert"> Informasi Penerima </div>
+                <div class="alert alert-primary show mb-2" role="alert"> Informasi Kantor Center </div>
             </div>
             <div id="ticket" class="tab-pane active" role="tabpanel" aria-labelledby="ticket-tab">
 
@@ -284,6 +286,17 @@
     </div>
 </div>
 
+<link href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.33.1/sweetalert2.min.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.33.1/sweetalert2.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
+    crossorigin="anonymous"></script>
+<?php if (@$_SESSION['warning']) { ?>
+<script>
+swal("Ups!", "<?php echo $_SESSION['warning']; ?>", "warning");
+</script>
+<!-- jangan lupa untuk menambahkan unset agar sweet alert tidak muncul lagi saat di refresh -->
+<?php unset($_SESSION['warning']);
+} ?>
 <script>
 var loadFile = function(event) {
     var output = document.getElementById('output');

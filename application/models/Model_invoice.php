@@ -60,6 +60,9 @@ class Model_invoice extends CI_Model
 		} else {
 			$config['upload_path'] = './uploads/order';
 			$config['allowed_types'] = 'jpg|jpeg|png';
+			$config['max_size']             = 2048;
+            $config['max_width']            = 40000;
+            $config['max_height']           = 40000;
 
 			$this->load->library('upload', $config);
 			if (!$this->upload->do_upload('file_gambar')) {
@@ -130,11 +133,10 @@ class Model_invoice extends CI_Model
 		$alamat = $this->input->post('alamat');
 		$city = $this->input->post('kota');
 		$tujuan = $this->input->post('ekspedisi');
-		$payment_method = $this->input->post('payment_method');
+		$keterangan = $this->input->post('keterangan');
 		$biaya = $this->input->post('biaya');
 		$layanan_pesanan = $this->input->post('layanan_pesanan');
 		$mobile_phone = $this->input->post('mobile_phone');
-		$caption = $this->input->post('caption');
 		$tracking_id = $this->input->post('tracking_id');
 		$email = $this->input->post('email');
 		$status = $this->input->post('status');
@@ -160,10 +162,15 @@ class Model_invoice extends CI_Model
 		} else {
 			$config['upload_path'] = './uploads/order';
 			$config['allowed_types'] = 'jpg|jpeg|png';
+			$config['max_size']             = 2048;
+            $config['max_width']            = 40000;
+            $config['max_height']           = 40000;
 
 			$this->load->library('upload', $config);
 			if (!$this->upload->do_upload('file_gambar')) {
 				echo "File tidak dapat di upload!";
+				$_SESSION["warning"] = 'Gambar Belum di Upload!!';
+				redirect('dashboard/drop_off');
 			} else {
 				$file_gambar = $this->upload->data('file_name');
 			}
@@ -175,12 +182,11 @@ class Model_invoice extends CI_Model
 			'alamat' 			=> $alamat,
 			'city' 				=> $city,
 			'tujuan' 			=> $tujuan,
-			'payment_method' 	=> $payment_method,
+			'keterangan' 		=> $keterangan,
 			'no_rekening' 		=> $no_rekening,
 			'biaya' 			=> $biaya,
 			'layanan_pesanan' 	=> $layanan_pesanan,
 			'mobile_phone' 		=> $mobile_phone,
-			'caption' 			=> $caption,
 			'file_gambar' 		=> $file_gambar,
 			'tracking_id' 		=> $tracking_id,
 			'email' 			=> $email,

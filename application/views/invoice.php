@@ -81,8 +81,8 @@
           </div>
           <div class="px-5 sm:px-20 pb-10 sm:pb-20 flex flex-col-reverse sm:flex-row">
               <div class="text-center sm:text-left mt-10 sm:mt-0">
-                  <div class="text-base text-slate-500">Metode Pembayaran</div>
-                  <div class="text-lg text-primary font-medium mt-2"><?= $invoice->payment_method ?></div>
+                  <div class="text-base text-slate-500">Pembayaran Melalui</div>
+                  <div class="text-lg text-primary font-medium mt-2"><?= $invoice->no_rekening ?></div>
                   <div>
                       <?php if ($invoice->status == "0"){ ?>
                       <img class="mt-2" src="<?= site_url('asset') ?>/pending.jpg" width="120">

@@ -26,7 +26,7 @@
                         <th class="whitespace-nowrap">No</th>
                         <th class="whitespace-nowrap">Order ID</th>
                         <th class="whitespace-nowrap">Layanan Pesanan</th>
-                        <th class="whitespace-nowrap">Metode Pembayaran</th>
+                        <th class="whitespace-nowrap">No Rekening/Dompet Digital</th>
                         <th class="whitespace-nowrap">Waktu Transaksi</th>
                         <th class="whitespace-nowrap">Status</th>
                         <th class="whitespace-nowrap">Action</th>
@@ -57,8 +57,7 @@
                                     data-lucide="package" class="w-4 h-4 mr-1"></i><?= $row->layanan_pesanan ?></button>
                         </td>
                         <td class="w-40">
-                            <a href=""
-                                class="font-medium text-primary whitespace-nowrap"><?= $row->payment_method ?></a>
+                            <a href="" class="font-medium text-primary whitespace-nowrap"><?= $row->no_rekening ?></a>
                         </td>
                         <td class="w-40">
                             <a href=""
@@ -169,7 +168,7 @@
                         <th class="whitespace-nowrap">No</th>
                         <th class="whitespace-nowrap">Order ID</th>
                         <th class="whitespace-nowrap">Layanan Pesanan</th>
-                        <th class="whitespace-nowrap">Metode Pembayaran</th>
+                        <th class="whitespace-nowrap">No Rekening/Dompet Digital</th>
                         <th class="whitespace-nowrap">Waktu Transaksi</th>
                         <th class="whitespace-nowrap">Status</th>
                         <th class="whitespace-nowrap">Action</th>
@@ -200,7 +199,7 @@
                                     data-lucide="truck" class="w-4 h-4 mr-1"></i><?= $row->layanan_pesanan ?></button>
                         </td>
                         <td class="w-40">
-                            <div class="font-medium text-primary whitespace-nowrap"><?= $row->payment_method ?></div>
+                            <div class="font-medium text-primary whitespace-nowrap"><?= $row->no_rekening ?></div>
                         </td>
                         <td class="w-40">
                             <div class="font-medium whitespace-nowrap">

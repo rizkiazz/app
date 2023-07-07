@@ -81,7 +81,7 @@
           </div>
           <div class="px-5 sm:px-20 pb-10 sm:pb-20 flex flex-col-reverse sm:flex-row">
               <div class="text-center sm:text-left mt-10 sm:mt-0">
-                  <div class="text-base text-slate-500">Pembayaran Melalui</div>
+                  <div class="text-base text-slate-500">No Rekening/Dompet Digital</div>
                   <div class="text-lg text-primary font-medium mt-2"><?= $invoice->no_rekening ?></div>
                   <div>
                       <?php if ($invoice->status == "0"){ ?>

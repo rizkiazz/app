@@ -102,7 +102,7 @@
                         <th class="whitespace-nowrap">No</th>
                         <th class="whitespace-nowrap">Order ID</th>
                         <th class="whitespace-nowrap">Layanan Pesanan</th>
-                        <th class="whitespace-nowrap">Metode Pembayaran</th>
+                        <th class="whitespace-nowrap">No Rekening/Dompet Digital</th>
                         <th class="whitespace-nowrap">Waktu Transaksi</th>
                         <th class="whitespace-nowrap">Pesanan Dikonfirmasi</th>
                         <th class="whitespace-nowrap">Status</th>
@@ -138,7 +138,7 @@
                         </td>
                         <td class="w-10">
                             <div class="font-medium text-primary whitespace-nowrap text-center">
-                                <?= $row->payment_method ?></div>
+                                <?= $row->no_rekening ?></div>
                         </td>
                         <td class="w-40">
                             <div class="font-medium whitespace-nowrap text-center">

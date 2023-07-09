@@ -41,9 +41,12 @@
                                 }
                             ?>
 
-                            <?php $no = 1;
+                            <?php $no = 1; $total_subtotal = 0;
                             foreach ($this->cart->contents() as $items) : ?>
-                            <?php $items_subtotal = $items['poin'] * $items['qty']?>
+                            <?php 
+                                $items_subtotal = $items['poin'] * $items['qty'];
+                                $total_subtotal += $items_subtotal;
+                            ?>
 
                             <td class="w-10">
                                 <div class="flex">
@@ -67,9 +70,11 @@
                                     class="font-medium whitespace-nowrap text-slate-500"><?= number_format($items['poin'], 0, ',', '.') ?></a>
                             </td>
                             <td class="w-10">
-                                <input name="quantity<?= $no++; ?>" min="1" max="10" id="quantity" type="number"
+                                <input name="quantity<?= $no++; ?>" min="1" max="50" id="quantity" type="number"
                                     class="form-control w-24 text-center itemQty" placeholder="Item quantity"
-                                    value="<?= number_format($items['qty']) ?>">
+                                    value="<?= number_format($items['qty']) ?>"><small class="text-center">maks
+                                    50
+                                    kg</small>
                             </td>
                             <td class="w-30">
                                 <div class="text-danger">
@@ -93,17 +98,14 @@
                             <?php endforeach; ?>
                             <?php echo form_close(); ?>
 
-
                             <tr>
                                 <td colspan="5"></td>
                                 <td class="text-left">
-                                    <strong><?= isset($items_subtotal) ? number_format($items_subtotal, 0, ',', '.') : '0' ?>
+                                    <strong><?= isset($items_subtotal) ? number_format($total_subtotal, 0, ',', '.') : '0' ?>
                                         poin,-</strong>
                                 </td>
                                 <td colspan="5">
                                     <h5 class="text-center">Pilih Layanan</h5>
-                                    <h5 class="text-center mb-1">Note : <span class="text-danger">1 Produk, hanya dapat
-                                            1 Checkout</span></h5>
                                     <div class="flex justify-center items-center">
                                         <a class="flex items-center mr-3 text-white btn btn-sm btn-pending shadow-md mr-2"
                                             href="<?= site_url('dashboard/drop_off') ?>">
@@ -119,6 +121,14 @@
 
                         </tbody>
                     </table>
+                    <div class="mt-5">
+                        <div class="alert alert-info show mb-2" role="alert">
+                            <h5 class="text-center mb-1">Note : <span class="text-danger">1 Produk, hanya dapat
+                                    1 Checkout</span></h5>
+                        </div>
+                        <p><span class="font-medium">Note :</span> Jika lebih dari 1 Produk, Produk Paling Akhir
+                            yang akan diproses</p>
+                    </div>
                 </div>
             </div>
         </div>

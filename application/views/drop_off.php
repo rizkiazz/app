@@ -178,13 +178,13 @@
                 <div id="ticket" class="tab-pane active" role="tabpanel" aria-labelledby="ticket-tab">
                     <div class="box p-5 mt-5">
                         <div class="mb-5">
-                            <label for="post-form-7" class="form-label"> Metode Pembayaran Ke Rekening/eWallet
+                            <label for="post-form-7" class="form-label"> Metode Pembayaran Ke Rekening/e-Wallet
                                 Anda <small class="text-danger">*</small></label>
                             <select name="metode_bayar" data-placeholder="Pilih Metode Pembayaran"
                                 class="tom-select w-full">
                                 <option>Pilih Metode Pembayaran</option>
                                 <option value="Bank Transfer">Bank Transfer</option>
-                                <option value="eWallet">eWallet</option>
+                                <option value="e-Wallet">e-Wallet</option>
                             </select>
                         </div>
                         <div class="mb-5" id="bank_field" style="display: none;">
@@ -201,11 +201,11 @@
                             </select>
                         </div>
                         <div class="mb-5" id="dompet_digital_field" style="display: none;">
-                            <label for="post-form-7" class="form-label"> Pilih eWallet <small
+                            <label for="post-form-7" class="form-label"> Pilih e-Wallet <small
                                     class="text-danger">*</small></label>
-                            <select name="metode_bayar2" id="pilih_dompet_digital" data-placeholder="Pilih eWallet"
+                            <select name="metode_bayar2" id="pilih_dompet_digital" data-placeholder="Pilih e-Wallet"
                                 class="tom-select w-full">
-                                <option disabled selected hidden>Pilih eWallet</option>
+                                <option disabled selected hidden>Pilih e-Wallet</option>
                                 <option value="Dana">Dana</option>
                                 <option value="Ovo">Ovo</option>
                                 <option value="Gopay">Gopay</option>
@@ -317,7 +317,7 @@ document.querySelector('select[name="metode_bayar"]').addEventListener('change',
         rekeningField.style.display = 'none';
         dompetDigitalField.style.display = 'none';
         nomorField.style.display = 'none';
-    } else if (selectedOption === 'eWallet') {
+    } else if (selectedOption === 'e-Wallet') {
         bankField.style.display = 'none';
         rekeningField.style.display = 'none';
         dompetDigitalField.style.display = 'block';

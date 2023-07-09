@@ -167,7 +167,7 @@
                                         <label for="post-form-7" class="form-label"> Kode Pos <small
                                                 class="text-danger">*</small></label>
                                         <input type="text" class="form-control" id="kode_pos" name="kode_pos"
-                                            placeholder="Your mobile phone" autocomplete="off" required>
+                                            placeholder="Masukan kode pos" autocomplete="off" required>
                                     </div>
                                 </div>
                             </div>

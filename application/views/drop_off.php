@@ -265,8 +265,8 @@
                         <div class="font-medium text-base"><strong>Rp.
                                 <?= number_format($grand_total, 0, ',', '.') ?>,-</strong></div>
                     </div>
-                    <p class="text-base text-info text-sm"><b>Note : </b><br>Akan dikirim ke nomor rekening/dompet
-                        digital anda
+                    <p class="text-base text-info text-sm"><b>Note : </b><br>Akan dikirim ke nomor rekening/e-Wallet
+                        anda
                         <br>silahkan lengkapi form anda
                     </p>
 

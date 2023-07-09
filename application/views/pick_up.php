@@ -317,8 +317,8 @@
                                 <?= number_format($biaya_layanan_total, 0, ',', '.') ?> sampai Rp.
                                 <?= number_format($biaya_layanan_total1, 0, ',', '.') ?>,-</strong></div>
                     </div>
-                    <p class="text-base text-info text-sm mt-1"><b>Note : </b><br>Akan dikirim ke nomor rekening/dompet
-                        digital anda
+                    <p class="text-base text-info text-sm mt-1"><b>Note : </b><br>Akan dikirim ke nomor
+                        rekening/e-Wallet anda
                         <br>silahkan lengkapi form anda
                     </p>
                 </div>

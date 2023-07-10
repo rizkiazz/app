@@ -15,7 +15,7 @@ class Pay extends CI_Controller
 
     public function index()
     {
-        $data['title'] = 'Billing History';
+        $data['title'] = 'Invoice';
         $id = $this->session->userdata('id_user');
         $data['bill_pickUp'] = $this->db->query("SELECT * FROM transaction 
 			WHERE transaction.id_user='$id' AND status='1' AND layanan_pesanan='Pick Up' ORDER BY transaction_time DESC")->result();

@@ -4,8 +4,12 @@
               Details Invoice
           </h2>
           <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
+              <a href="<?= site_url('order/detail/'.$invoice->order_id) ?>"
+                  class="btn btn-primary shadow-md mr-2">Detail
+                  Order</a>
+          </div>
+          <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
               <a href="<?= site_url('pay')?>" class="btn btn-danger shadow-md mr-2">Kembali</a>
-
           </div>
       </div>
       <!-- BEGIN: Invoice -->

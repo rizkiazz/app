@@ -103,7 +103,7 @@
                             <th class="whitespace-nowrap">NO</th>
                             <th class="whitespace-nowrap">Order ID</th>
                             <th class="whitespace-nowrap">Nama</th>
-                            <th class="text-center whitespace-nowrap">Tujuan Pengiriman</th>
+                            <th class="text-center whitespace-nowrap">Alamat Kantor Center</th>
                             <th class="whitespace-nowrap">Layanan Pesanan</th>
                             <th class="whitespace-nowrap">Status</th>
                             <th class="whitespace-nowrap">Waktu Order</th>

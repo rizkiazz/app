@@ -152,6 +152,10 @@ class Tukar_poin extends CI_Controller
             echo "Point Anda Kurang";
             $_SESSION["warning"] = 'Poin Anda Kurang';
 		    redirect('/tukar_poin/dana');
+        }else if($dana > $poin){
+            echo "Point Anda Kurang";
+            $_SESSION["warning"] = 'Poin Anda Kurang';
+		    redirect('/tukar_poin/dana');
         }else{
             $data = array(
                 'id_user'          => $id_user,
@@ -189,6 +193,10 @@ class Tukar_poin extends CI_Controller
             $_SESSION["warning"] = 'Poin Anda Kosong';
 		    redirect('/tukar_poin/gopay');
         }else if($poin <= $total){
+            echo "Point Anda Kurang";
+            $_SESSION["warning"] = 'Poin Anda Kurang';
+		    redirect('/tukar_poin/gopay');
+        }else if($gopay > $poin){
             echo "Point Anda Kurang";
             $_SESSION["warning"] = 'Poin Anda Kurang';
 		    redirect('/tukar_poin/gopay');
@@ -232,6 +240,10 @@ class Tukar_poin extends CI_Controller
             echo "Point Anda Kurang";
             $_SESSION["warning"] = 'Poin Anda Kurang';
 		    redirect('/tukar_poin/shopee_pay');
+        }else if($shopee_pay > $poin){
+            echo "Point Anda Kurang";
+            $_SESSION["warning"] = 'Poin Anda Kurang';
+            redirect('/tukar_poin/shopee_pay');
         }else{
             $data = array(
                 'id_user'          => $id_user,
@@ -272,6 +284,10 @@ class Tukar_poin extends CI_Controller
             echo "Point Anda Kurang";
             $_SESSION["warning"] = 'Poin Anda Kurang';
 		    redirect('/tukar_poin/ovo');
+        }else if($ovo > $poin){
+            echo "Point Anda Kurang";
+            $_SESSION["warning"] = 'Poin Anda Kurang';
+            redirect('/tukar_poin/ovo');
         }else{
             $data = array(
                 'id_user'          => $id_user,

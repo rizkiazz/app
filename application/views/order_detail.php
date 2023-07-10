@@ -61,7 +61,7 @@
                            class="flex items-center ml-auto"><?= $invoice->mobile_phone ?></span>
                    </div>
                    <div class="flex items-center mt-3"> <i data-lucide="calendar"
-                           class="w-4 h-4 text-slate-500 mr-2"></i> <b>Nomor Rekening/Dompet Digital</b><span
+                           class="w-4 h-4 text-slate-500 mr-2"></i> <b>Rekening/e-Wallet</b><span
                            class="flex items-center ml-auto"><?= $invoice->no_rekening ?></span>
                    </div>
                </div>
@@ -75,7 +75,7 @@
                    </div>
                    <?php if($invoice->layanan_pesanan == "Pick Up") { ?>
                    <div class="flex items-center"> <i data-lucide="clipboard" class="w-4 h-4 text-slate-500 mr-2"></i>
-                       <b>Courier</b><span class="flex items-center ml-auto">Kurir EasyPickTrash</span>
+                       <b>Kurir</b><span class="flex items-center ml-auto">Kurir EasyPickTrash</span>
                    </div>
                    <?php }else {?>
                    <div class="flex items-center"> <i data-lucide="clipboard" class="w-4 h-4 text-slate-500 mr-2"></i>

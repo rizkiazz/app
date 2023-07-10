@@ -26,7 +26,7 @@
                         <th class="whitespace-nowrap">No</th>
                         <th class="whitespace-nowrap">Order ID</th>
                         <th class="whitespace-nowrap">Layanan Pesanan</th>
-                        <th class="whitespace-nowrap">No Rekening/Dompet Digital</th>
+                        <th class="whitespace-nowrap">Rekening/e-Wallet</th>
                         <th class="whitespace-nowrap">Waktu Transaksi</th>
                         <th class="whitespace-nowrap">Status</th>
                         <th class="whitespace-nowrap">Action</th>
@@ -168,7 +168,7 @@
                         <th class="whitespace-nowrap">No</th>
                         <th class="whitespace-nowrap">Order ID</th>
                         <th class="whitespace-nowrap">Layanan Pesanan</th>
-                        <th class="whitespace-nowrap">No Rekening/Dompet Digital</th>
+                        <th class="whitespace-nowrap">Rekening/e-Wallet</th>
                         <th class="whitespace-nowrap">Waktu Transaksi</th>
                         <th class="whitespace-nowrap">Status</th>
                         <th class="whitespace-nowrap">Action</th>

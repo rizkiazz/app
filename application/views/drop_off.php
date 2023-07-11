@@ -54,7 +54,7 @@
                                         <input type="hidden" id="tracking_id" name="tracking_id"
                                             value="<?= mt_rand(0000000000000, 1111111111111) ?>" maxlength="12"
                                             autocomplete="off" required>
-                                        <!-- <input type="hidden" name="payment_method" value="Antar Sendiri"> -->
+                                        <input type="hidden" name="kode_pos" value="9999">
                                         <input type="hidden" name="id_user" id="id_user"
                                             value="<?php echo $this->session->userdata('id_user') ?>">
                                         <input type="hidden" name="status" id="status" value="0">
@@ -264,6 +264,8 @@
                         <div class="mr-auto font-medium text-base">Anda mendapat</div>
                         <div class="font-medium text-base"><strong>Rp.
                                 <?= number_format($grand_total, 0, ',', '.') ?>,-</strong></div>
+                        <input type="hidden" id="pendapatan" name="pendapatan"
+                            value="<?= number_format($grand_total, 0, ',', '.') ?>" required>
                     </div>
                     <p class="text-base text-info text-sm"><b>Note : </b><br>Akan dikirim ke nomor rekening/e-Wallet
                         anda

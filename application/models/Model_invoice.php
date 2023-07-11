@@ -133,6 +133,7 @@ class Model_invoice extends CI_Model
 		$id_user = $this->input->post('id_user');
 		$name = $this->input->post('name');
 		$alamat = $this->input->post('alamat');
+		$kode_pos = $this->input->post('kode_pos');
 		$city = $this->input->post('kota');
 		$tujuan = $this->input->post('ekspedisi');
 		$keterangan = $this->input->post('keterangan');
@@ -182,6 +183,7 @@ class Model_invoice extends CI_Model
 			'id_user' 			=> $id_user,
 			'name' 				=> $name,
 			'alamat' 			=> $alamat,
+			'kode_pos' 			=> $kode_pos,
 			'city' 				=> $city,
 			'tujuan' 			=> $tujuan,
 			'keterangan' 		=> $keterangan,

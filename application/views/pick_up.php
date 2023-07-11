@@ -35,9 +35,9 @@
                 $biaya_antar = $harga * $item['qty']; //biaya antar
                 //jika $qty <= 5 kg
                 if($qty <= '5'){
-                    $potongan = $biaya_antar /2.5; //biaya antar / t kecil
+                    $potongan = $biaya_antar /2.5; //biaya antar / t kecil kurang dari 5 kg
                 } else {
-                    $potongan = $biaya_antar /5;
+                    $potongan = $biaya_antar /5; // lebih dari 5 kg
                 }
                 $potongan2 = $biaya_antar /2.5; //biaya antar / t besar
                 $potongan3 = $biaya_antar /5; //biaya antar / t kecil

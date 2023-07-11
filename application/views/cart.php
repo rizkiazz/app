@@ -126,8 +126,8 @@
                             <h5 class="text-center mb-1">Note : <span class="text-danger">1 Produk, hanya dapat
                                     1 Checkout</span></h5>
                         </div>
-                        <p><span class="font-medium">Note :</span> Jika lebih dari 1 Produk, Produk Paling Akhir
-                            yang akan diproses</p>
+                        <p><span class="font-medium">Note :</span> Jika lebih dari 1 Produk, Silahkan <b>pilih</b>
+                            yang akan diproses dan <b>hapus</b> produk lainnya</p>
                     </div>
                 </div>
             </div>

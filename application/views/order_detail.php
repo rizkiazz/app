@@ -93,7 +93,8 @@
                                class="w-4 h-4 text-slate-500 ml-2"></i></span></div>
                    <div class="flex items-center mt-3"> <i data-lucide="map-pin"
                            class="w-4 h-4 text-slate-500 mr-2"></i> <b>Alamat Pelanggan</b><span
-                           class="flex items-center ml-auto"><?= $invoice->alamat ?></span></div>
+                           class="flex items-center ml-auto"><?= $invoice->alamat ?>, <?= $invoice->city ?>,
+                           <?= $invoice->kode_pos ?></span></div>
                </div>
            </div>
            <div class="col-span-12 lg:col-span-12 2xl:col-span-12">

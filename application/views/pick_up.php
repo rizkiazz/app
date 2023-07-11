@@ -71,6 +71,7 @@
                                         <input type="hidden" name="id_user" id="id_user"
                                             value="<?php echo $this->session->userdata('id_user') ?>">
                                         <input type="hidden" name="status" id="status" value="0">
+                                        <input type="hidden" name="tujuan" id="tujuan" value="-">
                                         <input type="hidden" name="layanan_pesanan" id="layanan_pesanan"
                                             value="Pick Up">
                                     </div>

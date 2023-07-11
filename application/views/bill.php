@@ -256,7 +256,7 @@
                                                             <div class="mx-auto cursor-pointer relative mt-5">
                                                                 <button type="button"
                                                                     class="btn btn-primary w-full">Bukti Sampah
-                                                                    diserahkan Mitra</button>
+                                                                    diserahkan ke Kantor Center</button>
                                                                 <input name="bukti_pembayaran" id="bukti_pembayaran"
                                                                     type="file"
                                                                     class="w-full h-full top-0 left-0 absolute opacity-0"

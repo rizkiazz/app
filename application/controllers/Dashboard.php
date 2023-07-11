@@ -123,7 +123,7 @@ class Dashboard extends CI_Controller
 
 	public function pick_up_proccess()
 	{
-		$data['title'] = 'Payment Notification';
+		$data['title'] = 'Notifikasi Pick Up Order';
 		$is_processed = $this->model_invoice->pick_up();
 		if ($is_processed) {
 			$this->cart->destroy();
@@ -137,7 +137,7 @@ class Dashboard extends CI_Controller
 
 	public function drop_off_proccess()
 	{
-		$data['title'] = 'Payment Notification';
+		$data['title'] = 'Notifikasi Drop Off Order';
 		$is_processed = $this->model_invoice->drop_off();
 		if ($is_processed) {
 			$this->cart->destroy();

@@ -97,7 +97,7 @@ class Model_invoice extends CI_Model
 			'payment_limit' 	=> date('Y-m-d H:i:s', mktime( date('H'), date('i'), date('s'), date('m'), date('d') + 1, date('Y'))),
 		);
 
-		die(var_dump($invoice));
+		// die(var_dump($invoice));
 
 		$this->db->insert('transaction', $invoice);
 		$id_invoice = $this->db->insert_id();

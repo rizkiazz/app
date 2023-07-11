@@ -70,10 +70,10 @@
                                     class="font-medium whitespace-nowrap text-slate-500"><?= number_format($items['poin'], 0, ',', '.') ?></a>
                             </td>
                             <td class="w-10">
-                                <input name="quantity<?= $no++; ?>" min="1" max="50" id="quantity" type="number"
+                                <input name="quantity<?= $no++; ?>" min="1" max="100" id="quantity" type="number"
                                     class="form-control w-24 text-center itemQty" placeholder="Item quantity"
                                     value="<?= number_format($items['qty']) ?>"><small class="text-center">maks
-                                    50
+                                    100
                                     kg</small>
                             </td>
                             <td class="w-30">

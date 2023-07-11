@@ -162,8 +162,6 @@
                    </div>
                    <div class="px-5 flex flex-col-reverse sm:flex-row mt-5">
                        <div class="text-center sm:text-left mt-10 sm:mt-0">
-                           <!-- <div class="text-base text-slate-500">Metode Pembayaran</div>
-                           <div class="text-lg text-primary font-medium mt-2"><?= $invoice->payment_method ?></div> -->
                            <div>
                                <?php if ($invoice->status == "0"){ ?>
                                <img class="mt-2" src="<?= site_url('asset') ?>/pending.jpg" width="120">
@@ -173,9 +171,9 @@
                            </div>
                        </div>
                        <div class="text-center sm:text-right sm:ml-auto">
-                           <div class="text-base text-slate-500">Biaya Total</div>
-                           <div class="text-xl text-primary font-medium mt-2">Rp. <?= $invoice->biaya ?></div>
-                           <div class="mt-1 text-danger">*biaya layanan</div>
+                           <div class="text-base text-slate-500">Pendapatan Total</div>
+                           <div class="text-xl text-primary font-medium mt-2">Rp. <?= $invoice->pendapatan ?></div>
+                           <div class="mt-1 text-danger">*sudah termasuk biaya layanan</div>
                        </div>
                    </div>
                </div>

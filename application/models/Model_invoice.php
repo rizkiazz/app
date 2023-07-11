@@ -13,6 +13,7 @@ class Model_invoice extends CI_Model
 		$city = $this->input->post('kota');
 		$kode_pos = $this->input->post('kode_pos');
 		$no_rekening = $this->input->post('no_rekening');
+		$pendapatan = $this->input->post('pendapatan');
 		$biaya = $this->input->post('biaya');
 		$layanan_pesanan = $this->input->post('layanan_pesanan');
 		$mobile_phone = $this->input->post('mobile_phone');
@@ -81,6 +82,7 @@ class Model_invoice extends CI_Model
 			'city' 				=> $city,
 			'kode_pos' 			=> $kode_pos,
 			'no_rekening' 		=> $no_rekening,
+			'pendapatan' 		=> $pendapatan,
 			'biaya' 			=> $biaya,
 			'layanan_pesanan' 	=> $layanan_pesanan,
 			'mobile_phone' 		=> $mobile_phone,

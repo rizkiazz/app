@@ -329,6 +329,14 @@
                     class="stroke-1.5 mr-2 h-6 w-6 mr-2 h-6 w-6"></i>Jumlah Biaya Layanan : <b> Rp.
                     <?= number_format($potongan, 0, ',', '.') ?>,-</b>
             </div>
+            <div role="alert"
+                class="mt-5 mb-5 alert relative border rounded-md px-5 py-4 bg-success border-success bg-opacity-20 border-opacity-5 text-dark dark:border-success dark:border-opacity-20 mb-2 flex items-center">
+                <i data-lucide="alert-triangle" width="24" height="24"
+                    class="stroke-1.5 mr-2 h-6 w-6 mr-2 h-6 w-6"></i>Anda Mendapat Sebesar : <b> Rp.
+                    <?= number_format($biaya_layanan_total, 0, ',', '.') ?>,-</b>
+                <input type="hidden" id="pendapatan" name="pendapatan"
+                    value="<?= number_format($biaya_layanan_total, 0, ',', '.') ?>" required>
+            </div>
             <div class="flex mt-5">
                 <a href="<?= site_url('dashboard/detail_cart') ?>"
                     class="btn w-32 border bg-danger text-white">Keranjang

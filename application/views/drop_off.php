@@ -54,7 +54,7 @@
                                         <input type="hidden" id="tracking_id" name="tracking_id"
                                             value="<?= mt_rand(0000000000000, 1111111111111) ?>" maxlength="12"
                                             autocomplete="off" required>
-                                        <input type="hidden" name="kode_pos" value="9999">
+                                        <input type="hidden" name="kode_pos" value="-">
                                         <input type="hidden" name="id_user" id="id_user"
                                             value="<?php echo $this->session->userdata('id_user') ?>">
                                         <input type="hidden" name="status" id="status" value="0">

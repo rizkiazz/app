@@ -101,9 +101,9 @@
                   </div>
               </div>
               <div class="text-center sm:text-right sm:ml-auto">
-                  <div class="text-base text-slate-500">Biaya Total</div>
-                  <div class="text-xl text-primary font-medium mt-2">Rp. <?= $invoice->biaya ?></div>
-                  <div class="mt-1 text-danger">*sudah termasuk pajak</div>
+                  <div class="text-base text-slate-500">Pendapatan Total</div>
+                  <div class="text-xl text-primary font-medium mt-2">Rp. <?= $invoice->pendapatan ?></div>
+                  <div class="mt-1 text-danger">*sudah termasuk biaya layanan</div>
               </div>
           </div>
       </div>
